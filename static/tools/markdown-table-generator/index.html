@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown Table Generator & Formatter — Free Online Tool</title>
+<meta name="description" content="Free online Markdown Table Generator & Formatter for developers. Create, edit, and format GitHub-flavored Markdown tables instantly. Copy clean markdown, adjust alignment, add or remove rows and columns. Works offline in your browser.">
+<meta name="keywords" content="markdown table generator, markdown table formatter, github markdown table, markdown editor, developer tools">
+<meta name="author" content="DevTools">
+<meta property="og:title" content="Markdown Table Generator & Formatter">
+<meta property="og:description" content="Create and format GitHub-flavored Markdown tables instantly. Free, fast, and privacy-friendly.">
+<meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: { mono: ['ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','monospace'] }
+      }
+    }
+  }
+</script>
+<style>
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(120,120,120,.35); border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(120,120,120,.55); }
+  .cell-input { transition: background-color .15s ease, box-shadow .15s ease; }
+  .cell-input:focus { outline: none; box-shadow: inset 0 0 0 2px #6366f1; }
+  .fade-in { animation: fadeIn .25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px);} to {opacity:1; transform:none;} }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+
+<!-- ================= HEADER ================= -->
+<header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-md">M</div>
+        <div>
+          <h1 class="text-base sm:text-lg font-semibold leading-tight">Markdown Table Generator</h1>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">Format &amp; export GitHub-flavored tables</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" aria-label="Toggle dark mode" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <svg id="iconSun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg id="iconMoon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= TOP AD ================= -->
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="w-full min-h-[90px] flex items-center justify-center rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-800/40 text-slate-400 text-xs">
+    <!-- TOP AD PLACEHOLDER -->
+    <span>Top Ad Space (728×90 / responsive)</span>
+  </div>
+</div>
+
+<!-- ================= MAIN ================= -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- LEFT: Editor -->
+    <section class="lg:col-span-8 space-y-6">
+
+      <!-- Toolbar -->
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="addRow" class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            Add Row
+          </button>
+          <button id="addCol" class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white transition shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            Add Column
+          </button>
+          <button id="removeRow" class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>
+            Remove Row
+          </button>
+          <button id="removeCol" class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>
+            Remove Column
+          </button>
+          <div class="flex-1"></div>
+          <button id="clearAll" class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-900/30 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M6 6l1 14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-14"/></svg>
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Table Editor -->
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+          <h2 class="text-sm font-semibold text-slate-700 dark:text-slate-200">Table Editor</h2>
+          <span id="dimensions" class="text-xs text-slate-500 dark:text-slate-400">0 rows × 0 cols</span>
+        </div>
+        <div class="overflow-auto max-h-[60vh]">
+          <table id="editorTable" class="w-full border-collapse text-sm">
+            <thead id="editorHead"></thead>
+            <tbody id="editorBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Output -->
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+          <h2 class="text-sm font-semibold text-slate-700 dark:text-slate-200">Markdown Output</h2>
+          <div class="flex items-center gap-2">
+            <button id="copyBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white transition shadow-sm">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span id="copyLabel">Copy</span>
+            </button>
+            <button id="downloadBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Download
+            </button>
+          </div>
+        </div>
+        <pre id="mdOutput" class="p-4 text-xs sm:text-sm font-mono whitespace-pre overflow-auto max-h-72 text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-900/50"></pre>
+      </div>
+
+    </section>
+
+    <!-- RIGHT: Sidebar -->
+    <aside class="lg:col-span-4 space-y-6">
+
+      <!-- Sidebar Ad -->
+      <div class="w-full min-h-[250px] flex items-center justify-center rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-800/40 text-slate-400 text-xs">
+        <!-- SIDEBAR AD PLACEHOLDER -->
+        <span>Sidebar Ad (300×250 / responsive)</span>
+      </div>
+
+      <!-- Options -->
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 space-y-4">
+        <h3 class="text-sm font-semibold text-slate-700 dark:text-slate-200">Formatting Options</h3>
+
+        <label class="flex items-center justify-between text-sm">
+          <span>Pretty align padding</span>
+          <input type="checkbox" id="prettyAlign" checked class="w-4 h-4 accent-indigo-600">
+        </label>
+
+        <label class="flex items-center justify-between text-sm">
+          <span>Include header separator</span>
+          <input type="checkbox" id="includeSep" checked class="w-4 h-4 accent-indigo-600">
+        </label>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Default alignment</label>
+          <select id="defaultAlign" class="w-full text-sm rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none">
+            <option value="left">Left</option>
+            <option value="center">Center</option>
+            <option value="right">Right</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tips -->
+      <div class="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/40 dark:to-purple-950/40 rounded-2xl border border-indigo-100 dark:border-indigo-900/50 p-4">
+        <h3 class="text-sm font-semibold text-indigo-900 dark:text-indigo-200 mb-2">💡 Tips</h3>
+        <ul class="text-xs space-y-1.5 text-indigo-800/80 dark:text-indigo-200/80 list-disc list-inside">
+          <li>Click any cell to edit its content.</li>
+          <li>Use the alignment dropdown in each column header.</li>
+          <li>Output is GitHub-flavored Markdown compatible.</li>
+          <li>Everything runs locally — no data leaves your browser.</li>
+        </ul>
+      </div>
+
+    </aside>
+  </div>
+</main>
+
+<!-- ================= BOTTOM AD ================= -->
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+  <div class="w-full min-h-[90px] flex items-center justify-center rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-800/40 text-slate-400 text-xs">
+    <!-- BOTTOM AD PLACEHOLDER -->
+    <span>Bottom Ad Space (728×90 / responsive)</span>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="mt-8 border-t border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+    <p>© <span id="year"></span> Markdown Table Generator &amp; Formatter — Built for developers. All processing happens in your browser.</p>
+  </div>
+</footer>
+
+<!-- ================= POPUP / SCRIPT AD ================= -->
+<div id="popupAd" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="relative bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-6 fade-in">
+    <button id="closePopup" aria-label="Close" class="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="min-h-[200px] flex items-center justify-center rounded-xl border border-dashed border-slate-300 dark:border-slate-600 text-slate-400 text-xs">
+      <!-- POPUP AD PLACEHOLDER -->
+      <span>Popup / Script Ad Space</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- Theme ---------- */
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+
+  function applyTheme(dark){
+    root.classList.toggle('dark', dark);
+    iconSun.classList.toggle('hidden', !dark);
+    iconMoon.classList.toggle('hidden', dark);
+    try { localStorage.setItem('mdtable-theme', dark ? 'dark' : 'light'); } catch(e){}
+  }
+  let stored = null;
+  try { stored = localStorage.getItem('mdtable-theme'); } catch(e){}
+  if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    applyTheme(true);
+  } else {
+    applyTheme(false);
+  }
+  themeToggle.addEventListener('click', () => applyTheme(!root.classList.contains('dark')));
+
+  /* ---------- State ---------- */
+  // columns: [{name, align}]
+  // rows: array of arrays of strings
+  let state = {
+    columns: [
+      { name: 'Name', align: 'left' },
+      { name: 'Type', align: 'left' },
+      { name: 'Description', align: 'left' }
+    ],
+    rows: [
+      ['id', 'integer', 'Primary key'],
+      ['name', 'string', 'Display name'],
+      ['created_at', 'datetime', 'Creation timestamp']
+    ]
+  };
+
+  const editorHead = document.getElementById('editorHead');
+  const editorBody = document.getElementById('editorBody');
+  const mdOutput = document.getElementById('mdOutput');
+  const dimensions = document.getElementById('dimensions');
+
+  /* ---------- Render Editor ---------- */
+  function renderEditor(){
+    // Head
+    editorHead.innerHTML = '';
+    const headRow = document.createElement('tr');
+    headRow.className = 'bg-slate-50 dark:bg-slate-900/60';
+
+    state.columns.forEach((col, ci) => {
+      const th = document.createElement('th');
+      th.className = 'border border-slate-200 dark:border-slate-700 p-0 align-top min-w-[140px]';
+      const wrap = document.createElement('div');
+      wrap.className = 'flex flex-col';
+
+      const nameInput = document.createElement('input');
+      nameInput.type = 'text';
+      nameInput.value = col.name;
+      nameInput.placeholder = 'Column ' + (ci+1);
+      nameInput.className = 'cell-input w-full px-2 py-1.5 text-sm font-semibold bg-transparent border-b border-slate-200 dark:border-slate-700 focus:bg-indigo-50/40 dark:focus:bg-indigo-900/20';
+      nameInput.addEventListener('input', e => {
+        state.columns[ci].name = e.target.value;
+        updateOutput();
+      });
+
+      const alignSel = document.createElement('select');
+      alignSel.className = 'w-full text-[11px] px-2 py-1 bg-transparent text-slate-500 dark:text-slate-400 outline-none cursor-pointer';
+      ['left','center','right'].forEach(a => {
+        const opt = document.createElement('option');
+        opt.value = a;
+        opt.textContent = a.charAt(0).toUpperCase() + a.slice(1);
+        if (a === col.align) opt.selected = true;
+        alignSel.appendChild(opt);
+      });
+      alignSel.addEventListener('change', e => {
+        state.columns[ci].align = e.target.value;
+        updateOutput();
+      });
+
+      wrap.appendChild(nameInput);
+      wrap.appendChild(alignSel);
+      th.appendChild(wrap);
+      headRow.appendChild(th);
+    });
+    editorHead.appendChild(headRow);
+
+    // Body
+    editorBody.innerHTML = '';
+    state.rows.forEach((row, ri) => {
+      const tr = document.createElement('tr');
+      tr.className = 'hover:bg-slate-50/60 dark:hover:bg-slate-900/30';
+      state.columns.forEach((col, ci) => {
+        const td = document.createElement('td');
+        td.className = 'border border-slate-200 dark:border-slate-700 p-0';
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = row[ci] ?? '';
+        input.placeholder = '…';
+        input.className = 'cell-input w-full px-2 py-1.5 text-sm bg-transparent';
+        input.addEventListener('input', e => {
+          state.rows[ri][ci] = e.target.value;
+          updateOutput();
+        });
+        td.appendChild(input);
+        tr.appendChild(td);
+      });
+      editorBody.appendChild(tr);
+    });
+
+    dimensions.textContent = `${state.rows.length} rows × ${state.columns.length} cols`;
+  }
+
+  /* ---------- Markdown generation ---------- */
+  function escapeCell(s){
+    return String(s ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
+  }
+
+  function alignMarker(align){
+    if (align === 'center') return ':---:';
+    if (align === 'right') return '---:';
+    return ':---';
+  }
+
+  function generateMarkdown(){
+    const pretty = document.getElementById('prettyAlign').checked;
+    const includeSep = document.getElementById('includeSep').checked;
+    if (state.columns.length === 0) return '';
+
+    const headers = state.columns.map(c => escapeCell(c.name || ' '));
+    const aligns = state.columns.map(c => c.align);
+    const bodyRows = state.rows.map(r => state.columns.map((_, ci) => escapeCell(r[ci] ?? '')));
+
+    // Column widths for pretty mode
+    const widths = state.columns.map((_, ci) => {
+      let w = headers[ci].length;
+      bodyRows.forEach(r => { if (r[ci].length > w) w = r[ci].length; });
+      const marker = alignMarker(aligns[ci]);
+      if (marker.length > w) w = marker.length;
+      return Math.max(w, 3);
+    });
+
+    function padCell(text, ci){
+      if (!pretty) return text;
+      const w = widths[ci];
+      const align = aligns[ci];
+      if (align === 'right') return text.padStart(w, ' ');
+      if (align === 'center') {
+        const total = w - text.length;
+        const left = Math.floor(total / 2);
+        const right = total - left;
+        return ' '.repeat(left) + text + ' '.repeat(right);
+      }
+      return text.padEnd(w, ' ');
+    }
+
+    const lines = [];
+    lines.push('| ' + headers.map((h, ci) => padCell(h, ci)).join(' | ') + ' |');
+
+    if (includeSep) {
+      const sepCells = aligns.map((a, ci) => {
+        const marker = alignMarker(a);
+        if (!pretty) return marker;
+        const w = widths[ci];
+        if (a === 'center') {
+          const inner = Math.max(w - 2, 1);
+          return ':' + '-'.repeat(inner) + ':';
+        }
+        if (a === 'right') {
+          const inner = Math.max(w - 1, 1);
+          return '-'.repeat(inner) + ':';
+        }
+        const inner = Math.max(w - 1, 1);
+        return ':' + '-'.repeat(inner);
+      });
+      lines.push('| ' + sepCells.join(' | ') + ' |');
+    }
+
+    bodyRows.forEach(r => {
+      lines.push('| ' + r.map((c, ci) => padCell(c, ci)).join(' | ') + ' |');
+    });
+
+    return lines.join('\n');
+  }
+
+  function updateOutput(){
+    mdOutput.textContent = generateMarkdown();
+  }
+
+  /* ---------- Actions ---------- */
+  document.getElementById('addRow').addEventListener('click', () => {
+    state.rows.push(state.columns.map(() => ''));
+    renderEditor();
+    updateOutput();
+  });
+
+  document.getElementById('addCol').addEventListener('click', () => {
+    const defaultAlign = document.getElementById('defaultAlign').value;
+    state.columns.push({ name: 'Column ' + (state.columns.length + 1), align: defaultAlign });
+    state.rows.forEach(r => r.push(''));
+    renderEditor();
+    updateOutput();
+  });
+
+  document.getElementById('removeRow').addEventListener('click', () => {
+    if (state.rows.length === 0) return;
+    state.rows.pop();
+    renderEditor();
+    updateOutput();
+  });
+
+  document.getElementById('removeCol').addEventListener('click', () => {
+    if (state.columns.length === 0) return;
+    state.columns.pop();
+    state.rows.forEach(r => r.pop());
+    renderEditor();
+    updateOutput();
+  });
+
+  document.getElementById('clearAll').addEventListener('click', () => {
+    if (!confirm('Clear all table content?')) return;
+    state = {
+      columns: [{ name: 'Column 1', align: 'left' }],
+      rows: [['']]
+    };
+    renderEditor();
+    updateOutput();
+  });
+
+  document.getElementById('prettyAlign').addEventListener('change', updateOutput);
+  document.getElementById('includeSep').addEventListener('change', updateOutput);
+
+  /* ---------- Copy ---------- */
+  const copyBtn = document.getElementById('copyBtn');
+  const copyLabel = document.getElementById('copyLabel');
+  copyBtn.addEventListener('click', async () => {
+    const text = mdOutput.textContent;
+    try {
+      await navigator.clipboard.writeText(text);
+      copyLabel.textContent = 'Copied!';
+      copyBtn.classList.remove('bg-emerald-600','hover:bg-emerald-700');
+      copyBtn.classList.add('bg-emerald-500');
+      setTimeout(() => {
+        copyLabel.textContent = 'Copy';
+        copyBtn.classList.add('bg-emerald-600','hover:bg-emerald-700');
+        copyBtn.classList.remove('bg-emerald-500');
+      }, 1500);
+    } catch(e){
+      // fallback
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); copyLabel.textContent = 'Copied!'; } catch(_){}
+      document.body.removeChild(ta);
+      setTimeout(() => copyLabel.textContent = 'Copy', 1500);
+    }
+  });
+
+  /* ---------- Download ---------- */
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    const blob = new Blob([mdOutput.textContent], { type: 'text/markdown;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'table.md';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  /* ---------- Popup Ad ---------- */
+  const popup = document.getElementById('popupAd');
+  const closePopup = document.getElementById('closePopup');
+  let popupShown = false;
+  function showPopup(){
+    if (popupShown) return;
+    popupShown = true;
+    popup.classList.remove('hidden');
+  }
+  closePopup.addEventListener('click', () => popup.classList.add('hidden'));
+  popup.addEventListener('click', e => { if (e.target === popup) popup.classList.add('hidden'); });
+  // Show after 20s of engagement
+  setTimeout(showPopup, 20000);
+
+  /* ---------- Init ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+  renderEditor();
+  updateOutput();
+})();
+</script>
+</body>
+</html>

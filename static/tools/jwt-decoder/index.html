@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JWT Decoder & Validator — Free Online JSON Web Token Tool</title>
+<meta name="description" content="Free online JWT decoder and validator for developers. Decode JSON Web Token header, payload, and signature instantly. Verify expiration, inspect claims, and validate structure — all client-side in your browser." />
+<meta name="keywords" content="JWT decoder, JSON Web Token, JWT validator, decode JWT, JWT parser, token inspector, developer tools" />
+<meta name="author" content="JWT Tools" />
+<meta property="og:title" content="JWT Decoder & Validator — Free Online Tool" />
+<meta property="og:description" content="Decode and validate JSON Web Tokens instantly in your browser. Inspect header, payload, signature, and expiration." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            50: '#eef6ff', 100: '#d9ecff', 200: '#bcdcff', 300: '#8ec5ff',
+            400: '#59a4ff', 500: '#3382ff', 600: '#1c62f5', 700: '#154de1',
+            800: '#1840b6', 900: '#1a3a8f'
+          }
+        },
+        fontFamily: {
+          mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { -webkit-font-smoothing: antialiased; }
+  .token-part { word-break: break-all; }
+  textarea { resize: vertical; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: rgba(120,120,120,.4); border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(120,120,120,.6); }
+  .fade-in { animation: fadeIn .25s ease-in; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px);} to {opacity:1; transform:none;} }
+</style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+
+<!-- Header -->
+<header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-md">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold tracking-tight">JWT Decoder <span class="text-brand-600 dark:text-brand-400">&amp; Validator</span></h1>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 -mt-0.5 hidden sm:block">Decode &amp; inspect JSON Web Tokens instantly</p>
+        </div>
+      </div>
+      <button id="themeToggle" aria-label="Toggle theme" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+        <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 block dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Top Ad -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="w-full min-h-[90px] flex items-center justify-center rounded-lg border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-900/40 text-slate-400 dark:text-slate-500 text-xs">
+    <!-- Top Ad Placeholder -->
+    <span>Top Ad Space (728×90)</span>
+  </div>
+</div>
+
+<!-- Main -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- Left: Input + Output -->
+    <section class="lg:col-span-2 space-y-6">
+
+      <!-- Input Card -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-3">
+          <label for="jwtInput" class="text-sm font-semibold text-slate-700 dark:text-slate-200">Paste your JWT</label>
+          <div class="flex items-center gap-2">
+            <button id="pasteBtn" class="text-xs px-2.5 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition">Paste</button>
+            <button id="clearBtn" class="text-xs px-2.5 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition">Clear</button>
+            <button id="sampleBtn" class="text-xs px-2.5 py-1.5 rounded-md bg-brand-600 hover:bg-brand-700 text-white transition">Sample</button>
+          </div>
+        </div>
+        <textarea id="jwtInput" rows="5" spellcheck="false" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          class="w-full font-mono text-xs sm:text-sm p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition"></textarea>
+
+        <div id="statusBar" class="mt-3 flex flex-wrap items-center gap-2 text-xs"></div>
+      </div>
+
+      <!-- Decoded Output -->
+      <div id="output" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- Header -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-5">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-sm font-semibold flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-rose-500"></span> Header
+            </h2>
+            <button data-copy="headerOut" class="copy-btn text-xs px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition">Copy</button>
+          </div>
+          <pre id="headerOut" class="font-mono text-xs p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 overflow-auto max-h-64 text-slate-600 dark:text-slate-300">—</pre>
+        </div>
+
+        <!-- Payload -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-5">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-sm font-semibold flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-violet-500"></span> Payload
+            </h2>
+            <button data-copy="payloadOut" class="copy-btn text-xs px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition">Copy</button>
+          </div>
+          <pre id="payloadOut" class="font-mono text-xs p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 overflow-auto max-h-64 text-slate-600 dark:text-slate-300">—</pre>
+        </div>
+
+        <!-- Signature -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-5 md:col-span-2">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-sm font-semibold flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Signature
+            </h2>
+            <button data-copy="signatureOut" class="copy-btn text-xs px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition">Copy</button>
+          </div>
+          <pre id="signatureOut" class="font-mono text-xs p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 overflow-auto max-h-40 text-slate-600 dark:text-slate-300">—</pre>
+        </div>
+
+        <!-- Claims / Validation -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-5 md:col-span-2">
+          <h2 class="text-sm font-semibold mb-3 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Claims &amp; Validation
+          </h2>
+          <div id="claimsOut" class="text-xs space-y-2 text-slate-600 dark:text-slate-300">
+            <p class="text-slate-400 dark:text-slate-500">Decoded claims will appear here.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Right: Sidebar -->
+    <aside class="space-y-6">
+      <!-- Sidebar Ad -->
+      <div class="w-full min-h-[250px] flex items-center justify-center rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-900/40 text-slate-400 dark:text-slate-500 text-xs">
+        <!-- Sidebar Ad Placeholder -->
+        <span>Sidebar Ad (300×250)</span>
+      </div>
+
+      <!-- Info Card -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-5">
+        <h3 class="text-sm font-semibold mb-2">About JWT</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          A JSON Web Token is a compact, URL-safe means of representing claims between two parties. It consists of three Base64URL-encoded parts separated by dots: <span class="font-mono text-brand-600 dark:text-brand-400">header.payload.signature</span>.
+        </p>
+        <ul class="mt-3 space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+          <li class="flex gap-2"><span class="text-rose-500 font-bold">●</span> Header — algorithm &amp; type</li>
+          <li class="flex gap-2"><span class="text-violet-500 font-bold">●</span> Payload — claims data</li>
+          <li class="flex gap-2"><span class="text-emerald-500 font-bold">●</span> Signature — integrity proof</li>
+        </ul>
+        <p class="mt-3 text-[11px] text-slate-500 dark:text-slate-500 leading-relaxed">
+          ⚠️ This tool decodes tokens locally in your browser. It does <strong>not</strong> verify the signature cryptographically — never trust a token solely based on decoding.
+        </p>
+      </div>
+
+      <!-- Quick Reference -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-5">
+        <h3 class="text-sm font-semibold mb-2">Registered Claims</h3>
+        <dl class="text-xs space-y-1.5 text-slate-600 dark:text-slate-400">
+          <div class="flex justify-between gap-2"><dt class="font-mono text-brand-600 dark:text-brand-400">iss</dt><dd class="text-right">Issuer</dd></div>
+          <div class="flex justify-between gap-2"><dt class="font-mono text-brand-600 dark:text-brand-400">sub</dt><dd class="text-right">Subject</dd></div>
+          <div class="flex justify-between gap-2"><dt class="font-mono text-brand-600 dark:text-brand-400">aud</dt><dd class="text-right">Audience</dd></div>
+          <div class="flex justify-between gap-2"><dt class="font-mono text-brand-600 dark:text-brand-400">exp</dt><dd class="text-right">Expiration</dd></div>
+          <div class="flex justify-between gap-2"><dt class="font-mono text-brand-600 dark:text-brand-400">nbf</dt><dd class="text-right">Not Before</dd></div>
+          <div class="flex justify-between gap-2"><dt class="font-mono text-brand-600 dark:text-brand-400">iat</dt><dd class="text-right">Issued At</dd></div>
+          <div class="flex justify-between gap-2"><dt class="font-mono text-brand-600 dark:text-brand-400">jti</dt><dd class="text-right">JWT ID</dd></div>
+        </dl>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Bottom Ad -->
+  <div class="mt-8 w-full min-h-[90px] flex items-center justify-center rounded-lg border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-900/40 text-slate-400 dark:text-slate-500 text-xs">
+    <!-- Bottom Ad Placeholder -->
+    <span>Bottom Ad Space (728×90)</span>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="mt-6 border-t border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-xs text-slate-500 dark:text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-2">
+    <p>© <span id="year"></span> JWT Decoder &amp; Validator — All processing happens in your browser.</p>
+    <p class="font-mono">header.payload.signature</p>
+  </div>
+</footer>
+
+<!-- Popup / Script Ad -->
+<div id="popupAd" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200 dark:border-slate-800">
+    <button id="closePopup" aria-label="Close" class="absolute top-3 right-3 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="min-h-[200px] flex items-center justify-center rounded-lg border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-400 dark:text-slate-500 text-xs">
+      <!-- Popup Ad Placeholder -->
+      <span>Popup Ad (300×250)</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // Theme
+  const root = document.documentElement;
+  const stored = localStorage.getItem('jwt-theme');
+  if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    root.classList.add('dark');
+  }
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    root.classList.toggle('dark');
+    localStorage.setItem('jwt-theme', root.classList.contains('dark') ? 'dark' : 'light');
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Elements
+  const input = document.getElementById('jwtInput');
+  const headerOut = document.getElementById('headerOut');
+  const payloadOut = document.getElementById('payloadOut');
+  const signatureOut = document.getElementById('signatureOut');
+  const claimsOut = document.getElementById('claimsOut');
+  const statusBar = document.getElementById('statusBar');
+
+  // Base64URL decode
+  function b64urlDecode(str) {
+    try {
+      str = str.replace(/-/g, '+').replace(/_/g, '/');
+      while (str.length % 4) str += '=';
+      const bin = atob(str);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder('utf-8').decode(bytes);
+    } catch (e) {
+      throw new Error('Invalid Base64URL encoding');
+    }
+  }
+
+  function pretty(obj) {
+    try { return JSON.stringify(obj, null, 2); }
+    catch { return String(obj); }
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function fmtDate(ts) {
+    if (typeof ts !== 'number') return null;
+    const d = new Date(ts * 1000);
+    if (isNaN(d.getTime())) return null;
+    return d.toUTCString();
+  }
+
+  function setStatus(items) {
+    statusBar.innerHTML = '';
+    items.forEach(it => {
+      const el = document.createElement('span');
+      el.className = 'inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-medium ' + it.cls;
+      el.innerHTML = it.icon + escapeHtml(it.text);
+      statusBar.appendChild(el);
+    });
+  }
+
+  function resetOutputs() {
+    headerOut.textContent = '—';
+    payloadOut.textContent = '—';
+    signatureOut.textContent = '—';
+    claimsOut.innerHTML = '<p class="text-slate-400 dark:text-slate-500">Decoded claims will appear here.</p>';
+    statusBar.innerHTML = '';
+  }
+
+  function decode() {
+    const raw = input.value.trim();
+    if (!raw) { resetOutputs(); return; }
+
+    const parts = raw.split('.');
+    if (parts.length !== 3) {
+      resetOutputs();
+      setStatus([{ text: 'Invalid JWT: expected 3 parts, got ' + parts.length, cls: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300', icon: '✕ ' }]);
+      return;
+    }
+
+    let header, payload;
+    try {
+      header = JSON.parse(b64urlDecode(parts[0]));
+    } catch (e) {
+      resetOutputs();
+      setStatus([{ text: 'Invalid header: ' + e.message, cls: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300', icon: '✕ ' }]);
+      return;
+    }
+    try {
+      payload = JSON.parse(b64urlDecode(parts[1]));
+    } catch (e) {
+      resetOutputs();
+      setStatus([{ text: 'Invalid payload: ' + e.message, cls: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300', icon: '✕ ' }]);
+      return;
+    }
+
+    headerOut.textContent = pretty(header);
+    payloadOut.textContent = pretty(payload);
+    signatureOut.textContent = parts[2] || '(empty)';
+
+    // Status badges
+    const badges = [];
+    badges.push({ text: 'Valid structure', cls: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300', icon: '✓ ' });
+
+    const now = Math.floor(Date.now() / 1000);
+    if (typeof payload.exp === 'number') {
+      if (payload.exp < now) {
+        badges.push({ text: 'Expired ' + fmtDate(payload.exp), cls: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300', icon: '✕ ' });
+      } else {
+        badges.push({ text: 'Expires ' + fmtDate(payload.exp), cls: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300', icon: '⏱ ' });
+      }
+    } else {
+      badges.push({ text: 'No exp claim', cls: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300', icon: '! ' });
+    }
+    if (typeof payload.nbf === 'number' && payload.nbf > now) {
+      badges.push({ text: 'Not yet valid', cls: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300', icon: '! ' });
+    }
+    if (header.alg === 'none') {
+      badges.push({ text: 'Unsigned (alg=none)', cls: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300', icon: '! ' });
+    }
+    setStatus(badges);
+
+    // Claims table
+    const claimRows = [];
+    const known = {
+      iss: 'Issuer', sub: 'Subject', aud: 'Audience',
+      exp: 'Expiration Time', nbf: 'Not Before', iat: 'Issued At', jti: 'JWT ID'
+    };
+    Object.keys(payload).forEach(k => {
+      let val = payload[k];
+      let extra = '';
+      if ((k === 'exp' || k === 'nbf' || k === 'iat') && typeof val === 'number') {
+        const d = fmtDate(val);
+        if (d) extra = ' <span class="text-slate-400 dark:text-slate-500">(' + escapeHtml(d) + ')</span>';
+      }
+      if (typeof val === 'object') val = JSON.stringify(val);
+      const label = known[k] ? known[k] : 'Custom';
+      claimRows.push(
+        '<div class="flex items-start justify-between gap-3 py-1.5 border-b border-slate-100 dark:border-slate-800 last:border-0">' +
+          '<div class="min-w-0">' +
+            '<div class="font-mono text-brand-600 dark:text-brand-400">' + escapeHtml(k) + '</div>' +
+            '<div class="text-[10px] uppercase tracking-wide text-slate-400 dark:text-slate-500">' + escapeHtml(label) + '</div>' +
+          '</div>' +
+          '<div class="text-right break-all font-mono text-slate-700 dark:text-slate-300">' + escapeHtml(String(val)) + extra + '</div>' +
+        '</div>'
+      );
+    });
+
+    const algInfo = '<div class="mb-2 text-[11px] text-slate-500 dark:text-slate-400">Algorithm: <span class="font-mono text-slate-700 dark:text-slate-200">' + escapeHtml(header.alg || 'unknown') + '</span> · Type: <span class="font-mono text-slate-700 dark:text-slate-200">' + escapeHtml(header.typ || 'JWT') + '</span></div>';
+
+    claimsOut.innerHTML = algInfo + (claimRows.length ? claimRows.join('') : '<p class="text-slate-400 dark:text-slate-500">No claims present.</p>');
+  }
+
+  // Debounced input
+  let t;
+  input.addEventListener('input', () => {
+    clearTimeout(t);
+    t = setTimeout(decode, 150);
+  });
+
+  // Buttons
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    input.value = '';
+    resetOutputs();
+    input.focus();
+  });
+
+  document.getElementById('sampleBtn').addEventListener('click', () => {
+    input.value = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5MDAwMDAwMDB9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+    decode();
+  });
+
+  document.getElementById('pasteBtn').addEventListener('click', async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      input.value = text.trim();
+      decode();
+    } catch (e) {
+      input.focus();
+    }
+  });
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const target = document.getElementById(btn.dataset.copy);
+      if (!target) return;
+      try {
+        await navigator.clipboard.writeText(target.textContent);
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1200);
+      } catch (e) {}
+    });
+  });
+
+  // Popup ad
+  const popup = document.getElementById('popupAd');
+  const closePopup = document.getElementById('closePopup');
+  setTimeout(() => popup.classList.remove('hidden'), 8000);
+  closePopup.addEventListener('click', () => popup.classList.add('hidden'));
+  popup.addEventListener('click', (e) => { if (e.target === popup) popup.classList.add('hidden'); });
+
+  // Init
+  decode();
+})();
+</script>
+</body>
+</html>

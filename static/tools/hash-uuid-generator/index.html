@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UUID v4 & Hash (MD5/SHA256) Generator — Free Online Tool</title>
+<meta name="description" content="Free online UUID v4 generator and MD5/SHA256 hash tool for developers. Generate cryptographically random UUIDs and compute MD5, SHA-1, SHA-256, SHA-512 hashes instantly in your browser. No data leaves your device.">
+<meta name="keywords" content="uuid generator, uuid v4, md5 generator, sha256 generator, hash generator, online hash tool, developer tools">
+<meta name="author" content="DevTools">
+<meta property="og:title" content="UUID v4 & Hash (MD5/SHA256) Generator">
+<meta property="og:description" content="Generate UUID v4 and compute MD5/SHA256 hashes instantly in your browser. Free, fast, and privacy-friendly.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: { mono: ['ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','monospace'] }
+      }
+    }
+  }
+</script>
+<style>
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: rgba(120,120,120,.4); border-radius: 8px; }
+  .fade-in { animation: fadeIn .25s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-700">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-500/20">🔑</div>
+      <div>
+        <h1 class="text-base sm:text-lg font-bold tracking-tight">UUID & Hash Generator</h1>
+        <p class="text-[11px] text-slate-500 dark:text-slate-400 -mt-0.5">v4 · MD5 · SHA-256</p>
+      </div>
+    </div>
+    <button id="themeToggle" aria-label="Toggle theme" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+      <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Top Ad -->
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="w-full min-h-[90px] rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/40 flex items-center justify-center text-xs text-slate-400">
+    <!-- TOP AD PLACEHOLDER — paste your ad code here -->
+    <span>Top Ad Space (728×90)</span>
+  </div>
+</div>
+
+<!-- Main -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+    <!-- Content column -->
+    <div class="lg:col-span-3 space-y-6">
+
+      <!-- UUID Card -->
+      <section class="rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 class="text-lg font-semibold">UUID v4 Generator</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Cryptographically random RFC 4122 identifiers</p>
+          </div>
+          <span class="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300 font-semibold">v4</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 mb-4">
+          <div class="flex items-center gap-2">
+            <label for="uuidCount" class="text-sm text-slate-600 dark:text-slate-300 whitespace-nowrap">Count:</label>
+            <input id="uuidCount" type="number" min="1" max="100" value="1"
+              class="w-20 px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <button id="genUuidBtn" class="flex-1 sm:flex-none px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold shadow-md shadow-indigo-500/20 transition active:scale-[.98]">
+            Generate UUIDs
+          </button>
+          <button id="copyUuidBtn" class="px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700 text-sm font-medium transition">
+            Copy All
+          </button>
+        </div>
+
+        <div id="uuidOutput" class="font-mono text-sm space-y-2 max-h-64 overflow-y-auto pr-1">
+          <div class="text-slate-400 italic">Click "Generate UUIDs" to begin…</div>
+        </div>
+      </section>
+
+      <!-- Hash Card -->
+      <section class="rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm p-5 sm:p-6">
+        <div class="mb-4">
+          <h2 class="text-lg font-semibold">Hash Generator</h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Compute MD5, SHA-1, SHA-256, SHA-512 hashes of any text</p>
+        </div>
+
+        <label for="hashInput" class="block text-sm font-medium mb-2 text-slate-700 dark:text-slate-300">Input text</label>
+        <textarea id="hashInput" rows="4" placeholder="Type or paste text here…"
+          class="w-full px-3 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-y"></textarea>
+
+        <div class="flex flex-wrap gap-2 mt-3">
+          <button data-hash="MD5" class="hashBtn px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-sm font-medium transition">MD5</button>
+          <button data-hash="SHA-1" class="hashBtn px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-sm font-medium transition">SHA-1</button>
+          <button data-hash="SHA-256" class="hashBtn px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-sm font-medium transition">SHA-256</button>
+          <button data-hash="SHA-512" class="hashBtn px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-sm font-medium transition">SHA-512</button>
+          <button id="hashAllBtn" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold shadow-md shadow-indigo-500/20 transition active:scale-[.98]">Hash All</button>
+        </div>
+
+        <div id="hashOutput" class="mt-4 space-y-2"></div>
+      </section>
+
+      <!-- Info -->
+      <section class="rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm p-5 sm:p-6 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">About this tool</h2>
+        <p>This utility generates <strong>UUID v4</strong> identifiers using the browser's <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-xs">crypto.randomUUID()</code> API (with a secure fallback), and computes <strong>MD5, SHA-1, SHA-256, and SHA-512</strong> hashes entirely client-side. Nothing is sent to a server — all processing happens in your browser.</p>
+      </section>
+
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="lg:col-span-1 space-y-6">
+      <div class="rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/40 min-h-[300px] flex items-center justify-center text-xs text-slate-400 p-4 text-center">
+        <!-- SIDEBAR AD PLACEHOLDER — paste your ad code here -->
+        <span>Sidebar Ad Space (300×250)</span>
+      </div>
+
+      <div class="rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm p-5">
+        <h3 class="font-semibold mb-3 text-sm">Quick Tips</h3>
+        <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-300 list-disc list-inside">
+          <li>UUID v4 has ~122 bits of randomness.</li>
+          <li>MD5 is fast but not collision-resistant — avoid for security.</li>
+          <li>SHA-256 is recommended for integrity checks.</li>
+          <li>All hashing runs locally in your browser.</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Bottom Ad -->
+  <div class="mt-8 w-full min-h-[90px] rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/40 flex items-center justify-center text-xs text-slate-400">
+    <!-- BOTTOM AD PLACEHOLDER — paste your ad code here -->
+    <span>Bottom Ad Space (728×90)</span>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-700 mt-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+    © <span id="year"></span> UUID & Hash Generator · Built for developers · Runs 100% in your browser
+  </div>
+</footer>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg bg-slate-900 text-white text-sm shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50"></div>
+
+<!-- Popup / Script Ad (before </body>) -->
+<div id="popupAd" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="relative bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center">
+    <button id="closePopup" aria-label="Close" class="absolute top-2 right-2 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="min-h-[200px] flex items-center justify-center text-xs text-slate-400 border border-dashed border-slate-300 dark:border-slate-600 rounded-lg">
+      <!-- POPUP AD PLACEHOLDER — paste your ad code here -->
+      <span>Popup Ad Space</span>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- Theme ---------- */
+(function(){
+  const root = document.documentElement;
+  const stored = localStorage.getItem('theme');
+  if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    root.classList.add('dark');
+  }
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    root.classList.toggle('dark');
+    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+
+/* ---------- Toast ---------- */
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.style.opacity = '0', 1600);
+}
+
+/* ---------- UUID v4 ---------- */
+function uuidv4(){
+  if (crypto && typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+  const b = new Uint8Array(16);
+  crypto.getRandomValues(b);
+  b[6] = (b[6] & 0x0f) | 0x40;
+  b[8] = (b[8] & 0x3f) | 0x80;
+  const h = [...b].map(x => x.toString(16).padStart(2,'0'));
+  return `${h[0]}${h[1]}${h[2]}${h[3]}-${h[4]}${h[5]}-${h[6]}${h[7]}-${h[8]}${h[9]}-${h[10]}${h[11]}${h[12]}${h[13]}${h[14]}${h[15]}`;
+}
+
+const uuidOutput = document.getElementById('uuidOutput');
+let lastUuids = [];
+
+document.getElementById('genUuidBtn').addEventListener('click', () => {
+  const count = Math.min(100, Math.max(1, parseInt(document.getElementById('uuidCount').value) || 1));
+  lastUuids = Array.from({length: count}, uuidv4);
+  uuidOutput.innerHTML = '';
+  lastUuids.forEach(u => {
+    const row = document.createElement('div');
+    row.className = 'fade-in flex items-center justify-between gap-2 px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700';
+    row.innerHTML = `<code class="truncate text-indigo-600 dark:text-indigo-300">${u}</code>
+      <button class="copyOne shrink-0 text-xs px-2 py-1 rounded-md bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition" data-copy="${u}">Copy</button>`;
+    uuidOutput.appendChild(row);
+  });
+});
+
+uuidOutput.addEventListener('click', e => {
+  const btn = e.target.closest('[data-copy]');
+  if (!btn) return;
+  navigator.clipboard.writeText(btn.dataset.copy).then(() => toast('Copied!'));
+});
+
+document.getElementById('copyUuidBtn').addEventListener('click', () => {
+  if (!lastUuids.length) return toast('Generate UUIDs first');
+  navigator.clipboard.writeText(lastUuids.join('\n')).then(() => toast('All UUIDs copied!'));
+});
+
+/* ---------- MD5 (pure JS) ---------- */
+function md5(str){
+  function rotl(x,c){ return (x << c) | (x >>> (32-c)); }
+  function add(a,b){ return (a + b) | 0; }
+  const S = [7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,
+             5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,
+             4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,
+             6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21];
+  const K = [];
+  for (let i=0;i<64;i++) K[i] = Math.floor(Math.abs(Math.sin(i+1)) * 4294967296) | 0;
+
+  const bytes = new TextEncoder().encode(str);
+  const bitLen = bytes.length * 8;
+  const withPad = new Uint8Array((((bytes.length + 8) >> 6) + 1) * 64);
+  withPad.set(bytes);
+  withPad[bytes.length] = 0x80;
+  const dv = new DataView(withPad.buffer);
+  dv.setUint32(withPad.length - 8, bitLen >>> 0, true);
+  dv.setUint32(withPad.length - 4, Math.floor(bitLen / 4294967296), true);
+
+  let a0=0x67452301, b0=0xefcdab89, c0=0x98badcfe, d0=0x10325476;
+
+  for (let off=0; off<withPad.length; off+=64){
+    const M = [];
+    for (let i=0;i<16;i++) M[i] = dv.getInt32(off + i*4, true);
+    let A=a0,B=b0,C=c0,D=d0;
+    for (let i=0;i<64;i++){
+      let F,g;
+      if (i<16){ F=(B&C)|(~B&D); g=i; }
+      else if (i<32){ F=(D&B)|(~D&C); g=(5*i+1)%16; }
+      else if (i<48){ F=B^C^D; g=(3*i+5)%16; }
+      else { F=C^(B|~D); g=(7*i)%16; }
+      F = add(add(add(F,A), K[i]), M[g]);
+      A = D; D = C; C = B;
+      B = add(B, rotl(F, S[i]));
+    }
+    a0 = add(a0,A); b0 = add(b0,B); c0 = add(c0,C); d0 = add(d0,D);
+  }
+  const out = new DataView(new ArrayBuffer(16));
+  out.setInt32(0,a0,true); out.setInt32(4,b0,true);
+  out.setInt32(8,c0,true); out.setInt32(12,d0,true);
+  return [...new Uint8Array(out.buffer)].map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+/* ---------- SHA via SubtleCrypto ---------- */
+async function sha(algo, str){
+  const buf = await crypto.subtle.digest(algo, new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+/* ---------- Hash UI ---------- */
+const hashOutput = document.getElementById('hashOutput');
+
+function renderHash(label, value){
+  const row = document.createElement('div');
+  row.className = 'fade-in flex items-start gap-2 px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700';
+  row.innerHTML = `
+    <span class="shrink-0 text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-md bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-300">${label}</span>
+    <code class="flex-1 break-all text-xs font-mono text-slate-700 dark:text-slate-200">${value}</code>
+    <button class="copyOne shrink-0 text-xs px-2 py-1 rounded-md bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition" data-copy="${value}">Copy</button>`;
+  hashOutput.appendChild(row);
+}
+
+async function computeHash(algo){
+  const text = document.getElementById('hashInput').value;
+  if (!text){ toast('Enter some text first'); return; }
+  let value;
+  if (algo === 'MD5') value = md5(text);
+  else value = await sha(algo, text);
+  renderHash(algo, value);
+}
+
+document.querySelectorAll('.hashBtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    hashOutput.innerHTML = '';
+    computeHash(btn.dataset.hash);
+  });
+});
+
+document.getElementById('hashAllBtn').addEventListener('click', async () => {
+  const text = document.getElementById('hashInput').value;
+  if (!text){ toast('Enter some text first'); return; }
+  hashOutput.innerHTML = '';
+  renderHash('MD5', md5(text));
+  renderHash('SHA-1', await sha('SHA-1', text));
+  renderHash('SHA-256', await sha('SHA-256', text));
+  renderHash('SHA-512', await sha('SHA-512', text));
+});
+
+hashOutput.addEventListener('click', e => {
+  const btn = e.target.closest('[data-copy]');
+  if (!btn) return;
+  navigator.clipboard.writeText(btn.dataset.copy).then(() => toast('Copied!'));
+});
+
+/* ---------- Popup Ad ---------- */
+(function(){
+  const popup = document.getElementById('popupAd');
+  const close = document.getElementById('closePopup');
+  if (!sessionStorage.getItem('popupShown')){
+    setTimeout(() => { popup.classList.remove('hidden'); sessionStorage.setItem('popupShown','1'); }, 4000);
+  }
+  close.addEventListener('click', () => popup.classList.add('hidden'));
+  popup.addEventListener('click', e => { if (e.target === popup) popup.classList.add('hidden'); });
+})();
+</script>
+</body>
+</html>

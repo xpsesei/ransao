@@ -1,0 +1,1676 @@
+Here's a complete single-file HTML app for a free online developer tools suite, featuring 14 handy utilities across formatting, encoding, generation, and conversion.
+```html
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DevToolbox — Free Online Developer Tools & Code Generators</title>
+<meta name="description" content="Free online developer tools: JSON formatter, Base64 encoder, URL encoder, hash generator, UUID generator, password generator, color converter, lorem ipsum, case converter, timestamp converter, regex tester, JWT decoder and more." />
+<style>
+  /* ============================================================
+     THEME TOKENS
+     ============================================================ */
+  :root{
+    --topbar-h:60px;
+    --bg:#0b101a;
+    --bg2:#101827;
+    --panel:#121b2b;
+    --panel2:#0e1626;
+    --border:#1f2b42;
+    --border2:#2b3a58;
+    --text:#e8eefb;
+    --muted:#8ea0bd;
+    --accent:#4f8cff;
+    --accent-2:#22d3ee;
+    --ok:#35d07f;
+    --warn:#ffb020;
+    --err:#ff5f7e;
+    --radius:14px;
+    --topbar-bg:rgba(11,16,26,.84);
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  html[data-theme="light"]{
+    --bg:#f3f6fc;
+    --bg2:#ffffff;
+    --panel:#ffffff;
+    --panel2:#f7f9fd;
+    --border:#e1e8f3;
+    --border2:#cfdaea;
+    --text:#0f1a2b;
+    --muted:#5d6f8a;
+    --accent:#2563eb;
+    --accent-2:#0891b2;
+    --ok:#12a15e;
+    --warn:#c47c00;
+    --err:#dc2646;
+    --topbar-bg:rgba(255,255,255,.86);
+    --shadow:0 10px 28px rgba(16,32,64,.09);
+  }
+
+  /* ============================================================
+     BASE
+     ============================================================ */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+    font-size:15px;line-height:1.55;
+    color:var(--text);
+    background:
+      radial-gradient(1100px 560px at 8% -12%, rgba(79,140,255,.13), transparent 62%),
+      radial-gradient(900px 480px at 102% -6%, rgba(34,211,238,.10), transparent 58%),
+      var(--bg);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+  }
+  [hidden]{display:none!important}
+  ::selection{background:rgba(79,140,255,.35)}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:8px}
+  ::-webkit-scrollbar-track{background:transparent}
+
+  /* ============================================================
+     TOPBAR
+     ============================================================ */
+  .topbar{
+    position:sticky;top:0;z-index:80;
+    height:var(--topbar-h);
+    display:flex;align-items:center;gap:14px;
+    padding:0 18px;
+    background:var(--topbar-bg);
+    -webkit-backdrop-filter:blur(14px);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  .brand{display:flex;align-items:center;gap:11px;min-width:0}
+  .logo{
+    width:36px;height:36px;flex:0 0 36px;border-radius:11px;
+    display:grid;place-items:center;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:13px;font-weight:700;color:#fff;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    box-shadow:0 6px 18px rgba(79,140,255,.35);
+  }
+  .brand-text strong{display:block;font-size:15px;letter-spacing:.2px;line-height:1.2}
+  .brand-text span{display:block;font-size:11.5px;color:var(--muted);line-height:1.3}
+  .spacer{flex:1}
+  .icon-btn{
+    width:38px;height:38px;border-radius:10px;
+    border:1px solid var(--border);background:var(--panel);
+    color:var(--text);cursor:pointer;
+    display:inline-grid;place-items:center;
+    font-size:16px;transition:.15s;
+  }
+  .icon-btn:hover{border-color:var(--border2);background:var(--panel2)}
+  .menu-btn{display:none}
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  .layout{
+    display:grid;
+    grid-template-columns:266px minmax(0,1fr);
+    max-width:1460px;
+    margin:0 auto;
+    align-items:start;
+  }
+  .sidebar{
+    position:sticky;
+    top:var(--topbar-h);
+    height:calc(100vh - var(--topbar-h));
+    overflow-y:auto;
+    padding:16px 14px 34px;
+    border-right:1px solid var(--border);
+  }
+  .search{
+    width:100%;padding:9px 12px;border-radius:10px;
+    border:1px solid var(--border);background:var(--panel2);
+    color:var(--text);font-size:13.5px;font-family:inherit;outline:none;
+  }
+  .search::placeholder{color:var(--muted)}
+  .search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,140,255,.16)}
+  .nav{display:flex;flex-direction:column;gap:3px;margin-top:12px}
+  .nav-item{
+    display:flex;align-items:center;gap:10px;
+    padding:8px 10px;border-radius:10px;
+    border:1px solid transparent;background:transparent;
+    color:var(--muted);font-size:14px;font-family:inherit;
+    text-align:left;cursor:pointer;transition:.15s;
+  }
+  .nav-item:hover{background:var(--panel);color:var(--text)}
+  .nav-item.active{
+    background:linear-gradient(90deg,rgba(79,140,255,.18),rgba(34,211,238,.07));
+    border-color:rgba(79,140,255,.38);
+    color:var(--text);
+  }
+  .nav-item .ico{
+    width:26px;height:26px;flex:0 0 26px;border-radius:7px;
+    display:grid;place-items:center;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:10.5px;font-weight:700;
+    background:var(--panel2);border:1px solid var(--border);color:var(--muted);
+  }
+  .nav-item.active .ico{
+    color:#fff;border-color:transparent;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  }
+
+  /* ============================================================
+     CONTENT
+     ============================================================ */
+  .content{padding:26px 28px 40px;min-width:0}
+  .tool-head{margin-bottom:18px}
+  .tool-head h2{margin:0 0 6px;font-size:24px;letter-spacing:-.4px;font-weight:700}
+  .tool-head p{margin:0;color:var(--muted);font-size:14px;max-width:74ch}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-2.wide-left{grid-template-columns:1.15fr .85fr}
+  .stack{display:flex;flex-direction:column;gap:18px}
+
+  .card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px;
+    box-shadow:var(--shadow);
+    min-width:0;
+  }
+  .card-head{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:10px;margin-bottom:10px;flex-wrap:wrap;
+  }
+  .card-head .lbl{
+    font-size:11.5px;font-weight:700;letter-spacing:.8px;
+    text-transform:uppercase;color:var(--muted);
+  }
+
+  /* ============================================================
+     FORM CONTROLS
+     ============================================================ */
+  .ta{
+    width:100%;min-height:220px;resize:vertical;
+    padding:12px 14px;border-radius:10px;
+    border:1px solid var(--border);background:var(--panel2);color:var(--text);
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:13.5px;line-height:1.65;outline:none;
+  }
+  .ta::placeholder{color:var(--muted);opacity:.75}
+  .ta:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,140,255,.14)}
+  .ta.short{min-height:130px}
+
+  .in,.select{
+    width:100%;padding:10px 12px;border-radius:10px;
+    border:1px solid var(--border);background:var(--panel2);color:var(--text);
+    font-size:14px;font-family:inherit;outline:none;
+  }
+  .in:focus,.select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,140,255,.14)}
+  .select{cursor:pointer}
+
+  .row{display:flex;align-items:center;gap:10px}
+  .row.wrap{flex-wrap:wrap}
+  .row.gap{gap:8px}
+  .mt{margin-top:12px}
+  .mt-s{margin-top:8px}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    padding:9px 15px;border-radius:10px;
+    border:1px solid var(--border2);background:var(--panel2);color:var(--text);
+    font-size:13.5px;font-family:inherit;font-weight:500;
+    cursor:pointer;transition:.15s;white-space:nowrap;
+  }
+  .btn:hover{background:var(--panel);border-color:var(--accent)}
+  .btn:active{transform:translateY(1px)}
+  .btn.primary{
+    background:linear-gradient(135deg,var(--accent),#3b7bff);
+    border-color:transparent;color:#fff;
+    box-shadow:0 6px 16px rgba(79,140,255,.28);
+  }
+  .btn.primary:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent}
+  .btn.tiny{padding:4px 9px;font-size:11.5px;border-radius:7px}
+
+  .check{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:13px;color:var(--muted);cursor:pointer;user-select:none;
+  }
+  .check input{accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
+  input[type="range"]{accent-color:var(--accent);width:100%;cursor:pointer}
+  input[type="color"]{
+    width:100%;height:46px;padding:4px;border-radius:10px;
+    border:1px solid var(--border);background:var(--panel2);cursor:pointer;
+  }
+
+  .status{margin-top:10px;font-size:13px;min-height:19px;font-family:ui-monospace,monospace;color:var(--muted)}
+  .status.ok{color:var(--ok)}
+  .status.err{color:var(--err)}
+  .status.warn{color:var(--warn)}
+
+  .hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+
+  /* ============================================================
+     OUTPUT / KEY-VALUE ROWS
+     ============================================================ */
+  .kv{
+    display:flex;align-items:center;gap:10px;
+    padding:9px 11px;border-radius:9px;
+    background:var(--panel2);border:1px solid var(--border);
+    margin-top:8px;font-size:13px;min-width:0;
+  }
+  .kv .k{
+    color:var(--muted);font-size:10.5px;letter-spacing:.7px;
+    text-transform:uppercase;font-weight:700;
+    min-width:104px;flex:0 0 auto;
+  }
+  .kv code{
+    flex:1;min-width:0;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    word-break:break-all;color:var(--text);
+  }
+  .out-box{
+    margin-top:10px;padding:12px 14px;border-radius:10px;
+    background:var(--panel2);border:1px solid var(--border);
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:13px;white-space:pre-wrap;word-break:break-word;
+    min-height:22px;line-height:1.65;
+  }
+  .out-box:empty::after{content:"—";color:var(--muted)}
+  mark{background:rgba(79,140,255,.38);color:inherit;border-radius:3px;padding:0 1px}
+
+  .meter{
+    height:8px;border-radius:99px;overflow:hidden;
+    background:var(--panel2);border:1px solid var(--border);margin-top:12px;
+  }
+  .meter-fill{height:100%;width:0;border-radius:99px;background:var(--err);transition:width .25s ease,background .25s ease}
+
+  .clock{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:22px;font-weight:700;letter-spacing:.5px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:6px;
+  }
+
+  .swatch{
+    height:96px;border-radius:12px;border:1px solid var(--border);
+    background:#4f8cff;transition:background .15s;
+  }
+
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  .stat{
+    padding:14px;border-radius:12px;
+    background:var(--panel2);border:1px solid var(--border);
+  }
+  .stat b{display:block;font-size:22px;font-weight:700;letter-spacing:-.5px;line-height:1.2}
+  .stat span{display:block;font-size:11.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+
+  /* ============================================================
+     AD SLOT / FOOTER / TOAST
+     ============================================================ */
+  .ad-slot{
+    margin:18px 0 0;padding:14px;
+    border:1px dashed var(--border2);border-radius:12px;
+    text-align:center;color:var(--muted);
+    font-size:11px;letter-spacing:1.4px;text-transform:uppercase;
+    min-height:92px;display:grid;place-items:center;background:var(--panel2);
+  }
+  .footer{
+    border-top:1px solid var(--border);
+    padding:20px;text-align:center;color:var(--muted);font-size:12.5px;
+  }
+  .footer strong{color:var(--text);font-weight:600}
+
+  #toast{
+    position:fixed;left:50%;bottom:28px;z-index:200;
+    transform:translate(-50%,18px);
+    background:var(--panel);border:1px solid var(--border2);
+    color:var(--text);padding:10px 18px;border-radius:10px;
+    font-size:13.5px;box-shadow:var(--shadow);
+    opacity:0;pointer-events:none;transition:.22s ease;
+  }
+  #toast.show{opacity:1;transform:translate(-50%,0)}
+
+  #backdrop{
+    position:fixed;inset:0;background:rgba(0,0,0,.55);
+    z-index:55;display:none;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+  }
+  #backdrop.show{display:block}
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width:1080px){
+    .grid-2,.grid-2.wide-left{grid-template-columns:1fr}
+  }
+  @media (max-width:900px){
+    .menu-btn{display:inline-grid}
+    .layout{grid-template-columns:1fr}
+    .sidebar{
+      position:fixed;top:var(--topbar-h);left:0;bottom:0;
+      width:284px;height:auto;z-index:60;
+      background:var(--bg2);
+      transform:translateX(-102%);
+      transition:transform .24s ease;
+      box-shadow:0 0 50px rgba(0,0,0,.55);
+    }
+    .sidebar.open{transform:none}
+    .content{padding:20px 16px 36px}
+    .tool-head h2{font-size:20px}
+    .brand-text span{display:none}
+  }
+  @media (max-width:520px){
+    .topbar{padding:0 12px;gap:10px}
+    .brand-text strong{font-size:14px}
+    .btn{padding:8px 12px;font-size:13px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= TOPBAR ================= -->
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menuBtn" aria-label="Toggle tool menu">☰</button>
+  <div class="brand">
+    <div class="logo">&lt;/&gt;</div>
+    <div class="brand-text">
+      <strong>DevToolbox</strong>
+      <span>Free online developer tools</span>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <button class="icon-btn" id="themeBtn" aria-label="Toggle color theme" title="Toggle theme">🌙</button>
+</header>
+
+<div id="backdrop"></div>
+
+<!-- ================= LAYOUT ================= -->
+<div class="layout">
+
+  <!-- ---------- SIDEBAR ---------- -->
+  <aside class="sidebar" id="sidebar">
+    <input id="toolSearch" class="search" type="search" placeholder="Search tools…" autocomplete="off" />
+    <nav class="nav" id="nav">
+      <button class="nav-item active" data-tool="json"><span class="ico">{}</span><span>JSON Formatter</span></button>
+      <button class="nav-item" data-tool="base64"><span class="ico">64</span><span>Base64 Encoder</span></button>
+      <button class="nav-item" data-tool="url"><span class="ico">%</span><span>URL Encoder</span></button>
+      <button class="nav-item" data-tool="hash"><span class="ico">#</span><span>Hash Generator</span></button>
+      <button class="nav-item" data-tool="uuid"><span class="ico">ID</span><span>UUID Generator</span></button>
+      <button class="nav-item" data-tool="password"><span class="ico">Pw</span><span>Password Generator</span></button>
+      <button class="nav-item" data-tool="color"><span class="ico">◐</span><span>Color Converter</span></button>
+      <button class="nav-item" data-tool="lorem"><span class="ico">¶</span><span>Lorem Ipsum</span></button>
+      <button class="nav-item" data-tool="case"><span class="ico">Aa</span><span>Case Converter</span></button>
+      <button class="nav-item" data-tool="timestamp"><span class="ico">TS</span><span>Timestamp Converter</span></button>
+      <button class="nav-item" data-tool="regex"><span class="ico">.*</span><span>Regex Tester</span></button>
+      <button class="nav-item" data-tool="jwt"><span class="ico">JWT</span><span>JWT Decoder</span></button>
+      <button class="nav-item" data-tool="html"><span class="ico">&lt;&gt;</span><span>HTML Entities</span></button>
+      <button class="nav-item" data-tool="text"><span class="ico">Tx</span><span>Text Statistics</span></button>
+    </nav>
+    <div class="ad-slot">Ad space</div>
+  </aside>
+
+  <!-- ---------- CONTENT ---------- -->
+  <main class="content" id="content">
+
+    <!-- ================= JSON ================= -->
+    <section class="tool" data-panel="json" hidden>
+      <div class="tool-head">
+        <h2>JSON Formatter &amp; Validator</h2>
+        <p>Beautify, minify and validate JSON instantly. Syntax errors are reported with exact line and column numbers.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <span class="lbl">Input</span>
+            <div class="row gap">
+              <label class="check" for="json-indent">Indent</label>
+              <select id="json-indent" class="select" style="width:auto;padding:6px 10px;font-size:12.5px">
+                <option value="2">2 spaces</option>
+                <option value="4">4 spaces</option>
+                <option value="tab">Tab</option>
+              </select>
+            </div>
+          </div>
+          <textarea id="json-in" class="ta" spellcheck="false" placeholder='{"name":"DevToolbox","free":true,"tools":14}'></textarea>
+          <div class="row gap wrap mt">
+            <button class="btn primary" id="json-format">Format</button>
+            <button class="btn" id="json-minify">Minify</button>
+            <button class="btn" id="json-validate">Validate</button>
+            <button class="btn ghost" id="json-sample">Sample</button>
+            <button class="btn ghost" data-clear="#json-in">Clear</button>
+          </div>
+          <div id="json-status" class="status"></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <span class="lbl">Output</span>
+            <button class="btn tiny" data-copy-target="#json-out">Copy</button>
+          </div>
+          <textarea id="json-out" class="ta" spellcheck="false" readonly placeholder="Result…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BASE64 ================= -->
+    <section class="tool" data-panel="base64" hidden>
+      <div class="tool-head">
+        <h2>Base64 Encoder / Decoder</h2>
+        <p>Convert plain text to Base64 and back. Fully UTF-8 safe, with an optional URL-safe alphabet.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><span class="lbl">Input</span></div>
+          <textarea id="b64-in" class="ta" spellcheck="false" placeholder="Type or paste text…"></textarea>
+          <div class="row gap wrap mt">
+            <button class="btn primary" id="b64-encode">Encode →</button>
+            <button class="btn" id="b64-decode">← Decode</button>
+            <label class="check"><input type="checkbox" id="b64-urlsafe" /> URL-safe</label>
+            <button class="btn ghost" data-clear="#b64-in">Clear</button>
+          </div>
+          <div id="b64-status" class="status"></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <span class="lbl">Output</span>
+            <button class="btn tiny" data-copy-target="#b64-out">Copy</button>
+          </div>
+          <textarea id="b64-out" class="ta" spellcheck="false" readonly placeholder="Result…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= URL ================= -->
+    <section class="tool" data-panel="url" hidden>
+      <div class="tool-head">
+        <h2>URL Encoder / Decoder</h2>
+        <p>Percent-encode or decode URL components and full URLs safely.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><span class="lbl">Input</span></div>
+          <textarea id="url-in" class="ta" spellcheck="false" placeholder="https://example.com/search?q=hello world &amp; lang=en"></textarea>
+          <div class="row gap wrap mt">
+            <button class="btn primary" id="url-encode">Encode →</button>
+            <button class="btn" id="url-decode">← Decode</button>
+            <select id="url-mode" class="select" style="width:auto;padding:8px 10px;font-size:12.5px">
+              <option value="component">Component (encodeURIComponent)</option>
+              <option value="full">Full URL (encodeURI)</option>
+            </select>
+            <button class="btn ghost" data-clear="#url-in">Clear</button>
+          </div>
+          <div id="url-status" class="status"></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <span class="lbl">Output</span>
+            <button class="btn tiny" data-copy-target="#url-out">Copy</button>
+          </div>
+          <textarea id="url-out" class="ta" spellcheck="false" readonly placeholder="Result…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HASH ================= -->
+    <section class="tool" data-panel="hash" hidden>
+      <div class="tool-head">
+        <h2>Hash Generator</h2>
+        <p>Compute SHA-1, SHA-256, SHA-384 and SHA-512 digests of any text using the Web Crypto API. Everything runs locally in your browser.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="lbl">Text to hash</span></div>
+        <textarea id="hash-in" class="ta short" spellcheck="false" placeholder="Type text to hash…"></textarea>
+        <div class="mt">
+          <div class="kv"><span class="k">SHA-1</span><code id="hash-sha1">—</code><button class="btn tiny" data-copy-target="#hash-sha1">Copy</button></div>
+          <div class="kv"><span class="k">SHA-256</span><code id="hash-sha256">—</code><button class="btn tiny" data-copy-target="#hash-sha256">Copy</button></div>
+          <div class="kv"><span class="k">SHA-384</span><code id="hash-sha384">—</code><button class="btn tiny" data-copy-target="#hash-sha384">Copy</button></div>
+          <div class="kv"><span class="k">SHA-512</span><code id="hash-sha512">—</code><button class="btn tiny" data-copy-target="#hash-sha512">Copy</button></div>
+        </div>
+        <div class="hint">Hashes update automatically as you type.</div>
+      </div>
+    </section>
+
+    <!-- ================= UUID ================= -->
+    <section class="tool" data-panel="uuid" hidden>
+      <div class="tool-head">
+        <h2>UUID Generator</h2>
+        <p>Generate cryptographically random RFC 4122 version 4 UUIDs.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><span class="lbl">Options</span></div>
+          <label class="check" style="display:block;margin-bottom:10px">How many?</label>
+          <input id="uuid-count" class="in" type="number" min="1" max="100" value="5" />
+          <label class="check mt"><input type="checkbox" id="uuid-upper" /> Uppercase</label>
+          <div class="row gap wrap mt">
+            <button class="btn primary" id="uuid-gen">Generate</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <span class="lbl">Result</span>
+            <button class="btn tiny" data-copy-target="#uuid-out">Copy all</button>
+          </div>
+          <textarea id="uuid-out" class="ta" spellcheck="false" readonly placeholder="Click generate…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PASSWORD ================= -->
+    <section class="tool" data-panel="password" hidden>
+      <div class="tool-head">
+        <h2>Password Generator</h2>
+        <p>Create strong, random passwords using your browser's cryptographic random number generator.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <span class="lbl">Settings</span>
+            <span class="hint" style="margin:0">Length: <b id="pw-len-val">16</b></span>
+          </div>
+          <input id="pw-len" type="range" min="6" max="64" value="16" />
+          <div class="stack mt" style="gap:8px">
+            <label class="check"><input type="checkbox" id="pw-lower" checked /> Lowercase (a-z)</label>
+            <label class="check"><input type="checkbox" id="pw-upper" checked /> Uppercase (A-Z)</label>
+            <label class="check"><input type="checkbox" id="pw-num" checked /> Numbers (0-9)</label>
+            <label class="check"><input type="checkbox" id="pw-sym" checked /> Symbols (!@#$…)</label>
+          </div>
+          <div class="row gap wrap mt">
+            <button class="btn primary" id="pw-gen">Generate</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <span class="lbl">Password</span>
+            <button class="btn tiny" data-copy-target="#pw-out">Copy</button>
+          </div>
+          <textarea id="pw-out" class="ta short" spellcheck="false" readonly placeholder="Click generate…" style="font-size:17px;letter-spacing:.5px"></textarea>
+          <div class="meter"><div class="meter-fill" id="pw-fill"></div></div>
+          <div id="pw-strength" class="status">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COLOR ================= -->
+    <section class="tool" data-panel="color" hidden>
+      <div class="tool-head">
+        <h2>Color Converter</h2>
+        <p>Convert between HEX, RGB and HSL, with a live preview swatch.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><span class="lbl">Pick a color</span></div>
+          <input type="color" id="color-pick" value="#4f8cff" />
+          <div class="mt">
+            <label class="check" style="display:block;margin-bottom:6px">HEX value</label>
+            <input id="color-hex" class="in" type="text" value="#4f8cff" spellcheck="false" />
+          </div>
+          <div class="swatch mt" id="color-preview"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="lbl">Conversions</span></div>
+          <div class="kv"><span class="k">HEX</span><code id="out-hex">#4f8cff</code><button class="btn tiny" data-copy-target="#out-hex">Copy</button></div>
+          <div class="kv"><span class="k">RGB</span><code id="out-rgb">rgb(79, 140, 255)</code><button class="btn tiny" data-copy-target="#out-rgb">Copy</button></div>
+          <div class="kv"><span class="k">HSL</span><code id="out-hsl">hsl(220, 100%, 65%)</code><button class="btn tiny" data-copy-target="#out-hsl">Copy</button></div>
+          <div class="kv"><span class="k">CSS var</span><code id="out-var">--color: #4f8cff;</code><button class="btn tiny" data-copy-target="#out-var">Copy</button></div>
+          <div class="hint">Invalid HEX values are ignored until the format is correct.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LOREM ================= -->
+    <section class="tool" data-panel="lorem" hidden>
+      <div class="tool-head">
+        <h2>Lorem Ipsum Generator</h2>
+        <p>Generate placeholder text for mockups and design comps.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><span class="lbl">Options</span></div>
+          <label class="check" style="display:block;margin-bottom:6px">Amount</label>
+          <input id="lorem-count" class="in" type="number" min="1" max="50" value="3" />
+          <label class="check" style="display:block;margin:12px 0 6px">Generate</label>
+          <select id="lorem-type" class="select">
+            <option value="paragraphs">Paragraphs</option>
+            <option value="sentences">Sentences</option>
+            <option value="words">Words</option>
+          </select>
+          <div class="row gap wrap mt">
+            <button class="btn primary" id="lorem-gen">Generate</button>
+            <label class="check"><input type="checkbox" id="lorem-start" checked /> Start with "Lorem ipsum…"</label>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <span class="lbl">Result</span>
+            <button class="btn tiny" data-copy-target="#lorem-out">Copy</button>
+          </div>
+          <textarea id="lorem-out" class="ta" spellcheck="false" readonly placeholder="Click generate…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CASE ================= -->
+    <section class="tool" data-panel="case" hidden>
+      <div class="tool-head">
+        <h2>Case Converter</h2>
+        <p>Instantly convert text between upper, lower, title, sentence, camel, snake, kebab and constant case.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><span class="lbl">Input</span></div>
+          <textarea id="case-in" class="ta" spellcheck="false" placeholder="Type or paste your text…"></textarea>
+          <div class="row gap wrap mt">
+            <button class="btn" data-case="upper">UPPER CASE</button>
+            <button class="btn" data-case="lower">lower case</button>
+            <button class="btn" data-case="title">Title Case</button>
+            <button class="btn" data-case="sentence">Sentence case</button>
+            <button class="btn" data-case="camel">camelCase</button>
+            <button class="btn" data-case="pascal">PascalCase</button>
+            <button class="btn" data-case="snake">snake_case</button>
+            <button class="btn" data-case="kebab">kebab-case</button>
+            <button class="btn" data-case="constant">CONSTANT_CASE</button>
+            <button class="btn ghost" data-clear="#case-in">Clear</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <span class="lbl">Output</span>
+            <button class="btn tiny" data-copy-target="#case-out">Copy</button>
+          </div>
+          <textarea id="case-out" class="ta" spellcheck="false" readonly placeholder="Result…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TIMESTAMP ================= -->
+    <section class="tool" data-panel="timestamp" hidden>
+      <div class="tool-head">
+        <h2>Unix Timestamp Converter</h2>
+        <p>Convert between Unix timestamps and human-readable dates, in local time and UTC.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><span class="lbl">Right now</span></div>
+          <div class="clock" id="ts-now">—</div>
+          <div class="kv"><span class="k">Unix (s)</span><code id="ts-now-s">—</code><button class="btn tiny" data-copy-target="#ts-now-s">Copy</button></div>
+          <div class="kv"><span class="k">Unix (ms)</span><code id="ts-now-ms">—</code><button class="btn tiny" data-copy-target="#ts-now-ms">Copy</button></div>
+          <div class="kv"><span class="k">ISO 8601</span><code id="ts-now-iso">—</code><button class="btn tiny" data-copy-target="#ts-now-iso">Copy</button></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="lbl">Timestamp → Date</span></div>
+          <div class="row gap wrap">
+            <input id="ts-in" class="in" type="text" placeholder="e.g. 1700000000" style="flex:1;min-width:150px" />
+            <select id="ts-unit" class="select" style="width:auto">
+              <option value="s">Seconds</option>
+              <option value="ms">Milliseconds</option>
+            </select>
+            <button class="btn primary" id="ts-convert">Convert</button>
+          </div>
+          <div class="out-box" id="ts-out"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="lbl">Date → Timestamp</span></div>
+          <div class="row gap wrap">
+            <input id="date-in" class="in" type="datetime-local" style="flex:1;min-width:190px" />
+            <button class="btn primary" id="date-convert">Convert</button>
+          </div>
+          <div class="out-box" id="date-out"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="lbl">Notes</span></div>
+          <p class="hint" style="margin-top:0">
+            Unix time counts the number of seconds elapsed since <b>1 January 1970 00:00:00 UTC</b>,
+            ignoring leap seconds. JavaScript's <code>Date</code> works in milliseconds, so
+            timestamps are multiplied by 1000 before conversion.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REGEX ================= -->
+    <section class="tool" data-panel="regex" hidden>
+      <div class="tool-head">
+        <h2>Regex Tester</h2>
+        <p>Test JavaScript regular expressions against sample text with live match highlighting.</p>
+      </div>
+      <div class="card">
+        <div class="row gap wrap">
+          <span style="color:var(--muted);font-family:ui-monospace,monospace">/</span>
+          <input id="re-pattern" class="in" type="text" placeholder="\b\w+@\w+\.\w{2,}\b" spellcheck="false" style="flex:2;min-width:220px" />
+          <span style="color:var(--muted);font-family:ui-monospace,monospace">/</span>
+          <input id="re-flags" class="in" type="text" value="g" spellcheck="false" style="flex:0 0 110px" />
+          <button class="btn ghost" id="re-clear">Clear</button>
+        </div>
+        <div class="hint">Flags: g (global), i (ignore case), m (multiline), s (dotAll), u (unicode), y (sticky).</div>
+        <div class="grid-2 mt">
+          <div class="card" style="box-shadow:none">
+            <div class="card-head"><span class="lbl">Test string</span></div>
+            <textarea id="re-text" class="ta short" spellcheck="false" placeholder="Contact: hello@example.com, support@devtoolbox.io">Contact: hello@example.com, support@devtoolbox.io</textarea>
+          </div>
+          <div class="card" style="box-shadow:none">
+            <div class="card-head">
+              <span class="lbl">Matches</span>
+              <span class="hint" id="re-matches" style="margin:0"></span>
+            </div>
+            <div class="out-box" id="re-out" style="min-height:130px;max-height:260px;overflow:auto"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= JWT ================= -->
+    <section class="tool" data-panel="jwt" hidden>
+      <div class="tool-head">
+        <h2>JWT Decoder</h2>
+        <p>Decode a JSON Web Token's header and payload. Nothing is sent anywhere — no signature verification is performed.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="lbl">Encoded token</span></div>
+        <textarea id="jwt-in" class="ta short" spellcheck="false" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIn0.signature"></textarea>
+        <div class="row gap wrap mt">
+          <button class="btn primary" id="jwt-decode">Decode</button>
+          <button class="btn ghost" data-clear="#jwt-in">Clear</button>
+        </div>
+        <div id="jwt-status" class="status"></div>
+        <div class="grid-2 mt">
+          <div class="card" style="box-shadow:none">
+            <div class="card-head">
+              <span class="lbl">Header</span>
+              <button class="btn tiny" data-copy-target="#jwt-header">Copy</button>
+            </div>
+            <pre class="out-box" id="jwt-header" style="margin:0"></pre>
+          </div>
+          <div class="card" style="box-shadow:none">
+            <div class="card-head">
+              <span class="lbl">Payload</span>
+              <button class="btn tiny" data-copy-target="#jwt-payload">Copy</button>
+            </div>
+            <pre class="out-box" id="jwt-payload" style="margin:0"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HTML ENTITIES ================= -->
+    <section class="tool" data-panel="html" hidden>
+      <div class="tool-head">
+        <h2>HTML Entity Encoder / Decoder</h2>
+        <p>Escape HTML special characters or decode named and numeric entities back to plain text.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head"><span class="lbl">Input</span></div>
+          <textarea id="html-in" class="ta" spellcheck="false" placeholder="<div class=&quot;box&quot;>Tom &amp; Jerry</div>"></textarea>
+          <div class="row gap wrap mt">
+            <button class="btn primary" id="html-encode">Encode →</button>
+            <button class="btn" id="html-decode">← Decode</button>
+            <button class="btn ghost" data-clear="#html-in">Clear</button>
+          </div>
+          <div id="html-status" class="status"></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <span class="lbl">Output</span>
+            <button class="btn tiny" data-copy-target="#html-out">Copy</button>
+          </div>
+          <textarea id="html-out" class="ta" spellcheck="false" readonly placeholder="Result…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TEXT STATS ================= -->
+    <section class="tool" data-panel="text" hidden>
+      <div class="tool-head">
+        <h2>Text Statistics</h2>
+        <p>Live character, word, sentence and paragraph counts, plus estimated reading time.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="lbl">Your text</span></div>
+        <textarea id="txt-in" class="ta" spellcheck="false" placeholder="Paste your text here to analyse it…"></textarea>
+      </div>
+      <div class="stat-grid mt">
+        <div class="stat"><b id="txt-chars">0</b><span>Characters</span></div>
+        <div class="stat"><b id="txt-nospace">0</b><span>No spaces</span></div>
+        <div class="stat"><b id="txt-words">0</b><span>Words</span></div>
+        <div class="stat"><b id="txt-lines">0</b><span>Lines</span></div>
+        <div class="stat"><b id="txt-sent">0</b><span>Sentences</span></div>
+        <div class="stat"><b id="txt-para">0</b><span>Paragraphs</span></div>
+        <div class="stat"><b id="txt-read">0s</b><span>Reading time</span></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <strong>DevToolbox</strong> — free online developer tools. All processing happens locally in your browser; nothing is uploaded.
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============================================================
+     HELPERS
+     ============================================================ */
+  var $  = function (sel, root) { return (root || document).querySelector(sel); };
+  var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function debounce(fn, wait) {
+    var t;
+    return function () {
+      var args = arguments, ctx = this;
+      clearTimeout(t);
+      t = setTimeout(function () { fn.apply(ctx, args); }, wait);
+    };
+  }
+
+  function randInt(max) {
+    if (max <= 0) return 0;
+    var limit = Math.floor(0xFFFFFFFF / max) * max;
+    var arr = new Uint32Array(1), x;
+    do { crypto.getRandomValues(arr); x = arr[0]; } while (x >= limit);
+    return x % max;
+  }
+
+  var toastTimer;
+  function toast(msg) {
+    var el = $('#toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { el.classList.remove('show'); }, 1600);
+  }
+
+  function setStatus(el, msg, type) {
+    if (!el) return;
+    el.textContent = msg || '';
+    el.className = 'status' + (type ? ' ' + type : '');
+  }
+
+  /* ============================================================
+     GLOBAL DELEGATION: copy + clear
+     ============================================================ */
+  document.addEventListener('click', function (e) {
+    var copyBtn = e.target.closest('[data-copy-target]');
+    if (copyBtn) {
+      var el = $(copyBtn.dataset.copyTarget);
+      if (!el) return;
+      var isField = el.matches('textarea, input');
+      var text = isField ? el.value : el.textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { toast('Copied to clipboard'); },
+          function () { toast('Copy failed'); }
+        );
+      } else {
+        toast('Clipboard unavailable');
+      }
+      return;
+    }
+    var clearBtn = e.target.closest('[data-clear]');
+    if (clearBtn) {
+      var target = $(clearBtn.dataset.clear);
+      if (target) { target.value = ''; target.focus(); }
+    }
+  });
+
+  /* ============================================================
+     THEME
+     ============================================================ */
+  var root = document.documentElement;
+  var themeBtn = $('#themeBtn');
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('dt-theme', t); } catch (err) {}
+    themeBtn.textContent = t === 'light' ? '☀️' : '🌙';
+  }
+  var storedTheme = 'dark';
+  try { storedTheme = localStorage.getItem('dt-theme') || 'dark'; } catch (err) {}
+  applyTheme(storedTheme);
+  themeBtn.addEventListener('click', function () {
+    applyTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  });
+
+  /* ============================================================
+     NAVIGATION
+     ============================================================ */
+  var navItems = $$('.nav-item');
+  var panels = $$('[data-panel]');
+  var sidebar = $('#sidebar');
+  var backdrop = $('#backdrop');
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    backdrop.classList.remove('show');
+  }
+
+  function activate(tool) {
+    navItems.forEach(function (b) { b.classList.toggle('active', b.dataset.tool === tool); });
+    panels.forEach(function (p) { p.hidden = p.dataset.panel !== tool; });
+    if (history.replaceState) history.replaceState(null, '', '#' + tool);
+    closeSidebar();
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  navItems.forEach(function (b) {
+    b.addEventListener('click', function () { activate(b.dataset.tool); });
+  });
+
+  var initial = (location.hash || '').replace('#', '');
+  if (initial && $('[data-panel="' + initial + '"]')) activate(initial);
+  else activate('json');
+
+  /* mobile menu */
+  $('#menuBtn').addEventListener('click', function () {
+    sidebar.classList.toggle('open');
+    backdrop.classList.toggle('show', sidebar.classList.contains('open'));
+  });
+  backdrop.addEventListener('click', closeSidebar);
+
+  /* tool search */
+  $('#toolSearch').addEventListener('input', function (e) {
+    var q = e.target.value.toLowerCase().trim();
+    navItems.forEach(function (b) {
+      b.style.display = b.textContent.toLowerCase().indexOf(q) > -1 ? '' : 'none';
+    });
+  });
+
+  /* ============================================================
+     TOOL 1 — JSON FORMATTER
+     ============================================================ */
+  (function () {
+    var input = $('#json-in'), output = $('#json-out'), status = $('#json-status');
+
+    function posToLineCol(text, pos) {
+      if (pos < 0) return null;
+      var lines = text.slice(0, pos).split('\n');
+      return { line: lines.length, col: lines[lines.length - 1].length + 1 };
+    }
+
+    function run(mode) {
+      var raw = input.value;
+      if (!raw.trim()) {
+        output.value = '';
+        setStatus(status, '');
+        return;
+      }
+      try {
+        var data = JSON.parse(raw);
+        var indentOpt = $('#json-indent').value;
+        var indent = indentOpt === 'tab' ? '\t' : Number(indentOpt);
+        output.value = mode === 'minify'
+          ? JSON.stringify(data)
+          : JSON.stringify(data, null, indent);
+        var bytes = new Blob([output.value]).size;
+        setStatus(status, '✓ Valid JSON — ' + bytes + ' bytes output', 'ok');
+      } catch (err) {
+        output.value = '';
+        var m = /position (\d+)/.exec(err.message);
+        var where = '';
+        if (m) {
+          var lc = posToLineCol(raw, Number(m[1]));
+          if (lc) where = ' (line ' + lc.line + ', column ' + lc.col + ')';
+        }
+        setStatus(status, '✕ ' + err.message + where, 'err');
+      }
+    }
+
+    $('#json-format').addEventListener('click', function () { run('format'); });
+    $('#json-minify').addEventListener('click', function () { run('minify'); });
+    $('#json-validate').addEventListener('click', function () {
+      try {
+        JSON.parse(input.value || 'null');
+        setStatus(status, input.value.trim() ? '✓ Valid JSON' : 'Nothing to validate', input.value.trim() ? 'ok' : '');
+      } catch (err) {
+        setStatus(status, '✕ ' + err.message, 'err');
+      }
+    });
+    $('#json-sample').addEventListener('click', function () {
+      input.value = JSON.stringify({
+        app: 'DevToolbox',
+        free: true,
+        tools: ['json', 'base64', 'hash', 'uuid'],
+        meta: { version: '1.0.0', author: { name: 'Developer', url: 'https://example.com' } }
+      }, null, 2);
+      run('format');
+    });
+    input.addEventListener('input', debounce(function () {
+      if (input.value.trim()) run('format');
+    }, 450));
+  })();
+
+  /* ============================================================
+     TOOL 2 — BASE64
+     ============================================================ */
+  (function () {
+    var input = $('#b64-in'), output = $('#b64-out'), status = $('#b64-status');
+
+    function encode(str) {
+      var bytes = new TextEncoder().encode(str);
+      var bin = '', chunk = 0x8000;
+      for (var i = 0; i < bytes.length; i += chunk) {
+        bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+      }
+      var out = btoa(bin);
+      if ($('#b64-urlsafe').checked) {
+        out = out.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+      }
+      return out;
+    }
+
+    function decode(str) {
+      var s = str.replace(/\s+/g, '').replace(/-/g, '+').replace(/_/g, '/');
+      while (s.length % 4) s += '=';
+      var bin = atob(s);
+      var bytes = Uint8Array.from(bin, function (c) { return c.charCodeAt(0); });
+      return new TextDecoder().decode(bytes);
+    }
+
+    $('#b64-encode').addEventListener('click', function () {
+      try {
+        output.value = encode(input.value);
+        setStatus(status, '✓ Encoded ' + input.value.length + ' characters', 'ok');
+      } catch (err) {
+        setStatus(status, '✕ ' + err.message, 'err');
+      }
+    });
+
+    $('#b64-decode').addEventListener('click', function () {
+      try {
+        output.value = decode(input.value);
+        setStatus(status, '✓ Decoded successfully', 'ok');
+      } catch (err) {
+        output.value = '';
+        setStatus(status, '✕ Not valid Base64 input', 'err');
+      }
+    });
+  })();
+
+  /* ============================================================
+     TOOL 3 — URL ENCODER
+     ============================================================ */
+  (function () {
+    var input = $('#url-in'), output = $('#url-out'), status = $('#url-status');
+
+    $('#url-encode').addEventListener('click', function () {
+      try {
+        output.value = $('#url-mode').value === 'full'
+          ? encodeURI(input.value)
+          : encodeURIComponent(input.value);
+        setStatus(status, '✓ Encoded', 'ok');
+      } catch (err) {
+        setStatus(status, '✕ ' + err.message, 'err');
+      }
+    });
+
+    $('#url-decode').addEventListener('click', function () {
+      try {
+        output.value = $('#url-mode').value === 'full'
+          ? decodeURI(input.value)
+          : decodeURIComponent(input.value);
+        setStatus(status, '✓ Decoded', 'ok');
+      } catch (err) {
+        output.value = '';
+        setStatus(status, '✕ Malformed percent-encoding', 'err');
+      }
+    });
+  })();
+
+  /* ============================================================
+     TOOL 4 — HASH GENERATOR
+     ============================================================ */
+  (function () {
+    var input = $('#hash-in');
+    var ids = { 'SHA-1': '#hash-sha1', 'SHA-256': '#hash-sha256', 'SHA-384': '#hash-sha384', 'SHA-512': '#hash-sha512' };
+    var token = 0;
+
+    function toHex(buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+        return b.toString(16).padStart(2, '0');
+      }).join('');
+    }
+
+    function reset() {
+      Object.keys(ids).forEach(function (k) { $(ids[k]).textContent = '—'; });
+    }
+
+    async function compute() {
+      var text = input.value;
+      var myToken = ++token;
+      if (!text) { reset(); return; }
+      if (!(window.crypto && crypto.subtle)) {
+        setStatus($('#json-status'), '');
+        Object.keys(ids).forEach(function (k) { $(ids[k]).textContent = 'Web Crypto unavailable'; });
+        return;
+      }
+      var data = new TextEncoder().encode(text);
+      var keys = Object.keys(ids);
+      for (var i = 0; i < keys.length; i++) {
+        try {
+          var buf = await crypto.subtle.digest(keys[i], data);
+          if (myToken !== token) return;
+          $(ids[keys[i]]).textContent = toHex(buf);
+        } catch (err) {
+          if (myToken !== token) return;
+          $(ids[keys[i]]).textContent = 'error';
+        }
+      }
+    }
+
+    input.addEventListener('input', debounce(compute, 180));
+    compute();
+  })();
+
+  /* ============================================================
+     TOOL 5 — UUID GENERATOR
+     ============================================================ */
+  (function () {
+    function uuidv4() {
+      if (window.crypto && typeof crypto.randomUUID === 'function') {
+        return crypto.randomUUID();
+      }
+      var b = new Uint8Array(16);
+      crypto.getRandomValues(b);
+      b[6] = (b[6] & 0x0f) | 0x40;
+      b[8] = (b[8] & 0x3f) | 0x80;
+      var h = Array.prototype.map.call(b, function (x) { return x.toString(16).padStart(2, '0'); }).join('');
+      return h.slice(0, 8) + '-' + h.slice(8, 12) + '-' + h.slice(12, 16) + '-' + h.slice(16, 20) + '-' + h.slice(20);
+    }
+
+    function generate() {
+      var count = Math.min(Math.max(parseInt($('#uuid-count').value, 10) || 1, 1), 100);
+      $('#uuid-count').value = count;
+      var upper = $('#uuid-upper').checked;
+      var list = [];
+      for (var i = 0; i < count; i++) {
+        var id = uuidv4();
+        list.push(upper ? id.toUpperCase() : id);
+      }
+      $('#uuid-out').value = list.join('\n');
+    }
+
+    $('#uuid-gen').addEventListener('click', generate);
+    generate();
+  })();
+
+  /* ============================================================
+     TOOL 6 — PASSWORD GENERATOR
+     ============================================================ */
+  (function () {
+    var SETS = {
+      lower: 'abcdefghijklmnopqrstuvwxyz',
+      upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      num: '0123456789',
+      sym: '!@#$%^&*()-_=+[]{};:,.?/'
+    };
+
+    var lenRange = $('#pw-len');
+    var lenLabel = $('#pw-len-val');
+
+    lenRange.addEventListener('input', function () {
+      lenLabel.textContent = lenRange.value;
+    });
+
+    function generate() {
+      var len = parseInt(lenRange.value, 10);
+      var parts = [];
+      if ($('#pw-lower').checked) parts.push(SETS.lower);
+      if ($('#pw-upper').checked) parts.push(SETS.upper);
+      if ($('#pw-num').checked)   parts.push(SETS.num);
+      if ($('#pw-sym').checked)   parts.push(SETS.sym);
+
+      var out = $('#pw-out');
+      var fill = $('#pw-fill');
+      var strength = $('#pw-strength');
+
+      if (!parts.length) {
+        out.value = '';
+        fill.style.width = '0%';
+        setStatus(strength, '⚠ Select at least one character set', 'warn');
+        return;
+      }
+
+      var pool = parts.join('');
+      var chars = [];
+
+      // guarantee at least one character from each selected set
+      parts.forEach(function (set) { chars.push(set[randInt(set.length)]); });
+      while (chars.length < len) chars.push(pool[randInt(pool.length)]);
+
+      // shuffle
+      for (var i = chars.length - 1; i > 0; i--) {
+        var j = randInt(i + 1);
+        var tmp = chars[i]; chars[i] = chars[j]; chars[j] = tmp;
+      }
+
+      var password = chars.slice(0, len).join('');
+      out.value = password;
+
+      // entropy estimate
+      var bits = len * (Math.log(pool.length) / Math.LN2);
+      var pct = Math.min(100, Math.round((bits / 128) * 100));
+      var label, color;
+      if (bits < 40)      { label = 'Weak';       color = 'var(--err)'; }
+      else if (bits < 64) { label = 'Fair';       color = 'var(--warn)'; }
+      else if (bits < 90) { label = 'Strong';     color = 'var(--ok)'; }
+      else                { label = 'Very strong'; color = 'var(--ok)'; }
+
+      fill.style.width = pct + '%';
+      fill.style.background = color;
+      setStatus(strength, label + ' — about ' + Math.round(bits) + ' bits of entropy', 'ok');
+    }
+
+    $('#pw-gen').addEventListener('click', generate);
+    generate();
+  })();
+
+  /* ============================================================
+     TOOL 7 — COLOR CONVERTER
+     ============================================================ */
+  (function () {
+    var pick = $('#color-pick');
+    var hexInput = $('#color-hex');
+    var preview = $('#color-preview');
+
+    function hexToRgb(hex) {
+      var h = hex.replace('#', '').trim();
+      if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+      if (!/^[0-9a-fA-F]{6}$/.test(h)) return null;
+      return {
+        r: parseInt(h.slice(0, 2), 16),
+        g: parseInt(h.slice(2, 4), 16),
+        b: parseInt(h.slice(4, 6), 16)
+      };
+    }
+
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      var max = Math.max(r, g, b), min = Math.min(r, g, b);
+      var h = 0, s = 0, l = (max + min) / 2;
+      var d = max - min;
+      if (d !== 0) {
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        if (max === r)      h = ((g - b) / d) + (g < b ? 6 : 0);
+        else if (max === g) h = ((b - r) / d) + 2;
+        else                h = ((r - g) / d) + 4;
+        h /= 6;
+      }
+      return {
+        h: Math.round(h * 360),
+        s: Math.round(s * 100),
+        l: Math.round(l * 100)
+      };
+    }
+
+    function update(hex) {
+      var rgb = hexToRgb(hex);
+      if (!rgb) return;
+      var normalized = '#' + [rgb.r, rgb.g, rgb.b].map(function (v) {
+        return v.toString(16).padStart(2, '0');
+      }).join('');
+      var hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+
+      $('#out-hex').textContent = normalized;
+      $('#out-rgb').textContent = 'rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')';
+      $('#out-hsl').textContent = 'hsl(' + hsl.h + ', ' + hsl.s + '%, ' + hsl.l + '%)';
+      $('#out-var').textContent = '--color: ' + normalized + ';';
+
+      preview.style.background = normalized;
+      pick.value = normalized;
+      if (hexInput.value.toLowerCase() !== normalized) hexInput.value = normalized;
+    }
+
+    pick.addEventListener('input', function () { update(pick.value); });
+    hexInput.addEventListener('input', function () {
+      var v = hexInput.value.trim();
+      if (!v.startsWith('#')) v = '#' + v;
+      if (hexToRgb(v)) update(v);
+    });
+
+    update('#4f8cff');
+  })();
+
+  /* ============================================================
+     TOOL 8 — LOREM IPSUM
+     ============================================================ */
+  (function () {
+    var WORDS = ('lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor ' +
+      'incididunt ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ' +
+      'ullamco laboris nisi aliquip ex ea commodo consequat duis aute irure in reprehenderit ' +
+      'voluptate velit esse cillum eu fugiat nulla pariatur excepteur sint occaecat cupidatat non ' +
+      'proident sunt culpa qui officia deserunt mollit anim id est laborum').split(' ');
+
+    function sentence() {
+      var n = 6 + randInt(10);
+      var out = [];
+      for (var i = 0; i < n; i++) out.push(WORDS[randInt(WORDS.length)]);
+      var s = out.join(' ');
+      return s.charAt(0).toUpperCase() + s.slice(1) + '.';
+    }
+
+    function paragraph() {
+      var n = 3 + randInt(3);
+      var out = [];
+      for (var i = 0; i < n; i++) out.push(sentence());
+      return out.join(' ');
+    }
+
+    function generate() {
+      var count = Math.min(Math.max(parseInt($('#lorem-count').value, 10) || 1, 1), 50);
+      $('#lorem-count').value = count;
+      var type = $('#lorem-type').value;
+      var startLorem = $('#lorem-start').checked;
+      var result;
+
+      if (type === 'words') {
+        var words = [];
+        for (var i = 0; i < count; i++) words.push(WORDS[randInt(WORDS.length)]);
+        result = words.join(' ');
+      } else if (type === 'sentences') {
+        var sents = [];
+        for (var j = 0; j < count; j++) sents.push(sentence());
+        result = sents.join(' ');
+      } else {
+        var paras = [];
+        for (var k = 0; k < count; k++) paras.push(paragraph());
+        result = paras.join('\n\n');
+      }
+
+      if (startLorem && result && type !== 'words') {
+        result = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' + result;
+      }
+      $('#lorem-out').value = result;
+    }
+
+    $('#lorem-gen').addEventListener('click', generate);
+    generate();
+  })();
+
+  /* ============================================================
+     TOOL 9 — CASE CONVERTER
+     ============================================================ */
+  (function () {
+    function splitWords(s) {
+      return s
+        .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+        .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+        .split(/[^A-Za-z0-9]+/)
+        .filter(Boolean);
+    }
+    function cap(w) {
+      return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+    }
+
+    var FNS = {
+      upper:    function (s) { return s.toUpperCase(); },
+      lower:    function (s) { return s.toLowerCase(); },
+      title:    function (s) { return s.replace(/\w\S*/g, function (t) { return cap(t); }); },
+      sentence: function (s) {
+        return s.toLowerCase().replace(/(^\s*[a-z])|([.!?]\s+[a-z])/g, function (m) { return m.toUpperCase(); });
+      },
+      camel:    function (s) {
+        return splitWords(s).map(function (w, i) { return i === 0 ? w.toLowerCase() : cap(w); }).join('');
+      },
+      pascal:   function (s) { return splitWords(s).map(cap).join(''); },
+      snake:    function (s) { return splitWords(s).map(function (w) { return w.toLowerCase(); }).join('_'); },
+      kebab:    function (s) { return splitWords(s).map(function (w) { return w.toLowerCase(); }).join('-'); },
+      constant: function (s) { return splitWords(s).map(function (w) { return w.toUpperCase(); }).join('_'); }
+    };
+
+    $$('[data-case]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var fn = FNS[btn.dataset.case];
+        if (!fn) return;
+        $('#case-out').value = fn($('#case-in').value);
+      });
+    });
+  })();
+
+  /* ============================================================
+     TOOL 10 — TIMESTAMP CONVERTER
+     ============================================================ */
+  (function () {
+    var nowBig = $('#ts-now'), nowS = $('#ts-now-s'), nowMs = $('#ts-now-ms'), nowIso = $('#ts-now-iso');
+
+    function tick() {
+      var d = new Date();
+      nowBig.textContent = d.toLocaleString();
+      nowS.textContent = String(Math.floor(d.getTime() / 1000));
+      nowMs.textContent = String(d.getTime());
+      nowIso.textContent = d.toISOString();
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    $('#ts-convert').addEventListener('click', function () {
+      var raw = $('#ts-in').value.trim();
+      var out = $('#ts-out');
+      if (!raw) { out.textContent = ''; return; }
+      var num = Number(raw);
+      if (!isFinite(num)) { out.textContent = '⚠ Not a valid number'; return; }
+      var ms = $('#ts-unit').value === 's' ? num * 1000 : num;
+      var d = new Date(ms);
+      if (isNaN(d.getTime())) { out.textContent = '⚠ Invalid timestamp'; return; }
+      out.textContent =
+        'Local:    ' + d.toLocaleString() + '\n' +
+        'UTC:      ' + d.toUTCString() + '\n' +
+        'ISO 8601: ' + d.toISOString() + '\n' +
+        'Unix (s): ' + Math.floor(ms / 1000);
+    });
+
+    $('#date-convert').addEventListener('click', function () {
+      var v = $('#date-in').value;
+      var out = $('#date-out');
+      if (!v) { out.textContent = ''; return; }
+      var d = new Date(v);
+      if (isNaN(d.getTime())) { out.textContent = '⚠ Invalid date'; return; }
+      out.textContent =
+        'Unix (s):  ' + Math.floor(d.getTime() / 1000) + '\n' +
+        'Unix (ms): ' + d.getTime() + '\n' +
+        'ISO 8601:  ' + d.toISOString() + '\n' +
+        'UTC:       ' + d.toUTCString();
+    });
+
+    // pre-fill with the current local datetime
+    var now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+    $('#date-in').value = now.toISOString().slice(0, 16);
+  })();
+
+  /* ============================================================
+     TOOL 11 — REGEX TESTER
+     ============================================================ */
+  (function () {
+    var pattern = $('#re-pattern'), flags = $('#re-flags'), text = $('#re-text');
+    var out = $('#re-out'), matches = $('#re-matches');
+
+    function run() {
+      var p = pattern.value;
+      var f = flags.value.replace(/[^gimsuy]/g, '');
+      var t = text.value;
+
+      if (!p) {
+        out.textContent = t;
+        matches.textContent = '';
+        return;
+      }
+      try {
+        var effective = f.indexOf('g') > -1 ? f : f + 'g';
+        var re = new RegExp(p, effective);
+        var html = '', last = 0, count = 0;
+
+        for (var m of t.matchAll(re)) {
+          var idx = m.index || 0;
+          html += esc(t.slice(last, idx));
+          html += '<mark>' + (m[0] ? esc(m[0]) : '') + '</mark>';
+          last = idx + m[0].length;
+          count++;
+          if (count > 5000) break;
+        }
+        html += esc(t.slice(last));
+
+        out.innerHTML = html || '<span style="color:var(--muted)">No test string</span>';
+        matches.textContent = count + ' match' + (count === 1 ? '' : 'es');
+        matches.className = 'hint';
+      } catch (err) {
+        out.textContent = t;
+        matches.textContent = '⚠ ' + err.message;
+        matches.className = 'hint';
+      }
+    }
+
+    pattern.addEventListener('input', run);
+    flags.addEventListener('input', run);
+    text.addEventListener('input', run);
+    $('#re-clear').addEventListener('click', function () {
+      pattern.value = '';
+      flags.value = 'g';
+      text.value = '';
+      run();
+    });
+    run();
+  })();
+
+  /* ============================================================
+     TOOL 12 — JWT DECODER
+     ============================================================ */
+  (function () {
+    function b64urlDecode(str) {
+      var s = str.replace(/-/g, '+').replace(/_/g, '/');
+      while (s.length % 4) s += '=';
+      var bin = atob(s);
+      var bytes = Uint8Array.from(bin, function (c) { return c.charCodeAt(0); });
+      return new TextDecoder().decode(bytes);
+    }
+
+    $('#jwt-decode').addEventListener('click', function () {
+      var raw = $('#jwt-in').value.trim();
+      var headerEl = $('#jwt-header');
+      var payloadEl = $('#jwt-payload');
+      var status = $('#jwt-status');
+
+      headerEl.textContent = '';
+      payloadEl.textContent = '';
+
+      if (!raw) { setStatus(status, ''); return; }
+
+      var parts = raw.split('.');
+      if (parts.length < 2) {
+        setStatus(status, '✕ A JWT must contain at least a header and a payload', 'err');
+        return;
+      }
+      try {
+        var header = JSON.parse(b64urlDecode(parts[0]));
+        headerEl.textContent = JSON.stringify(header, null, 2);
+      } catch (err) {
+        headerEl.textContent = '⚠ Could not decode header';
+      }
+      try {
+        var payload = JSON.parse(b64urlDecode(parts[1]));
+        payloadEl.textContent = JSON.stringify(payload, null, 2);
+        setStatus(status, '✓ Decoded. Signature is NOT verified.', 'ok');
+      } catch (err) {
+        payloadEl.textContent = '⚠ Could not decode payload';
+        setStatus(status, '✕ Invalid payload encoding', 'err');
+      }
+    });
+  })();
+
+  /* ============================================================
+     TOOL 13 — HTML ENTITIES
+     ============================================================ */
+  (function () {
+    var input = $('#html-in'), output = $('#html-out'), status = $('#html-status');
+
+    $('#html-encode').addEventListener('click', function () {
+      output.value = input.value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+      setStatus(status, '✓ Encoded', 'ok');
+    });
+
+    $('#html-decode').addEventListener('click', function () {
+      var doc = new DOMParser().parseFromString(input.value, 'text/html');
+      output.value = doc.documentElement.textContent || '';
+      setStatus(status, '✓ Decoded', 'ok');
+    });
+  })();
+
+  /* ============================================================
+     TOOL 14 — TEXT STATISTICS
+     ============================================================ */
+  (function () {
+    var input = $('#txt-in');
+
+    function update() {
+      var t = input.value;
+      var chars = t.length;
+      var noSpace = t.replace(/\s/g, '').length;
+      var words = t.trim() ? t.trim().split(/\s+/).length : 0;
+      var lines = t ? t.split('\n').length : 0;
+      var sentences = t.trim() ? (t.match(/[.!?]+(\s|$)/g) || []).length || 1 : 0;
+      var paragraphs = t.trim() ? t.trim().split(/\n\s*\n/).filter(function (p) { return p.trim(); }).length : 0;
+
+      var minutes = words / 225; // average adult reading speed
+      var readLabel;
+      if (minutes < 1 / 60) readLabel = '0s';
+      else if (minutes < 1) readLabel = Math.ceil(minutes * 60) + 's';
+      else readLabel = Math.round(minutes * 10) / 10 + 'm';
+
+      $('#txt-chars').textContent = chars;
+      $('#txt-nospace').textContent = noSpace;
+      $('#txt-words').textContent = words;
+      $('#txt-lines').textContent = lines;
+      $('#txt-sent').textContent = sentences;
+      $('#txt-para').textContent = paragraphs;
+      $('#txt-read').textContent = readLabel;
+    }
+
+    input.addEventListener('input', update);
+    update();
+  })();
+
+})();
+</script>
+
+<!-- ==================== AD CODE ==================== -->
+<!--
+  Paste your ad network snippet here, immediately before </body>.
+  Example:
+  <script async src="https://pagead2.example.com/adsbygoogle.js"></script>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+-->
+<div class="ad-slot" style="margin:0;border-radius:0;border-left:0;border-right:0;border-bottom:0">
+  Advertisement — paste your ad code here
+</div>
+<!-- ================== /AD CODE =================== -->
+
+</body>
+</html>
+```
+### Tools, Interactions & Design
+
+Here's how each tool works and how you can move around the app.
+
+- **Instant results**: Most tools update as you type — JSON formatting debounces after 450ms, hash values compute automatically, and the color converter reacts to every keystroke.
+- **One-click actions**: Copy buttons on every output, a sample JSON button, and dedicated Generate buttons for UUIDs, passwords, and lorem ipsum.
+- **Navigation & search**: The sidebar lists all 14 tools and includes a live search filter; clicking a tool switches the main panel and updates the URL hash.
+- **Theme & mobile support**: A top-right button toggles light/dark themes, and on smaller screens the sidebar becomes a slide-out drawer.
+- **Local processing**: All calculations run in your browser using the Web Crypto API, so no data is sent anywhere.
+---
+
+**Optimization Tip:** You can replace the placeholder ad slot near the end of the file with your actual ad network snippet. The theme preference is stored under the localStorage key `dt-theme` — adjust that if needed.

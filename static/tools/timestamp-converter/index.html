@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unix Timestamp Converter - Free Online Epoch Time Tool</title>
+<meta name="description" content="Free online Unix timestamp converter for developers. Convert Unix epoch time to human-readable dates and vice versa. Supports seconds, milliseconds, ISO 8601, UTC, and local time zones instantly.">
+<meta name="keywords" content="unix timestamp, epoch converter, timestamp to date, date to timestamp, unix time, epoch time, developer tools">
+<meta name="author" content="Unix Timestamp Converter">
+<meta property="og:title" content="Unix Timestamp Converter - Free Online Epoch Time Tool">
+<meta property="og:description" content="Convert Unix timestamps to human-readable dates and back. Fast, free, and developer-friendly.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏱️</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            50: '#eef6ff', 100: '#d9ecff', 200: '#bcdcff', 300: '#8ec5ff',
+            400: '#59a4ff', 500: '#3382ff', 600: '#1a61f5', 700: '#144ce1',
+            800: '#173fb6', 900: '#19398f'
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .fade-in { animation: fadeIn .35s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px);} to {opacity:1; transform:none;} }
+  .copy-btn.copied { background-color: #10b981 !important; color: white !important; }
+  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type=number] { -moz-appearance: textfield; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white text-xl shadow-lg shadow-brand-500/30">⏱️</div>
+        <div>
+          <h1 class="text-lg font-bold leading-tight">Unix Timestamp Converter</h1>
+          <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">Epoch ⇄ Human-readable date</p>
+        </div>
+      </div>
+      <button id="themeToggle" aria-label="Toggle dark mode" class="p-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition">
+        <svg id="iconSun" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <svg id="iconMoon" class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Top Ad Placeholder -->
+<div class="w-full bg-slate-100 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center">
+    <!-- TOP AD PLACEHOLDER -->
+    <div class="w-full max-w-3xl h-20 sm:h-24 flex items-center justify-center border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg text-slate-400 dark:text-slate-500 text-sm">
+      📢 Top Ad Placeholder (728×90 / Responsive)
+    </div>
+  </div>
+</div>
+
+<!-- Main -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+    <!-- Main content -->
+    <div class="lg:col-span-3 space-y-6">
+
+      <!-- Live Clock -->
+      <section class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Current Unix Time</h2>
+          <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Live
+          </span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4">
+            <div class="text-xs text-slate-500 dark:text-slate-400 mb-1">Seconds</div>
+            <div class="flex items-center gap-2">
+              <code id="liveSeconds" class="text-2xl sm:text-3xl font-mono font-bold text-brand-600 dark:text-brand-400 break-all">—</code>
+              <button data-copy="liveSeconds" class="copy-btn ml-auto shrink-0 p-2 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 transition" title="Copy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4">
+            <div class="text-xs text-slate-500 dark:text-slate-400 mb-1">Milliseconds</div>
+            <div class="flex items-center gap-2">
+              <code id="liveMillis" class="text-2xl sm:text-3xl font-mono font-bold text-brand-600 dark:text-brand-400 break-all">—</code>
+              <button data-copy="liveMillis" class="copy-btn ml-auto shrink-0 p-2 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 transition" title="Copy">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p id="liveDate" class="mt-4 text-sm text-slate-500 dark:text-slate-400 font-mono"></p>
+      </section>
+
+      <!-- Converter -->
+      <section class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 fade-in">
+        <h2 class="text-lg font-bold mb-1">Convert Timestamp</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mb-5">Enter a Unix timestamp or pick a date to convert.</p>
+
+        <!-- Tabs -->
+        <div class="flex gap-2 mb-5 p-1 bg-slate-100 dark:bg-slate-900/50 rounded-xl w-fit">
+          <button data-tab="ts" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg bg-white dark:bg-slate-700 shadow-sm transition">Timestamp → Date</button>
+          <button data-tab="date" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-400 transition">Date → Timestamp</button>
+        </div>
+
+        <!-- Timestamp → Date -->
+        <div id="tab-ts" class="tab-panel space-y-4">
+          <div>
+            <label for="tsInput" class="block text-sm font-medium mb-2">Unix Timestamp</label>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <input id="tsInput" type="number" placeholder="e.g. 1700000000" class="flex-1 px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none font-mono transition">
+              <select id="tsUnit" class="px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-brand-500 outline-none transition">
+                <option value="s">Seconds</option>
+                <option value="ms">Milliseconds</option>
+              </select>
+              <button id="tsNowBtn" class="px-4 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium transition">Now</button>
+            </div>
+          </div>
+          <div id="tsResults" class="hidden space-y-2 fade-in">
+            <div class="result-row grid grid-cols-1 sm:grid-cols-3 gap-2 items-center bg-slate-50 dark:bg-slate-900/50 rounded-xl p-3">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Local Time</span>
+              <code id="resLocal" class="sm:col-span-2 font-mono text-sm break-all"></code>
+            </div>
+            <div class="result-row grid grid-cols-1 sm:grid-cols-3 gap-2 items-center bg-slate-50 dark:bg-slate-900/50 rounded-xl p-3">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">UTC</span>
+              <code id="resUTC" class="sm:col-span-2 font-mono text-sm break-all"></code>
+            </div>
+            <div class="result-row grid grid-cols-1 sm:grid-cols-3 gap-2 items-center bg-slate-50 dark:bg-slate-900/50 rounded-xl p-3">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">ISO 8601</span>
+              <code id="resISO" class="sm:col-span-2 font-mono text-sm break-all"></code>
+            </div>
+            <div class="result-row grid grid-cols-1 sm:grid-cols-3 gap-2 items-center bg-slate-50 dark:bg-slate-900/50 rounded-xl p-3">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Relative</span>
+              <code id="resRel" class="sm:col-span-2 font-mono text-sm break-all"></code>
+            </div>
+          </div>
+          <p id="tsError" class="hidden text-sm text-red-500"></p>
+        </div>
+
+        <!-- Date → Timestamp -->
+        <div id="tab-date" class="tab-panel hidden space-y-4">
+          <div>
+            <label for="dateInput" class="block text-sm font-medium mb-2">Pick a Date & Time</label>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <input id="dateInput" type="datetime-local" step="1" class="flex-1 px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-brand-500 outline-none transition">
+              <button id="dateNowBtn" class="px-4 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium transition">Now</button>
+            </div>
+          </div>
+          <div id="dateResults" class="hidden space-y-2 fade-in">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center bg-slate-50 dark:bg-slate-900/50 rounded-xl p-3">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Seconds</span>
+              <div class="sm:col-span-2 flex items-center gap-2">
+                <code id="resSec" class="font-mono text-sm break-all"></code>
+                <button data-copy="resSec" class="copy-btn ml-auto shrink-0 p-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 transition" title="Copy">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center bg-slate-50 dark:bg-slate-900/50 rounded-xl p-3">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Milliseconds</span>
+              <div class="sm:col-span-2 flex items-center gap-2">
+                <code id="resMs" class="font-mono text-sm break-all"></code>
+                <button data-copy="resMs" class="copy-btn ml-auto shrink-0 p-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 transition" title="Copy">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center bg-slate-50 dark:bg-slate-900/50 rounded-xl p-3">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">ISO 8601</span>
+              <div class="sm:col-span-2 flex items-center gap-2">
+                <code id="resISO2" class="font-mono text-sm break-all"></code>
+                <button data-copy="resISO2" class="copy-btn ml-auto shrink-0 p-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 transition" title="Copy">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <p id="dateError" class="hidden text-sm text-red-500"></p>
+        </div>
+      </section>
+
+      <!-- Quick Reference -->
+      <section class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 fade-in">
+        <h2 class="text-lg font-bold mb-4">Quick Reference</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button class="quick-ref text-left p-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 hover:bg-brand-50 dark:hover:bg-brand-900/20 border border-transparent hover:border-brand-300 dark:hover:border-brand-700 transition" data-ts="0">
+            <div class="text-xs text-slate-500 dark:text-slate-400">Unix Epoch</div>
+            <div class="font-mono font-semibold">0</div>
+          </button>
+          <button class="quick-ref text-left p-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 hover:bg-brand-50 dark:hover:bg-brand-900/20 border border-transparent hover:border-brand-300 dark:hover:border-brand-700 transition" data-ts="1000000000">
+            <div class="text-xs text-slate-500 dark:text-slate-400">1 Billion Seconds</div>
+            <div class="font-mono font-semibold">1000000000</div>
+          </button>
+          <button class="quick-ref text-left p-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 hover:bg-brand-50 dark:hover:bg-brand-900/20 border border-transparent hover:border-brand-300 dark:hover:border-brand-700 transition" data-ts="1234567890">
+            <div class="text-xs text-slate-500 dark:text-slate-400">Classic Test</div>
+            <div class="font-mono font-semibold">1234567890</div>
+          </button>
+          <button class="quick-ref text-left p-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 hover:bg-brand-50 dark:hover:bg-brand-900/20 border border-transparent hover:border-brand-300 dark:hover:border-brand-700 transition" data-ts="2000000000">
+            <div class="text-xs text-slate-500 dark:text-slate-400">2 Billion Seconds</div>
+            <div class="font-mono font-semibold">2000000000</div>
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="lg:col-span-1 space-y-6">
+      <!-- Sidebar Ad -->
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+        <!-- SIDEBAR AD PLACEHOLDER -->
+        <div class="w-full h-64 sm:h-80 lg:h-[600px] flex items-center justify-center border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg text-slate-400 dark:text-slate-500 text-sm text-center px-4">
+          📢 Sidebar Ad<br>(300×600 / Responsive)
+        </div>
+      </div>
+
+      <!-- Info Card -->
+      <div class="bg-gradient-to-br from-brand-500 to-brand-700 rounded-2xl shadow-lg p-6 text-white">
+        <h3 class="font-bold mb-2">💡 Did you know?</h3>
+        <p class="text-sm text-brand-50 leading-relaxed">Unix time counts seconds since <strong>January 1, 1970 (UTC)</strong>, excluding leap seconds. It's the universal standard for timestamps in computing.</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- Bottom Ad -->
+<div class="w-full bg-slate-100 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 mt-8">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
+    <!-- BOTTOM AD PLACEHOLDER -->
+    <div class="w-full max-w-3xl h-20 sm:h-24 flex items-center justify-center border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg text-slate-400 dark:text-slate-500 text-sm">
+      📢 Bottom Ad Placeholder (728×90 / Responsive)
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-500 dark:text-slate-400">
+    <p>© <span id="year"></span> Unix Timestamp Converter. All rights reserved.</p>
+    <p class="flex items-center gap-1.5">Built for developers <span class="text-brand-500">♥</span></p>
+  </div>
+</footer>
+
+<!-- Popup / Script Ad -->
+<!-- POPUP / SCRIPT AD PLACEHOLDER -->
+<script>
+  // Popup ad placeholder — replace with your ad network script
+  // Example: (function(){ /* your popup ad code */ })();
+</script>
+
+<script>
+(function() {
+  'use strict';
+
+  // ---------- Theme ----------
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    root.classList.add('dark');
+  }
+  themeToggle.addEventListener('click', () => {
+    root.classList.toggle('dark');
+    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+  });
+
+  // ---------- Year ----------
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------- Live Clock ----------
+  const liveSeconds = document.getElementById('liveSeconds');
+  const liveMillis = document.getElementById('liveMillis');
+  const liveDate = document.getElementById('liveDate');
+  function updateLive() {
+    const now = new Date();
+    liveSeconds.textContent = Math.floor(now.getTime() / 1000);
+    liveMillis.textContent = now.getTime();
+    liveDate.textContent = now.toString();
+  }
+  updateLive();
+  setInterval(updateLive, 1000);
+
+  // ---------- Tabs ----------
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = { ts: document.getElementById('tab-ts'), date: document.getElementById('tab-date') };
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      tabBtns.forEach(b => {
+        const active = b.dataset.tab === tab;
+        b.classList.toggle('bg-white', active);
+        b.classList.toggle('dark:bg-slate-700', active);
+        b.classList.toggle('shadow-sm', active);
+        b.classList.toggle('text-slate-600', !active);
+        b.classList.toggle('dark:text-slate-400', !active);
+      });
+      Object.entries(tabPanels).forEach(([k, el]) => el.classList.toggle('hidden', k !== tab));
+    });
+  });
+
+  // ---------- Copy Buttons ----------
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.copy-btn');
+    if (!btn) return;
+    const target = document.getElementById(btn.dataset.copy);
+    if (!target) return;
+    const text = target.textContent.trim();
+    if (!text || text === '—') return;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.classList.add('copied');
+      setTimeout(() => btn.classList.remove('copied'), 1200);
+    }).catch(() => {});
+  });
+
+  // ---------- Timestamp → Date ----------
+  const tsInput = document.getElementById('tsInput');
+  const tsUnit = document.getElementById('tsUnit');
+  const tsResults = document.getElementById('tsResults');
+  const tsError = document.getElementById('tsError');
+  const resLocal = document.getElementById('resLocal');
+  const resUTC = document.getElementById('resUTC');
+  const resISO = document.getElementById('resISO');
+  const resRel = document.getElementById('resRel');
+
+  function relativeTime(ms) {
+    const diff = Date.now() - ms;
+    const abs = Math.abs(diff);
+    const units = [
+      ['year', 31536000000], ['month', 2592000000], ['day', 86400000],
+      ['hour', 3600000], ['minute', 60000], ['second', 1000]
+    ];
+    for (const [name, size] of units) {
+      if (abs >= size) {
+        const val = Math.floor(abs / size);
+        return `${val} ${name}${val !== 1 ? 's' : ''} ${diff >= 0 ? 'ago' : 'from now'}`;
+      }
+    }
+    return 'just now';
+  }
+
+  function convertTs() {
+    const raw = tsInput.value.trim();
+    if (!raw) {
+      tsResults.classList.add('hidden');
+      tsError.classList.add('hidden');
+      return;
+    }
+    const num = Number(raw);
+    if (!Number.isFinite(num)) {
+      tsResults.classList.add('hidden');
+      tsError.textContent = 'Please enter a valid number.';
+      tsError.classList.remove('hidden');
+      return;
+    }
+    const ms = tsUnit.value === 's' ? num * 1000 : num;
+    const d = new Date(ms);
+    if (isNaN(d.getTime())) {
+      tsResults.classList.add('hidden');
+      tsError.textContent = 'Invalid timestamp.';
+      tsError.classList.remove('hidden');
+      return;
+    }
+    tsError.classList.add('hidden');
+    resLocal.textContent = d.toString();
+    resUTC.textContent = d.toUTCString();
+    resISO.textContent = d.toISOString();
+    resRel.textContent = relativeTime(ms);
+    tsResults.classList.remove('hidden');
+  }
+
+  tsInput.addEventListener('input', convertTs);
+  tsUnit.addEventListener('change', convertTs);
+  document.getElementById('tsNowBtn').addEventListener('click', () => {
+    tsUnit.value = 's';
+    tsInput.value = Math.floor(Date.now() / 1000);
+    convertTs();
+  });
+
+  // ---------- Date → Timestamp ----------
+  const dateInput = document.getElementById('dateInput');
+  const dateResults = document.getElementById('dateResults');
+  const dateError = document.getElementById('dateError');
+  const resSec = document.getElementById('resSec');
+  const resMs = document.getElementById('resMs');
+  const resISO2 = document.getElementById('resISO2');
+
+  function toLocalInputValue(d) {
+    const pad = n => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  }
+
+  function convertDate() {
+    const val = dateInput.value;
+    if (!val) {
+      dateResults.classList.add('hidden');
+      dateError.classList.add('hidden');
+      return;
+    }
+    const d = new Date(val);
+    if (isNaN(d.getTime())) {
+      dateResults.classList.add('hidden');
+      dateError.textContent = 'Invalid date.';
+      dateError.classList.remove('hidden');
+      return;
+    }
+    dateError.classList.add('hidden');
+    resSec.textContent = Math.floor(d.getTime() / 1000);
+    resMs.textContent = d.getTime();
+    resISO2.textContent = d.toISOString();
+    dateResults.classList.remove('hidden');
+  }
+
+  dateInput.addEventListener('input', convertDate);
+  document.getElementById('dateNowBtn').addEventListener('click', () => {
+    dateInput.value = toLocalInputValue(new Date());
+    convertDate();
+  });
+
+  // Initialize date input with now
+  dateInput.value = toLocalInputValue(new Date());
+  convertDate();
+
+  // ---------- Quick Reference ----------
+  document.querySelectorAll('.quick-ref').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Switch to timestamp tab
+      document.querySelector('.tab-btn[data-tab="ts"]').click();
+      tsUnit.value = 's';
+      tsInput.value = btn.dataset.ts;
+      convertTs();
+      tsInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+  // Initialize timestamp with now
+  tsInput.value = Math.floor(Date.now() / 1000);
+  convertTs();
+
+})();
+</script>
+</body>
+</html>

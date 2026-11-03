@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex Regular Expression Tester & Cheat Sheet</title>
+<meta name="description" content="Free online Regex tester and cheat sheet for developers. Test regular expressions in real-time, view match highlights, capture groups, and reference common regex patterns. Fast, private, and works in your browser.">
+<meta name="keywords" content="regex tester, regular expression, regex cheat sheet, regex online, pattern matching, developer tools">
+<meta name="author" content="DevTools">
+<meta property="og:title" content="Regex Regular Expression Tester & Cheat Sheet">
+<meta property="og:description" content="Test regular expressions in real-time with match highlighting and a handy cheat sheet.">
+<meta property="og:type" content="website">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            50: '#eef7ff', 100: '#d9edff', 200: '#bce0ff', 300: '#8ecdff',
+            400: '#59b0ff', 500: '#3390ff', 600: '#1b6ff5', 700: '#1459e1',
+            800: '#1748b6', 900: '#19408f'
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .match-highlight { background-color: #fde68a; color: #78350f; border-radius: 3px; padding: 0 1px; }
+  .dark .match-highlight { background-color: #b45309; color: #fef3c7; }
+  .group-highlight { background-color: #a7f3d0; color: #064e3b; border-radius: 3px; padding: 0 1px; }
+  .dark .group-highlight { background-color: #047857; color: #d1fae5; }
+  .error-shake { animation: shake 0.3s; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+  .dark ::-webkit-scrollbar-thumb { background: #475569; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-200 min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-40 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-lg shadow">.*</div>
+      <div>
+        <h1 class="text-lg font-bold leading-tight">Regex Tester</h1>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">Regular Expression Playground</p>
+      </div>
+    </div>
+    <button id="themeToggle" aria-label="Toggle theme" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+      <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+      <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Top Ad -->
+<div class="w-full bg-slate-100 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
+  <div class="max-w-7xl mx-auto px-4 py-2 text-center text-xs text-slate-400 dark:text-slate-500">
+    <!-- TOP AD PLACEHOLDER -->
+    <div class="min-h-[60px] flex items-center justify-center border border-dashed border-slate-300 dark:border-slate-600 rounded">
+      Top Advertisement Space (728x90)
+    </div>
+  </div>
+</div>
+
+<!-- Main -->
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- Left: Tester -->
+    <section class="lg:col-span-2 space-y-4">
+      <!-- Pattern input -->
+      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+        <label class="block text-sm font-semibold mb-2">Regular Expression</label>
+        <div class="flex items-stretch rounded-lg border border-slate-300 dark:border-slate-600 overflow-hidden focus-within:ring-2 focus-within:ring-brand-500">
+          <span class="px-3 flex items-center bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 font-mono">/</span>
+          <input id="patternInput" type="text" spellcheck="false" placeholder="e.g. \b\w+@\w+\.\w+\b"
+            class="flex-1 px-3 py-2.5 font-mono text-sm bg-white dark:bg-slate-900 outline-none">
+          <span class="px-3 flex items-center bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 font-mono">/</span>
+          <input id="flagsInput" type="text" value="g" spellcheck="false" maxlength="6"
+            class="w-16 px-2 py-2.5 font-mono text-sm bg-slate-50 dark:bg-slate-900 border-l border-slate-300 dark:border-slate-600 outline-none text-center">
+        </div>
+        <div class="flex flex-wrap gap-2 mt-3 text-xs">
+          <span class="text-slate-500 dark:text-slate-400 mr-1">Flags:</span>
+          <button data-flag="g" class="flag-btn px-2 py-1 rounded border border-slate-300 dark:border-slate-600 hover:bg-brand-50 dark:hover:bg-slate-700 font-mono">g</button>
+          <button data-flag="i" class="flag-btn px-2 py-1 rounded border border-slate-300 dark:border-slate-600 hover:bg-brand-50 dark:hover:bg-slate-700 font-mono">i</button>
+          <button data-flag="m" class="flag-btn px-2 py-1 rounded border border-slate-300 dark:border-slate-600 hover:bg-brand-50 dark:hover:bg-slate-700 font-mono">m</button>
+          <button data-flag="s" class="flag-btn px-2 py-1 rounded border border-slate-300 dark:border-slate-600 hover:bg-brand-50 dark:hover:bg-slate-700 font-mono">s</button>
+          <button data-flag="u" class="flag-btn px-2 py-1 rounded border border-slate-300 dark:border-slate-600 hover:bg-brand-50 dark:hover:bg-slate-700 font-mono">u</button>
+          <button data-flag="y" class="flag-btn px-2 py-1 rounded border border-slate-300 dark:border-slate-600 hover:bg-brand-50 dark:hover:bg-slate-700 font-mono">y</button>
+        </div>
+        <p id="errorMsg" class="text-red-500 text-xs mt-2 hidden"></p>
+      </div>
+
+      <!-- Test string -->
+      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+        <div class="flex items-center justify-between mb-2">
+          <label class="text-sm font-semibold">Test String</label>
+          <button id="clearBtn" class="text-xs text-slate-500 hover:text-red-500 transition">Clear</button>
+        </div>
+        <textarea id="testInput" rows="6" spellcheck="false" placeholder="Paste or type your test text here..."
+          class="w-full px-3 py-2.5 font-mono text-sm rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 outline-none focus:ring-2 focus:ring-brand-500 resize-y">Contact us at support@example.com or sales@company.org. Invalid: not-an-email. Phone: 555-123-4567.</textarea>
+      </div>
+
+      <!-- Highlighted output -->
+      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+        <div class="flex items-center justify-between mb-2">
+          <label class="text-sm font-semibold">Match Preview</label>
+          <span id="matchCount" class="text-xs px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 dark:bg-brand-900 dark:text-brand-200">0 matches</span>
+        </div>
+        <div id="highlightOutput" class="w-full min-h-[80px] px-3 py-2.5 font-mono text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 whitespace-pre-wrap break-words"></div>
+      </div>
+
+      <!-- Match details -->
+      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+        <label class="text-sm font-semibold block mb-2">Match Details</label>
+        <div id="matchDetails" class="space-y-2 max-h-64 overflow-y-auto text-sm">
+          <p class="text-slate-400 text-xs">No matches yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right: Sidebar -->
+    <aside class="space-y-4">
+      <!-- Sidebar Ad -->
+      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-3">
+        <div class="min-h-[250px] flex items-center justify-center border border-dashed border-slate-300 dark:border-slate-600 rounded text-xs text-slate-400 dark:text-slate-500 text-center">
+          Sidebar Ad Space<br>(300x250)
+        </div>
+      </div>
+
+      <!-- Cheat Sheet -->
+      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+        <h2 class="text-sm font-bold mb-3 flex items-center gap-2">
+          <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Cheat Sheet
+        </h2>
+        <div id="cheatSheet" class="space-y-3 text-xs max-h-[500px] overflow-y-auto pr-1"></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Bottom Ad -->
+  <div class="mt-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-3">
+    <div class="min-h-[90px] flex items-center justify-center border border-dashed border-slate-300 dark:border-slate-600 rounded text-xs text-slate-400 dark:text-slate-500">
+      Bottom Advertisement Space (728x90)
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 mt-6">
+  <div class="max-w-7xl mx-auto px-4 py-4 text-center text-xs text-slate-500 dark:text-slate-400">
+    <p>&copy; <span id="year"></span> Regex Tester. All processing happens locally in your browser — your data never leaves your device.</p>
+  </div>
+</footer>
+
+<!-- Popup / Script Ad -->
+<div id="popupAd" class="hidden fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+  <div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-md w-full p-6 relative">
+    <button id="closePopup" class="absolute top-2 right-2 p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700" aria-label="Close">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <div class="min-h-[200px] flex items-center justify-center border border-dashed border-slate-300 dark:border-slate-600 rounded text-xs text-slate-400 dark:text-slate-500 text-center">
+      Popup / Interstitial Ad Space
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Theme
+  const html = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const sunIcon = document.getElementById('sunIcon');
+  const moonIcon = document.getElementById('moonIcon');
+  function applyTheme(dark){
+    if(dark){ html.classList.add('dark'); sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden'); }
+    else { html.classList.remove('dark'); sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden'); }
+  }
+  const stored = localStorage.getItem('theme');
+  applyTheme(stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+  themeToggle.addEventListener('click', ()=>{
+    const dark = !html.classList.contains('dark');
+    applyTheme(dark);
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Elements
+  const patternInput = document.getElementById('patternInput');
+  const flagsInput = document.getElementById('flagsInput');
+  const testInput = document.getElementById('testInput');
+  const highlightOutput = document.getElementById('highlightOutput');
+  const matchCount = document.getElementById('matchCount');
+  const matchDetails = document.getElementById('matchDetails');
+  const errorMsg = document.getElementById('errorMsg');
+  const clearBtn = document.getElementById('clearBtn');
+
+  // Flag buttons
+  document.querySelectorAll('.flag-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const f = btn.dataset.flag;
+      let cur = flagsInput.value;
+      if(cur.includes(f)) cur = cur.replace(f,'');
+      else cur += f;
+      flagsInput.value = cur;
+      run();
+    });
+  });
+
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function run(){
+    const pattern = patternInput.value;
+    const flags = flagsInput.value;
+    const text = testInput.value;
+
+    // reset
+    errorMsg.classList.add('hidden');
+    errorMsg.textContent = '';
+
+    if(!pattern){
+      highlightOutput.innerHTML = '<span class="text-slate-400">Enter a pattern to begin.</span>';
+      matchCount.textContent = '0 matches';
+      matchDetails.innerHTML = '<p class="text-slate-400 text-xs">No matches yet.</p>';
+      return;
+    }
+
+    let regex;
+    try {
+      regex = new RegExp(pattern, flags);
+    } catch(e){
+      errorMsg.textContent = 'Invalid regex: ' + e.message;
+      errorMsg.classList.remove('hidden');
+      highlightOutput.innerHTML = '<span class="text-red-500">Invalid regular expression.</span>';
+      matchCount.textContent = '0 matches';
+      matchDetails.innerHTML = '<p class="text-red-500 text-xs">Fix the pattern to see matches.</p>';
+      return;
+    }
+
+    // Collect matches
+    const matches = [];
+    if(flags.includes('g')){
+      let m;
+      let guard = 0;
+      const re = new RegExp(pattern, flags);
+      while((m = re.exec(text)) !== null){
+        matches.push({index: m.index, match: m[0], groups: m.slice(1), named: m.groups || null});
+        if(m[0] === '') re.lastIndex++;
+        if(++guard > 10000) break;
+      }
+    } else {
+      const m = regex.exec(text);
+      if(m) matches.push({index: m.index, match: m[0], groups: m.slice(1), named: m.groups || null});
+    }
+
+    matchCount.textContent = matches.length + (matches.length === 1 ? ' match' : ' matches');
+
+    // Build highlighted output
+    if(matches.length === 0){
+      highlightOutput.innerHTML = escapeHtml(text) || '<span class="text-slate-400">No text.</span>';
+    } else {
+      let out = '';
+      let last = 0;
+      matches.forEach(m=>{
+        if(m.index > last) out += escapeHtml(text.slice(last, m.index));
+        if(m.match.length === 0){
+          out += '<span class="match-highlight"></span>';
+        } else {
+          out += '<span class="match-highlight">' + escapeHtml(m.match) + '</span>';
+        }
+        last = m.index + m.match.length;
+      });
+      if(last < text.length) out += escapeHtml(text.slice(last));
+      highlightOutput.innerHTML = out || '<span class="text-slate-400">No text.</span>';
+    }
+
+    // Match details
+    if(matches.length === 0){
+      matchDetails.innerHTML = '<p class="text-slate-400 text-xs">No matches found.</p>';
+    } else {
+      matchDetails.innerHTML = matches.map((m,i)=>{
+        let groupsHtml = '';
+        if(m.groups.length){
+          groupsHtml = '<div class="mt-1 pl-3 border-l-2 border-emerald-400 space-y-0.5">' +
+            m.groups.map((g,gi)=>`<div class="text-xs"><span class="text-emerald-600 dark:text-emerald-400 font-semibold">Group ${gi+1}:</span> <span class="font-mono">${g === undefined ? '<em class="text-slate-400">undefined</em>' : escapeHtml(g)}</span></div>`).join('') +
+            '</div>';
+        }
+        let namedHtml = '';
+        if(m.named){
+          namedHtml = '<div class="mt-1 pl-3 border-l-2 border-purple-400 space-y-0.5">' +
+            Object.entries(m.named).map(([k,v])=>`<div class="text-xs"><span class="text-purple-600 dark:text-purple-400 font-semibold">${escapeHtml(k)}:</span> <span class="font-mono">${v === undefined ? '<em class="text-slate-400">undefined</em>' : escapeHtml(v)}</span></div>`).join('') +
+            '</div>';
+        }
+        return `<div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-xs font-semibold text-brand-600 dark:text-brand-400">Match ${i+1}</span>
+            <span class="text-xs text-slate-500">index ${m.index}</span>
+          </div>
+          <div class="font-mono text-sm mt-1 break-all">${m.match === '' ? '<em class="text-slate-400">empty</em>' : escapeHtml(m.match)}</div>
+          ${groupsHtml}${namedHtml}
+        </div>`;
+      }).join('');
+    }
+  }
+
+  // Debounce
+  let t;
+  function debouncedRun(){ clearTimeout(t); t = setTimeout(run, 120); }
+
+  patternInput.addEventListener('input', debouncedRun);
+  flagsInput.addEventListener('input', debouncedRun);
+  testInput.addEventListener('input', debouncedRun);
+  clearBtn.addEventListener('click', ()=>{ testInput.value=''; run(); });
+
+  // Cheat sheet data
+  const cheat = [
+    { title: 'Character Classes', items: [
+      ['.', 'Any character except newline'],
+      ['\\w', 'Word character (a-z, A-Z, 0-9, _)'],
+      ['\\W', 'Not a word character'],
+      ['\\d', 'Digit (0-9)'],
+      ['\\D', 'Not a digit'],
+      ['\\s', 'Whitespace (space, tab, newline)'],
+      ['\\S', 'Not whitespace'],
+      ['[abc]', 'Any of a, b, or c'],
+      ['[^abc]', 'Not a, b, or c'],
+      ['[a-z]', 'Character range a-z'],
+    ]},
+    { title: 'Anchors', items: [
+      ['^', 'Start of string/line'],
+      ['$', 'End of string/line'],
+      ['\\b', 'Word boundary'],
+      ['\\B', 'Not a word boundary'],
+    ]},
+    { title: 'Quantifiers', items: [
+      ['*', '0 or more'],
+      ['+', '1 or more'],
+      ['?', '0 or 1'],
+      ['{n}', 'Exactly n'],
+      ['{n,}', 'n or more'],
+      ['{n,m}', 'Between n and m'],
+      ['*?', 'Lazy 0 or more'],
+      ['+?', 'Lazy 1 or more'],
+    ]},
+    { title: 'Groups & References', items: [
+      ['(...)', 'Capture group'],
+      ['(?:...)', 'Non-capturing group'],
+      ['(?<name>...)', 'Named capture group'],
+      ['\\1', 'Backreference to group 1'],
+      ['|', 'Alternation (OR)'],
+    ]},
+    { title: 'Lookarounds', items: [
+      ['(?=...)', 'Positive lookahead'],
+      ['(?!...)', 'Negative lookahead'],
+      ['(?<=...)', 'Positive lookbehind'],
+      ['(?<!...)', 'Negative lookbehind'],
+    ]},
+    { title: 'Common Patterns', items: [
+      ['\\b\\w+@\\w+\\.\\w+\\b', 'Email (basic)'],
+      ['https?://\\S+', 'URL'],
+      ['\\d{3}-\\d{3}-\\d{4}', 'US phone'],
+      ['^\\d{5}(-\\d{4})?$', 'US ZIP code'],
+      ['#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})', 'Hex color'],
+    ]},
+  ];
+
+  const cheatSheet = document.getElementById('cheatSheet');
+  cheatSheet.innerHTML = cheat.map(section=>`
+    <div>
+      <h3 class="font-semibold text-brand-600 dark:text-brand-400 mb-1">${section.title}</h3>
+      <div class="space-y-1">
+        ${section.items.map(([code, desc])=>`
+          <div class="flex items-start gap-2">
+            <code class="shrink-0 px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 text-brand-700 dark:text-brand-300 font-mono text-[11px]">${escapeHtml(code)}</code>
+            <span class="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">${escapeHtml(desc)}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  // Popup ad (show once per session after 8s)
+  const popup = document.getElementById('popupAd');
+  const closePopup = document.getElementById('closePopup');
+  if(!sessionStorage.getItem('popupShown')){
+    setTimeout(()=>{ popup.classList.remove('hidden'); sessionStorage.setItem('popupShown','1'); }, 8000);
+  }
+  closePopup.addEventListener('click', ()=> popup.classList.add('hidden'));
+  popup.addEventListener('click', (e)=>{ if(e.target === popup) popup.classList.add('hidden'); });
+
+  // Initial run
+  run();
+})();
+</script>
+</body>
+</html>

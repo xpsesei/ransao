@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSA Key Pair & Certificate Generator - Free Online Tool</title>
+<meta name="description" content="Generate RSA public/private key pairs and self-signed X.509 certificates directly in your browser. Free, secure, client-side tool for developers. Supports 2048/4096-bit keys with PEM export.">
+<meta name="keywords" content="RSA key generator, X.509 certificate, self-signed certificate, PEM, public key, private key, developer tools, cryptography">
+<meta name="author" content="DevTools">
+<meta property="og:title" content="RSA Key Pair & Certificate Generator">
+<meta property="og:description" content="Generate RSA key pairs and self-signed certificates in your browser. 100% client-side.">
+<meta property="og:type" content="website">
+<script src="https://tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            50: '#eef7ff', 100: '#d9edff', 200: '#bce0ff', 300: '#8ecdff',
+            400: '#59b0ff', 500: '#338fff', 600: '#1b6ef5', 700: '#1457e1',
+            800: '#1747b6', 900: '#193f8f'
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 5px; }
+  .dark ::-webkit-scrollbar-thumb { background: #475569; }
+  .fade-in { animation: fadeIn .35s ease-in-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  textarea { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+</style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-lg shadow-brand-500/30">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="text-lg sm:text-xl font-bold tracking-tight">RSA Key & Certificate Generator</h1>
+        <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">100% client-side · No data leaves your browser</p>
+      </div>
+    </div>
+    <button id="themeToggle" aria-label="Toggle theme" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+      <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+      </svg>
+      <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Top Ad -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="w-full min-h-[90px] flex items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 text-slate-400 text-xs">
+    <!-- TOP AD PLACEHOLDER -->
+    <span>Top Ad Space (728×90)</span>
+  </div>
+</div>
+
+<!-- Main -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+    <!-- Sidebar Ad -->
+    <aside class="lg:col-span-1 order-2 lg:order-1">
+      <div class="sticky top-24 space-y-4">
+        <div class="w-full min-h-[600px] flex items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 text-slate-400 text-xs">
+          <!-- SIDEBAR AD PLACEHOLDER -->
+          <span class="rotate-90 whitespace-nowrap">Sidebar Ad (300×600)</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Tool -->
+    <section class="lg:col-span-3 order-1 lg:order-2 space-y-6">
+
+      <!-- Config Card -->
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 sm:p-6 fade-in">
+        <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Configuration
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1.5">Key Size</label>
+            <select id="keySize" class="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition">
+              <option value="2048">2048-bit (Recommended)</option>
+              <option value="3072">3072-bit</option>
+              <option value="4096">4096-bit (Slow)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1.5">Hash Algorithm</label>
+            <select id="hashAlg" class="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition">
+              <option value="SHA-256">SHA-256</option>
+              <option value="SHA-384">SHA-384</option>
+              <option value="SHA-512">SHA-512</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1.5">Common Name (CN)</label>
+            <input id="commonName" type="text" value="localhost" placeholder="example.com" class="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1.5">Organization (O)</label>
+            <input id="orgName" type="text" value="DevTools Inc." placeholder="Your Company" class="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1.5">Country (C)</label>
+            <input id="country" type="text" value="US" maxlength="2" placeholder="US" class="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition uppercase">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1.5">Validity (days)</label>
+            <input id="validity" type="number" value="365" min="1" max="3650" class="w-full px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition">
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-3">
+          <button id="generateBtn" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white font-medium shadow-lg shadow-brand-600/20 transition disabled:opacity-60 disabled:cursor-not-allowed">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span id="generateLabel">Generate Keys & Certificate</span>
+          </button>
+          <button id="downloadAllBtn" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 font-medium transition disabled:opacity-60 disabled:cursor-not-allowed" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Download All
+          </button>
+        </div>
+
+        <div id="statusMsg" class="mt-4 text-sm hidden"></div>
+      </div>
+
+      <!-- Output Card -->
+      <div id="outputCard" class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-5 sm:p-6 hidden">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-semibold flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Generated Output
+          </h2>
+          <span id="certMeta" class="text-xs text-slate-500 dark:text-slate-400"></span>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Private Key -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="text-sm font-medium text-rose-600 dark:text-rose-400">Private Key (PEM)</label>
+              <div class="flex gap-2">
+                <button data-copy="privateKey" class="copy-btn text-xs px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition">Copy</button>
+                <button data-download="privateKey" data-filename="private.pem" class="text-xs px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition">Download</button>
+              </div>
+            </div>
+            <textarea id="privateKey" readonly rows="6" class="w-full text-xs p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 resize-y outline-none"></textarea>
+          </div>
+
+          <!-- Public Key -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="text-sm font-medium text-emerald-600 dark:text-emerald-400">Public Key (PEM)</label>
+              <div class="flex gap-2">
+                <button data-copy="publicKey" class="copy-btn text-xs px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition">Copy</button>
+                <button data-download="publicKey" data-filename="public.pem" class="text-xs px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition">Download</button>
+              </div>
+            </div>
+            <textarea id="publicKey" readonly rows="4" class="w-full text-xs p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 resize-y outline-none"></textarea>
+          </div>
+
+          <!-- Certificate -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="text-sm font-medium text-brand-600 dark:text-brand-400">Self-Signed Certificate (PEM)</label>
+              <div class="flex gap-2">
+                <button data-copy="certificate" class="copy-btn text-xs px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition">Copy</button>
+                <button data-download="certificate" data-filename="certificate.pem" class="text-xs px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition">Download</button>
+              </div>
+            </div>
+            <textarea id="certificate" readonly rows="8" class="w-full text-xs p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 resize-y outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 rounded-2xl p-5 text-sm">
+        <h3 class="font-semibold mb-2 flex items-center gap-2 text-blue-800 dark:text-blue-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          How it works
+        </h3>
+        <ul class="list-disc list-inside space-y-1 text-blue-900/80 dark:text-blue-200/80">
+          <li>All cryptographic operations run locally using the Web Crypto API.</li>
+          <li>Keys are generated using RSA-OAEP with your chosen modulus length.</li>
+          <li>The certificate is a self-signed X.509 v3 structure with the provided subject details.</li>
+          <li>Nothing is transmitted to any server — your keys never leave this page.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- Bottom Ad -->
+  <div class="mt-8 w-full min-h-[90px] flex items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 text-slate-400 text-xs">
+    <!-- BOTTOM AD PLACEHOLDER -->
+    <span>Bottom Ad Space (728×90)</span>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-800 mt-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-slate-500 dark:text-slate-400">
+    <p>© <span id="year"></span> RSA Key & Certificate Generator · Built for developers · 100% client-side</p>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 right-6 px-4 py-3 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-xl text-sm font-medium opacity-0 pointer-events-none transition-opacity duration-300 z-50"></div>
+
+<script>
+(function(){
+  'use strict';
+
+  // Theme
+  const root = document.documentElement;
+  const stored = localStorage.getItem('theme');
+  if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    root.classList.add('dark');
+  }
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    root.classList.toggle('dark');
+    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Toast
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.style.opacity = '0'; }, 2200);
+  }
+
+  // Helpers
+  function bufToB64(buf){
+    const bytes = new Uint8Array(buf);
+    let bin = '';
+    for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+  function b64ToPem(b64, label){
+    const lines = b64.match(/.{1,64}/g) || [];
+    return `-----BEGIN ${label}-----\n${lines.join('\n')}\n-----END ${label}-----`;
+  }
+  function pemToDer(pem){
+    const b64 = pem.replace(/-----[^-]+-----/g, '').replace(/\s+/g, '');
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return bytes.buffer;
+  }
+
+  // DER encoding helpers for X.509
+  function derLen(len){
+    if (len < 0x80) return new Uint8Array([len]);
+    const bytes = [];
+    while (len > 0) { bytes.unshift(len & 0xff); len >>= 8; }
+    return new Uint8Array([0x80 | bytes.length, ...bytes]);
+  }
+  function derTag(tag, content){
+    const len = derLen(content.length);
+    const out = new Uint8Array(1 + len.length + content.length);
+    out[0] = tag;
+    out.set(len, 1);
+    out.set(content, 1 + len.length);
+    return out;
+  }
+  function derSeq(...items){ return derTag(0x30, concat(...items)); }
+  function derSet(...items){ return derTag(0x31, concat(...items)); }
+  function derInt(bytes){
+    // Ensure positive (prepend 0x00 if high bit set)
+    if (bytes[0] & 0x80) {
+      const nb = new Uint8Array(bytes.length + 1);
+      nb.set(bytes, 1);
+      return derTag(0x02, nb);
+    }
+    return derTag(0x02, bytes);
+  }
+  function derOID(str){
+    const parts = str.split('.').map(Number);
+    const bytes = [40 * parts[0] + parts[1]];
+    for (let i = 2; i < parts.length; i++){
+      let v = parts[i];
+      const stack = [v & 0x7f];
+      v >>= 7;
+      while (v > 0){ stack.unshift((v & 0x7f) | 0x80); v >>= 7; }
+      bytes.push(...stack);
+    }
+    return derTag(0x06, new Uint8Array(bytes));
+  }
+  function derNull(){ return new Uint8Array([0x05, 0x00]); }
+  function derBitString(bytes, unusedBits = 0){
+    const content = new Uint8Array(bytes.length + 1);
+    content[0] = unusedBits;
+    content.set(bytes, 1);
+    return derTag(0x03, content);
+  }
+  function derOctetString(bytes){ return derTag(0x04, bytes); }
+  function derUTF8(str){
+    const enc = new TextEncoder().encode(str);
+    return derTag(0x0c, enc);
+  }
+  function derPrintable(str){
+    const enc = new TextEncoder().encode(str);
+    return derTag(0x13, enc);
+  }
+  function derUTCTime(date){
+    const pad = n => String(n).padStart(2, '0');
+    const s = pad(date.getUTCFullYear() % 100) + pad(date.getUTCMonth()+1) + pad(date.getUTCDate()) +
+              pad(date.getUTCHours()) + pad(date.getUTCMinutes()) + pad(date.getUTCSeconds()) + 'Z';
+    return derTag(0x17, new TextEncoder().encode(s));
+  }
+  function derExplicit(tagNum, content){
+    return derTag(0xa0 | tagNum, content);
+  }
+  function concat(...arrs){
+    const total = arrs.reduce((s, a) => s + a.length, 0);
+    const out = new Uint8Array(total);
+    let off = 0;
+    for (const a of arrs){ out.set(a, off); off += a.length; }
+    return out;
+  }
+  function bigIntToBytes(bi){
+    let hex = bi.toString(16);
+    if (hex.length % 2) hex = '0' + hex;
+    const bytes = new Uint8Array(hex.length / 2);
+    for (let i = 0; i < bytes.length; i++) bytes[i] = parseInt(hex.substr(i*2, 2), 16);
+    return bytes;
+  }
+
+  // Extract RSA components from JWK
+  function jwkToRSAPublic(jwk){
+    const n = bigIntToBytes(BigInt('0x' + jwk.n));
+    const e = bigIntToBytes(BigInt('0x' + jwk.e));
+    return derSeq(derInt(n), derInt(e));
+  }
+
+  // Build X.509 certificate
+  async function buildCertificate(privateKey, publicKey, opts){
+    const { commonName, orgName, country, validityDays, hashAlg } = opts;
+
+    // Get public key as SPKI DER
+    const spki = await crypto.subtle.exportKey('spki', publicKey);
+    const spkiBytes = new Uint8Array(spki);
+
+    // Get RSA public key components for TBS
+    const jwk = await crypto.subtle.exportKey('jwk', publicKey);
+    const rsaPubKey = jwkToRSAPublic(jwk);
+
+    // Algorithm identifier for RSA
+    const rsaOID = derOID('1.2.840.113549.1.1.1');
+    const algId = derSeq(rsaOID, derNull());
+
+    // Signature algorithm OID
+    const hashOIDs = {
+      'SHA-256': '1.2.840.113549.1.1.11',
+      'SHA-384': '1.2.840.113549.1.1.12',
+      'SHA-512': '1.2.840.113549.1.1.13'
+    };
+    const sigAlgId = derSeq(derOID(hashOIDs[hashAlg]), derNull());
+
+    // Serial number (random 16 bytes, positive)
+    const serialBytes = crypto.getRandomValues(new Uint8Array(16));
+    serialBytes[0] &= 0x7f;
+    if (serialBytes[0] === 0) serialBytes[0] = 1;
+    const serial = derInt(serialBytes);
+
+    // Validity
+    const now = new Date();
+    const notBefore = new Date(now.getTime() - 60 * 1000);
+    const notAfter = new Date(now.getTime() + validityDays * 24 * 60 * 60 * 1000);
+    const validity = derSeq(derUTCTime(notBefore), derUTCTime(notAfter));
+
+    // Subject / Issuer (self-signed)
+    const nameParts = [];
+    if (country) nameParts.push(derSet(derSeq(derOID('2.5.4.6'), derPrintable(country.toUpperCase()))));
+    if (orgName) nameParts.push(derSet(derSeq(derOID('2.5.4.10'), derUTF8(orgName))));
+    if (commonName) nameParts.push(derSet(derSeq(derOID('2.5.4.3'), derUTF8(commonName))));
+    const name = derSeq(...nameParts);
+
+    // Extensions
+    // Basic Constraints: CA:FALSE
+    const basicConstraints = derSeq(
+      derOID('2.5.29.19'),
+      derOctetString(derSeq()) // empty sequence = not CA
+    );
+    // Key Usage: digitalSignature, keyEncipherment
+    const keyUsageBits = new Uint8Array([0x05]); // 00000101 -> digitalSignature + keyEncipherment
+    const keyUsage = derSeq(
+      derOID('2.5.29.15'),
+      derOctetString(derBitString(keyUsageBits, 5))
+    );
+    // Subject Alternative Name (DNS)
+    const san = derSeq(
+      derOID('2.5.29.17'),
+      derOctetString(derSeq(derTag(0x82, new TextEncoder().encode(commonName || 'localhost'))))
+    );
+    const extensions = derSeq(basicConstraints, keyUsage, san);
+    const extensionsWrapper = derExplicit(3, extensions);
+
+    // TBS Certificate
+    const tbs = derSeq(
+      derExplicit(0, derInt(new Uint8Array([2]))), // version v3
+      serial,
+      sigAlgId,
+      name, // issuer
+      validity,
+      name, // subject
+      rsaPubKey,
+      extensionsWrapper
+    );
+
+    // Sign TBS with private key
+    const signature = await crypto.subtle.sign(
+      { name: 'RSASSA-PKCS1-v1_5' },
+      privateKey,
+      tbs
+    );
+    const sigBytes = new Uint8Array(signature);
+
+    // Full certificate
+    const cert = derSeq(tbs, sigAlgId, derBitString(sigBytes, 0));
+    return b64ToPem(bufToB64(cert), 'CERTIFICATE');
+  }
+
+  // Generate
+  const generateBtn = document.getElementById('generateBtn');
+  const generateLabel = document.getElementById('generateLabel');
+  const downloadAllBtn = document.getElementById('downloadAllBtn');
+  const outputCard = document.getElementById('outputCard');
+  const statusMsg = document.getElementById('statusMsg');
+  const certMeta = document.getElementById('certMeta');
+
+  let currentOutput = null;
+
+  function setStatus(msg, type){
+    statusMsg.classList.remove('hidden');
+    statusMsg.className = 'mt-4 text-sm ' + (type === 'error' ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400');
+    statusMsg.textContent = msg;
+  }
+
+  generateBtn.addEventListener('click', async () => {
+    const keySize = parseInt(document.getElementById('keySize').value, 10);
+    const hashAlg = document.getElementById('hashAlg').value;
+    const commonName = document.getElementById('commonName').value.trim() || 'localhost';
+    const orgName = document.getElementById('orgName').value.trim();
+    const country = document.getElementById('country').value.trim();
+    const validityDays = Math.max(1, parseInt(document.getElementById('validity').value, 10) || 365);
+
+    generateBtn.disabled = true;
+    downloadAllBtn.disabled = true;
+    generateLabel.textContent = 'Generating...';
+    statusMsg.classList.add('hidden');
+
+    try {
+      // Generate RSA key pair for signing (RSASSA-PKCS1-v1_5)
+      const keyPair = await crypto.subtle.generateKey(
+        {
+          name: 'RSASSA-PKCS1-v1_5',
+          modulusLength: keySize,
+          publicExponent: new Uint8Array([1, 0, 1]),
+          hash: hashAlg
+        },
+        true,
+        ['sign', 'verify']
+      );
+
+      // Export keys
+      const pkcs8 = await crypto.subtle.exportKey('pkcs8', keyPair.privateKey);
+      const spki = await crypto.subtle.exportKey('spki', keyPair.publicKey);
+
+      const privatePem = b64ToPem(bufToB64(pkcs8), 'PRIVATE KEY');
+      const publicPem = b64ToPem(bufToB64(spki), 'PUBLIC KEY');
+
+      // Build certificate
+      const certPem = await buildCertificate(keyPair.privateKey, keyPair.publicKey, {
+        commonName, orgName, country, validityDays, hashAlg
+      });
+
+      currentOutput = {
+        privateKey: privatePem,
+        publicKey: publicPem,
+        certificate: certPem
+      };
+
+      document.getElementById('privateKey').value = privatePem;
+      document.getElementById('publicKey').value = publicPem;
+      document.getElementById('certificate').value = certPem;
+
+      outputCard.classList.remove('hidden');
+      outputCard.classList.add('fade-in');
+      downloadAllBtn.disabled = false;
+
+      certMeta.textContent = `RSA-${keySize} · ${hashAlg} · ${validityDays}d`;
+      setStatus('✓ Keys and certificate generated successfully.', 'success');
+      showToast('Generation complete');
+    } catch (err) {
+      console.error(err);
+      setStatus('Error: ' + (err.message || 'Generation failed'), 'error');
+      showToast('Generation failed');
+    } finally {
+      generateBtn.disabled = false;
+      generateLabel.textContent = 'Generate Keys & Certificate';
+    }
+  });
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const target = document.getElementById(btn.dataset.copy);
+      if (!target || !target.value) return;
+      try {
+        await navigator.clipboard.writeText(target.value);
+        showToast('Cop

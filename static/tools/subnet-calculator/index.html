@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Subnet Mask & CIDR IP Calculator — Free Online IPv4 Tool</title>
+<meta name="description" content="Free online Subnet Mask & CIDR IP Calculator for developers. Instantly compute network address, broadcast, usable host range, subnet mask, wildcard mask, and total hosts from any IPv4 address and CIDR prefix." />
+<meta name="keywords" content="subnet calculator, CIDR calculator, IP calculator, IPv4 subnet mask, network address, broadcast address, wildcard mask, developer tools" />
+<meta name="author" content="DevTools" />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="Subnet Mask & CIDR IP Calculator" />
+<meta property="og:description" content="Instantly compute network, broadcast, host range, and subnet mask from any IPv4/CIDR." />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="https://example.com/subnet-calculator" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            50: '#eef6ff', 100: '#d9ecff', 200: '#bcdcff', 300: '#8ec6ff',
+            400: '#59a6ff', 500: '#3385ff', 600: '#1c66f5', 700: '#1550e1',
+            800: '#1842b6', 900: '#1a3b8f'
+          }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .fade-in { animation: fadeIn .35s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: translateY(0);} }
+  input[type=range] { accent-color: #3385ff; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold shadow-lg shadow-brand-500/30">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="6" rx="2"/><rect x="2" y="15" width="20" height="6" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg>
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold tracking-tight">Subnet &amp; CIDR Calculator</h1>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 -mt-0.5">IPv4 network toolkit</p>
+        </div>
+      </div>
+      <button id="themeToggle" aria-label="Toggle theme" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Top Ad -->
+<div class="w-full bg-slate-100 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex justify-center">
+    <!-- TOP AD PLACEHOLDER -->
+    <div class="w-full max-w-3xl h-20 sm:h-24 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center text-xs text-slate-400 dark:text-slate-500">
+      Advertisement (Top Banner)
+    </div>
+  </div>
+</div>
+
+<!-- Main -->
+<main class="flex-1">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- Calculator Column -->
+      <section class="lg:col-span-2 space-y-6">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-5 sm:p-7">
+          <h2 class="text-lg font-semibold mb-1">Enter IPv4 Address</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400 mb-5">Type an IP and choose a CIDR prefix (0–32) to compute subnet details.</p>
+
+          <form id="calcForm" class="space-y-5" autocomplete="off">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="sm:col-span-2">
+                <label for="ipInput" class="block text-sm font-medium mb-1.5">IP Address</label>
+                <input id="ipInput" type="text" inputmode="decimal" placeholder="192.168.1.10"
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent font-mono text-base" />
+              </div>
+              <div>
+                <label for="cidrInput" class="block text-sm font-medium mb-1.5">CIDR Prefix</label>
+                <input id="cidrInput" type="number" min="0" max="32" value="24"
+                  class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent font-mono text-base" />
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="cidrRange" class="text-sm font-medium">Adjust Prefix</label>
+                <span id="cidrLabel" class="text-xs font-mono px-2 py-0.5 rounded-md bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300">/24</span>
+              </div>
+              <input id="cidrRange" type="range" min="0" max="32" value="24" class="w-full h-2 rounded-lg cursor-pointer" />
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              <button type="submit" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-lg shadow-brand-600/20 transition">Calculate</button>
+              <button type="button" id="resetBtn" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-semibold transition">Reset</button>
+              <button type="button" id="copyBtn" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 font-semibold transition">Copy Results</button>
+            </div>
+            <p id="errorMsg" class="hidden text-sm text-red-600 dark:text-red-400"></p>
+          </form>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="hidden fade-in bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-5 sm:p-7">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-semibold">Results</h2>
+            <span id="classBadge" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300">Class C</span>
+          </div>
+          <div id="resultGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+        </div>
+
+        <!-- Binary breakdown -->
+        <div id="binaryCard" class="hidden fade-in bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-5 sm:p-7">
+          <h2 class="text-lg font-semibold mb-4">Binary Breakdown</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs sm:text-sm font-mono">
+              <thead>
+                <tr class="text-left text-slate-500 dark:text-slate-400">
+                  <th class="py-2 pr-3 font-medium">Field</th>
+                  <th class="py-2 font-medium">Binary (network / host)</th>
+                </tr>
+              </thead>
+              <tbody id="binaryBody" class="divide-y divide-slate-100 dark:divide-slate-800"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6">
+        <!-- Sidebar Ad -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-3">
+          <!-- SIDEBAR AD PLACEHOLDER -->
+          <div class="w-full h-64 sm:h-80 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center text-xs text-slate-400 dark:text-slate-500">
+            Advertisement (Sidebar)
+          </div>
+        </div>
+
+        <!-- Quick reference -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+          <h3 class="font-semibold mb-3">Common CIDR Prefixes</h3>
+          <ul class="text-sm space-y-1.5">
+            <li class="flex justify-between"><span class="font-mono">/8</span><span class="text-slate-500 dark:text-slate-400">16,777,214 hosts</span></li>
+            <li class="flex justify-between"><span class="font-mono">/16</span><span class="text-slate-500 dark:text-slate-400">65,534 hosts</span></li>
+            <li class="flex justify-between"><span class="font-mono">/24</span><span class="text-slate-500 dark:text-slate-400">254 hosts</span></li>
+            <li class="flex justify-between"><span class="font-mono">/25</span><span class="text-slate-500 dark:text-slate-400">126 hosts</span></li>
+            <li class="flex justify-between"><span class="font-mono">/30</span><span class="text-slate-500 dark:text-slate-400">2 hosts</span></li>
+            <li class="flex justify-between"><span class="font-mono">/32</span><span class="text-slate-500 dark:text-slate-400">1 host</span></li>
+          </ul>
+        </div>
+
+        <!-- About -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+          <h3 class="font-semibold mb-2">About this tool</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            A subnet mask and CIDR calculator helps developers and network engineers quickly derive the network address, broadcast address, usable host range, wildcard mask, and total hosts from any IPv4 address and prefix length.
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Bottom Ad -->
+    <div class="mt-8">
+      <!-- BOTTOM AD PLACEHOLDER -->
+      <div class="w-full h-24 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center text-xs text-slate-400 dark:text-slate-500">
+        Advertisement (Bottom Banner)
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-slate-500 dark:text-slate-400">
+    <p>&copy; <span id="year"></span> Subnet &amp; CIDR Calculator. All rights reserved.</p>
+    <p>Built for developers &amp; network engineers.</p>
+  </div>
+</footer>
+
+<!-- Popup / Script Ad -->
+<!-- POPUP / SCRIPT AD PLACEHOLDER -->
+<script>
+  // Placeholder for popup/script ad integration
+  // e.g. (function(){ /* ad network script */ })();
+</script>
+
+<!-- App Logic -->
+<script>
+(function () {
+  'use strict';
+
+  const $ = (id) => document.getElementById(id);
+  const ipInput = $('ipInput');
+  const cidrInput = $('cidrInput');
+  const cidrRange = $('cidrRange');
+  const cidrLabel = $('cidrLabel');
+  const form = $('calcForm');
+  const errorMsg = $('errorMsg');
+  const results = $('results');
+  const resultGrid = $('resultGrid');
+  const binaryCard = $('binaryCard');
+  const binaryBody = $('binaryBody');
+  const classBadge = $('classBadge');
+  const resetBtn = $('resetBtn');
+  const copyBtn = $('copyBtn');
+
+  // Theme
+  const themeToggle = $('themeToggle');
+  const iconSun = $('iconSun');
+  const iconMoon = $('iconMoon');
+  function applyTheme(dark) {
+    document.documentElement.classList.toggle('dark', dark);
+    iconSun.classList.toggle('hidden', !dark);
+    iconMoon.classList.toggle('hidden', dark);
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+  }
+  (function initTheme() {
+    let stored = null;
+    try { stored = localStorage.getItem('theme'); } catch (e) {}
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(stored ? stored === 'dark' : prefersDark);
+  })();
+  themeToggle.addEventListener('click', () => {
+    applyTheme(!document.documentElement.classList.contains('dark'));
+  });
+
+  $('year').textContent = new Date().getFullYear();
+
+  // Helpers
+  function ipToInt(ip) {
+    const parts = ip.split('.');
+    if (parts.length !== 4) return null;
+    let n = 0;
+    for (const p of parts) {
+      if (!/^\d{1,3}$/.test(p)) return null;
+      const v = parseInt(p, 10);
+      if (v < 0 || v > 255) return null;
+      n = (n * 256) + v;
+    }
+    return n >>> 0;
+  }
+  function intToIp(n) {
+    n = n >>> 0;
+    return [(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255].join('.');
+  }
+  function intToBinary(n) {
+    n = n >>> 0;
+    return [(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255]
+      .map(b => b.toString(2).padStart(8, '0')).join('.');
+  }
+  function maskFromPrefix(prefix) {
+    if (prefix === 0) return 0;
+    return (0xFFFFFFFF << (32 - prefix)) >>> 0;
+  }
+  function ipClass(firstOctet) {
+    if (firstOctet < 128) return 'A';
+    if (firstOctet < 192) return 'B';
+    if (firstOctet < 224) return 'C';
+    if (firstOctet < 240) return 'D (Multicast)';
+    return 'E (Reserved)';
+  }
+  function isPrivate(ipInt) {
+    const a = (ipInt >>> 24) & 255;
+    const b = (ipInt >>> 16) & 255;
+    if (a === 10) return true;
+    if (a === 172 && b >= 16 && b <= 31) return true;
+    if (a === 192 && b === 168) return true;
+    if (a === 127) return true;
+    if (a === 169 && b === 254) return true;
+    return false;
+  }
+
+  function calculate() {
+    const ipStr = ipInput.value.trim();
+    let prefix = parseInt(cidrInput.value, 10);
+
+    if (!/^\d{1,3}(\.\d{1,3}){3}$/.test(ipStr)) {
+      return showError('Please enter a valid IPv4 address (e.g., 192.168.1.10).');
+    }
+    const ipInt = ipToInt(ipStr);
+    if (ipInt === null) {
+      return showError('Invalid IPv4 address. Each octet must be 0–255.');
+    }
+    if (isNaN(prefix) || prefix < 0 || prefix > 32) {
+      return showError('CIDR prefix must be between 0 and 32.');
+    }
+
+    errorMsg.classList.add('hidden');
+
+    const mask = maskFromPrefix(prefix);
+    const wildcard = (~mask) >>> 0;
+    const network = (ipInt & mask) >>> 0;
+    const broadcast = (network | wildcard) >>> 0;
+
+    let firstHost, lastHost, usableHosts;
+    if (prefix === 32) {
+      firstHost = network;
+      lastHost = network;
+      usableHosts = 1;
+    } else if (prefix === 31) {
+      firstHost = network;
+      lastHost = broadcast;
+      usableHosts = 2;
+    } else {
+      firstHost = (network + 1) >>> 0;
+      lastHost = (broadcast - 1) >>> 0;
+      usableHosts = Math.max(0, (broadcast - network - 1));
+    }
+
+    const totalAddresses = Math.pow(2, 32 - prefix);
+    const firstOctet = (ipInt >>> 24) & 255;
+
+    // Render
+    const rows = [
+      ['IP Address', ipStr],
+      ['CIDR Notation', ipStr + '/' + prefix],
+      ['Subnet Mask', intToIp(mask)],
+      ['Wildcard Mask', intToIp(wildcard)],
+      ['Network Address', intToIp(network)],
+      ['Broadcast Address', intToIp(broadcast)],
+      ['Usable Host Range', intToIp(firstHost) + ' – ' + intToIp(lastHost)],
+      ['Usable Hosts', usableHosts.toLocaleString()],
+      ['Total Addresses', totalAddresses.toLocaleString()],
+      ['IP Class', 'Class ' + ipClass(firstOctet)],
+      ['Type', isPrivate(ipInt) ? 'Private' : 'Public'],
+      ['Prefix Length', '/' + prefix]
+    ];
+
+    resultGrid.innerHTML = rows.map(([k, v]) => `
+      <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-3 bg-slate-50/60 dark:bg-slate-950/40">
+        <div class="text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-0.5">${k}</div>
+        <div class="font-mono text-sm break-all">${v}</div>
+      </div>
+    `).join('');
+
+    classBadge.textContent = 'Class ' + ipClass(firstOctet);
+
+    // Binary breakdown
+    const binRows = [
+      ['IP', intToBinary(ipInt)],
+      ['Mask', intToBinary(mask)],
+      ['Network', intToBinary(network)],
+      ['Broadcast', intToBinary(broadcast)]
+    ];
+    binaryBody.innerHTML = binRows.map(([k, v]) => `
+      <tr>
+        <td class="py-2 pr-3 text-slate-500 dark:text-slate-400">${k}</td>
+        <td class="py-2 break-all">${v}</td>
+      </tr>
+    `).join('');
+
+    results.classList.remove('hidden');
+    binaryCard.classList.remove('hidden');
+    results.classList.add('fade-in');
+    binaryCard.classList.add('fade-in');
+  }
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.remove('hidden');
+    results.classList.add('hidden');
+    binaryCard.classList.add('hidden');
+  }
+
+  // Sync prefix inputs
+  cidrRange.addEventListener('input', () => {
+    cidrInput.value = cidrRange.value;
+    cidrLabel.textContent = '/' + cidrRange.value;
+  });
+  cidrInput.addEventListener('input', () => {
+    let v = parseInt(cidrInput.value, 10);
+    if (!isNaN(v) && v >= 0 && v <= 32) {
+      cidrRange.value = v;
+      cidrLabel.textContent = '/' + v;
+    }
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    calculate();
+  });
+
+  resetBtn.addEventListener('click', () => {
+    ipInput.value = '';
+    cidrInput.value = 24;
+    cidrRange.value = 24;
+    cidrLabel.textContent = '/24';
+    errorMsg.classList.add('hidden');
+    results.classList.add('hidden');
+    binaryCard.classList.add('hidden');
+    ipInput.focus();
+  });
+
+  copyBtn.addEventListener('click', async () => {
+    if (results.classList.contains('hidden')) return;
+    const text = Array.from(resultGrid.querySelectorAll('div > div'))
+      .map(el => el.textContent.trim())
+      .join('\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      const original = copyBtn.textContent;
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => { copyBtn.textContent = original; }, 1200);
+    } catch (e) {
+      alert('Copy failed. Please copy manually.');
+    }
+  });
+
+  // Prefill demo
+  ipInput.value = '192.168.1.10';
+  calculate();
+})();
+</script>
+</body>
+</html>
