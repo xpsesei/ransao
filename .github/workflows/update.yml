@@ -22,12 +22,20 @@ jobs:
       - name: Run Full Sync Script
         run: python update_data.py
 
-      - name: Create or Update Release via GitHub CLI
+      - name: Debug and Upload Release via GitHub CLI
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 1. 尝试创建 Release（如果标签和 Release 已经存在，则忽略错误继续往下走）
-          gh release create data-release --title "全量影视数据库 (自动更新)" --notes "由 GitHub Actions 自动全量采集的影视数据，供前端静态网页实时调用。" || true
-
-          # 2. 直接上传 data 目录下的所有 json 文件，并使用 --clobber 自动覆盖旧文件
+          set -x # 开启调试模式，打印执行过程，精准定位报错行
+          
+          # 1. 检查 data 目录下的文件是否真的生成了
+          ls -la data/
+          
+          # 2. 检查 gh 命令是否可用及登录状态
+          gh auth status
+          
+          # 3. 检查 Release 是否存在，不存在则创建
+          gh release view data-release || gh release create data-release --title "全量影视数据库 (自动更新)" --notes "由 GitHub Actions 自动全量采集的影视数据"
+          
+          # 4. 上传文件
           gh release upload data-release data/*.json --clobber
