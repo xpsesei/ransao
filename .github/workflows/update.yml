@@ -2,33 +2,32 @@ name: Full Sync & Release
 
 on:
   schedule:
-    - cron: '10 16 * * *'
-  workflow_dispatch:
+    - cron: '10 16 * * *' # 北京时间每天凌晨 00:10 自动更新
+  workflow_dispatch: # 支持手动触发
 
 jobs:
   sync-and-release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # 赋予写入权限
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
       - name: Run Full Sync Script
         run: python update_data.py
 
-      - name: Upload JSONs to GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: data-release
-          name: "全量影视数据库 (自动更新)"
-          body: "由 GitHub Actions 自动全量采集的影视数据，供前端静态网页实时调用。"
-          files: |
-            data/*.json
+      - name: Upload JSONs to GitHub Release via GitHub CLI
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 检查 release 是否存在，如果不存在则自动创建
+          gh release view data-release || gh release create data-release --title "全量影视数据库 (自动更新)" --notes "由 GitHub Actions 自动全量采集的影视数据，供前端静态网页实时调用。"
+          
+          # 上传 data 目录下的所有 json 文件，并使用 --clobber 自动覆盖同名旧文件，彻底解决 422 报错
+          gh release upload data-release data/*.json --clobber
