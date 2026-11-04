@@ -22,10 +22,9 @@
         </div>
     </header>
 
-    <!-- 📢 【广告位 1】顶部横幅广告（可在下方替换你的广告代码或图片） -->
+    <!-- 📢 【广告位 1】顶部横幅广告 -->
     <div class="max-w-7xl mx-auto px-4 mt-4 w-full">
         <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-center text-xs text-slate-400">
-            <!-- 替换成你的广告代码或 banner 图片 -->
             <a href="#" target="_blank" class="hover:text-blue-400">🔥 赞助商广告：点击这里支持本站发展，解锁更多优质资源！</a>
         </div>
     </div>
@@ -67,7 +66,7 @@
 
         <!-- 无数据提示 -->
         <div x-show="filteredVideos.length === 0" class="text-center py-20 text-slate-500">
-            暂无相关影视内容，请稍候或切换分类。
+            暂无相关影视内容，请稍候或检查后台采集进度。
         </div>
     </main>
 
@@ -85,7 +84,7 @@
                 <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen></iframe>
             </div>
 
-            <!-- 📢 【广告位 2】播放器下方广告（适合放文字链或图片广告） -->
+            <!-- 📢 【广告位 2】播放器下方广告 -->
             <div class="bg-slate-950 px-6 py-2 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
                 <span>💡 播放提示：如果当前线路无法播放，请尝试切换其他集数。</span>
                 <a href="#" target="_blank" class="text-blue-400 hover:underline">【广告】特惠影视会员或商务合作</a>
@@ -126,19 +125,22 @@
                 categories: [],
                 allVideos: [],
                 filteredVideos: [],
-                currentCategory: 'All',
+                currentCategory: '全部',
                 searchKeyword: '',
                 isModalOpen: false,
                 currentVod: null,
                 currentPlayUrl: '',
                 selectedEpUrl: '',
+                
+                // 定义 Release 数据的远程根地址
+                releaseBaseUrl: 'https://github.com/xpsesei/ransao/releases/download/data-release/',
 
                 init() {
-                    // 加载分类导航
-                    fetch('data/categories.json')
+                    // 加载远程 Releases 里的分类索引
+                    fetch(this.releaseBaseUrl + 'categories.json')
                         .then(res => res.json())
                         .then(data => { this.categories = data; })
-                        .catch(err => console.log('Categories not found yet, waiting for first sync.'));
+                        .catch(err => console.log('Waiting for Action release sync...'));
 
                     // 默认加载全部视频
                     this.switchCategory('all.json', '全部');
@@ -146,7 +148,7 @@
 
                 switchCategory(file, name) {
                     this.currentCategory = name;
-                    fetch(`data/${file}`)
+                    fetch(this.releaseBaseUrl + file)
                         .then(res => res.json())
                         .then(data => {
                             this.allVideos = data;
@@ -183,13 +185,13 @@
 
                 playEpisode(url) {
                     this.selectedEpUrl = url;
-                    // 拼接你指定的 M3U8 专属解析接口
+                    // 拼接你的专属 M3U8 解析接口
                     this.currentPlayUrl = `https://jx.xllmcms.com/dplayer/?url=${encodeURIComponent(url)}`;
                 },
 
                 closeModal() {
                     this.isModalOpen = false;
-                    this.currentPlayUrl = ''; // 关闭时清空播放地址，停止播放
+                    this.currentPlayUrl = ''; 
                 }
             }
         }
