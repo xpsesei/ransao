@@ -26,8 +26,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 检查 release 是否存在，如果不存在则自动创建
-          gh release view data-release || gh release create data-release --title "全量影视数据库 (自动更新)" --notes "由 GitHub Actions 自动全量采集的影视数据，供前端静态网页实时调用。"
-          
-          # 上传 data 目录下的所有 json 文件，并使用 --clobber 自动覆盖同名旧文件，彻底解决 422 报错
-          gh release upload data-release data/*.json --clobber
+          # 核心优化：先尝试直接上传并覆盖文件；如果 Release 尚不存在，则自动创建并附带文件
+          gh release upload data-release data/*.json --clobber || gh release create data-release data/*.json --title "全量影视数据库 (自动更新)" --notes "由 GitHub Actions 自动全量采集的影视数据，供前端静态网页实时调用。"
