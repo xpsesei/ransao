@@ -1,4 +1,5 @@
 import concurrent.futures
+import hashlib
 import json
 import os
 import urllib.request
@@ -124,28 +125,23 @@ def main():
       categories[category] = []
     categories[category].append(item)
 
-  # 写入文件
+  # 写入总库
   with open(all_json_path, "w", encoding="utf-8") as f:
     json.dump(processed_videos, f, ensure_ascii=False, indent=2)
 
   cat_index = []
-  for c_name in category_names:
+  all_cats = list(category_names)
+  for c_name in categories.keys():
+    if c_name not in all_cats:
+      all_cats.append(c_name)
+
+  for c_name in all_cats:
     v_list = categories.get(c_name, [])
     if v_list:
-      safe_name = (
-          c_name.replace("/", "_").replace("\\", "_").replace(" ", "_").lower()
-      )
-      file_name = f"{safe_name}.json"
-      with open(os.path.join("data", file_name), "w", encoding="utf-8") as f:
-        json.dump(v_list, f, ensure_ascii=False, indent=2)
-      cat_index.append({"name": c_name, "count": len(v_list), "file": file_name})
+      # 🚀 核心优化：使用 MD5 哈希生成 100% 安全的纯英文字母文件名，彻底避免中文文件名上传崩溃
+      safe_hash = hashlib.md5(c_name.encode("utf-8")).hexdigest()[:10]
+      file_name = f"cat_{safe_hash}.json"
 
-  for c_name, v_list in categories.items():
-    if c_name not in category_names and v_list:
-      safe_name = (
-          c_name.replace("/", "_").replace("\\", "_").replace(" ", "_").lower()
-      )
-      file_name = f"{safe_name}.json"
       with open(os.path.join("data", file_name), "w", encoding="utf-8") as f:
         json.dump(v_list, f, ensure_ascii=False, indent=2)
       cat_index.append({"name": c_name, "count": len(v_list), "file": file_name})
