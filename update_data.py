@@ -5,12 +5,7 @@ import urllib.request
 
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
-
-# 🚀 核心优化：
-# 1. 开启多线程并发下载，速度提升 10 倍以上。
-# 2. 为了防止 GitHub 100MB 文件大小限制，建议首次采集限制最大 300-500 页（足够覆盖几十万热门视频）。
-MAX_WORKERS = 8  # 同时下载的线程数
-MAX_PAGES_LIMIT = 500  # 最大采集页数限制（可按需改大或改小）
+MAX_WORKERS = 10  # 10线程并发，全速采集全量资源
 
 
 def fetch_page(page):
@@ -46,9 +41,7 @@ def main():
   category_map = {str(c["type_id"]): c["type_name"] for c in official_classes}
   category_names = [c["type_name"] for c in official_classes]
 
-  # 先请求第 1 页获取总页数
   print("2. Checking total pages from API...")
-  first_res = None
   try:
     req = urllib.request.Request(
         f"{BASE_URL}&pg=1", headers={"User-Agent": "Mozilla/5.0"}
@@ -59,24 +52,14 @@ def main():
     print(f"Failed to fetch page 1: {e}")
     return
 
-  total_api_pages = int(first_res.get("pagecount", 1))
-  # 取 API 总页数与我们安全上限的较小值，防止文件撑爆 GitHub
-  target_pages = min(total_api_pages, MAX_PAGES_LIMIT)
-  print(
-      f"API total pages: {total_api_pages}. Safety cap configured to:"
-      f" {target_pages} pages."
-  )
+  total_pages = int(first_res.get("pagecount", 1))
+  print(f"🔥 Resource site total pages: {total_pages}. Starting full sync...")
 
   all_videos = []
   if "list" in first_res:
     all_videos.extend(first_res["list"])
 
-  # 使用线程池并发抓取第 2 页到目标页
-  pages_to_fetch = list(range(2, target_pages + 1))
-  print(
-      f"3. Starting multi-threaded download for {len(pages_to_fetch)} pages"
-      f" using {MAX_WORKERS} workers..."
-  )
+  pages_to_fetch = list(range(2, total_pages + 1))
 
   with concurrent.futures.ThreadPoolExecutor(
       max_workers=MAX_WORKERS
@@ -88,7 +71,6 @@ def main():
 
   print(f"Download finished! Total raw items collected: {len(all_videos)}")
 
-  # 统一格式化并按分类归档
   processed_videos = []
   categories = {c_name: [] for c_name in category_names}
   categories["未分类"] = []
@@ -142,11 +124,10 @@ def main():
       categories[category] = []
     categories[category].append(item)
 
-  # 写入总库
+  # 写入文件
   with open(all_json_path, "w", encoding="utf-8") as f:
     json.dump(processed_videos, f, ensure_ascii=False, indent=2)
 
-  # 生成分类 JSON 和索引
   cat_index = []
   for c_name in category_names:
     v_list = categories.get(c_name, [])
@@ -173,7 +154,7 @@ def main():
     json.dump(cat_index, f, ensure_ascii=False, indent=2)
 
   print(
-      f"✅ Sync successfully finished! Total processed videos:"
+      f"✅ Full sync processing complete! Total processed videos:"
       f" {len(processed_videos)}"
   )
 
