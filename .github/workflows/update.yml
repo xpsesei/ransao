@@ -1,13 +1,15 @@
-name: Video Sync Engine
+name: Full Sync & Release
 
 on:
   schedule:
-    - cron: '10 16 * * *' # 北京时间每天凌晨 00:10 自动运行
-  workflow_dispatch: # 支持手动点击按钮触发
+    - cron: '10 16 * * *' # 北京时间每天凌晨 00:10 自动全量更新
+  workflow_dispatch:
 
 jobs:
-  sync:
+  sync-and-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # 必须赋予写入权限以创建 Release
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -17,12 +19,17 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Run Python Sync Script
+      - name: Run Full Sync Script
         run: python update_data.py
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update: sync video database" && git push)
+      - name: Upload JSONs to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: data-release
+          name: "全量影视数据库 (自动更新)"
+          body: "由 GitHub Actions 自动全量采集的影视数据，供前端静态网页实时调用。"
+          files: |
+            data/*.json
+          clobber: true # 允许每次覆盖旧的数据文件
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
