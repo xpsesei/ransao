@@ -2,26 +2,40 @@ import concurrent.futures
 import hashlib
 import json
 import os
+import time
 import urllib.request
+from urllib.error import HTTPError, URLError
 
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
-MAX_WORKERS = 10  # 10线程并发，全速采集全量资源
+MAX_WORKERS = 5  # 降至 5 线程，减轻对 Cloudflare 源站的压力，防止触发 522 超时
 
 
-def fetch_page(page):
+def fetch_page(page, retries=3):
   url = f"{BASE_URL}&pg={page}"
-  req = urllib.request.Request(
-      url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-  )
-  try:
-    with urllib.request.urlopen(req, timeout=30) as response:
-      data = json.loads(response.read().decode("utf-8"))
-      print(f"-> Successfully downloaded page {page}")
-      return data.get("list", [])
-  except Exception as e:
-    print(f"❌ Error fetching page {page}: {e}")
-    return []
+  headers = {
+      "User-Agent": (
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,"
+          " like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      )
+  }
+
+  for attempt in range(retries):
+    try:
+      req = urllib.request.Request(url, headers=headers)
+      with urllib.request.urlopen(req, timeout=40) as response:
+        data = json.loads(response.read().decode("utf-8"))
+        print(f"-> 成功下载第 {page} 页")
+        return data.get("list", [])
+    except Exception as e:
+      if attempt < retries - 1:
+        # 遇到 522 或超时，等待 2~4 秒后自动重试
+        sleep_time = (attempt + 1) * 2
+        time.sleep(sleep_time)
+        continue
+      else:
+        print(f"❌ 第 {page} 页连续重试失败 (522/超时): {e}")
+        return []
 
 
 def main():
@@ -33,7 +47,7 @@ def main():
     req = urllib.request.Request(
         LIST_URL, headers={"User-Agent": "Mozilla/5.0"}
     )
-    with urllib.request.urlopen(req, timeout=20) as resp:
+    with urllib.request.urlopen(req, timeout=30) as resp:
       list_data = json.loads(resp.read().decode("utf-8"))
       official_classes = list_data.get("class", [])
   except Exception:
@@ -47,7 +61,7 @@ def main():
     req = urllib.request.Request(
         f"{BASE_URL}&pg=1", headers={"User-Agent": "Mozilla/5.0"}
     )
-    with urllib.request.urlopen(req, timeout=20) as resp:
+    with urllib.request.urlopen(req, timeout=30) as resp:
       first_res = json.loads(resp.read().decode("utf-8"))
   except Exception as e:
     print(f"Failed to fetch page 1: {e}")
@@ -125,7 +139,6 @@ def main():
       categories[category] = []
     categories[category].append(item)
 
-  # 写入总库
   with open(all_json_path, "w", encoding="utf-8") as f:
     json.dump(processed_videos, f, ensure_ascii=False, indent=2)
 
@@ -138,7 +151,6 @@ def main():
   for c_name in all_cats:
     v_list = categories.get(c_name, [])
     if v_list:
-      # 🚀 核心优化：使用 MD5 哈希生成 100% 安全的纯英文字母文件名，彻底避免中文文件名上传崩溃
       safe_hash = hashlib.md5(c_name.encode("utf-8")).hexdigest()[:10]
       file_name = f"cat_{safe_hash}.json"
 
