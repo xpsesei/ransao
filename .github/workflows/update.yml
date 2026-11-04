@@ -2,14 +2,14 @@ name: Full Sync & Release
 
 on:
   schedule:
-    - cron: '10 16 * * *' # 北京时间每天凌晨 00:10 自动全量更新
+    - cron: '10 16 * * *'
   workflow_dispatch:
 
 jobs:
   sync-and-release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 必须赋予写入权限以创建 Release
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -30,6 +30,6 @@ jobs:
           body: "由 GitHub Actions 自动全量采集的影视数据，供前端静态网页实时调用。"
           files: |
             data/*.json
-          clobber: true # 允许每次覆盖旧的数据文件
+          clobber: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
