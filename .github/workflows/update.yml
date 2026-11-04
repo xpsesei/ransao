@@ -1,15 +1,15 @@
-name: Full Sync & Release
+name: Full Sync & Commit
 
 on:
   schedule:
-    - cron: '10 16 * * *' # 北京时间每天凌晨 00:10 自动更新
-  workflow_dispatch: # 支持手动触发
+    - cron: '10 16 * * *'
+  workflow_dispatch:
 
 jobs:
-  sync-and-release:
+  sync-and-commit:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 赋予写入权限
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,12 +22,12 @@ jobs:
       - name: Run Full Sync Script
         run: python update_data.py
 
-      - name: Upload Data to GitHub Release via GitHub CLI
+      - name: Commit and Push JSON data to Repo
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 1. 如果 Release 不存在则自动创建
-          gh release create data-release --title "全量影视数据库 (自动更新)" --notes "由 GitHub Actions 自动全量采集的影视数据" || true
-
-          # 2. 上传 categories.json 和所有哈希分类文件（使用 --clobber 自动覆盖旧文件）
-          gh release upload data-release data/categories.json data/cat_*.json --clobber
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data/
+          git commit -m "Auto-update video JSON data [skip ci]" || echo "No changes to commit"
+          git push
