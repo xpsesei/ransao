@@ -22,13 +22,12 @@ jobs:
       - name: Run Full Sync Script
         run: python update_data.py
 
-      - name: Recreate Release and Upload JSONs via GitHub CLI
+      - name: Create or Update Release via GitHub CLI
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 1. 强制清理旧的 Release 和标签（如果不存在则忽略错误继续）
-          gh release delete data-release --yes --cleanup-tag || true
-          git push origin :refs/tags/data-release || true
-          
-          # 2. 创建全新的 Release 并上传 data 目录下的所有 json 文件
-          gh release create data-release data/*.json --title "全量影视数据库 (自动更新)" --notes "由 GitHub Actions 自动全量采集的影视数据，供前端静态网页实时调用。"
+          # 1. 尝试创建 Release（如果标签和 Release 已经存在，则忽略错误继续往下走）
+          gh release create data-release --title "全量影视数据库 (自动更新)" --notes "由 GitHub Actions 自动全量采集的影视数据，供前端静态网页实时调用。" || true
+
+          # 2. 直接上传 data 目录下的所有 json 文件，并使用 --clobber 自动覆盖旧文件
+          gh release upload data-release data/*.json --clobber
