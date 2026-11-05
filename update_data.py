@@ -135,8 +135,17 @@ def main():
       categories[category] = []
     categories[category].append(item)
 
-  # 1. 保存分类分片文件
   cat_index = []
+
+  # 🚀 核心新增：生成“🔥 最新更新”分类（取采集到的前 100 个最新影视）
+  latest_items = processed_videos[:100]
+  with open(os.path.join("data", "cat_latest.json"), "w", encoding="utf-8") as f:
+    json.dump(latest_items, f, ensure_ascii=False, indent=2)
+  cat_index.append(
+      {"name": "🔥 最新更新", "count": len(latest_items), "file": "cat_latest.json"}
+  )
+
+  # 1. 保存其他常规分类分片文件
   all_cats = list(category_names)
   for c_name in categories.keys():
     if c_name not in all_cats:
@@ -169,7 +178,7 @@ def main():
   with open("data/categories.json", "w", encoding="utf-8") as f:
     json.dump(cat_index, f, ensure_ascii=False, indent=2)
 
-  # 2. 🚀 生成轻量级全局搜索索引文件 (search_index.json)
+  # 2. 生成全局搜索索引文件 (search_index.json)
   search_index = []
   for vod in processed_videos:
     search_index.append({
@@ -186,8 +195,8 @@ def main():
     json.dump(search_index, f, ensure_ascii=False)
 
   print(
-      f"✅ Full sync & search index processing complete! Total processed"
-      f" items: {len(processed_videos)}"
+      f"✅ Full sync & latest processing complete! Total processed items:"
+      f" {len(processed_videos)}"
   )
 
 
