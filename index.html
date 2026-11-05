@@ -194,7 +194,6 @@
                     
                     this.updateUrl();
 
-                    // 🛡️ 核心修复：绝对安全的分类文件路径解析，兼容单文件和多文件拆分
                     let filesToFetch = [];
                     if (cat.file) {
                         filesToFetch = [cat.file];
@@ -203,24 +202,19 @@
                     }
 
                     if (filesToFetch.length === 0) {
-                        console.error('当前分类未找到有效的数据文件:', cat);
                         return;
                     }
 
                     Promise.all(filesToFetch.map(f => 
                         fetch('./data/' + f)
                             .then(res => res.json())
-                            .catch(err => {
-                                console.error('分片加载失败:', f, err);
-                                return [];
-                            })
+                            .catch(err => [])
                     ))
                     .then(results => {
                         this.allVideos = results.flat();
                         this.filterVideos();
                     })
                     .catch(err => { 
-                        console.error('分类数据解析异常:', err);
                         this.allVideos = []; 
                         this.filteredVideos = []; 
                     });
@@ -286,35 +280,9 @@
                     }
                 },
 
+                // 🚀 完美的独立详情页跳转（传递 id 和 cat 参数）
                 goToPlay(vodSummary) {
-                    const cat = this.categories.find(c => c.name === vodSummary.category) || this.categories[0];
-                    if (!cat) {
-                        localStorage.setItem('currentVod', JSON.stringify(vodSummary));
-                        window.location.href = 'play.html';
-                        return;
-                    }
-
-                    let loadFiles = [];
-                    if (cat.file) loadFiles = [cat.file];
-                    else if (cat.files && Array.isArray(cat.files)) loadFiles = cat.files;
-
-                    if (loadFiles.length === 0) {
-                        localStorage.setItem('currentVod', JSON.stringify(vodSummary));
-                        window.location.href = 'play.html';
-                        return;
-                    }
-
-                    Promise.all(loadFiles.map(f => fetch('./data/' + f).then(res => res.json()).catch(e => [])))
-                        .then(results => {
-                            const fullList = results.flat();
-                            const fullVod = fullList.find(v => v.id == vodSummary.id) || vodSummary;
-                            localStorage.setItem('currentVod', JSON.stringify(fullVod));
-                            window.location.href = 'play.html';
-                        })
-                        .catch(err => {
-                            localStorage.setItem('currentVod', JSON.stringify(vodSummary));
-                            window.location.href = 'play.html';
-                        });
+                    window.location.href = `play.html?id=${vodSummary.id}&cat=${encodeURIComponent(vodSummary.category)}`;
                 }
             }
         }
