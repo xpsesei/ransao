@@ -34,8 +34,8 @@
         
         <!-- 分类导航栏（动态从 categories.json 加载，点击秒切分类） -->
         <div class="flex items-center space-x-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
-            <template x-for="cat in categories" :key="cat.file">
-                <button @click="switchCategory(cat.file, cat.name)" 
+            <template x-for="cat in categories" :key="cat.name">
+                <button @click="switchCategory(cat)" 
                         :class="currentCategory === cat.name ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
                         class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition"
                         x-text="cat.name + ' (' + cat.count + ')'">
@@ -135,46 +135,44 @@
                         .then(res => res.json())
                         .then(data => { 
                             this.categories = data;
-                            // 2. 自动默认加载第一个分类（如电影、电视剧等），彻底避免加载 50MB 的 all.json 导致浏览器崩溃
+                            // 2. 自动默认加载第一个分类，传入整个 cat 对象
                             if (data && data.length > 0) {
-                                this.switchCategory(data[0].file, data[0].name);
+                                this.switchCategory(data[0]);
                             }
                         })
                         .catch(err => console.log('Waiting for Action release sync...'));
                 },
 
-         switchCategory(cat) {
-    this.currentCategory = cat.name;
-    this.filteredVideos = []; // 切换时清空防卡顿
-    
-    // 判断是单文件还是多份分片文件
-    if (cat.file) {
-        // 1. 单个小文件
-        fetch(this.releaseBaseUrl + cat.file)
-            .then(res => res.json())
-            .then(data => {
-                this.allVideos = data;
-                this.filterVideos();
-            })
-            .catch(err => {
-                this.allVideos = [];
-                this.filteredVideos = [];
-            });
-    } else if (cat.files && Array.isArray(cat.files)) {
-        // 2. 超大分类的多分片文件（并发请求并合并数组）
-        Promise.all(cat.files.map(f => fetch(this.releaseBaseUrl + f).then(res => res.json())))
-            .then(results => {
-                this.allVideos = results.flat(); // 合并所有分片
-                this.filterVideos();
-            })
-            .catch(err => {
-                this.allVideos = [];
-                this.filteredVideos = [];
-            });
-    }
-},
-
-
+                switchCategory(cat) {
+                    this.currentCategory = cat.name;
+                    this.filteredVideos = []; // 切换时清空防卡顿
+                    
+                    // 判断是单文件还是多份分片文件
+                    if (cat.file) {
+                        // 1. 单个小文件
+                        fetch(this.releaseBaseUrl + cat.file)
+                            .then(res => res.json())
+                            .then(data => {
+                                this.allVideos = data;
+                                this.filterVideos();
+                            })
+                            .catch(err => {
+                                this.allVideos = [];
+                                this.filteredVideos = [];
+                            });
+                    } else if (cat.files && Array.isArray(cat.files)) {
+                        // 2. 超大分类的多分片文件（并发请求并合并数组）
+                        Promise.all(cat.files.map(f => fetch(this.releaseBaseUrl + f).then(res => res.json())))
+                            .then(results => {
+                                this.allVideos = results.flat(); // 合并所有分片
+                                this.filterVideos();
+                            })
+                            .catch(err => {
+                                this.allVideos = [];
+                                this.filteredVideos = [];
+                            });
+                    }
+                },
 
                 filterVideos() {
                     if (!this.searchKeyword) {
