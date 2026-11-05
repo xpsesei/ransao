@@ -22,33 +22,44 @@
     </header>
 
     <!-- 主体播放区域 -->
-    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full space-y-6">
+    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full space-y-4">
         
-        <!-- 视频标题 -->
-        <div>
-            <h1 class="text-2xl font-bold text-slate-100" x-text="vod?.title || '加载中...'"></h1>
-            <p class="text-xs text-slate-400 mt-1" x-text="'类型：' + (vod?.category || '') + ' | 年份：' + (vod?.year || '') + ' | 地区：' + (vod?.area || '')"></p>
+        <!-- 视频标题与基本信息 -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+            <div>
+                <h1 class="text-xl md:text-2xl font-bold text-slate-100" x-text="vod?.title || '加载中...'"></h1>
+                <p class="text-xs text-slate-400 mt-1" x-text="'类型：' + (vod?.category || '') + ' | 年份：' + (vod?.year || '') + ' | 地区：' + (vod?.area || '')"></p>
+            </div>
+            
+            <!-- 快捷上/下集按钮（方便随时切集） -->
+            <div class="flex items-center space-x-2">
+                <button @click="playPrev()" :disabled="currentIndex === 0" 
+                        class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed rounded-xl text-xs font-medium text-slate-200 transition">
+                    ◀ 上一集
+                </button>
+                <button @click="playNext()" :disabled="!vod?.episodes || currentIndex >= vod.episodes.length - 1" 
+                        class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:cursor-not-allowed rounded-xl text-xs font-medium text-white transition shadow-lg shadow-blue-600/30">
+                    下一集 ▶
+                </button>
+            </div>
         </div>
 
-        <!-- 播放器 -->
+        <!-- 播放器容器 -->
         <div class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
-            <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen></iframe>
-        </div>
-
-        <!-- 📢 播放器下方广告 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex justify-between items-center text-xs text-slate-400">
-            <span>💡 播放提示：如果当前线路无法播放，请尝试切换下方其他集数。</span>
-            <a href="#" target="_blank" class="text-blue-400 hover:underline">【广告】特惠影视会员或商务合作</a>
+            <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
         </div>
 
         <!-- 选集列表 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
-            <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">播放选集</h4>
-            <div class="flex flex-wrap gap-2 max-h-60 overflow-y-auto">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
+            <div class="flex justify-between items-center">
+                <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">播放选集</h4>
+                <span class="text-xs text-slate-500" x-text="'共 ' + (vod?.episodes?.length || 0) + ' 集'"></span>
+            </div>
+            <div class="flex flex-wrap gap-2 max-h-48 overflow-y-auto pr-1">
                 <template x-for="(ep, index) in vod?.episodes" :key="index">
-                    <button @click="playEpisode(ep.url)"
-                            :class="selectedEpUrl === ep.url ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
-                            class="px-4 py-2 rounded-xl text-xs font-medium transition"
+                    <button @click="playEpisode(ep.url, index)"
+                            :class="currentIndex === index ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
+                            class="px-3.5 py-2 rounded-xl text-xs transition"
                             x-text="ep.name">
                     </button>
                 </template>
@@ -56,7 +67,7 @@
         </div>
 
         <!-- 剧情简介 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-sm text-slate-400 space-y-2">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 text-sm text-slate-400 space-y-2">
             <h4 class="font-bold text-slate-200">剧情介绍</h4>
             <p class="leading-relaxed" x-text="vod?.content || '暂无简介'"></p>
         </div>
@@ -74,6 +85,7 @@
                 vod: null,
                 currentPlayUrl: '',
                 selectedEpUrl: '',
+                currentIndex: 0, // 当前播放集数索引
 
                 init() {
                     const data = localStorage.getItem('currentVod');
@@ -81,7 +93,7 @@
                         try {
                             this.vod = JSON.parse(data);
                             if (this.vod.episodes && this.vod.episodes.length > 0) {
-                                this.playEpisode(this.vod.episodes[0].url);
+                                this.playEpisode(this.vod.episodes[0].url, 0);
                             }
                         } catch (e) {
                             console.error('Failed to parse vod data');
@@ -89,9 +101,24 @@
                     }
                 },
 
-                playEpisode(url) {
+                playEpisode(url, index) {
                     this.selectedEpUrl = url;
+                    this.currentIndex = index;
                     this.currentPlayUrl = `https://jx.xllmcms.com/dplayer/?url=${encodeURIComponent(url)}`;
+                },
+
+                playPrev() {
+                    if (this.vod && this.vod.episodes && this.currentIndex > 0) {
+                        const targetIndex = this.currentIndex - 1;
+                        this.playEpisode(this.vod.episodes[targetIndex].url, targetIndex);
+                    }
+                },
+
+                playNext() {
+                    if (this.vod && this.vod.episodes && this.currentIndex < this.vod.episodes.length - 1) {
+                        const targetIndex = this.currentIndex + 1;
+                        this.playEpisode(this.vod.episodes[targetIndex].url, targetIndex);
+                    }
                 }
             }
         }
