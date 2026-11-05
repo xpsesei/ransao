@@ -73,7 +73,7 @@
             正在从云端加载影视资源，请稍候...
         </div>
 
-        <!-- 📄 分页控制条（每页 28 个视频） -->
+        <!-- 📄 分页控制条（严格每页 28 个视频） -->
         <div x-show="totalPages > 1" class="flex justify-center items-center space-x-3 mt-8">
             <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1"
                     class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
@@ -109,7 +109,6 @@
                 pageSize: 28, // 🎯 严格设置为每页 28 个视频
 
                 init() {
-                    // 1. 解析当前 URL 中的参数（实现多页面独立链接效果）
                     const urlParams = new URLSearchParams(window.location.search);
                     const paramCat = urlParams.get('cat');
                     const paramPage = parseInt(urlParams.get('p')) || 1;
@@ -123,22 +122,24 @@
                         this.isSearching = true;
                     }
 
-                    // 2. 加载分类索引
+                    // 1. 加载分类索引
                     fetch('./data/categories.json')
                         .then(res => res.json())
                         .then(data => { 
-                            this.categories = data;
+                            this.categories = data || [];
                             
-                            let targetCat = data[0]; // 默认最新
+                            let targetCat = this.categories[0];
                             if (paramCat) {
-                                const found = data.find(c => c.name === paramCat);
+                                const found = this.categories.find(c => c.name === paramCat);
                                 if (found) targetCat = found;
                             } else {
-                                const latest = data.find(c => c.name.includes('最新'));
+                                const latest = this.categories.find(c => c.name.includes('最新'));
                                 if (latest) targetCat = latest;
                             }
 
-                            this.switchCategory(targetCat, false);
+                            if (targetCat) {
+                                this.switchCategory(targetCat, false);
+                            }
 
                             if (paramQ && this.searchIndex.length > 0) {
                                 this.onGlobalSearch(false);
@@ -146,11 +147,11 @@
                         })
                         .catch(err => console.log('Waiting for categories sync...'));
 
-                    // 3. 异步加载全局搜索索引
+                    // 2. 异步加载全局搜索索引
                     fetch('./data/search_index.json')
                         .then(res => res.json())
                         .then(data => {
-                            this.searchIndex = data;
+                            this.searchIndex = data || [];
                             if (this.isSearching && this.searchKeyword) {
                                 this.onGlobalSearch(false);
                             }
@@ -158,7 +159,6 @@
                         .catch(err => console.log('Waiting for search index sync...'));
                 },
 
-                // 更新浏览器 URL（不刷新页面，实现多页面网址导航）
                 updateUrl() {
                     const params = new URLSearchParams();
                     if (this.currentCategory && this.currentCategory !== '🔥 最新更新') {
@@ -182,6 +182,7 @@
                 },
 
                 switchCategory(cat, resetPage = true) {
+                    if (!cat) return;
                     this.isSearching = false;
                     this.searchKeyword = '';
                     this.currentCategory = cat.name;
@@ -193,17 +194,33 @@
                     
                     this.updateUrl();
 
-                    const loadFiles = cat.file ? [cat.file] : cat.files;
-                    Promise.all(loadFiles.map(f => 
+                    // 🛡️ 核心修复：绝对安全的分类文件路径解析，兼容单文件和多文件拆分
+                    let filesToFetch = [];
+                    if (cat.file) {
+                        filesToFetch = [cat.file];
+                    } else if (cat.files && Array.isArray(cat.files)) {
+                        filesToFetch = cat.files;
+                    }
+
+                    if (filesToFetch.length === 0) {
+                        console.error('当前分类未找到有效的数据文件:', cat);
+                        return;
+                    }
+
+                    Promise.all(filesToFetch.map(f => 
                         fetch('./data/' + f)
                             .then(res => res.json())
-                            .catch(err => [])
+                            .catch(err => {
+                                console.error('分片加载失败:', f, err);
+                                return [];
+                            })
                     ))
                     .then(results => {
                         this.allVideos = results.flat();
                         this.filterVideos();
                     })
                     .catch(err => { 
+                        console.error('分类数据解析异常:', err);
                         this.allVideos = []; 
                         this.filteredVideos = []; 
                     });
@@ -242,7 +259,9 @@
                     this.searchKeyword = '';
                     this.isSearching = false;
                     const latestCat = this.categories.find(c => c.name.includes('最新')) || this.categories[0];
-                    this.switchCategory(latestCat);
+                    if (latestCat) {
+                        this.switchCategory(latestCat);
+                    }
                 },
 
                 filterVideos() {
@@ -269,13 +288,22 @@
 
                 goToPlay(vodSummary) {
                     const cat = this.categories.find(c => c.name === vodSummary.category) || this.categories[0];
-                    if (!cat || (!cat.file && !cat.files)) {
+                    if (!cat) {
                         localStorage.setItem('currentVod', JSON.stringify(vodSummary));
                         window.location.href = 'play.html';
                         return;
                     }
 
-                    const loadFiles = cat.file ? [cat.file] : cat.files;
+                    let loadFiles = [];
+                    if (cat.file) loadFiles = [cat.file];
+                    else if (cat.files && Array.isArray(cat.files)) loadFiles = cat.files;
+
+                    if (loadFiles.length === 0) {
+                        localStorage.setItem('currentVod', JSON.stringify(vodSummary));
+                        window.location.href = 'play.html';
+                        return;
+                    }
+
                     Promise.all(loadFiles.map(f => fetch('./data/' + f).then(res => res.json()).catch(e => [])))
                         .then(results => {
                             const fullList = results.flat();
