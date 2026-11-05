@@ -9,15 +9,26 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between" x-data="playApp()">
 
-    <!-- 顶部导航栏 -->
-    <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <a href="index.html" class="text-slate-400 hover:text-white text-sm font-semibold flex items-center space-x-1">
-                    <span>← 返回首页</span>
-                </a>
-                <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</span>
+    <!-- 顶部导航栏与搜索 -->
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+            <div class="flex items-center space-x-3 shrink-0">
+                <a href="index.html" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</a>
             </div>
+            <!-- 全局搜索框 -->
+            <div class="w-full max-w-md relative">
+                <input type="text" x-model="searchKeyword" @keyup.enter="doSearch()" placeholder="全网全局搜索（片名、演员）..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500 text-slate-100">
+            </div>
+        </div>
+        <!-- 分类导航条 -->
+        <div class="max-w-7xl mx-auto px-4 py-2 flex items-center space-x-2 overflow-x-auto border-t border-slate-800/60 scrollbar-none">
+            <a href="index.html" class="px-3 py-1 bg-slate-800 text-slate-300 hover:bg-slate-700 rounded-xl text-xs whitespace-nowrap transition">首页</a>
+            <template x-for="cat in categories" :key="cat.name">
+                <button @click="selectCategory(cat)" 
+                        class="px-3 py-1 bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-white rounded-xl text-xs whitespace-nowrap transition"
+                        x-text="cat.name">
+                </button>
+            </template>
         </div>
     </header>
 
@@ -31,7 +42,7 @@
                 <p class="text-xs text-slate-400 mt-1" x-text="'类型：' + (vod?.category || '') + ' | 年份：' + (vod?.year || '') + ' | 地区：' + (vod?.area || '')"></p>
             </div>
             
-            <!-- 快捷上/下集按钮（方便随时切集） -->
+            <!-- 快捷上/下集按钮 -->
             <div class="flex items-center space-x-2">
                 <button @click="playPrev()" :disabled="currentIndex === 0" 
                         class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed rounded-xl text-xs font-medium text-slate-200 transition">
@@ -83,11 +94,20 @@
         function playApp() {
             return {
                 vod: null,
+                categories: [],
+                searchKeyword: '',
                 currentPlayUrl: '',
                 selectedEpUrl: '',
-                currentIndex: 0, // 当前播放集数索引
+                currentIndex: 0,
 
                 init() {
+                    // 加载分类列表用于顶部导航
+                    fetch('./data/categories.json')
+                        .then(res => res.json())
+                        .then(data => { this.categories = data; })
+                        .catch(err => console.log('Failed to load categories'));
+
+                    // 加载当前播放视频
                     const data = localStorage.getItem('currentVod');
                     if (data) {
                         try {
@@ -118,6 +138,18 @@
                     if (this.vod && this.vod.episodes && this.currentIndex < this.vod.episodes.length - 1) {
                         const targetIndex = this.currentIndex + 1;
                         this.playEpisode(this.vod.episodes[targetIndex].url, targetIndex);
+                    }
+                },
+
+                selectCategory(cat) {
+                    localStorage.setItem('targetCategory', cat.name);
+                    window.location.href = 'index.html';
+                },
+
+                doSearch() {
+                    if (this.searchKeyword.trim()) {
+                        localStorage.setItem('targetSearch', this.searchKeyword.trim());
+                        window.location.href = 'index.html';
                     }
                 }
             }
