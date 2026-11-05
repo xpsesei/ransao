@@ -17,6 +17,27 @@
     ]
   },
   {
+    "id": 110502,
+    "title": "飞渡卷云山粤语",
+    "category": "邵氏电影",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240419-1/7b772fc36d64b074a5de131b864b0be2.jpg",
+    "year": "1978",
+    "area": "中国香港",
+    "actor": "成龙,梁小龙,田俊,刘明,汪萍",
+    "director": "罗维",
+    "content": "<p>豹子丁冲一双铁拳闻名江湖，与两位朋友常无意及张聋子受聘护送一名病人前往京城叶神医处求医。因病情危急，须取道卷云山，但卷云山盗贼盘踞，恶魔群集，近十年无人敢经过。 在上山途中丁冲等人遇到无数陷井、危机，凭借三人的机智和超人的武功，破了一阵又一阵，闯了一关又一关，到最后内情令三人大出意料......</p>",
+    "episodes": [
+      {
+        "name": "HD",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202404/19/acramjctNz75/video/index.m3u8"
+      },
+      {
+        "name": "粤语中字",
+        "url": "https://v11.wujinwsym3u8.com/202505/23/rW6uTsLBCY83/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 99453,
     "title": "Laughing Gor之变节",
     "category": "邵氏电影",
@@ -81,6 +102,23 @@
       {
         "name": "中字",
         "url": "https://v12.wujinwsym3u8.com/202505/23/KRXpUVRKCb84/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 101068,
+    "title": "2012喜上加喜",
+    "category": "邵氏电影",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/968c5010f6f81f3b3ce2619643157b5c.jpg",
+    "year": "2012",
+    "area": "中国香港  中国大陆",
+    "actor": "曾志伟,毛舜筠,黄宗泽,冯淬帆,邵音音,张馨予",
+    "director": "钟澍佳,钱国伟,曾志伟",
+    "content": "<p>天气预报播报员郭靖（冯淬帆 饰）即将退休，成为新闻播报员的愿望却始终没有实现，膝下三个儿女亦各有烦恼：大女郭美美（毛舜筠 饰）强悍娇蛮，其夫姚明（曾志伟 饰）憨厚老实，夫妻关系在妻强夫弱的事实下逐渐失衡；二女郭晶晶与下属乐易瓦（黄宗泽 饰）在玩地下恋，不思 进取却受女性欢迎的男友令她没有安全感；小儿子郭富城是个宅男，他希望将自己的女神Vivian（张馨予 饰）从大富豪Roberto（苏永康 饰）手上救出。一家子正烦恼之际，2012末世谣言越传越盛，发觉真相的郭家人决定协力阻止Roberto收购电视台，平息香港市民的恐慌，郭靖也终于实现播报重要新闻的夙愿。 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;该片是“我爱香港”贺岁系列第三弹，即《72家租客》和《我爱香港开心万岁》的续集。</p>",
+    "episodes": [
+      {
+        "name": "中字",
+        "url": "https://v1.wujinwsym3u8.com/202505/23/JYy5dFkEJK85/video/index.m3u8"
       }
     ]
   },

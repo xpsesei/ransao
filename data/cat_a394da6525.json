@@ -1,9 +1,339 @@
 [
   {
+    "id": 165402,
+    "title": "妈妈发疯了",
+    "category": "韩国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261105-1/af6cadd70ee2f65d2b80ddf3eb9e18a2.jpg",
+    "year": "2026",
+    "area": "韩国",
+    "actor": "金姬贞,金亨奎,姜京宪,郑敏儿",
+    "director": "成俊海",
+    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该剧讲述一生为家庭而活的妈妈，和一生只为自己而活的妈妈，以及两位妈妈如冤家般的子女纠缠在一起的家庭成长记。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202609/29/P8ZCNN9fxT96/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202609/30/KwTNSLRTAJ90/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202610/01/nr2y4vf52X93/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/02/tT5CYWYdTz96/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/03/nL4rxkYyrk89/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/07/U4MLZJvT5Y96/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202610/07/vprpQxZpc595/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/08/Pt9evr7gnL86/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202610/09/k0KcNhZcqr93/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/10/DGzpCcpjqF97/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/13/60B28JEx7q86/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202610/14/uaqthR3XdB92/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202610/15/71bQQ7ECsb91/video/index.m3u8"
+      },
+      {
+        "name": "第14集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202610/16/59B4mbHLrw86/video/index.m3u8"
+      },
+      {
+        "name": "第15集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202610/17/aT5y0Cd3z192/video/index.m3u8"
+      },
+      {
+        "name": "第16集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202610/20/nqRW0Diyvy89/video/index.m3u8"
+      },
+      {
+        "name": "第18集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/22/e3iiwDu0h789/video/index.m3u8"
+      },
+      {
+        "name": "第19集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202610/23/EvqHRhgcPQ87/video/index.m3u8"
+      },
+      {
+        "name": "第20集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/24/1ek91zMzQr94/video/index.m3u8"
+      },
+      {
+        "name": "第21集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/27/jYpiVDT0xN93/video/index.m3u8"
+      },
+      {
+        "name": "第22集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202610/28/Dus95rFpwE95/video/index.m3u8"
+      },
+      {
+        "name": "第23集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/29/3Re9TtFCKe86/video/index.m3u8"
+      },
+      {
+        "name": "第24集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/30/hbAU0jBJek88/video/index.m3u8"
+      },
+      {
+        "name": "第25集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/31/PcyM8njx7e87/video/index.m3u8"
+      },
+      {
+        "name": "第26集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/03/atq3K4dnAP96/video/index.m3u8"
+      },
+      {
+        "name": "第27集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/04/zhdiVrzxa089/video/index.m3u8"
+      },
+      {
+        "name": "第28集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/05/ge2h6zQbdh89/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 163564,
+    "title": "欲望的陷阱",
+    "category": "韩国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261105-1/b5d7e3ea49ba834f775b5cd2a0f15113.jpg",
+    "year": "2026",
+    "area": "韩国",
+    "actor": "张瑞希,薛正焕,孙星允,尹海英,张世铉,崔载元,刘泰雄,徐权顺,田惠媛,周清晨",
+    "director": "李待暻,郑光洙",
+    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本剧讲述被冤枉为杀人而失去生命的一名女性面对巨大的欲望，重新找回自己人生的复仇剧。</p>",
+    "episodes": [
+      {
+        "name": "第02集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202608/12/xtKi1xiH8p97/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202608/13/9dmDDz7f6a94/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202608/14/nkyvna0Pd496/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202608/15/bkhqdWjxGy92/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202608/18/bXFF6JeSSe89/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v1.wujinwsym3u8.com/202608/19/t0ndMt2W1U94/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202608/20/UZQrdc0TWT91/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202608/21/v03PTiBTSc97/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v1.wujinwsym3u8.com/202608/22/DJxTQ3FTR496/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202608/26/VB5YZ4MPvZ92/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202608/27/Ysfmi1fys187/video/index.m3u8"
+      },
+      {
+        "name": "第14集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202608/28/tBxQf6iBTj95/video/index.m3u8"
+      },
+      {
+        "name": "第15集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202608/29/wupahV0UFd95/video/index.m3u8"
+      },
+      {
+        "name": "第16集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202609/01/XYtAAmQASH87/video/index.m3u8"
+      },
+      {
+        "name": "第17集",
+        "url": "https://v1.wujinwsym3u8.com/202609/02/SVExEaE5mp88/video/index.m3u8"
+      },
+      {
+        "name": "第18集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202609/03/HcvnqpwMVx86/video/index.m3u8"
+      },
+      {
+        "name": "第19集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202609/04/ujxV4T8VLc93/video/index.m3u8"
+      },
+      {
+        "name": "第20集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202609/05/H0PaJUaqv788/video/index.m3u8"
+      },
+      {
+        "name": "第21集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202609/08/s5qqx0rwAV94/video/index.m3u8"
+      },
+      {
+        "name": "第22集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202609/09/PtY2vAeBqM87/video/index.m3u8"
+      },
+      {
+        "name": "第23集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202609/10/Gp2aY3ryUC94/video/index.m3u8"
+      },
+      {
+        "name": "第24集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202609/11/iTfFVS8G2Z94/video/index.m3u8"
+      },
+      {
+        "name": "第25集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202609/15/GyDTweLruA97/video/index.m3u8"
+      },
+      {
+        "name": "第26集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202609/15/zx8bhTuNfy93/video/index.m3u8"
+      },
+      {
+        "name": "第27集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202609/17/NV5Cu4m1yg91/video/index.m3u8"
+      },
+      {
+        "name": "第28集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202609/18/gRS6uBtrLy90/video/index.m3u8"
+      },
+      {
+        "name": "第29集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202609/19/2J5rXnKKvm92/video/index.m3u8"
+      },
+      {
+        "name": "第30集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/07/XTUbDXhhq690/video/index.m3u8"
+      },
+      {
+        "name": "第31集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202610/07/C6Zk5BtLke96/video/index.m3u8"
+      },
+      {
+        "name": "第32集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202610/08/jCGjuyMUE789/video/index.m3u8"
+      },
+      {
+        "name": "第33集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202610/09/rSXczgVwjk92/video/index.m3u8"
+      },
+      {
+        "name": "第34集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/10/wMBQQcC3RL90/video/index.m3u8"
+      },
+      {
+        "name": "第35集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/13/9H0pWtJmQj91/video/index.m3u8"
+      },
+      {
+        "name": "第36集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/14/ssjfU7dt3P90/video/index.m3u8"
+      },
+      {
+        "name": "第37集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202610/15/vnu2HT5jHK97/video/index.m3u8"
+      },
+      {
+        "name": "第38集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202610/16/LJ1Cfb2ayA88/video/index.m3u8"
+      },
+      {
+        "name": "第39集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202610/17/NweQq2pEwR89/video/index.m3u8"
+      },
+      {
+        "name": "第40集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202610/20/xDGjqfgrjj94/video/index.m3u8"
+      },
+      {
+        "name": "第41集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202610/21/p8YpPW0H1e87/video/index.m3u8"
+      },
+      {
+        "name": "第42集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202610/22/uvNSyhiMtv89/video/index.m3u8"
+      },
+      {
+        "name": "第43集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202610/23/cxbRtsnQaQ92/video/index.m3u8"
+      },
+      {
+        "name": "第44集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202610/24/8D6zDfTHJC91/video/index.m3u8"
+      },
+      {
+        "name": "第45集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/27/diFMkBCkT793/video/index.m3u8"
+      },
+      {
+        "name": "第46集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/29/c60U300twA94/video/index.m3u8"
+      },
+      {
+        "name": "第47集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202610/30/DaDbf3nQPT86/video/index.m3u8"
+      },
+      {
+        "name": "第48集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202610/31/jdbvaE9MQ888/video/index.m3u8"
+      },
+      {
+        "name": "第49集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/03/vv75mjAZrz92/video/index.m3u8"
+      },
+      {
+        "name": "第50集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/04/FTHvSn2EyB96/video/index.m3u8"
+      },
+      {
+        "name": "第51集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/05/uMCtEN7wSB92/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 165790,
     "title": "爱上草莓的季节",
     "category": "韩国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261029-1/53168a80078ba76755d077d8f190a19b.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261105-1/64f5794babcf6b9328dd2f7283f1c787.jpg",
     "year": "2026",
     "area": "韩国",
     "actor": "池昌旭,今田美樱,南润寿,久间田琳加",
@@ -330,328 +660,6 @@
       {
         "name": "第73集",
         "url": "https://v9.wujinwsym3u8.com/wjv9/202611/04/smJ8du5LEZ97/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 165402,
-    "title": "妈妈发疯了",
-    "category": "韩国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261104-1/526d659f7bcfa04986b7eeb57ebf9e72.jpg",
-    "year": "2026",
-    "area": "韩国",
-    "actor": "金姬贞,金亨奎,姜京宪,郑敏儿",
-    "director": "成俊海",
-    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该剧讲述一生为家庭而活的妈妈，和一生只为自己而活的妈妈，以及两位妈妈如冤家般的子女纠缠在一起的家庭成长记。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202609/29/P8ZCNN9fxT96/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v10.wujinwsym3u8.com/wjv10/202609/30/KwTNSLRTAJ90/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202610/01/nr2y4vf52X93/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/02/tT5CYWYdTz96/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/03/nL4rxkYyrk89/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/07/U4MLZJvT5Y96/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202610/07/vprpQxZpc595/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/08/Pt9evr7gnL86/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v9.wujinwsym3u8.com/wjv9/202610/09/k0KcNhZcqr93/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/10/DGzpCcpjqF97/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/13/60B28JEx7q86/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v5.wujinwsym3u8.com/wjv5/202610/14/uaqthR3XdB92/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v8.wujinwsym3u8.com/wjv8/202610/15/71bQQ7ECsb91/video/index.m3u8"
-      },
-      {
-        "name": "第14集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202610/16/59B4mbHLrw86/video/index.m3u8"
-      },
-      {
-        "name": "第15集",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202610/17/aT5y0Cd3z192/video/index.m3u8"
-      },
-      {
-        "name": "第16集",
-        "url": "https://v9.wujinwsym3u8.com/wjv9/202610/20/nqRW0Diyvy89/video/index.m3u8"
-      },
-      {
-        "name": "第18集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/22/e3iiwDu0h789/video/index.m3u8"
-      },
-      {
-        "name": "第19集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202610/23/EvqHRhgcPQ87/video/index.m3u8"
-      },
-      {
-        "name": "第20集",
-        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/24/1ek91zMzQr94/video/index.m3u8"
-      },
-      {
-        "name": "第21集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/27/jYpiVDT0xN93/video/index.m3u8"
-      },
-      {
-        "name": "第22集",
-        "url": "https://v5.wujinwsym3u8.com/wjv5/202610/28/Dus95rFpwE95/video/index.m3u8"
-      },
-      {
-        "name": "第23集",
-        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/29/3Re9TtFCKe86/video/index.m3u8"
-      },
-      {
-        "name": "第24集",
-        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/30/hbAU0jBJek88/video/index.m3u8"
-      },
-      {
-        "name": "第25集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/31/PcyM8njx7e87/video/index.m3u8"
-      },
-      {
-        "name": "第26集",
-        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/03/atq3K4dnAP96/video/index.m3u8"
-      },
-      {
-        "name": "第27集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/04/zhdiVrzxa089/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 163564,
-    "title": "欲望的陷阱",
-    "category": "韩国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261104-1/deae9b5ff19ddb48145f00c865caf75a.jpg",
-    "year": "2026",
-    "area": "韩国",
-    "actor": "张瑞希,薛正焕,孙星允,尹海英,张世铉,崔载元,刘泰雄,徐权顺,田惠媛,周清晨",
-    "director": "李待暻,郑光洙",
-    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本剧讲述被冤枉为杀人而失去生命的一名女性面对巨大的欲望，重新找回自己人生的复仇剧。</p>",
-    "episodes": [
-      {
-        "name": "第02集",
-        "url": "https://v5.wujinwsym3u8.com/wjv5/202608/12/xtKi1xiH8p97/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202608/13/9dmDDz7f6a94/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202608/14/nkyvna0Pd496/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v10.wujinwsym3u8.com/wjv10/202608/15/bkhqdWjxGy92/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202608/18/bXFF6JeSSe89/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v1.wujinwsym3u8.com/202608/19/t0ndMt2W1U94/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202608/20/UZQrdc0TWT91/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202608/21/v03PTiBTSc97/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v1.wujinwsym3u8.com/202608/22/DJxTQ3FTR496/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202608/26/VB5YZ4MPvZ92/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202608/27/Ysfmi1fys187/video/index.m3u8"
-      },
-      {
-        "name": "第14集",
-        "url": "https://v10.wujinwsym3u8.com/wjv10/202608/28/tBxQf6iBTj95/video/index.m3u8"
-      },
-      {
-        "name": "第15集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202608/29/wupahV0UFd95/video/index.m3u8"
-      },
-      {
-        "name": "第16集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202609/01/XYtAAmQASH87/video/index.m3u8"
-      },
-      {
-        "name": "第17集",
-        "url": "https://v1.wujinwsym3u8.com/202609/02/SVExEaE5mp88/video/index.m3u8"
-      },
-      {
-        "name": "第18集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202609/03/HcvnqpwMVx86/video/index.m3u8"
-      },
-      {
-        "name": "第19集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202609/04/ujxV4T8VLc93/video/index.m3u8"
-      },
-      {
-        "name": "第20集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202609/05/H0PaJUaqv788/video/index.m3u8"
-      },
-      {
-        "name": "第21集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202609/08/s5qqx0rwAV94/video/index.m3u8"
-      },
-      {
-        "name": "第22集",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202609/09/PtY2vAeBqM87/video/index.m3u8"
-      },
-      {
-        "name": "第23集",
-        "url": "https://v8.wujinwsym3u8.com/wjv8/202609/10/Gp2aY3ryUC94/video/index.m3u8"
-      },
-      {
-        "name": "第24集",
-        "url": "https://v5.wujinwsym3u8.com/wjv5/202609/11/iTfFVS8G2Z94/video/index.m3u8"
-      },
-      {
-        "name": "第25集",
-        "url": "https://v7.wujinwsym3u8.com/wjv7/202609/15/GyDTweLruA97/video/index.m3u8"
-      },
-      {
-        "name": "第26集",
-        "url": "https://v9.wujinwsym3u8.com/wjv9/202609/15/zx8bhTuNfy93/video/index.m3u8"
-      },
-      {
-        "name": "第27集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202609/17/NV5Cu4m1yg91/video/index.m3u8"
-      },
-      {
-        "name": "第28集",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202609/18/gRS6uBtrLy90/video/index.m3u8"
-      },
-      {
-        "name": "第29集",
-        "url": "https://v7.wujinwsym3u8.com/wjv7/202609/19/2J5rXnKKvm92/video/index.m3u8"
-      },
-      {
-        "name": "第30集",
-        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/07/XTUbDXhhq690/video/index.m3u8"
-      },
-      {
-        "name": "第31集",
-        "url": "https://v9.wujinwsym3u8.com/wjv9/202610/07/C6Zk5BtLke96/video/index.m3u8"
-      },
-      {
-        "name": "第32集",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202610/08/jCGjuyMUE789/video/index.m3u8"
-      },
-      {
-        "name": "第33集",
-        "url": "https://v9.wujinwsym3u8.com/wjv9/202610/09/rSXczgVwjk92/video/index.m3u8"
-      },
-      {
-        "name": "第34集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/10/wMBQQcC3RL90/video/index.m3u8"
-      },
-      {
-        "name": "第35集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/13/9H0pWtJmQj91/video/index.m3u8"
-      },
-      {
-        "name": "第36集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/14/ssjfU7dt3P90/video/index.m3u8"
-      },
-      {
-        "name": "第37集",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202610/15/vnu2HT5jHK97/video/index.m3u8"
-      },
-      {
-        "name": "第38集",
-        "url": "https://v1.wujinwsym3u8.com/wjv1/202610/16/LJ1Cfb2ayA88/video/index.m3u8"
-      },
-      {
-        "name": "第39集",
-        "url": "https://v10.wujinwsym3u8.com/wjv10/202610/17/NweQq2pEwR89/video/index.m3u8"
-      },
-      {
-        "name": "第40集",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202610/20/xDGjqfgrjj94/video/index.m3u8"
-      },
-      {
-        "name": "第41集",
-        "url": "https://v10.wujinwsym3u8.com/wjv10/202610/21/p8YpPW0H1e87/video/index.m3u8"
-      },
-      {
-        "name": "第42集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202610/22/uvNSyhiMtv89/video/index.m3u8"
-      },
-      {
-        "name": "第43集",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202610/23/cxbRtsnQaQ92/video/index.m3u8"
-      },
-      {
-        "name": "第44集",
-        "url": "https://v9.wujinwsym3u8.com/wjv9/202610/24/8D6zDfTHJC91/video/index.m3u8"
-      },
-      {
-        "name": "第45集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/27/diFMkBCkT793/video/index.m3u8"
-      },
-      {
-        "name": "第46集",
-        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/29/c60U300twA94/video/index.m3u8"
-      },
-      {
-        "name": "第47集",
-        "url": "https://v1.wujinwsym3u8.com/wjv1/202610/30/DaDbf3nQPT86/video/index.m3u8"
-      },
-      {
-        "name": "第48集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202610/31/jdbvaE9MQ888/video/index.m3u8"
-      },
-      {
-        "name": "第49集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/03/vv75mjAZrz92/video/index.m3u8"
-      },
-      {
-        "name": "第50集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/04/FTHvSn2EyB96/video/index.m3u8"
       }
     ]
   },
@@ -12656,6 +12664,67 @@
     ]
   },
   {
+    "id": 138682,
+    "title": "金子般我的明星",
+    "category": "韩国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20250818-1/a74a17039d92b5ff1fa1d3c0b9ff3e9c.jpg",
+    "year": "2025",
+    "area": "韩国",
+    "actor": "严正化,宋承宪",
+    "director": "崔英勋",
+    "content": "<p>韩国顶级明星林世拉拿到了最年少视后，迎来全盛期的那天遭遇事故，25年岁月流逝之后工作中断的顶级明星东山再起。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202508/18/00B78RdGyU74/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202508/19/hikZeHR2UZ82/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202508/26/XDXixnBXge80/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202508/26/0LZKVwf2Jd82/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202509/01/vcpyycWFGp83/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202509/02/v6f4MK1Z8J82/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202509/08/1NCzYhcj9Y82/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202509/09/w9HpFgHxVc83/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202509/15/wxXp0PHRRZ82/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202509/16/jrgRK4Dkds74/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202509/22/gLyVDVMQRD82/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202509/23/hd4h3Li3bm80/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 130931,
     "title": "女王之家",
     "category": "韩国剧",
@@ -13130,6 +13199,51 @@
     ]
   },
   {
+    "id": 138949,
+    "title": "十二使者",
+    "category": "韩国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20250824-1/616f962ea92e0b4dcc7303c8e6c447a9.jpg",
+    "year": "2025",
+    "area": "韩国",
+    "actor": "马东锡,朴炯植,徐仁国,成东日,李主傧,高圭弼,姜美娜,成侑彬,安智惠,雷嘉汭",
+    "director": "康大奎,韩允宣",
+    "content": "<p>古老邪灵力量一旦苏醒，整个韩国将被黑暗吞噬。十二守护者将在领袖泰山（马东锡 饰）的号召下重新集结，与千年恶灵（朴炯植 饰）的生死之战即将展开。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202508/24/PzkpkuEdek74/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202508/24/eLCKwjLLi984/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202508/30/N0X69yiXcw74/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202508/31/wUihzvdpmF82/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202509/06/59Q2KDadGG80/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202509/07/YkAbNDwVvB80/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202509/13/9y0ixixB5k82/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202509/14/JttSiJkiSE82/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 137932,
     "title": "梦想成为律师的律师们",
     "category": "韩国剧",
@@ -13334,6 +13448,71 @@
     ]
   },
   {
+    "id": 137077,
+    "title": "善良的他",
+    "category": "韩国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20250718-1/38f0aa36b6c747a36b4f9923cdeda221.jpg",
+    "year": "2025",
+    "area": "韩国",
+    "actor": "李栋旭,李圣经,吴娜拉,朴勋,柳慧英",
+    "director": "宋海星",
+    "content": "<p>黑道世家的长孙朴锡哲（李栋旭 饰），一心只想成为小说家。却为了守护家人，被迫踏上黑道之路。命运的转折，让他遇见了梦想成为歌手的初恋姜美英（李圣经 饰）。一段真挚爱恋悄然绽放，照亮他原本灰暗的世界。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202507/18/BgP1eEqG5Q80/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202507/18/dV80whaAs280/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202507/25/8ucijnieMv83/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202507/25/5AyyiacsYw82/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202508/01/srEgC5rJrM74/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202508/08/h0GhN4C51H82/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202508/08/JWcJdBSqS780/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202508/09/2qhga4CK2s82/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202508/15/A28QBt2EkU80/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202508/16/vz54xsRgkZ84/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202508/22/Mpm4Gg8NcE80/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202508/22/L3DY1ErAYR83/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202508/29/REw9kYmPf584/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 137324,
     "title": "我的女友比我帅",
     "category": "韩国剧",
@@ -13493,6 +13672,296 @@
       {
         "name": "第08集",
         "url": "https://v10.wujinwsym3u8.com/wjv10/202508/12/2yuvZegJWJ82/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 136348,
+    "title": "瑞草洞",
+    "category": "韩国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20250705-1/a219c44de28cb2dd8485c6a070b142ec.jpg",
+    "year": "2025",
+    "area": "韩国",
+    "actor": "李钟硕,文佳煐,姜有锡,柳慧英,林成宰,尹均相,金度勋",
+    "director": "朴胜宇",
+    "content": "<p>讲述每天在瑞草洞上班的职场人律师们愉快热烈的青春。\r\n　　李钟硕饰演真相暴击满分的法务法人京民9年次律师安主行，帅气外貌优秀经历，直爽性格。一开始没有想要保护弱者实现正义，只是个职场人而已。从没有离职，九年都在一家公司，因此工作能力满分。年薪也创下新纪录，但是觉得麻烦没有自立门户的老古董。然而，他平稳的职场开始发生裂痕。\r\n　　文佳煐饰演2年次律师姜智熙。改变一个人的生活就是改变那个人的世界，对自己理直气壮、直率、淡泊的角色。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202507/05/PkQ2fJir6Q83/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202507/06/mAWjXeVwT983/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202507/12/9G9Jqz4qRx85/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202507/13/uWA9evU2Xx82/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202507/19/iqheEyfC5974/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202507/20/4SdXgmucRu74/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202507/26/bR6qwMUdQu83/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202507/27/cHwg8zecek80/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202508/02/253AuPKKuQ84/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202508/03/kGvafMDMuP82/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202508/09/xwQsLvJqhr80/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202508/10/dLHkzfb9dq74/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 126547,
+    "title": "老鹰五兄弟拜托了",
+    "category": "韩国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20250202-1/7551fba4f679f16a6df6b5c9455222ed.jpg",
+    "year": "2025",
+    "area": "韩国",
+    "actor": "严志媛,安在旭,李必模,崔大哲,金烔完,尹博,李锡基,???,裴海善,朴孝朱,刘仁英,金承允,申涩琪,金俊裴,尹俊源",
+    "director": "崔尚烈",
+    "content": "<p>酿酒厂老鹰家族的五兄弟和突然成为家长的大嫂之间的家庭故事。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202502/02/ZQpwUXZskK82/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202502/03/yfnXCL8QZy77/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202502/09/MTEp4qb9R481/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202502/10/Eneu3rw5hD83/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202502/16/wACxqTysy482/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202502/17/KRm91grkZ077/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202502/23/t9wP1NPFSW78/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202502/24/KJFNjgA4ng81/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202503/02/vjDupKASWK83/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202503/03/Zwun00vr9W77/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202503/09/kXSByHWxT978/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202503/10/buVNgYbKpz81/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202503/16/VBYUHNwMqN75/video/index.m3u8"
+      },
+      {
+        "name": "第14集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202503/17/q4F12Wb8k583/video/index.m3u8"
+      },
+      {
+        "name": "第15集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202503/23/hX7Gpu6deQ83/video/index.m3u8"
+      },
+      {
+        "name": "第16集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202503/24/thkzqLmqxm82/video/index.m3u8"
+      },
+      {
+        "name": "第17集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202503/30/sFChtGYYx375/video/index.m3u8"
+      },
+      {
+        "name": "第18集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202503/31/MCpWZcbDdX83/video/index.m3u8"
+      },
+      {
+        "name": "第19集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202504/06/b2y7Wn3aub81/video/index.m3u8"
+      },
+      {
+        "name": "第20集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202504/07/KP9hEVxUS378/video/index.m3u8"
+      },
+      {
+        "name": "第21集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202504/13/Fnh1e6ugV275/video/index.m3u8"
+      },
+      {
+        "name": "第22集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202504/14/Cw2LyMpZx678/video/index.m3u8"
+      },
+      {
+        "name": "第23集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202504/20/19mXKV2wef75/video/index.m3u8"
+      },
+      {
+        "name": "第24集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202504/21/8DLLcFLy4B82/video/index.m3u8"
+      },
+      {
+        "name": "第25集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202504/27/kV5VnsiZrA84/video/index.m3u8"
+      },
+      {
+        "name": "第26集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202504/28/BDjTu5xtUV82/video/index.m3u8"
+      },
+      {
+        "name": "第27集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202505/04/2bLd92RB2984/video/index.m3u8"
+      },
+      {
+        "name": "第28集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202505/05/x1HF5XsN8B82/video/index.m3u8"
+      },
+      {
+        "name": "第29集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202505/11/D6sQCu08Cm81/video/index.m3u8"
+      },
+      {
+        "name": "第30集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202505/12/1ZP8bbcP9580/video/index.m3u8"
+      },
+      {
+        "name": "第31集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202505/18/W46QAY9AaB84/video/index.m3u8"
+      },
+      {
+        "name": "第32集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202505/19/p2Je28wpEy82/video/index.m3u8"
+      },
+      {
+        "name": "第33集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202505/25/PHnuqQdnat82/video/index.m3u8"
+      },
+      {
+        "name": "第34集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202505/26/8E9YnBMyBc85/video/index.m3u8"
+      },
+      {
+        "name": "第35集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202506/01/c48Xbkw8By83/video/index.m3u8"
+      },
+      {
+        "name": "第36集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202506/02/dXCJTdAf9Z82/video/index.m3u8"
+      },
+      {
+        "name": "第37集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202506/08/9GxnxapBTQ74/video/index.m3u8"
+      },
+      {
+        "name": "第38集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202506/09/nS68K7FWdK85/video/index.m3u8"
+      },
+      {
+        "name": "第39集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202506/15/Y2d7makQ9080/video/index.m3u8"
+      },
+      {
+        "name": "第40集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202506/16/ESfNxGptB674/video/index.m3u8"
+      },
+      {
+        "name": "第41集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202506/22/92x5TmXj0z85/video/index.m3u8"
+      },
+      {
+        "name": "第42集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202506/23/CqbkT4uPrh84/video/index.m3u8"
+      },
+      {
+        "name": "第43集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202506/29/csfKPCq4RK74/video/index.m3u8"
+      },
+      {
+        "name": "第44集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202506/30/VbfmfFPmXF74/video/index.m3u8"
+      },
+      {
+        "name": "第45集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202507/06/bdZuqzNpHK82/video/index.m3u8"
+      },
+      {
+        "name": "第46集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202507/07/vbwKKB2Q1X80/video/index.m3u8"
+      },
+      {
+        "name": "第47集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202507/13/dS1MJR68PE83/video/index.m3u8"
+      },
+      {
+        "name": "第48集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202507/14/CGkQSXJmxV80/video/index.m3u8"
+      },
+      {
+        "name": "第49集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202507/20/BQV1JQ8TPk82/video/index.m3u8"
+      },
+      {
+        "name": "第50集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202507/21/qVbkqyHVK780/video/index.m3u8"
+      },
+      {
+        "name": "第51集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202507/27/7ms1a0nyBx83/video/index.m3u8"
+      },
+      {
+        "name": "第52集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202507/28/SbjeKYUGju82/video/index.m3u8"
+      },
+      {
+        "name": "第53集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202508/03/75mDw95j5382/video/index.m3u8"
+      },
+      {
+        "name": "第54集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202508/04/qYwFTkBrdY83/video/index.m3u8"
       }
     ]
   },
@@ -16324,6 +16793,83 @@
       {
         "name": "第01集",
         "url": "https://v5.wujinwsym3u8.com/wjv5/202504/17/XTkvpLm72f77/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 127483,
+    "title": "宝物岛",
+    "category": "韩国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20250221-1/f6d03755a658243d5d23ef028be4b0b5.jpg",
+    "year": "2025",
+    "area": "韩国",
+    "actor": "朴炯植,许峻豪,李海荣,洪华妍,禹贤,金贞兰,都知嫄,张素妍,权秀贤,韩智慧",
+    "director": "陈昌圭",
+    "content": "<p>大山集团秘书室组长徐东柱（朴炯植 饰）表面上是忠诚的下属，但实则野心勃勃，一直渴望攀上集团顶峰。一次偶然的机会，他意外得到一笔2兆韩元黑金，本来想用这笔钱改变命运，但反而陷入生命危险，为对抗幕后黑手，展开一场夺金复仇之旅。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202502/21/rFr7JSz81A83/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202502/22/Ej5bYTSTua82/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202502/28/0ZvVzSgsdy84/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202503/01/h2xhvTtCmX77/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202503/07/JcZwS975R684/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202503/08/60MgNJvk3s83/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202503/14/UdT0RLpuVg81/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202503/15/KVims5mK0577/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202503/21/dyYrjzg6B983/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202503/22/mcGEeU35Vw82/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202503/28/0YmHmVjvAG78/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202503/29/kgCVQDNN8L77/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202504/09/2KMKCiUsY784/video/index.m3u8"
+      },
+      {
+        "name": "第14集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202504/05/yw2JN0Pyid84/video/index.m3u8"
+      },
+      {
+        "name": "第15集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202504/11/zSZ7XY9qby82/video/index.m3u8"
+      },
+      {
+        "name": "第16集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202504/12/wvCkvKDFRK81/video/index.m3u8"
       }
     ]
   },

@@ -1,5 +1,22 @@
 [
   {
+    "id": 167355,
+    "title": "穿越七零，春暖花开",
+    "category": "年代穿越",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261105-1/0c7b350c2a0c7b26eed6000a068ca2b9.jpg",
+    "year": "2026",
+    "area": "中国大陆",
+    "actor": "文婧&章航&伏少宸",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "全集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/04/QtqCY2rw8986/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 167338,
     "title": "七零闪婚：我靠手艺旺疯全家",
     "category": "年代穿越",
@@ -16979,23 +16996,6 @@
       {
         "name": "全集",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202602/01/mkK2c7GYTm96/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 152860,
-    "title": "鉴宝，我在全球倒腾古董",
-    "category": "年代穿越",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20260201-1/eb27425bc7e53324ff60e5ed2b62e0c0.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "张忻&赵阿东&李仲琦",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v4.wujinwsym3u8.com/wjv4/202602/01/uhZmGW7WqV93/video/index.m3u8"
       }
     ]
   }

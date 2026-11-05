@@ -1,5 +1,22 @@
 [
   {
+    "id": 152860,
+    "title": "鉴宝，我在全球倒腾古董",
+    "category": "年代穿越",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20260201-1/eb27425bc7e53324ff60e5ed2b62e0c0.jpg",
+    "year": "2026",
+    "area": "中国大陆",
+    "actor": "张忻&赵阿东&李仲琦",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "全集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202602/01/uhZmGW7WqV93/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 152856,
     "title": "重生之识破继母的诡计",
     "category": "年代穿越",
@@ -17071,23 +17088,6 @@
       {
         "name": "全集",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202510/29/haBvTBHHZX84/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 143729,
-    "title": "重生我成了贵门之子",
-    "category": "年代穿越",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20251028-1/10a980b106a1bc0fcd1eb463245c491b.jpg",
-    "year": "2025",
-    "area": "中国大陆",
-    "actor": "",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v8.wujinwsym3u8.com/wjv8/202510/28/Y1HCJ9zhZz80/video/index.m3u8"
       }
     ]
   }

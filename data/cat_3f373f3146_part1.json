@@ -1,5 +1,22 @@
 [
   {
+    "id": 167365,
+    "title": "双面美人谋君心",
+    "category": "古装仙侠",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261105-1/51d5830ea2867e4b65ecce3f08ef671f.jpg",
+    "year": "2026",
+    "area": "中国大陆",
+    "actor": "何健麒＆梁雯晶",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "全集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/04/vzngW4ZNse92/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 167321,
     "title": "我乃人间唯一神明",
     "category": "古装仙侠",
@@ -18699,23 +18716,6 @@
       {
         "name": "全集",
         "url": "https://v8.wujinwsym3u8.com/wjv8/202602/18/328iGsCh0p93/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 154327,
-    "title": "太子妃她天天想造反",
-    "category": "古装仙侠",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20260218-1/887d576013ad7ab8511360b95d1c8540.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "陈冠峄,杨帆",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v10.wujinwsym3u8.com/wjv10/202602/18/gXq9t5mCHn89/video/index.m3u8"
       }
     ]
   }
