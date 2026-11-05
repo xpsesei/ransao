@@ -1,5 +1,38 @@
 [
   {
+    "id": 166194,
+    "title": "独家黑幕第二季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261029-1/c71dd2d29f8a423a7d2ec019a3e26e9f.jpg",
+    "year": "2026",
+    "area": "美国",
+    "actor": "伊桑·霍克,贝蒂·吉尔平,汤米·李·琼斯",
+    "director": "",
+    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FX宣布续订《内幕》（The Lowdown）第二季。 该剧由伊森·霍克主演，他将饰演一个小镇的调查记者，他准备报道一个富豪家庭背后的故事时，发现自己知道了太多内幕。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202610/15/Dd5WCfj1y193/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202610/15/BtXwmGihid95/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202610/22/fEfGni5hfP87/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/29/gFbkWzKrcQ96/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/05/JB6NZyB7U296/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 167349,
     "title": "拳王阿里传奇",
     "category": "美国剧",
@@ -1690,35 +1723,6 @@
       {
         "name": "第04集",
         "url": "https://v4.wujinwsym3u8.com/wjv4/202610/29/bZwnhTEVS296/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 166194,
-    "title": "独家黑幕第二季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261029-1/c71dd2d29f8a423a7d2ec019a3e26e9f.jpg",
-    "year": "2026",
-    "area": "美国",
-    "actor": "伊桑·霍克,贝蒂·吉尔平,汤米·李·琼斯",
-    "director": "",
-    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FX宣布续订《内幕》（The Lowdown）第二季。 该剧由伊森·霍克主演，他将饰演一个小镇的调查记者，他准备报道一个富豪家庭背后的故事时，发现自己知道了太多内幕。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v1.wujinwsym3u8.com/wjv1/202610/15/Dd5WCfj1y193/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202610/15/BtXwmGihid95/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v1.wujinwsym3u8.com/wjv1/202610/22/fEfGni5hfP87/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/29/gFbkWzKrcQ96/video/index.m3u8"
       }
     ]
   },

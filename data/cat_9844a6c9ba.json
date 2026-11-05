@@ -1,5 +1,38 @@
 [
   {
+    "id": 165895,
+    "title": "卡戴珊家族第八季",
+    "category": "欧美综艺",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261029-1/67f4ca11254d3863a398905bd3cf1f45.jpg",
+    "year": "2026",
+    "area": "美国",
+    "actor": "金·卡戴珊,凯莉·詹娜,肯多尔·詹娜,科勒·卡戴珊,克丽丝·詹纳,葛妮·卡戴珊",
+    "director": "",
+    "content": "<p>话题女王们回来了！这一季，一切都跟“家人”有关。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202610/09/T1uP3D5Sm987/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202610/17/NVpTS9bSLf86/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/22/Zz6Cj6f8HV94/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202610/29/QuNsBE1FYD96/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/05/7xUTirntsF90/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 164558,
     "title": "伦敦娇妻第二季",
     "category": "欧美综艺",
@@ -45,35 +78,6 @@
       {
         "name": "第09集",
         "url": "https://v8.wujinwsym3u8.com/wjv8/202611/03/jDRUQx3dAf90/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 165895,
-    "title": "卡戴珊家族第八季",
-    "category": "欧美综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261029-1/67f4ca11254d3863a398905bd3cf1f45.jpg",
-    "year": "2026",
-    "area": "美国",
-    "actor": "金·卡戴珊,凯莉·詹娜,肯多尔·詹娜,科勒·卡戴珊,克丽丝·詹纳,葛妮·卡戴珊",
-    "director": "",
-    "content": "<p>话题女王们回来了！这一季，一切都跟“家人”有关。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v5.wujinwsym3u8.com/wjv5/202610/09/T1uP3D5Sm987/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202610/17/NVpTS9bSLf86/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/22/Zz6Cj6f8HV94/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v1.wujinwsym3u8.com/wjv1/202610/29/QuNsBE1FYD96/video/index.m3u8"
       }
     ]
   },
