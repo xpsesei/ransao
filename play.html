@@ -41,49 +41,45 @@
             <p class="text-xs text-slate-400 mt-1" x-text="'类型：' + (vod?.category || '') + ' | 年份：' + (vod?.year || '') + ' | 地区：' + (vod?.area || '')"></p>
         </div>
 
-        <!-- 🚀 核心：带悬浮控制层的播放器容器 -->
-        <div class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative group">
-            
-            <!-- 播放器 iframe -->
+        <!-- 📺 纯净的播放器容器（绝不遮挡内部任何全屏/播放按钮） -->
+        <div class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
             <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+        </div>
 
-            <!-- 浮动在播放器下方的快捷控制栏（平时半透明，鼠标移入或手机点击时清晰可见） -->
-            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-3 flex items-center justify-between transition opacity-90 group-hover:opacity-100">
-                <div class="flex items-center space-x-2">
-                    <button @click="playPrev()" :disabled="currentIndex === 0" 
-                            class="px-3 py-1.5 bg-slate-800/80 hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed rounded-lg text-xs font-medium text-white backdrop-blur transition">
-                        ◀ 上一集
-                    </button>
-                    <button @click="playNext()" :disabled="!vod?.episodes || currentIndex >= vod.episodes.length - 1" 
-                            class="px-3 py-1.5 bg-blue-600/90 hover:bg-blue-500 disabled:opacity-30 disabled:cursor-not-allowed rounded-lg text-xs font-medium text-white backdrop-blur transition shadow">
-                        下一集 ▶
-                    </button>
-                </div>
-
-                <!-- 打开选集抽屉按钮 -->
-                <button @click="isDrawerOpen = !isDrawerOpen" class="px-3 py-1.5 bg-slate-800/80 hover:bg-slate-700 rounded-lg text-xs font-medium text-white backdrop-blur transition flex items-center space-x-1">
-                    <span>📂 选集列表 (<span x-text="(currentIndex + 1) + '/' + (vod?.episodes?.length || 0)"></span>)</span>
+        <!-- 🚀 播放器下方的独立控制条（上一集、下一集、选集开关） -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 flex items-center justify-between gap-2 shadow-lg">
+            <div class="flex items-center space-x-2">
+                <button @click="playPrev()" :disabled="currentIndex === 0" 
+                        class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed rounded-xl text-xs font-medium text-white transition flex items-center space-x-1">
+                    <span>◀ 上一集</span>
+                </button>
+                <button @click="playNext()" :disabled="!vod?.episodes || currentIndex >= vod.episodes.length - 1" 
+                        class="px-3.5 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-30 disabled:cursor-not-allowed rounded-xl text-xs font-medium text-white transition shadow-md shadow-blue-600/30 flex items-center space-x-1">
+                    <span>下一集 ▶</span>
                 </button>
             </div>
 
-            <!-- 📺 悬浮选集抽屉面板（点击“选集列表”按钮时弹出的浮层） -->
-            <div x-show="isDrawerOpen" @click.outside="isDrawerOpen = false" x-cloak 
-                 class="absolute inset-y-0 right-0 w-72 bg-slate-900/95 backdrop-blur-md border-l border-slate-800 p-4 flex flex-col shadow-2xl transition transform z-20">
-                <div class="flex justify-between items-center pb-3 border-b border-slate-800">
-                    <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider">全集选单</h4>
-                    <button @click="isDrawerOpen = false" class="text-slate-400 hover:text-white font-bold text-base">&times;</button>
-                </div>
-                <div class="flex-grow overflow-y-auto py-3 space-y-1.5 pr-1">
-                    <template x-for="(ep, index) in vod?.episodes" :key="index">
-                        <button @click="playEpisode(ep.url, index); isDrawerOpen = false;"
-                                :class="currentIndex === index ? 'bg-blue-600 text-white font-bold shadow' : 'bg-slate-800/60 text-slate-300 hover:bg-slate-800'"
-                                class="w-full text-left px-3 py-2 rounded-xl text-xs transition truncate"
-                                x-text="ep.name">
-                        </button>
-                    </template>
-                </div>
-            </div>
+            <!-- 切换选集抽屉面板按钮 -->
+            <button @click="isDrawerOpen = !isDrawerOpen" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl text-xs font-semibold text-blue-400 transition flex items-center space-x-1.5 border border-slate-700">
+                <span>📂 选集列表 (<span class="text-white" x-text="(currentIndex + 1) + '/' + (vod?.episodes?.length || 0)"></span>)</span>
+            </button>
+        </div>
 
+        <!-- 📺 选集列表区域（默认展示或通过按钮控制折叠，这里直接平铺展示在下方，方便随时选集） -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
+            <div class="flex justify-between items-center">
+                <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">全部选集</h4>
+                <span class="text-xs text-slate-500" x-text="'当前播放：第 ' + (currentIndex + 1) + ' 集'"></span>
+            </div>
+            <div class="flex flex-wrap gap-2 max-h-56 overflow-y-auto pr-1">
+                <template x-for="(ep, index) in vod?.episodes" :key="index">
+                    <button @click="playEpisode(ep.url, index)"
+                            :class="currentIndex === index ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
+                            class="px-3.5 py-2 rounded-xl text-xs transition"
+                            x-text="ep.name">
+                    </button>
+                </template>
+            </div>
         </div>
 
         <!-- 剧情简介 -->
@@ -108,7 +104,7 @@
                 currentPlayUrl: '',
                 selectedEpUrl: '',
                 currentIndex: 0,
-                isDrawerOpen: false, // 控制悬浮选集面板开关
+                isDrawerOpen: false,
 
                 init() {
                     // 加载分类列表用于顶部导航
