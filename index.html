@@ -10,7 +10,7 @@
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between" x-data="videoApp()">
 
     <!-- 顶部导航栏 -->
-    <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800">
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <a href="index.html" class="text-2xl font-black bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</a>
@@ -27,14 +27,12 @@
         
         <!-- 分类与首页导航栏 -->
         <div class="flex items-center space-x-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
-            <!-- 固定的首页/最新按钮 -->
             <button @click="switchCategoryByName('🔥 最新更新')" 
                     :class="!isSearching && currentCategory === '🔥 最新更新' ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
                     class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition flex items-center space-x-1">
                 <span>🔥 最新更新</span>
             </button>
 
-            <!-- 动态分类按钮 -->
             <template x-for="cat in categories" :key="cat.name">
                 <template x-if="cat.name !== '🔥 最新更新'">
                     <button @click="switchCategory(cat)" 
@@ -68,9 +66,9 @@
             </template>
         </div>
 
-        <!-- 无数据提示 -->
+        <!-- 无数据或加载中提示 -->
         <div x-show="filteredVideos.length === 0" class="text-center py-20 text-slate-500">
-            正在从云端加载影视资源，请稍候...
+            正在从云端飞速加载中...
         </div>
 
         <!-- 📄 分页控制条（严格每页 28 个视频） -->
@@ -114,9 +112,7 @@
                     const paramPage = parseInt(urlParams.get('p')) || 1;
                     const paramQ = urlParams.get('q');
 
-                    if (paramPage > 1) {
-                        this.currentPage = paramPage;
-                    }
+                    if (paramPage > 1) this.currentPage = paramPage;
                     if (paramQ) {
                         this.searchKeyword = paramQ;
                         this.isSearching = true;
@@ -194,6 +190,17 @@
                     
                     this.updateUrl();
 
+                    // 🚀 核心优化：先检查浏览器本地内存（SessionStorage）是否有缓存
+                    const cacheKey = `vod_cache_${cat.name}`;
+                    const cachedData = sessionStorage.getItem(cacheKey);
+                    if (cachedData) {
+                        try {
+                            this.allVideos = JSON.parse(cachedData);
+                            this.filterVideos();
+                            return; // 命中缓存，秒开！
+                        } catch (e) {}
+                    }
+
                     let filesToFetch = [];
                     if (cat.file) {
                         filesToFetch = [cat.file];
@@ -201,18 +208,23 @@
                         filesToFetch = cat.files;
                     }
 
-                    if (filesToFetch.length === 0) {
-                        return;
-                    }
+                    if (filesToFetch.length === 0) return;
 
+                    // 异步并行请求所有分片
                     Promise.all(filesToFetch.map(f => 
                         fetch('./data/' + f)
                             .then(res => res.json())
                             .catch(err => [])
                     ))
                     .then(results => {
-                        this.allVideos = results.flat();
+                        const merged = results.flat();
+                        this.allVideos = merged;
                         this.filterVideos();
+
+                        // 写入内存缓存，下次点击直接秒开
+                        try {
+                            sessionStorage.setItem(cacheKey, JSON.stringify(merged));
+                        } catch (e) {}
                     })
                     .catch(err => { 
                         this.allVideos = []; 
@@ -280,7 +292,6 @@
                     }
                 },
 
-                // 🚀 完美的独立详情页跳转（传递 id 和 cat 参数）
                 goToPlay(vodSummary) {
                     window.location.href = `play.html?id=${vodSummary.id}&cat=${encodeURIComponent(vodSummary.category)}`;
                 }
