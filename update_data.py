@@ -4,11 +4,10 @@ import json
 import os
 import time
 import urllib.request
-from urllib.error import HTTPError, URLError
 
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
-MAX_WORKERS = 5  # 降至 5 线程，减轻对 Cloudflare 源站的压力，防止触发 522 超时
+MAX_WORKERS = 5  # 5线程并发，防止触发源站 522 超时
 
 
 def fetch_page(page, retries=3):
@@ -29,9 +28,7 @@ def fetch_page(page, retries=3):
         return data.get("list", [])
     except Exception as e:
       if attempt < retries - 1:
-        # 遇到 522 或超时，等待 2~4 秒后自动重试
-        sleep_time = (attempt + 1) * 2
-        time.sleep(sleep_time)
+        time.sleep((attempt + 1) * 2)
         continue
       else:
         print(f"❌ 第 {page} 页连续重试失败 (522/超时): {e}")
@@ -40,7 +37,6 @@ def fetch_page(page, retries=3):
 
 def main():
   os.makedirs("data", exist_ok=True)
-  all_json_path = "data/all.json"
 
   print("1. Fetching official categories from resource site...")
   try:
@@ -139,8 +135,7 @@ def main():
       categories[category] = []
     categories[category].append(item)
 
-  with open(all_json_path, "w", encoding="utf-8") as f:
-    json.dump(processed_videos, f, ensure_ascii=False, indent=2)
+  # ❌ 注意：这里不再保存占用 173MB 的 all.json 文件，彻底避开 Git 100MB 限制！
 
   cat_index = []
   all_cats = list(category_names)
@@ -162,8 +157,8 @@ def main():
     json.dump(cat_index, f, ensure_ascii=False, indent=2)
 
   print(
-      f"✅ Full sync processing complete! Total processed videos:"
-      f" {len(processed_videos)}"
+      f"✅ Full sync processing complete! Total processed categories:"
+      f" {len(cat_index)}"
   )
 
 
