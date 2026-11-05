@@ -1,0 +1,421 @@
+[
+  {
+    "name": "动作片",
+    "count": 4783,
+    "files": [
+      "cat_e1ce15245d_part1.json",
+      "cat_e1ce15245d_part2.json",
+      "cat_e1ce15245d_part3.json",
+      "cat_e1ce15245d_part4.json",
+      "cat_e1ce15245d_part5.json"
+    ]
+  },
+  {
+    "name": "喜剧片",
+    "count": 7209,
+    "files": [
+      "cat_5086e3afc3_part1.json",
+      "cat_5086e3afc3_part2.json",
+      "cat_5086e3afc3_part3.json",
+      "cat_5086e3afc3_part4.json",
+      "cat_5086e3afc3_part5.json",
+      "cat_5086e3afc3_part6.json",
+      "cat_5086e3afc3_part7.json",
+      "cat_5086e3afc3_part8.json"
+    ]
+  },
+  {
+    "name": "爱情片",
+    "count": 1042,
+    "files": [
+      "cat_41373d5e90_part1.json",
+      "cat_41373d5e90_part2.json"
+    ]
+  },
+  {
+    "name": "科幻片",
+    "count": 1055,
+    "files": [
+      "cat_e059b95c48_part1.json",
+      "cat_e059b95c48_part2.json"
+    ]
+  },
+  {
+    "name": "恐怖片",
+    "count": 4253,
+    "files": [
+      "cat_412cee3766_part1.json",
+      "cat_412cee3766_part2.json",
+      "cat_412cee3766_part3.json",
+      "cat_412cee3766_part4.json",
+      "cat_412cee3766_part5.json"
+    ]
+  },
+  {
+    "name": "剧情片",
+    "count": 19116,
+    "files": [
+      "cat_dddbfb9bdd_part1.json",
+      "cat_dddbfb9bdd_part2.json",
+      "cat_dddbfb9bdd_part3.json",
+      "cat_dddbfb9bdd_part4.json",
+      "cat_dddbfb9bdd_part5.json",
+      "cat_dddbfb9bdd_part6.json",
+      "cat_dddbfb9bdd_part7.json",
+      "cat_dddbfb9bdd_part8.json",
+      "cat_dddbfb9bdd_part9.json",
+      "cat_dddbfb9bdd_part10.json",
+      "cat_dddbfb9bdd_part11.json",
+      "cat_dddbfb9bdd_part12.json",
+      "cat_dddbfb9bdd_part13.json",
+      "cat_dddbfb9bdd_part14.json",
+      "cat_dddbfb9bdd_part15.json",
+      "cat_dddbfb9bdd_part16.json",
+      "cat_dddbfb9bdd_part17.json",
+      "cat_dddbfb9bdd_part18.json",
+      "cat_dddbfb9bdd_part19.json",
+      "cat_dddbfb9bdd_part20.json"
+    ]
+  },
+  {
+    "name": "战争片",
+    "count": 345,
+    "file": "cat_97129dde84.json"
+  },
+  {
+    "name": "国产剧",
+    "count": 8350,
+    "files": [
+      "cat_3fc0b225a0_part1.json",
+      "cat_3fc0b225a0_part2.json",
+      "cat_3fc0b225a0_part3.json",
+      "cat_3fc0b225a0_part4.json",
+      "cat_3fc0b225a0_part5.json",
+      "cat_3fc0b225a0_part6.json",
+      "cat_3fc0b225a0_part7.json",
+      "cat_3fc0b225a0_part8.json",
+      "cat_3fc0b225a0_part9.json"
+    ]
+  },
+  {
+    "name": "香港剧",
+    "count": 1646,
+    "files": [
+      "cat_e2f638fdfb_part1.json",
+      "cat_e2f638fdfb_part2.json"
+    ]
+  },
+  {
+    "name": "台湾剧",
+    "count": 299,
+    "file": "cat_9946a4060c.json"
+  },
+  {
+    "name": "美国剧",
+    "count": 2764,
+    "files": [
+      "cat_3f40a58533_part1.json",
+      "cat_3f40a58533_part2.json",
+      "cat_3f40a58533_part3.json"
+    ]
+  },
+  {
+    "name": "伦理片",
+    "count": 4,
+    "file": "cat_be85b967cc.json"
+  },
+  {
+    "name": "纪录片",
+    "count": 1038,
+    "files": [
+      "cat_c69a1c5423_part1.json",
+      "cat_c69a1c5423_part2.json"
+    ]
+  },
+  {
+    "name": "韩国剧",
+    "count": 886,
+    "file": "cat_a394da6525.json"
+  },
+  {
+    "name": "日本剧",
+    "count": 1279,
+    "files": [
+      "cat_5477ee8b0b_part1.json",
+      "cat_5477ee8b0b_part2.json"
+    ]
+  },
+  {
+    "name": "海外剧",
+    "count": 373,
+    "file": "cat_b0530fdf5f.json"
+  },
+  {
+    "name": "大陆综艺",
+    "count": 2252,
+    "files": [
+      "cat_235f2faded_part1.json",
+      "cat_235f2faded_part2.json",
+      "cat_235f2faded_part3.json"
+    ]
+  },
+  {
+    "name": "日韩综艺",
+    "count": 373,
+    "file": "cat_430465b915.json"
+  },
+  {
+    "name": "港台综艺",
+    "count": 153,
+    "file": "cat_b90cf1e0dc.json"
+  },
+  {
+    "name": "欧美综艺",
+    "count": 73,
+    "file": "cat_9844a6c9ba.json"
+  },
+  {
+    "name": "国产动漫",
+    "count": 1704,
+    "files": [
+      "cat_e8574c39f5_part1.json",
+      "cat_e8574c39f5_part2.json"
+    ]
+  },
+  {
+    "name": "日韩动漫",
+    "count": 4559,
+    "files": [
+      "cat_913d15350f_part1.json",
+      "cat_913d15350f_part2.json",
+      "cat_913d15350f_part3.json",
+      "cat_913d15350f_part4.json",
+      "cat_913d15350f_part5.json"
+    ]
+  },
+  {
+    "name": "欧美动漫",
+    "count": 1067,
+    "files": [
+      "cat_c0bfd816f5_part1.json",
+      "cat_c0bfd816f5_part2.json"
+    ]
+  },
+  {
+    "name": "悬疑片",
+    "count": 98,
+    "file": "cat_3bb27701ca.json"
+  },
+  {
+    "name": "动画片",
+    "count": 839,
+    "file": "cat_52a4821235.json"
+  },
+  {
+    "name": "犯罪片",
+    "count": 102,
+    "file": "cat_472b759a45.json"
+  },
+  {
+    "name": "奇幻片",
+    "count": 33,
+    "file": "cat_8517011342.json"
+  },
+  {
+    "name": "邵氏电影",
+    "count": 445,
+    "file": "cat_c80cdce50c.json"
+  },
+  {
+    "name": "泰剧",
+    "count": 726,
+    "file": "cat_9e7a40dbaa.json"
+  },
+  {
+    "name": "篮球",
+    "count": 2803,
+    "files": [
+      "cat_ea2eed1fb5_part1.json",
+      "cat_ea2eed1fb5_part2.json",
+      "cat_ea2eed1fb5_part3.json"
+    ]
+  },
+  {
+    "name": "影视解说",
+    "count": 3289,
+    "files": [
+      "cat_ac3910fa4e_part1.json",
+      "cat_ac3910fa4e_part2.json",
+      "cat_ac3910fa4e_part3.json",
+      "cat_ac3910fa4e_part4.json"
+    ]
+  },
+  {
+    "name": "短剧",
+    "count": 7,
+    "file": "cat_c5680c9e62.json"
+  },
+  {
+    "name": "港台动漫",
+    "count": 38,
+    "file": "cat_c460da4719.json"
+  },
+  {
+    "name": "海外动漫",
+    "count": 73,
+    "file": "cat_1ab0dfbeb9.json"
+  },
+  {
+    "name": "演唱会",
+    "count": 22,
+    "file": "cat_9e27f3276e.json"
+  },
+  {
+    "name": "足球",
+    "count": 3853,
+    "files": [
+      "cat_ed05233ac8_part1.json",
+      "cat_ed05233ac8_part2.json",
+      "cat_ed05233ac8_part3.json",
+      "cat_ed05233ac8_part4.json"
+    ]
+  },
+  {
+    "name": "预告片",
+    "count": 452,
+    "file": "cat_d95cf6d244.json"
+  },
+  {
+    "name": "港台三级",
+    "count": 642,
+    "file": "cat_8ad97a66eb.json"
+  },
+  {
+    "name": "韩国伦理",
+    "count": 698,
+    "file": "cat_357807450b.json"
+  },
+  {
+    "name": "西方伦理",
+    "count": 415,
+    "file": "cat_422d6b3d6a.json"
+  },
+  {
+    "name": "日本伦理",
+    "count": 815,
+    "file": "cat_fd9ccd6c24.json"
+  },
+  {
+    "name": "两性课堂",
+    "count": 3,
+    "file": "cat_9c1b338c85.json"
+  },
+  {
+    "name": "写真热舞",
+    "count": 6,
+    "file": "cat_b33594d70b.json"
+  },
+  {
+    "name": "有声动漫",
+    "count": 41,
+    "file": "cat_e7fe1ef9ec.json"
+  },
+  {
+    "name": "女频恋爱",
+    "count": 8890,
+    "files": [
+      "cat_ebf6fb2fbc_part1.json",
+      "cat_ebf6fb2fbc_part2.json",
+      "cat_ebf6fb2fbc_part3.json",
+      "cat_ebf6fb2fbc_part4.json",
+      "cat_ebf6fb2fbc_part5.json",
+      "cat_ebf6fb2fbc_part6.json",
+      "cat_ebf6fb2fbc_part7.json",
+      "cat_ebf6fb2fbc_part8.json",
+      "cat_ebf6fb2fbc_part9.json"
+    ]
+  },
+  {
+    "name": "反转爽剧",
+    "count": 3622,
+    "files": [
+      "cat_56eee99b15_part1.json",
+      "cat_56eee99b15_part2.json",
+      "cat_56eee99b15_part3.json",
+      "cat_56eee99b15_part4.json"
+    ]
+  },
+  {
+    "name": "脑洞悬疑",
+    "count": 1125,
+    "files": [
+      "cat_dfa080be27_part1.json",
+      "cat_dfa080be27_part2.json"
+    ]
+  },
+  {
+    "name": "年代穿越",
+    "count": 4171,
+    "files": [
+      "cat_7b80b7410c_part1.json",
+      "cat_7b80b7410c_part2.json",
+      "cat_7b80b7410c_part3.json",
+      "cat_7b80b7410c_part4.json",
+      "cat_7b80b7410c_part5.json"
+    ]
+  },
+  {
+    "name": "古装仙侠",
+    "count": 4233,
+    "files": [
+      "cat_3f373f3146_part1.json",
+      "cat_3f373f3146_part2.json",
+      "cat_3f373f3146_part3.json",
+      "cat_3f373f3146_part4.json",
+      "cat_3f373f3146_part5.json"
+    ]
+  },
+  {
+    "name": "现代都市",
+    "count": 11364,
+    "files": [
+      "cat_35cbbe42a2_part1.json",
+      "cat_35cbbe42a2_part2.json",
+      "cat_35cbbe42a2_part3.json",
+      "cat_35cbbe42a2_part4.json",
+      "cat_35cbbe42a2_part5.json",
+      "cat_35cbbe42a2_part6.json",
+      "cat_35cbbe42a2_part7.json",
+      "cat_35cbbe42a2_part8.json",
+      "cat_35cbbe42a2_part9.json",
+      "cat_35cbbe42a2_part10.json",
+      "cat_35cbbe42a2_part11.json",
+      "cat_35cbbe42a2_part12.json"
+    ]
+  },
+  {
+    "name": "Netflix电影",
+    "count": 123,
+    "file": "cat_09b5c18764.json"
+  },
+  {
+    "name": "Netflix自制剧",
+    "count": 196,
+    "file": "cat_979fb0478f.json"
+  },
+  {
+    "name": "擦边短剧",
+    "count": 96,
+    "file": "cat_3458f5a4ed.json"
+  },
+  {
+    "name": "漫剧",
+    "count": 720,
+    "file": "cat_1d59dad129.json"
+  },
+  {
+    "name": "儿童儿歌",
+    "count": 45,
+    "file": "cat_d8ffa15aba.json"
+  }
+]
