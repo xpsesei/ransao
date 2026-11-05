@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>正在播放 - 云端影院</title>
+    <!-- 动态 SEO 标题占位 -->
+    <title id="page-title">正在加载 - 云端影院</title>
+    <!-- 动态 SEO 描述占位 -->
+    <meta id="page-desc" name="description" content="云端影院提供免费高清影视在线观看与全集选集。">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
-        /* 原生全屏时的样式适配 */
         #player-container:fullscreen {
             width: 100vw !important;
             height: 100vh !important;
@@ -56,17 +58,17 @@
         
         <!-- 视频标题 -->
         <div>
-            <h1 class="text-xl md:text-2xl font-bold text-slate-100" x-text="vod?.title || '加载中...'"></h1>
-            <p class="text-xs text-slate-400 mt-1" x-text="'类型：' + (vod?.category || '') + ' | 年份：' + (vod?.year || '') + ' | 地区：' + (vod?.area || '')"></p>
+            <h1 class="text-xl md:text-2xl font-bold text-slate-100" x-text="vod?.title || '正在加载影视数据...'"></h1>
+            <p class="text-xs text-slate-400 mt-1" x-text="'类型：' + (vod?.category || '') + ' | 年份：' + (vod?.year || '') + ' | 地区：' + (vod?.area || '') + ' | 主演：' + (vod?.actor || '')"></p>
         </div>
 
-        <!-- 🚀 核心：集成了播放器、上下集、选集抽屉和全屏控制的容器 -->
+        <!-- 📺 播放器容器 -->
         <div id="player-container" class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative group">
             
             <!-- 播放器 iframe -->
             <iframe :src="currentPlayUrl" class="w-full h-full border-0"></iframe>
 
-            <!-- 📺 悬浮在播放器下方的控制条（在全屏和非全屏下都完美显示） -->
+            <!-- 悬浮控制条 -->
             <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-3 flex items-center justify-between transition opacity-90 group-hover:opacity-100 z-10">
                 <div class="flex items-center space-x-2">
                     <button @click="playPrev()" :disabled="currentIndex === 0" 
@@ -83,13 +85,13 @@
                     </button>
                 </div>
 
-                <!-- 容器全屏切换按钮 -->
+                <!-- 全屏切换按钮（自动强制横屏） -->
                 <button @click="toggleFullscreen()" class="px-3 py-1.5 bg-slate-800/90 hover:bg-slate-700 rounded-lg text-xs font-medium text-white backdrop-blur transition">
                     <span x-text="isFullscreen ? '退出全屏' : '全屏 ⛶'"></span>
                 </button>
             </div>
 
-            <!-- 📂 悬浮选集抽屉面板（点击选集后从右侧滑出，全屏时也能正常操作） -->
+            <!-- 📂 选集抽屉面板 -->
             <div x-show="isDrawerOpen" @click.outside="isDrawerOpen = false" x-cloak 
                  class="absolute inset-y-0 right-0 w-72 bg-slate-900/95 backdrop-blur-md border-l border-slate-800 p-4 flex flex-col shadow-2xl transition transform z-20">
                 <div class="flex justify-between items-center pb-3 border-b border-slate-800">
@@ -135,32 +137,52 @@
                 isFullscreen: false,
 
                 init() {
-                    // 监听浏览器的全屏状态变化
-                    document.addEventListener('fullscreenchange', () => {
-                        this.isFullscreen = !!document.fullscreenElement;
-                    });
-                    document.addEventListener('webkitfullscreenchange', () => {
-                        this.isFullscreen = !!document.webkitFullscreenElement;
-                    });
+                    // 监听全屏状态
+                    document.addEventListener('fullscreenchange', () => { this.isFullscreen = !!document.fullscreenElement; });
+                    document.addEventListener('webkitfullscreenchange', () => { this.isFullscreen = !!document.webkitFullscreenElement; });
 
-                    // 加载分类列表用于顶部导航
+                    // 解析 URL 参数：play.html?id=123&cat=电影
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const vodId = urlParams.get('id');
+                    const targetCategoryName = urlParams.get('cat');
+
+                    // 1. 加载分类索引用于顶部导航
                     fetch('./data/categories.json')
                         .then(res => res.json())
-                        .then(data => { this.categories = data; })
-                        .catch(err => console.log('Failed to load categories'));
-
-                    // 加载当前播放视频
-                    const data = localStorage.getItem('currentVod');
-                    if (data) {
-                        try {
-                            this.vod = JSON.parse(data);
-                            if (this.vod.episodes && this.vod.episodes.length > 0) {
-                                this.playEpisode(this.vod.episodes[0].url, 0);
+                        .then(data => { 
+                            this.categories = data || [];
+                            
+                            // 2. 根据分类查找对应的数据文件并精准匹配当前视频 ID
+                            let targetCat = null;
+                            if (targetCategoryName) {
+                                targetCat = this.categories.find(c => c.name === targetCategoryName);
                             }
-                        } catch (e) {
-                            console.error('Failed to parse vod data');
-                        }
-                    }
+                            if (!targetCat && this.categories.length > 0) {
+                                targetCat = this.categories[0];
+                            }
+
+                            if (targetCat) {
+                                const loadFiles = targetCat.file ? [targetCat.file] : targetCat.files;
+                                Promise.all(loadFiles.map(f => fetch('./data/' + f).then(res => res.json()).catch(e => [])))
+                                    .then(results => {
+                                        const fullList = results.flat();
+                                        const foundVod = fullList.find(v => v.id == vodId) || fullList[0]; // 降级兜底
+                                        if (foundVod) {
+                                            this.vod = foundVod;
+                                            // 🚀 核心 SEO 优化：动态修改浏览器标题与网页元描述
+                                            document.getElementById('page-title').innerText = `${foundVod.title} 免费在线观看 - 云端影院`;
+                                            if (foundVod.content) {
+                                                document.getElementById('page-desc').setAttribute('content', foundVod.content.substring(0, 120));
+                                            }
+
+                                            if (this.vod.episodes && this.vod.episodes.length > 0) {
+                                                this.playEpisode(this.vod.episodes[0].url, 0);
+                                            }
+                                        }
+                                    });
+                            }
+                        })
+                        .catch(err => console.log('Failed to load categories'));
                 },
 
                 playEpisode(url, index) {
@@ -186,29 +208,28 @@
                 toggleFullscreen() {
                     const container = document.getElementById('player-container');
                     if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-                        if (container.requestFullscreen) {
-                            container.requestFullscreen();
-                        } else if (container.webkitRequestFullscreen) {
-                            container.webkitRequestFullscreen();
+                        const requestMethod = container.requestFullscreen || container.webkitRequestFullscreen;
+                        if (requestMethod) {
+                            requestMethod.call(container).then(() => {
+                                if (screen.orientation && screen.orientation.lock) {
+                                    screen.orientation.lock('landscape').catch(err => {});
+                                }
+                            });
                         }
                     } else {
-                        if (document.exitFullscreen) {
-                            document.exitFullscreen();
-                        } else if (document.webkitExitFullscreen) {
-                            document.webkitExitFullscreen();
-                        }
+                        if (document.exitFullscreen) document.exitFullscreen();
+                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                        if (screen.orientation && screen.orientation.unlock) screen.orientation.unlock();
                     }
                 },
 
                 selectCategory(cat) {
-                    localStorage.setItem('targetCategory', cat.name);
-                    window.location.href = 'index.html';
+                    window.location.href = `index.html?cat=${encodeURIComponent(cat.name)}`;
                 },
 
                 doSearch() {
                     if (this.searchKeyword.trim()) {
-                        localStorage.setItem('targetSearch', this.searchKeyword.trim());
-                        window.location.href = 'index.html';
+                        window.location.href = `index.html?q=${encodeURIComponent(this.searchKeyword.trim())}`;
                     }
                 }
             }
