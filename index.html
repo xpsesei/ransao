@@ -17,7 +17,7 @@
             </div>
             <!-- 搜索框 -->
             <div class="w-64 md:w-96">
-                <input type="text" x-model="searchKeyword" @input="filterVideos()" placeholder="在当前分类中搜索..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500">
+                <input type="text" x-model="searchKeyword" @input="onSearch()" placeholder="在当前分类中搜索..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500">
             </div>
         </div>
     </header>
@@ -32,7 +32,7 @@
     <!-- 主体内容区 -->
     <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
         
-        <!-- 分类导航栏（动态从 categories.json 加载，点击秒切分类） -->
+        <!-- 分类导航栏 -->
         <div class="flex items-center space-x-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
             <template x-for="cat in categories" :key="cat.name">
                 <button @click="switchCategory(cat)" 
@@ -43,10 +43,10 @@
             </template>
         </div>
 
-        <!-- 视频网格列表 -->
+        <!-- 视频网格列表（只渲染分页后的数据，极速秒开） -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <template x-for="vod in filteredVideos" :key="vod.id">
-                <div @click="openModal(vod)" class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition cursor-pointer group flex flex-col">
+            <template x-for="vod in paginatedVideos" :key="vod.id">
+                <div @click="goToPlay(vod)" class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition cursor-pointer group flex flex-col">
                     <div class="relative aspect-[3/4] bg-slate-800 overflow-hidden">
                         <img :src="vod.pic" @error="$el.src='https://via.placeholder.com/300x400?text=No+Image'" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
                         <div class="absolute bottom-2 right-2 bg-black/70 backdrop-blur px-2 py-0.5 rounded text-xs text-yellow-400 font-semibold" x-text="vod.year || '最新'"></div>
@@ -63,51 +63,22 @@
         <div x-show="filteredVideos.length === 0" class="text-center py-20 text-slate-500">
             正在加载海量影视资源，请稍候...
         </div>
-    </main>
 
-    <!-- 播放详情弹窗 -->
-    <div x-show="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" x-cloak>
-        <div @click.outside="closeModal()" class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-4xl overflow-hidden flex flex-col max-h-[90vh]">
-            <!-- 弹窗头部 -->
-            <div class="px-6 py-4 border-b border-slate-800 flex justify-between items-center">
-                <h2 class="text-lg font-bold text-slate-100" x-text="currentVod?.title"></h2>
-                <button @click="closeModal()" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
-            </div>
-
-            <!-- 播放器区域 -->
-            <div class="w-full bg-black aspect-video relative">
-                <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen></iframe>
-            </div>
-
-            <!-- 📢 播放器下方广告 -->
-            <div class="bg-slate-950 px-6 py-2 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
-                <span>💡 播放提示：如果当前线路无法播放，请尝试切换其他集数。</span>
-                <a href="#" target="_blank" class="text-blue-400 hover:underline">【广告】特惠影视会员或商务合作</a>
-            </div>
-
-            <!-- 选集列表 -->
-            <div class="p-6 overflow-y-auto flex-grow space-y-4">
-                <div>
-                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">播放选集</h4>
-                    <div class="flex flex-wrap gap-2 max-h-40 overflow-y-auto">
-                        <template x-for="(ep, index) in currentVod?.episodes" :key="index">
-                            <button @click="playEpisode(ep.url)"
-                                    :class="selectedEpUrl === ep.url ? 'bg-blue-600 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
-                                    class="px-3 py-1.5 rounded-lg text-xs font-medium transition"
-                                    x-text="ep.name">
-                            </button>
-                        </template>
-                    </div>
-                </div>
-
-                <!-- 剧情简介 -->
-                <div class="text-xs text-slate-400 border-t border-slate-800 pt-3">
-                    <span class="font-bold text-slate-300">剧情介绍：</span>
-                    <span x-text="currentVod?.content || '暂无简介'"></span>
-                </div>
-            </div>
+        <!-- 📄 分页控制条 -->
+        <div x-show="totalPages > 1" class="flex justify-center items-center space-x-3 mt-8">
+            <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1"
+                    class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
+                上一页
+            </button>
+            <span class="text-sm text-slate-400">
+                第 <span class="text-blue-400 font-bold" x-text="currentPage"></span> / <span x-text="totalPages"></span> 页
+            </span>
+            <button @click="changePage(currentPage + 1)" :disabled="currentPage >= totalPages"
+                    class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
+                下一页
+            </button>
         </div>
-    </div>
+    </main>
 
     <!-- 页脚 -->
     <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
@@ -122,55 +93,45 @@
                 filteredVideos: [],
                 currentCategory: '',
                 searchKeyword: '',
-                isModalOpen: false,
-                currentVod: null,
-                currentPlayUrl: '',
-                selectedEpUrl: '',
                 
-                releaseBaseUrl: './data/',
+                // 分页核心变量
+                currentPage: 1,
+                pageSize: 30, // 每页 30 个视频
 
                 init() {
-                    // 1. 加载分类索引
-                    fetch(this.releaseBaseUrl + 'categories.json')
+                    fetch('./data/categories.json')
                         .then(res => res.json())
                         .then(data => { 
                             this.categories = data;
-                            // 2. 自动默认加载第一个分类，传入整个 cat 对象
                             if (data && data.length > 0) {
                                 this.switchCategory(data[0]);
                             }
                         })
-                        .catch(err => console.log('Waiting for Action release sync...'));
+                        .catch(err => console.log('Waiting for data sync...'));
                 },
 
                 switchCategory(cat) {
                     this.currentCategory = cat.name;
-                    this.filteredVideos = []; // 切换时清空防卡顿
+                    this.searchKeyword = '';
+                    this.currentPage = 1; // 切换分类时重置到第1页
+                    this.allVideos = [];
+                    this.filteredVideos = [];
                     
-                    // 判断是单文件还是多份分片文件
                     if (cat.file) {
-                        // 1. 单个小文件
-                        fetch(this.releaseBaseUrl + cat.file)
+                        fetch('./data/' + cat.file)
                             .then(res => res.json())
                             .then(data => {
                                 this.allVideos = data;
                                 this.filterVideos();
                             })
-                            .catch(err => {
-                                this.allVideos = [];
-                                this.filteredVideos = [];
-                            });
+                            .catch(err => { this.allVideos = []; this.filteredVideos = []; });
                     } else if (cat.files && Array.isArray(cat.files)) {
-                        // 2. 超大分类的多分片文件（并发请求并合并数组）
-                        Promise.all(cat.files.map(f => fetch(this.releaseBaseUrl + f).then(res => res.json())))
+                        Promise.all(cat.files.map(f => fetch('./data/' + f).then(res => res.json())))
                             .then(results => {
-                                this.allVideos = results.flat(); // 合并所有分片
+                                this.allVideos = results.flat();
                                 this.filterVideos();
                             })
-                            .catch(err => {
-                                this.allVideos = [];
-                                this.filteredVideos = [];
-                            });
+                            .catch(err => { this.allVideos = []; this.filteredVideos = []; });
                     }
                 },
 
@@ -184,27 +145,36 @@
                             (v.actor && v.actor.toLowerCase().includes(kw))
                         );
                     }
+                    this.currentPage = 1; // 搜索时重置到第1页
                 },
 
-                openModal(vod) {
-                    this.currentVod = vod;
-                    if (vod.episodes && vod.episodes.length > 0) {
-                        this.playEpisode(vod.episodes[0].url);
-                    } else {
-                        this.currentPlayUrl = '';
-                        this.selectedEpUrl = '';
+                onSearch() {
+                    this.filterVideos();
+                },
+
+                // 计算当前页展示的视频切片
+                get paginatedVideos() {
+                    const start = (this.currentPage - 1) * this.pageSize;
+                    const end = start + this.pageSize;
+                    return this.filteredVideos.slice(start, end);
+                },
+
+                // 计算总页数
+                get totalPages() {
+                    return Math.ceil(this.filteredVideos.length / this.pageSize) || 1;
+                },
+
+                changePage(page) {
+                    if (page >= 1 && page <= this.totalPages) {
+                        this.currentPage = page;
+                        window.scrollTo({ top: 0, behavior: 'smooth' }); // 翻页时平滑滚动到顶部
                     }
-                    this.isModalOpen = true;
                 },
 
-                playEpisode(url) {
-                    this.selectedEpUrl = url;
-                    this.currentPlayUrl = `https://jx.xllmcms.com/dplayer/?url=${encodeURIComponent(url)}`;
-                },
-
-                closeModal() {
-                    this.isModalOpen = false;
-                    this.currentPlayUrl = ''; 
+                goToPlay(vod) {
+                    // 通过 localStorage 传递当前点击的视频数据到独立播放页
+                    localStorage.setItem('currentVod', JSON.stringify(vod));
+                    window.location.href = 'play.html';
                 }
             }
         }
