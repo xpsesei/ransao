@@ -143,29 +143,37 @@
                         .catch(err => console.log('Waiting for Action release sync...'));
                 },
 
-                                switchCategory(cat) {
-                    this.currentCategory = cat.name;
-                    this.filteredVideos = [];
-                    
-                    if (cat.file) {
-                        // 单个小文件
-                        fetch(this.releaseBaseUrl + cat.file)
-                            .then(res => res.json())
-                            .then(data => {
-                                this.allVideos = data;
-                                this.filterVideos();
-                            })
-                            .catch(err => { this.allVideos = []; this.filteredVideos = []; });
-                    } else if (cat.files) {
-                        // 多个分片文件并发请求并合并
-                        Promise.all(cat.files.map(f => fetch(this.releaseBaseUrl + f).then(res => res.json())))
-                            .then(results => {
-                                this.allVideos = results.flat();
-                                this.filterVideos();
-                            })
-                            .catch(err => { this.allVideos = []; this.filteredVideos = []; });
-                    }
-                },
+         switchCategory(cat) {
+    this.currentCategory = cat.name;
+    this.filteredVideos = []; // 切换时清空防卡顿
+    
+    // 判断是单文件还是多份分片文件
+    if (cat.file) {
+        // 1. 单个小文件
+        fetch(this.releaseBaseUrl + cat.file)
+            .then(res => res.json())
+            .then(data => {
+                this.allVideos = data;
+                this.filterVideos();
+            })
+            .catch(err => {
+                this.allVideos = [];
+                this.filteredVideos = [];
+            });
+    } else if (cat.files && Array.isArray(cat.files)) {
+        // 2. 超大分类的多分片文件（并发请求并合并数组）
+        Promise.all(cat.files.map(f => fetch(this.releaseBaseUrl + f).then(res => res.json())))
+            .then(results => {
+                this.allVideos = results.flat(); // 合并所有分片
+                this.filterVideos();
+            })
+            .catch(err => {
+                this.allVideos = [];
+                this.filteredVideos = [];
+            });
+    }
+},
+
 
 
                 filterVideos() {
