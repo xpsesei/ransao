@@ -7,7 +7,10 @@ import urllib.request
 
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
-MAX_WORKERS = 5  # 5线程并发，防止触发源站 522 超时
+MAX_WORKERS = 5
+CHUNK_SIZE = (
+    1000  # 每个分片最多 1000 条数据，确保单个文件只有几百KB，绝不超 100MB
+)
 
 
 def fetch_page(page, retries=3):
@@ -36,6 +39,7 @@ def fetch_page(page, retries=3):
 
 
 def main():
+  # 清理旧的 data 目录或直接覆盖
   os.makedirs("data", exist_ok=True)
 
   print("1. Fetching official categories from resource site...")
@@ -135,8 +139,7 @@ def main():
       categories[category] = []
     categories[category].append(item)
 
-  # ❌ 注意：这里不再保存占用 173MB 的 all.json 文件，彻底避开 Git 100MB 限制！
-
+  # 🚀 核心优化：对超大分类进行分片存储 (Chunking)，确保每个文件极小
   cat_index = []
   all_cats = list(category_names)
   for c_name in categories.keys():
@@ -147,11 +150,25 @@ def main():
     v_list = categories.get(c_name, [])
     if v_list:
       safe_hash = hashlib.md5(c_name.encode("utf-8")).hexdigest()[:10]
-      file_name = f"cat_{safe_hash}.json"
 
-      with open(os.path.join("data", file_name), "w", encoding="utf-8") as f:
-        json.dump(v_list, f, ensure_ascii=False, indent=2)
-      cat_index.append({"name": c_name, "count": len(v_list), "file": file_name})
+      if len(v_list) > CHUNK_SIZE:
+        sub_files = []
+        for i in range(0, len(v_list), CHUNK_SIZE):
+          chunk = v_list[i : i + CHUNK_SIZE]
+          chunk_file = f"cat_{safe_hash}_part{i // CHUNK_SIZE + 1}.json"
+          with open(os.path.join("data", chunk_file), "w", encoding="utf-8") as f:
+            json.dump(chunk, f, ensure_ascii=False, indent=2)
+          sub_files.append(chunk_file)
+        cat_index.append(
+            {"name": c_name, "count": len(v_list), "files": sub_files}
+        )
+      else:
+        file_name = f"cat_{safe_hash}.json"
+        with open(os.path.join("data", file_name), "w", encoding="utf-8") as f:
+          json.dump(v_list, f, ensure_ascii=False, indent=2)
+        cat_index.append(
+            {"name": c_name, "count": len(v_list), "file": file_name}
+        )
 
   with open("data/categories.json", "w", encoding="utf-8") as f:
     json.dump(cat_index, f, ensure_ascii=False, indent=2)
