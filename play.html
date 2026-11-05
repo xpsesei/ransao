@@ -42,27 +42,27 @@
             <p class="text-xs text-slate-400 mt-1" x-text="'类型：' + (vod?.category || '') + ' | 年份：' + (vod?.year || '') + ' | 地区：' + (vod?.area || '') + ' | 主演：' + (vod?.actor || '')"></p>
         </div>
 
-        <!-- 📺 核心播放器容器（内部迷你悬浮控制条） -->
+        <!-- 📺 核心播放器容器（内嵌微型半透明悬浮控制条） -->
         <div id="player-container" class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative group">
             
             <!-- iframe 播放器 -->
             <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" allow="fullscreen"></iframe>
 
-            <!-- 🎯 缩小后的微型控制按钮：浮动在【播放器内部的底部正中央】 -->
-            <div class="absolute bottom-2.5 inset-x-0 flex justify-center items-center z-10 opacity-75 group-hover:opacity-100 transition-opacity pointer-events-none">
-                <div class="flex items-center space-x-1 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-700/50 shadow-xl pointer-events-auto">
+            <!-- 🎯 极小、半透明毛玻璃浮动控制条（平时半透明隐匿，移入时高亮） -->
+            <div class="absolute bottom-2 inset-x-0 flex justify-center items-center z-10 opacity-50 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <div class="flex items-center space-x-1 bg-black/40 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/10 shadow-lg pointer-events-auto text-[10px]">
                     <button @click="playPrev()" :disabled="currentIndex === 0" 
-                            class="px-2 py-0.5 bg-slate-800/90 hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed rounded text-[11px] font-medium text-white transition">
+                            class="px-1.5 py-0.5 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded text-white transition">
                         ◀ 上一集
                     </button>
                     
                     <button @click="isDrawerOpen = !isDrawerOpen" 
-                            class="px-2 py-0.5 bg-slate-800/90 hover:bg-slate-700 rounded text-[11px] font-medium text-blue-400 transition">
-                        📂 选集 (<span class="text-white" x-text="(currentIndex + 1) + '/' + (vod?.episodes?.length || 0)"></span>)
+                            class="px-1.5 py-0.5 bg-white/10 hover:bg-white/20 rounded text-blue-300 transition">
+                        选集 (<span x-text="(currentIndex + 1) + '/' + (vod?.episodes?.length || 0)"></span>)
                     </button>
 
                     <button @click="playNext()" :disabled="!vod?.episodes || currentIndex >= vod.episodes.length - 1" 
-                            class="px-2 py-0.5 bg-blue-600/90 hover:bg-blue-500 disabled:opacity-30 disabled:cursor-not-allowed rounded text-[11px] font-medium text-white transition">
+                            class="px-1.5 py-0.5 bg-blue-600/60 hover:bg-blue-600 disabled:opacity-30 disabled:cursor-not-allowed rounded text-white transition">
                         下一集 ▶
                     </button>
                 </div>
