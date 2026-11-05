@@ -28,19 +28,21 @@
         <!-- 分类与首页导航栏 -->
         <div class="flex items-center space-x-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
             <!-- 固定的首页/最新按钮 -->
-            <button @click="goHome()" 
-                    :class="!isSearching && (currentCategory === '🔥 最新更新' || currentCategory === '') ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
+            <button @click="switchCategoryByName('🔥 最新更新')" 
+                    :class="!isSearching && currentCategory === '🔥 最新更新' ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
                     class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition flex items-center space-x-1">
-                <span>🏠 首页</span>
+                <span>🔥 最新更新</span>
             </button>
 
             <!-- 动态分类按钮 -->
             <template x-for="cat in categories" :key="cat.name">
-                <button @click="switchCategory(cat)" 
-                        :class="!isSearching && currentCategory === cat.name ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
-                        class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition"
-                        x-text="cat.name + (cat.count ? ' (' + cat.count + ')' : '')">
-                </button>
+                <template x-if="cat.name !== '🔥 最新更新'">
+                    <button @click="switchCategory(cat)" 
+                            :class="!isSearching && currentCategory === cat.name ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
+                            class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition"
+                            x-text="cat.name + (cat.count ? ' (' + cat.count + ')' : '')">
+                    </button>
+                </template>
             </template>
         </div>
 
@@ -66,12 +68,12 @@
             </template>
         </div>
 
-        <!-- 无数据或加载提示 -->
+        <!-- 无数据提示 -->
         <div x-show="filteredVideos.length === 0" class="text-center py-20 text-slate-500">
-            正在从云端加载影视资源，如果长时间未显示请检查数据同步是否完成...
+            正在从云端加载影视资源，请稍候...
         </div>
 
-        <!-- 📄 分页控制条 -->
+        <!-- 📄 分页控制条（每页 28 个视频） -->
         <div x-show="totalPages > 1" class="flex justify-center items-center space-x-3 mt-8">
             <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1"
                     class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
@@ -99,100 +101,124 @@
                 allVideos: [],
                 searchIndex: [],
                 filteredVideos: [],
-                currentCategory: '',
+                currentCategory: '🔥 最新更新',
                 searchKeyword: '',
                 isSearching: false,
                 
                 currentPage: 1,
-                pageSize: 30,
+                pageSize: 28, // 🎯 严格设置为每页 28 个视频
 
                 init() {
-                    const targetCat = localStorage.getItem('targetCategory');
-                    const targetSearch = localStorage.getItem('targetSearch');
+                    // 1. 解析当前 URL 中的参数（实现多页面独立链接效果）
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const paramCat = urlParams.get('cat');
+                    const paramPage = parseInt(urlParams.get('p')) || 1;
+                    const paramQ = urlParams.get('q');
 
-                    // 1. 加载分类索引
+                    if (paramPage > 1) {
+                        this.currentPage = paramPage;
+                    }
+                    if (paramQ) {
+                        this.searchKeyword = paramQ;
+                        this.isSearching = true;
+                    }
+
+                    // 2. 加载分类索引
                     fetch('./data/categories.json')
                         .then(res => res.json())
                         .then(data => { 
                             this.categories = data;
-                            if (targetCat) {
-                                localStorage.removeItem('targetCategory');
-                                const found = data.find(c => c.name === targetCat);
-                                if (found) {
-                                    this.switchCategory(found);
-                                    return;
-                                }
-                            }
                             
-                            // 默认加载第一个分类（即最新的内容）
-                            if (data && data.length > 0) {
-                                const latestCat = data.find(c => c.name.includes('最新')) || data[0];
-                                this.switchCategory(latestCat);
+                            let targetCat = data[0]; // 默认最新
+                            if (paramCat) {
+                                const found = data.find(c => c.name === paramCat);
+                                if (found) targetCat = found;
+                            } else {
+                                const latest = data.find(c => c.name.includes('最新'));
+                                if (latest) targetCat = latest;
                             }
 
-                            if (targetSearch) {
-                                localStorage.removeItem('targetSearch');
-                                this.searchKeyword = targetSearch;
-                                setTimeout(() => { this.onGlobalSearch(); }, 300);
+                            this.switchCategory(targetCat, false);
+
+                            if (paramQ && this.searchIndex.length > 0) {
+                                this.onGlobalSearch(false);
                             }
                         })
-                        .catch(err => {
-                            console.log('Waiting for categories sync...');
-                        });
+                        .catch(err => console.log('Waiting for categories sync...'));
 
-                    // 2. 异步加载全局搜索索引
+                    // 3. 异步加载全局搜索索引
                     fetch('./data/search_index.json')
                         .then(res => res.json())
                         .then(data => {
                             this.searchIndex = data;
-                            if (targetSearch) {
-                                this.onGlobalSearch();
+                            if (this.isSearching && this.searchKeyword) {
+                                this.onGlobalSearch(false);
                             }
                         })
                         .catch(err => console.log('Waiting for search index sync...'));
                 },
 
-                goHome() {
-                    const latestCat = this.categories.find(c => c.name.includes('最新')) || this.categories[0];
-                    if (latestCat) {
-                        this.switchCategory(latestCat);
+                // 更新浏览器 URL（不刷新页面，实现多页面网址导航）
+                updateUrl() {
+                    const params = new URLSearchParams();
+                    if (this.currentCategory && this.currentCategory !== '🔥 最新更新') {
+                        params.set('cat', this.currentCategory);
+                    }
+                    if (this.currentPage > 1) {
+                        params.set('p', this.currentPage);
+                    }
+                    if (this.isSearching && this.searchKeyword.trim()) {
+                        params.set('q', this.searchKeyword.trim());
+                    }
+                    const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+                    history.replaceState(null, '', newUrl);
+                },
+
+                switchCategoryByName(name) {
+                    const cat = this.categories.find(c => c.name === name);
+                    if (cat) {
+                        this.switchCategory(cat);
                     }
                 },
 
-                switchCategory(cat) {
+                switchCategory(cat, resetPage = true) {
                     this.isSearching = false;
                     this.searchKeyword = '';
                     this.currentCategory = cat.name;
-                    this.currentPage = 1;
+                    if (resetPage) {
+                        this.currentPage = 1;
+                    }
                     this.allVideos = [];
                     this.filteredVideos = [];
                     
-                    if (cat.file) {
-                        fetch('./data/' + cat.file)
+                    this.updateUrl();
+
+                    const loadFiles = cat.file ? [cat.file] : cat.files;
+                    Promise.all(loadFiles.map(f => 
+                        fetch('./data/' + f)
                             .then(res => res.json())
-                            .then(data => {
-                                this.allVideos = data;
-                                this.filterVideos();
-                            })
-                            .catch(err => { this.allVideos = []; this.filteredVideos = []; });
-                    } else if (cat.files && Array.isArray(cat.files)) {
-                        Promise.all(cat.files.map(f => fetch('./data/' + f).then(res => res.json())))
-                            .then(results => {
-                                this.allVideos = results.flat();
-                                this.filterVideos();
-                            })
-                            .catch(err => { this.allVideos = []; this.filteredVideos = []; });
-                    }
+                            .catch(err => [])
+                    ))
+                    .then(results => {
+                        this.allVideos = results.flat();
+                        this.filterVideos();
+                    })
+                    .catch(err => { 
+                        this.allVideos = []; 
+                        this.filteredVideos = []; 
+                    });
                 },
 
-                onGlobalSearch() {
+                onGlobalSearch(updateHistory = true) {
                     if (!this.searchKeyword.trim()) {
                         this.clearSearch();
                         return;
                     }
 
                     this.isSearching = true;
-                    this.currentPage = 1;
+                    if (updateHistory) {
+                        this.currentPage = 1;
+                    }
                     const kw = this.searchKeyword.toLowerCase();
 
                     if (this.searchIndex.length > 0) {
@@ -206,17 +232,21 @@
                             (v.actor && v.actor.toLowerCase().includes(kw))
                         );
                     }
+
+                    if (updateHistory) {
+                        this.updateUrl();
+                    }
                 },
 
                 clearSearch() {
                     this.searchKeyword = '';
                     this.isSearching = false;
-                    this.filterVideos();
+                    const latestCat = this.categories.find(c => c.name.includes('最新')) || this.categories[0];
+                    this.switchCategory(latestCat);
                 },
 
                 filterVideos() {
                     this.filteredVideos = this.allVideos;
-                    this.currentPage = 1;
                 },
 
                 get paginatedVideos() {
@@ -232,30 +262,31 @@
                 changePage(page) {
                     if (page >= 1 && page <= this.totalPages) {
                         this.currentPage = page;
+                        this.updateUrl();
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 },
 
                 goToPlay(vodSummary) {
                     const cat = this.categories.find(c => c.name === vodSummary.category) || this.categories[0];
-                    if (!cat || !cat.file) {
+                    if (!cat || (!cat.file && !cat.files)) {
                         localStorage.setItem('currentVod', JSON.stringify(vodSummary));
                         window.location.href = 'play.html';
                         return;
                     }
 
-                    const loadPromise = cat.file ? 
-                        fetch('./data/' + cat.file).then(res => res.json()) :
-                        Promise.all(cat.files.map(f => fetch('./data/' + f).then(res => res.json()))).then(results => results.flat());
-
-                    loadPromise.then(fullList => {
-                        const fullVod = fullList.find(v => v.id == vodSummary.id) || vodSummary;
-                        localStorage.setItem('currentVod', JSON.stringify(fullVod));
-                        window.location.href = 'play.html';
-                    }).catch(err => {
-                        localStorage.setItem('currentVod', JSON.stringify(vodSummary));
-                        window.location.href = 'play.html';
-                    });
+                    const loadFiles = cat.file ? [cat.file] : cat.files;
+                    Promise.all(loadFiles.map(f => fetch('./data/' + f).then(res => res.json()).catch(e => [])))
+                        .then(results => {
+                            const fullList = results.flat();
+                            const fullVod = fullList.find(v => v.id == vodSummary.id) || vodSummary;
+                            localStorage.setItem('currentVod', JSON.stringify(fullVod));
+                            window.location.href = 'play.html';
+                        })
+                        .catch(err => {
+                            localStorage.setItem('currentVod', JSON.stringify(vodSummary));
+                            window.location.href = 'play.html';
+                        });
                 }
             }
         }
