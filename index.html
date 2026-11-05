@@ -143,20 +143,30 @@
                         .catch(err => console.log('Waiting for Action release sync...'));
                 },
 
-                switchCategory(file, name) {
-                    this.currentCategory = name;
-                    this.filteredVideos = []; // 切换时清空防卡顿
-                    fetch(this.releaseBaseUrl + file)
-                        .then(res => res.json())
-                        .then(data => {
-                            this.allVideos = data;
-                            this.filterVideos();
-                        })
-                        .catch(err => {
-                            this.allVideos = [];
-                            this.filteredVideos = [];
-                        });
+                                switchCategory(cat) {
+                    this.currentCategory = cat.name;
+                    this.filteredVideos = [];
+                    
+                    if (cat.file) {
+                        // 单个小文件
+                        fetch(this.releaseBaseUrl + cat.file)
+                            .then(res => res.json())
+                            .then(data => {
+                                this.allVideos = data;
+                                this.filterVideos();
+                            })
+                            .catch(err => { this.allVideos = []; this.filteredVideos = []; });
+                    } else if (cat.files) {
+                        // 多个分片文件并发请求并合并
+                        Promise.all(cat.files.map(f => fetch(this.releaseBaseUrl + f).then(res => res.json())))
+                            .then(results => {
+                                this.allVideos = results.flat();
+                                this.filterVideos();
+                            })
+                            .catch(err => { this.allVideos = []; this.filteredVideos = []; });
+                    }
                 },
+
 
                 filterVideos() {
                     if (!this.searchKeyword) {
