@@ -8,9 +8,7 @@ import urllib.request
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
 MAX_WORKERS = 5
-CHUNK_SIZE = (
-    1000  # 每个分片最多 1000 条数据，确保单个文件只有几百KB，绝不超 100MB
-)
+CHUNK_SIZE = 1000
 
 
 def fetch_page(page, retries=3):
@@ -21,7 +19,6 @@ def fetch_page(page, retries=3):
           " like Gecko) Chrome/120.0.0.0 Safari/537.36"
       )
   }
-
   for attempt in range(retries):
     try:
       req = urllib.request.Request(url, headers=headers)
@@ -39,7 +36,6 @@ def fetch_page(page, retries=3):
 
 
 def main():
-  # 清理旧的 data 目录或直接覆盖
   os.makedirs("data", exist_ok=True)
 
   print("1. Fetching official categories from resource site...")
@@ -139,7 +135,7 @@ def main():
       categories[category] = []
     categories[category].append(item)
 
-  # 🚀 核心优化：对超大分类进行分片存储 (Chunking)，确保每个文件极小
+  # 1. 保存分类分片文件
   cat_index = []
   all_cats = list(category_names)
   for c_name in categories.keys():
@@ -173,9 +169,25 @@ def main():
   with open("data/categories.json", "w", encoding="utf-8") as f:
     json.dump(cat_index, f, ensure_ascii=False, indent=2)
 
+  # 2. 🚀 生成轻量级全局搜索索引文件 (search_index.json)
+  search_index = []
+  for vod in processed_videos:
+    search_index.append({
+        "id": vod.get("id"),
+        "title": vod.get("title"),
+        "category": vod.get("category"),
+        "actor": vod.get("actor"),
+        "year": vod.get("year"),
+        "pic": vod.get("pic"),
+    })
+  with open(
+      os.path.join("data", "search_index.json"), "w", encoding="utf-8"
+  ) as f:
+    json.dump(search_index, f, ensure_ascii=False)
+
   print(
-      f"✅ Full sync processing complete! Total processed categories:"
-      f" {len(cat_index)}"
+      f"✅ Full sync & search index processing complete! Total processed"
+      f" items: {len(processed_videos)}"
   )
 
 
