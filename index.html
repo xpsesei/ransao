@@ -17,7 +17,7 @@
             </div>
             <!-- 全局搜索框 -->
             <div class="w-64 md:w-96 relative">
-                <input type="text" x-model="searchKeyword" @input="onGlobalSearch()" placeholder="全网全局搜索（片名、演员）..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500">
+                <input type="text" x-model="searchKeyword" @input="onGlobalSearch()" placeholder="全网全局搜索（片名、演员）..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500 text-slate-100">
             </div>
         </div>
     </header>
@@ -67,7 +67,7 @@
 
         <!-- 无数据提示 -->
         <div x-show="filteredVideos.length === 0" class="text-center py-20 text-slate-500">
-            正在加载全网影视资源，请稍候...
+            正在加载海量影视资源，请稍候...
         </div>
 
         <!-- 📄 分页控制条 -->
@@ -96,7 +96,7 @@
             return {
                 categories: [],
                 allVideos: [],
-                searchIndex: [], // 全局搜索索引
+                searchIndex: [],
                 filteredVideos: [],
                 currentCategory: '',
                 searchKeyword: '',
@@ -106,13 +106,31 @@
                 pageSize: 30, // 每页 30 个视频
 
                 init() {
+                    const targetCat = localStorage.getItem('targetCategory');
+                    const targetSearch = localStorage.getItem('targetSearch');
+
                     // 1. 加载分类索引
                     fetch('./data/categories.json')
                         .then(res => res.json())
                         .then(data => { 
                             this.categories = data;
-                            if (data && data.length > 0) {
+                            if (targetCat) {
+                                localStorage.removeItem('targetCategory');
+                                const found = data.find(c => c.name === targetCat);
+                                if (found) {
+                                    this.switchCategory(found);
+                                } else if (data.length > 0) {
+                                    this.switchCategory(data[0]);
+                                }
+                            } else if (data && data.length > 0) {
+                                // 默认自动加载第一个分类（即“🔥 最新更新”）
                                 this.switchCategory(data[0]);
+                            }
+
+                            if (targetSearch) {
+                                localStorage.removeItem('targetSearch');
+                                this.searchKeyword = targetSearch;
+                                setTimeout(() => { this.onGlobalSearch(); }, 300);
                             }
                         })
                         .catch(err => console.log('Waiting for categories sync...'));
@@ -122,6 +140,9 @@
                         .then(res => res.json())
                         .then(data => {
                             this.searchIndex = data;
+                            if (targetSearch) {
+                                this.onGlobalSearch();
+                            }
                         })
                         .catch(err => console.log('Waiting for search index sync...'));
                 },
@@ -152,7 +173,6 @@
                     }
                 },
 
-                // 全局搜索核心逻辑
                 onGlobalSearch() {
                     if (!this.searchKeyword.trim()) {
                         this.clearSearch();
@@ -164,13 +184,11 @@
                     const kw = this.searchKeyword.toLowerCase();
 
                     if (this.searchIndex.length > 0) {
-                        // 如果全局索引已加载，直接在全网索引中搜索
                         this.filteredVideos = this.searchIndex.filter(v => 
                             (v.title && v.title.toLowerCase().includes(kw)) || 
                             (v.actor && v.actor.toLowerCase().includes(kw))
                         );
                     } else {
-                        // 降级：如果索引没加载完，在当前分类中搜
                         this.filteredVideos = this.allVideos.filter(v => 
                             (v.title && v.title.toLowerCase().includes(kw)) || 
                             (v.actor && v.actor.toLowerCase().includes(kw))
@@ -207,15 +225,13 @@
                 },
 
                 goToPlay(vodSummary) {
-                    // 找到该视频所属的分类
-                    const cat = this.categories.find(c => c.name === vodSummary.category);
-                    if (!cat) {
+                    const cat = this.categories.find(c => c.name === vodSummary.category) || this.categories[0];
+                    if (!cat || !cat.file) {
                         localStorage.setItem('currentVod', JSON.stringify(vodSummary));
                         window.location.href = 'play.html';
                         return;
                     }
 
-                    // 按需加载对应分类的完整数据文件，以获取播放选集（episodes）
                     const loadPromise = cat.file ? 
                         fetch('./data/' + cat.file).then(res => res.json()) :
                         Promise.all(cat.files.map(f => fetch('./data/' + f).then(res => res.json()))).then(results => results.flat());
