@@ -1,5 +1,352 @@
 [
   {
+    "id": 120441,
+    "title": "系列大片",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20241007-1/cbb7d2a064640289ba03d88911fd7c1e.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "希米什·帕特尔,洛利·阿德福普,丹尼尔·布鲁赫,阿雅·卡什,达伦·戈德斯坦,杰西卡·海因斯,艾萨克·鲍威尔,理查德·E·格兰特,鲁阿里德·莫利卡,比利·马格努森,桑德拉·休杰特,Will Rowlands,Geoffrey Newland,约翰·康明斯,Alex Gaumond,乌尔斯·瑞恩,AJ Vaage,Jennifer Collings,Alex Magliaro",
+    "director": "萨姆·门德斯",
+    "content": "<p>一个充满希望的团队被困在一个功能失调、荒谬、地狱般的超级英雄系列电影制作中，如果他们最终成功了，他们必须面对的问题是——这是好莱坞的新曙光，还是电影的背水一战？这是梦工厂还是化工厂？</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202410/07/unn3RPRvM483/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202410/14/3s35tTjmFz83/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202410/21/de4MqUkMAW85/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202410/28/j46Ewviisg74/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202411/04/8b17DchqWi83/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202411/11/jjq7Q0Fh1481/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202411/18/87Khnk5cYz81/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202411/25/ye06t8khLn84/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 122456,
+    "title": "危险性游戏2024",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20241121-1/3c2069670212d55dcf4e422d106aa814.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "莎拉·凯瑟琳·霍克,扎克·伯吉斯,科比·克拉克,布鲁克·莉娜·约翰逊,萨拉·席尔瓦,约翰·哈伦·金,米拉·莫洛伊,西恩·帕特里克·汤玛斯,萨瓦娜·李·史密斯,齐克·古德曼,John Tenney,Katrina Parag,Dawn Ngo,Maynuka Sarwar,安德烈埃·帕夫洛维奇,达林·贝克,Jake Gosden,Megan Dallan,Madelaine Hodges,Ahmed Mokdad,Em Alexander",
+    "director": "",
+    "content": "<p>一对继姐弟/兄妹为了维持社交形象，不惜去做一切事情，包括勾引美国副总统的女儿。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202411/21/b2vmcUSsTM77/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202411/21/2AJ0VPmiPM81/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202411/21/EKV7f71nEG83/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202411/21/GkRJuFNte683/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202411/21/PBfytQbBzi83/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202411/21/YsQ3SWpUtD82/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202411/21/vsM171qMxi81/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202411/21/xpHgN8iHST83/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 119885,
+    "title": "怪诞",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240926-1/4f6720343d641918483baf706aa570f6.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "南希·纳什,莱丝利·曼维尔,考特尼·万斯,特莎·费勒,瑞雯·古德温,尼古拉斯·亚历山大·查韦斯,特拉维斯·凯尔西,米卡埃拉·戴蒙德,杰伊·艾伦·克里斯蒂安森,斯宾塞·格兰斯,Les Mahoney,索菲亚·布伊,Brendan McCarthy,卡莉·罗森博格,克雷格·恩,Warren Sweeney,Robert Gatewood",
+    "director": "瑞恩·墨菲",
+    "content": "<p>Ryan Murphy dropped a teaser for a new series titled Grotesquerie in an Instagram post (see it below) on Friday. According to the post, it will star Niecy Nash-Betts — who has worked with Murphy several times before and is coming off an Emmy win for Monster: The Jeffrey Dahmer Story — Courtney B. Vance and Lesley Manville and is set to premiere in the fall.\r\n　　The teaser features ...</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202409/26/FtbN5xEhLF83/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202409/27/D2wtPCaWdM79/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202410/15/Jez0pJfaW185/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202410/27/JvY19MHmb478/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202411/03/bdBXTFNLH485/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202411/03/dSM3MfvYky84/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202411/10/vtrdeXD4t675/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202411/13/TmZCN7PhzB75/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202411/13/z3gxcDxvKL83/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202411/21/BYz26d1kKT81/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 122353,
+    "title": "内景唐人街",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20241119-1/1e22501ae3f7327304e4870692b19617.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "欧阳万成,汪可盈,钱信伊,马泰,丽萨·吉洛伊,高圣远,沙利文·琼斯,洲龙,林晓杰,安妮·张,迈克尔·哈尔尼,艾伦·麦克里奥德,高艾思,斯宾瑟·内维尔,詹妮·特兰,Esther K. Chae,克里斯廷·古德温,Dylan Stretchbery,Kina Bermudez,刘思思",
+    "director": "塔伊加·维迪提",
+    "content": "<p>该剧由游朝凯打造，改编自他获得2020年美国国家图书奖的同名畅销小说，威利斯·吴认为自己只是一个普通的亚洲人，每天他都会离开在唐人街的小房间，走进黄金宫餐厅——那里正在拍摄一部名为《黑与白》的警匪剧，他饰演背景演员。但吴梦想成为功夫大侠，这是他能想象到的唐人街居民的终极愿望。当他无意中成为一场犯罪的目击者后，吴逐渐解开唐人街的犯罪网络，并在这个过程中发现了站在聚光灯下的感觉。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202411/19/QZVZVe0NPW78/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202411/19/YuMVLWSC2W83/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202411/19/TcVgfAxuEY82/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202411/19/K105jBgieb78/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202411/19/GRinbsrukS77/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202411/19/u7Bh5JJJtD78/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202411/19/vMn5qgq9vA84/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202411/19/KCSMB7nDWG84/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202411/19/ye5yZP95Z181/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202411/19/yUScx886zp82/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 119353,
+    "title": "塔尔萨之王第二季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240915-1/b9d3cd5382fd6c7913947e948fe243b1.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "西尔维斯特·史泰龙,尼尔·麦克唐纳,马丁·斯塔尔,杰·威尔,马克斯·凯塞拉,塔蒂亚娜·扎普蒂诺,安娜贝拉·莎拉,文森特·皮亚扎,多米尼克·隆巴多兹,安德丽·萨维奇,加内特·赫德兰,达娜·德拉尼,弗兰克·格里罗,丁瑞奇,里姆·巴斯玛,罗尼·吉恩·贝尔维斯,A·C·彼得森,泰勒·艾略特·伯克,哈特利·布威克,达希尔·康纳利,巴里·柯宾,米根·弗林,麦肯娜·奎格莉·哈灵顿,迈尔斯·穆森登,特拉维斯·昆汀,小安杰尔·罗萨里奥",
+    "director": "克雷格·齐斯克",
+    "content": "<p>就在Dwight和他的手下搞清楚下一步行动时，他们发现还有其他人想要来分一杯羹。面对堪萨斯城黑帮和当地一位商人大佬的威胁，Dwight既要保证家人和手下的安全，又要处理好自己的所有事务。此外，他在纽约还有未竟之事。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202409/15/kps3YCUjn483/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202409/23/7Y3tu2K4H481/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202409/30/yTQjgNcVh383/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202410/08/ZVgJCZz9JX74/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202410/14/Nk0rycxDGy82/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202410/22/03yCSCUrm483/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202410/28/9qyEFXpDmz76/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202411/04/yc5WWfFNLq84/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202411/11/p26diJPpf277/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202411/17/tE5V6r3MDP83/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 119587,
+    "title": "时尚世家",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240920-1/ecfbef499616bb76718e182003b7543b.jpg",
+    "year": "2024",
+    "area": "美国,法国",
+    "actor": "朗贝尔·维尔森,阿蜜拉·卡萨,卡洛尔·布盖,琪塔·昂罗,皮埃尔·德隆尚,安托万·赖纳茨,安妮·康斯金尼,弗洛伦斯·卢瓦雷·卡耶,朴智敏,柯朗坦·菲拉,文森特·科隆布,马尔万·廷胡加,塞缪尔·博拉夫曼-芒蒂尔,Sébastien Corona,Sophie Froissard,Romain Barreau,Julian Belle",
+    "director": "法布里斯·戈巴尔,丹尼尔·格洛",
+    "content": "<p>La Maison will take a behind-the-curtain look at how a family dynasty of an iconic fashion house is thrown into scandal and reinvention by a viral video featuring star designer Vincent LeDu, leaving his family’s legendary haute couture house hanging by a thread. Perle Foster, Vincent’s former muse who is still in his shadow, teams up with next-generation, visionary designer Pal...</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202409/20/Vr7nzb6MdQ74/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202409/20/WGUmbgS4uZ84/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202409/27/AP15wjQ98K83/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202410/04/NTG97V1dki77/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202410/11/uSpe2ELGwJ81/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202410/18/dibT6Z2KYh76/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202410/25/ZpFGBZaLJt82/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202411/01/4Cz15AKreX81/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202411/08/6Q49WxHTKH76/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202411/15/UjDdLQ66eu75/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 122148,
+    "title": "黑色丽人",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20241115-1/a768bcc221394d89feb4c453cba3af02.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "泰勒·波利多尔·威廉斯,安贝尔·雷尼·史密斯,克里斯特尔·斯图尔特,里科·罗斯,黛比·摩根,理查德·劳森,史蒂文·G·诺夫利,朱利安·霍顿,特雷尔·卡特,香农·华莱士,布赖恩·塔纳卡,乔伊·罗瓦里斯,泽维尔·斯莫尔斯,查尔斯·马利克·威特福德,塔梅拉·基森,厄休拉·O·鲁宾逊,阿什莉·维尔谢尔,乔治·米德尔布鲁克",
+    "director": "泰勒·派瑞",
+    "content": "<p>泰勒·派瑞的《黑色丽人》讲述了两个过着截然不同生活的女人的故事。金蜜在被母亲赶出家门后努力谋生，玛洛莉则经营着一家成功的企业，但她们二人的生活却交织在了一起。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202411/15/h3YpQXmz2a75/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202411/15/Gc0wtDrsAS82/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202411/15/uE7MHfH3eg77/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202411/15/098EmyZaKW75/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202411/15/KGqiZdpjE177/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202411/15/Nviqtbe4RW78/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202411/15/7gQ7AtGGiF77/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202411/15/45vDJVLxVe78/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 122147,
     "title": "亚历克斯·克罗斯第一季",
     "category": "美国剧",
@@ -802,6 +1149,51 @@
     ]
   },
   {
+    "id": 118690,
+    "title": "良师难为",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240903-1/346fa34d9b317b01f34c62dd8dfc0e5a.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "布莱恩·乔丹·阿尔瓦雷斯,萨凡娜·甘,Emily Topper,Sarah Kopkin,Jon Levine,Ralphael Lester,梅森·道格拉斯,Treylan Newton,Matthew Smitley,Michael Andrew Ajazi,Via Roz,Ben Bondurant,Brooke Butterworth,Cassie Lowe,Sebastian Wiley,Carson Blyskal,Zikora Mbadugha,恩里克·克兰东尼,卡门·克里斯托弗,斯蒂芬妮·",
+    "director": "",
+    "content": "<p>一位得州高中教师，在不断变化的规则下，努力平衡学生和家长相互冲突的需求。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202409/03/UiChL4HngY83/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202409/03/TFuHFTyijF83/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202409/10/AFJY22tcfV83/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202409/17/uZsECiypfF84/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202409/24/EcsEnFpXm483/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202410/01/0fn9qFRKT379/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202410/08/NTk95ifCVE80/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202410/15/N8UkMxkG9z77/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 118075,
     "title": "弹子球游戏第二季",
     "category": "美国剧",
@@ -1392,6 +1784,108 @@
       {
         "name": "第06集",
         "url": "https://v9.wujinwsym3u8.com/wjv9/202409/21/CrgYM88fkr81/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 119545,
+    "title": "怪物：梅内德斯兄弟的故事第二季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240919-1/4152059abc530ddf4bd793ccba1b6a87.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "尼古拉斯·亚历山大·查韦斯,库珀·科奇,哈维尔·巴登,科洛·塞维尼,内森·连恩,艾莉·葛瑞那,Alex Anagnostidis,Tessa Auberjonois,Walter Belenky,Ethan Bell,Nate Blair,米克·布鲁,雷·巴佛,杰森·巴特勒·哈纳,拉里·克拉克,Amari Deity,Andrew Horen,玛琳娜·福特,迈克尔·盖拉迪斯,莱斯利·格罗斯曼,查理·霍尔",
+    "director": "伊安·布瑞南,麦克思·温克勒,帕里斯·巴克利,迈克尔·乌彭达尔,卡尔·弗兰克林",
+    "content": "<p>该剧改编自1996年，一对兄弟杀害亲生父母何西·梅内德斯与凯蒂·梅内德斯的真实罪案。检方指控他们觊觎庞大家族财富，兄弟俩却声称他们受尽父母身心虐待与性侵，出于恐惧才会犯下滔天大罪，他们仍在服无期徒刑，终身不得假释，时至今日仍坚持当初的证词。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202409/19/rrCMDpe5TN84/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202409/19/dmMfUv4Fib82/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202409/19/0xFNbmJFM777/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202409/19/ibSFpeR8MZ74/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202409/19/7BawSqMUZW83/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202409/19/i6HJ5ztuiv74/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202409/19/riX4gqm1qG81/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202409/19/4Ybzef5F5j77/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202409/19/HHt7J0gBam79/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 116364,
+    "title": "海洋公园的皇帝",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240714-1/208651f0c774271a591ba616eb46f6bf.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "",
+    "director": "Damian Marcano",
+    "content": "<p>塔尔科特·加兰（Talcott Garland）的父亲去世，打破了他平静的生活。玛丽亚·丹顿（Mariah Denton）曾是一名记者，也是一名狂热的阴谋论者，她质疑加兰父亲的死因，认为他是被谋杀的。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/14/K0iNEXAnDB82/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/22/8NAXEFMdF483/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202407/29/Sc4kHe38yg84/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202408/06/UTWPj3Kj3a82/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202408/12/NBA1H6fppc84/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202408/20/6rdAjd8mhX81/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202408/29/XTmJKvCHMX84/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202409/02/R31VFfB5Tc82/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202409/08/XuxqBYD6mh81/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202409/17/jEYwwBya3181/video/index.m3u8"
       }
     ]
   },
@@ -2381,6 +2875,623 @@
       {
         "name": "第06集",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202407/24/W3GVzKYyx683/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 21651,
+    "title": "神秘博士第一季2005",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20210910-1/4319a0876bfdd2e79c874c17218cf807.jpg",
+    "year": "2005",
+    "area": "英国,加拿大",
+    "actor": "David Tennant,Billie Piper,Paul Kasey,Freema Agyeman,Ruari Mears,Catherine Tate,Nicholas Briggs,Camille Coduri,Noel Clarke,Christopher Eccleston",
+    "director": "Keith Boak,Joe Ahearne,James Hawes,Euros Lyn,Brian Grant",
+    "content": "<p>《神秘博士》是一部由英国广播公司出品的长寿英国科幻电视剧。\r\n　　2005年版的第九任博士是忧郁的战争幸存者，经历了时之战争，他封印了他的种族和敌人戴立克，是唯一活下来的人。\r\n　　该剧讲述了名为“Doctor”（克里斯托弗·埃克莱斯顿 Christopher Eccleston 饰）的神秘外星时间旅行者，随着他的时空机器TARDIS的（Time And Relative Dimensions In Space）冒险故事，他的时空机器外观看上去像1950年代的警亭。博士带着他的伙伴罗斯（比莉·派佩 Billie Piper 饰）在时间、空间中探索悠游、打击邪恶力量、拯救文明、帮助人民、纠正错误、解决各类问题。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Jn4aSYsKm92/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/ScK5dA3iDt2/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/rzjmZ4cZkc2/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/VXk7TEhZBq2/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/q8a6ZLmQch2/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/MAA3nLPxBA2/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/L61exEkhkg2/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/QExBUNYTJn2/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/pYLzpKyDRv2/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/63cy6n2cPd2/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/pJFt415ieY2/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/NCPxApUbxr2/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/in24gQiz5b2/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 116513,
+    "title": "眼镜蛇第六季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240718-1/7aa827e8889b8de617e6661b87f3ebf3.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "雅各布·贝特兰德,唐纳·布坎南,考特尼·海根勒,拉尔夫·马基奥,索洛·马里多纳,玛丽·茅泽,威廉.泽布卡",
+    "director": "",
+    "content": "<p>时候到了，重返道馆战一场！\r\n　　眼镜蛇道馆在全谷杯落败，道馆的师徒必须决定如何重整旗鼓，挺进空手道界的国际盛事：世界大赛。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/18/xwCwNGqv8882/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/18/0yc3UhE7wt82/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202407/18/EC4t8afNFS84/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/18/60FjGLYVFX83/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/18/iQxfwsLTW583/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 114926,
+    "title": "黑袍纠察队第四季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240613-1/95340409e7f687b7ff584308eeb29d8c.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "卡尔·厄本,杰克·奎德,安东尼·斯塔尔,艾琳·莫里亚蒂,杰弗里·迪恩·摩根,多米妮克·麦克艾丽戈特,杰西·厄舍,拉兹·阿隆索,切斯·克劳福,托默·卡蓬,凯伦·福原,内森·米切尔,蔻碧·米纳菲,克劳迪娅·多米特,詹森·阿克斯,劳瑞·侯登,凯蒂娅·温特,卡梅伦·克罗维蒂,安·库萨克,杰克·杜兰,克莉丝汀·布丝,贾斯汀·戴维斯,尼克·维切斯勒,迈尔斯·加斯顿·维拉努瓦,凯蒂·布赖尔,克里斯蒂安·凯耶斯,马尔科姆·巴雷特,乔丹娜·拉茹瓦,莎拉·斯维尔,大卫·瑞勒,玛雅·米沙里维克,瑞恩·布雷克利,莱拉·罗宾斯,盖",
+    "director": "",
+    "content": "<p>在第四季中，世界正处于崩溃的边缘。Victoria Neuman比以往任何时候都更接近美国总统的位置，并受到正在巩固权力的祖国人的有力压制。Butcher只剩下几个月的生命，他失去了Becca的儿子，也失去了他作为黑袍纠察队队长的工作。队员们都受够了他的谎言。众人面临的风险胜过以往，他们必须找到一种合作的方式，在为时已晚之前拯救世界。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/13/LLPJjkCg6P84/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202406/13/wsK5sZw0r681/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202406/13/bpDpNEW1Zs79/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202406/20/B7xUiZTSuW83/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202406/27/R0Zm26Zhv282/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202407/04/U1Lr6yxN7A84/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/11/B6GBAVLAei83/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/18/phnQusrRjt83/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 114611,
+    "title": "星球大战：侍者",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240605-1/86cfd86b87e86c8979ae68bf29170d8c.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "李政宰,阿曼德拉·斯坦伯格 ,凯瑞-安·莫斯,朱迪·特纳-史密斯,曼尼·贾希尼托,达芙妮·基恩,乔纳斯·索塔莫,曾爱媚,玛格丽塔·列维耶娃,迪恩-查尔斯·查普曼,查理·巴奈特,保罗·布林,瑞贝卡·亨德森,James Henri-Thomas",
+    "director": "莱丝利·海德兰德",
+    "content": "<p>故事背景设定在至高共和国时代末期，一个充满“阴暗秘密与新兴黑暗势力”的世界。受人尊敬的绝地大师Sol（李政宰 饰）同昔日前绝地徒弟Mae（阿曼德拉·斯坦伯格 饰）深入调查绝地武士接连被杀害的真相，他们要面对的势力比预想中更加险恶，更不知不觉间走入黑暗漩涡之中……</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202406/05/An7HjmCW3175/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202406/05/h6LEFFhdtU77/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202406/12/mgT3U8MhHA77/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202406/19/SKXjwerhqB83/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202406/26/VugsRTwqpY83/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/03/QXEgvaByQE83/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/10/cMCpHD08av82/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202407/17/V1g106mjh584/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 114825,
+    "title": "狂想行",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240610-1/3659d2cb9e853f805db2f722d3b6a351.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "胡里奥·托雷斯,托马斯·马特斯,史蒂夫·布西密,保罗·达诺,茱莉娅·福克斯,亚历克萨·德米,艾玛·斯通,艾迪·布莱恩特,杨伯文,齐威·富莫多,苏妮特·玛尼,波比·萨尔沃·门努兹,埃文·默克,Martine Gutierrez,Joe Rumrill,Kim Petras,River L. Ramirez,Adrianna Weir,Marc Petrosino,Kayden Gonzalez,Macy Rodman,Nick Naney,Reza Nader,Mackenzie Meadows,Jeter",
+    "director": "胡里奥·托雷斯",
+    "content": "<p>胡里奥·托雷斯(Julio Torres)在纽约市寻找一只金牡蛎耳环，一路上遇到了很多人。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202406/10/RxrGHmhDDF80/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202406/16/e7bW165QHD74/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202406/22/mE1d2hJ3mW82/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/02/ra4V5xAvnh83/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/07/hLfWUnPeJL82/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/13/Dhi70NnBRD82/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 116222,
+    "title": "维京传奇：英灵神殿第三季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240711-1/90de7b2133ce189a14674a2e4fdd0f2c.jpg",
+    "year": "2024",
+    "area": "加拿大,爱尔兰,美国",
+    "actor": "卡特琳娜·布拉奇娜,马辛·多洛辛斯基,科西莫·福斯科,埃玛利亚·霍尔姆,泰勒·詹姆斯,Konstantinos Kavakiotis,尼科莱·金斯基,弗罗里安·穆特鲁,大卫·奥克斯,塞特·斯约斯特兰德,Kayode Akinyemi,阿哈德·塔米米,Christian Vit",
+    "director": "大卫·弗雷泽",
+    "content": "<p>主创确认第三季为该系列最终季，最终季将于2024年上映</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/11/FVHnLpyv4S82/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202407/11/sb7GrZGTKy84/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202407/11/2g7sgFCNCL84/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/11/GKYc6HBCvA83/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202407/11/eybdsBixAS84/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/11/GW8ngtYasj82/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/11/iJGZVkeF8482/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202407/11/xuMHMYj0ww84/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 60907,
+    "title": "法律与秩序：组织犯罪第四季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240204-1/7a4227c45d4b9b6f8b3c0230aee88683.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "",
+    "director": "",
+    "content": "<p>NBC续订《法律与秩序：组织犯罪》第4季。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202402/04/y2eUfgZy1g2/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202402/05/EQq822SzjV2/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202402/09/xWn5YQDYbY2/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202402/16/cMdjheHwEH2/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202403/03/5DuVvCHhJk2/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202403/17/mtnm9D8Nvr3/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202403/25/mZrRDJkyXG3/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202404/01/bzs4wYmvJC3/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202404/22/X1dXEn1zK979/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202406/25/11rHwg0Vfc77/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/04/8y6BPTgENY83/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202407/09/hacBn98ADx84/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/09/3XTzjP2s4983/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 115316,
+    "title": "牧师神探第九季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240621-1/f1c1015efd43fc6369699a1ff0913c04.jpg",
+    "year": "2024",
+    "area": "英国",
+    "actor": "罗布森·格林,汤姆·布里特尼,里希·奈尔,夏洛特·里奇,阿尔·韦弗,泰莎·皮科-琼斯,凯西·艾因斯沃斯,奥利弗·迪姆斯戴尔,尼克·布莱波尔,布莱德利·豪尔,梅丽莎·约翰斯",
+    "director": "",
+    "content": "<p>Tom Brittney宣布这会是自己出演的最后一季，Rishi Nair加入饰演新牧师Alphy Kotteram，并将在潜在的后续新季中接替主角位置。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202406/21/rCiXbUWths83/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/25/Ux5XafhHAC84/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/26/FP5A4ZaTy984/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/28/29CPQiBgVZ84/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202406/28/2E1DTEE7gc83/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/03/DSH1Za3ggK82/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202407/03/9KEXpmEzNE84/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/05/V9V0YFpYrJ83/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 113611,
+    "title": "夜访吸血鬼第二季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240514-1/2ef3a9978e7ad605966016184cc8f049.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "雅各布·安德森,萨姆·里德,埃里克·博高森,德莱尼·海勒斯,阿萨德·扎曼,本·丹尼尔斯,罗珊妮·杜兰,Oleksandr Koval,Elander Moore, 西妮德·菲尔普斯",
+    "director": "克雷格·齐斯克",
+    "content": "<p>采访在第二季中继续进行。2022年，吸血鬼Louis de Pointe du Lac（雅各布·安德森 Jacob Anderson 饰）向记者Daniel Molloy（埃里克·博高森 Eric Bogosian 饰）讲述着他的人生故事。于1940年密谋杀害了吸血鬼Lestat de Lioncourt（萨姆·里德 Sam Reid 饰）后，Louis和新手吸血鬼少女Claudia （德莱尼·海勒斯 Delainey Hayles 饰）踏上了欧洲的冒险旅程，两人一起探寻旧世界吸血鬼和巴黎的吸血鬼剧院。正是在巴黎，Louis第一次遇见了吸血鬼Armand（阿萨德·扎曼 Assad Zaman 饰）。事实证明，他们之间的求爱和性关系会在过去和未来造成毁灭性的后果，而Molloy将探寻埋藏在记忆中的真相。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202405/14/hx9m1qXJCP83/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202405/20/8rUUdn6Wce74/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202405/27/NLxtQk1ZuJ75/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/03/9XQ29XTGG084/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202406/11/e2Ekhs0XY278/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202406/17/S9KZDr3NYS80/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202406/25/U1rpJSDBgq83/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202407/02/EA0mUWhyuh82/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 114578,
+    "title": "斯特林韵事",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240604-1/13a59c6eca514eda7ae1206708c81b25.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "凯利·奥科,Jock McKissic,杰基·韦佛,劳伦斯·菲什伯恩,艾德·奥尼尔,Logan Charles Carter,Jourdan Sweeney,Mike Miller,Petri Hawkins Byrd,杰克·托帕利安,戴维·奥佩贝米,J Ferguson,Valerie Wildman,达林·库珀,Lindsay Diann,克利欧佩特拉·科尔曼,柯宾·伯恩森,里奇·索莫,哈里特·桑塞姆·哈里斯,弗雷德·迈拉麦德,克里夫顿·戴维斯,萨鲁纳斯·J·杰克逊,J·阿方斯·尼科尔森,妮可·派琪,",
+    "director": "",
+    "content": "<p>FX于日前正式放行由《宿敌》和《清道夫》编剧Gina Welch执笔的六集限定剧《斯特林韵事》（The Sterling Affairs），并邀请到了《喜新不厌旧》和《汉尼拔》的Laurence Fishburne以及凭借《动物王国》、《乌云背后的幸福线》两度提名的Jacki Weaver领衔主演。\r\n　　故事将以洛杉矶快船队曾经的老板Donald Sterling展开，他在1981年以1250万美元买下这支队伍，但成绩一直未有起色；真正让Donald“为人熟知”的，便是2014年爆发的种族歧视丑闻。在2013年9月与拉丁裔女友争执的过程中，因为不满女友上传了和Magic Johnson的合照，他大放厥词，表示自己“养着黑人，给他们薪水，他们的一切都是我赐予的“；在对话被公开后，这则新闻造成轰动，并且引发抗议。最终Donald被终身竞赛，并被联盟罚款250...</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202406/04/qh9cD9YijD78/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202406/04/8hZFeCcpbZ79/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202406/11/Lxgq2gqPE480/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202406/18/SBnXBPE9ih79/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202406/25/DnPXcR6bXU83/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202407/02/gUX8iCumi483/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 63145,
+    "title": "得州巡警第四季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240408-1/a6f7d3f7d0e65f7198de5f67e24594f2.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "贾德·帕达里克",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202404/08/kg0ATp74My15/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202404/15/cryAE93mYW77/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202404/20/LSV9ahRNRc81/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202404/29/f4CLBs0bf375/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202405/10/V0fkNrQxX082/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202405/13/0Dv1JquMWb82/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202405/20/wYJFE4Dnhf78/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202405/26/20FZzbFz0Z80/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202405/31/71CCrxLRAM85/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202406/08/Aidaurf9Yt80/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202406/14/i4arwu1mFm80/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202406/23/tzan1Btzt174/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202406/29/mErHFXgpJp83/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 115565,
+    "title": "90年代秀第二季",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240627-1/987a3c2c3361fa916402e0de5b387ef9.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "黛布拉·乔·拉普,柯特伍德·史密斯,托弗·戈瑞斯,米拉·库尼斯,阿什顿·库彻,劳拉·普莱潘,维尔摩·瓦尔德拉玛,汤米·钟",
+    "director": "",
+    "content": "<p>Netflix续订《90年代秀》第二季。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/27/pawSEQk7cE84/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202406/27/8qzJm2pRHM81/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/27/LZYpYXzyt784/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202406/27/ELYFLEbRje82/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/27/irX1yrgXEL84/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/27/PxdVLmpRJ084/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202406/27/iyezSifDeq82/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202406/27/qT0SsZxwje82/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 115559,
+    "title": "我的简·格雷",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240627-1/47219e573284fc749d1cf7980649526d.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "艾米丽·巴德,爱德华·布卢梅尔,安娜·钱斯勒,Jordan Peters,多米尼克·库珀,凯特·奥弗林,伊莎贝拉·布朗森,Robyn Betteridge,亨利·阿什顿,罗伯·布莱顿,艾比·赫恩,乔·克洛塞克,迈克尔·沃克耶,Calvin Prince Kalinga,Jason Forbes,Georgia Finnimore,奥利弗·克里斯,吉姆·布劳德本特,马伊雷德·泰尔斯,克里斯蒂安·帕特森",
+    "director": "詹米·巴比特,Gemma Burgess",
+    "content": "<p>该剧改编自同名畅销小说。聚焦16世纪的英格兰，简· 格雷避开了刽子手的斧头，过着有趣而充实的生活，充满了浪漫和冒险。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/27/ZsMgUgSp6h84/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/27/SiQd2bYB0z84/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/27/dR124iq17p84/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202406/27/SD2fq7xwfv81/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202406/27/UrXeALSveU81/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202406/27/nmqwuAEPCN84/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202406/27/WEhVTS7XXS82/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202406/27/FpAgCXeDzU81/video/index.m3u8"
       }
     ]
   },
@@ -8809,1465 +9920,6 @@
       {
         "name": "第12集",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/q3xDGDVPJH2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 39280,
-    "title": "最响亮的声音",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20220620-1/dc9df6432d5be1917710bdb4b379b13d.jpg",
-    "year": "2019",
-    "area": "美国",
-    "actor": "罗素·克劳,娜奥米·沃茨,塞思·麦克法兰,安娜贝拉·沃丽丝,西耶娜·米勒,西蒙·迈克伯尼,阿莱卡萨·帕拉迪诺,乔什·斯坦伯,麦肯齐·阿斯丁,露西·欧文,苏珊·波尔法,珍娜·莉·格林,约翰·哈林顿·布兰德,乔西·查尔斯,艾莫里·科恩,罗德·麦克拉兰,帕奇·德拉奇,大卫·惠伦,巴里·沃森,欧妮卡·戴,盖伊·博伊德,尼古拉斯·J·科尔曼,蒂莫西·布斯菲尔德,乔什·赫尔曼,杰米·杰克逊,约翰·芬,茱莉·塞尔达,乔什·麦克德米特,约翰·鲁,尼古拉斯·巴迪",
-    "director": "卡莉·斯考格兰德,杰雷米·波德斯瓦,斯科特·Z·本恩斯,斯蒂芬·弗雷斯",
-    "content": "<p>娜奥米·沃茨加盟Showtime聚焦“福斯新闻网”前CEO罗杰·艾尔斯新剧，饰演前福克斯新闻主持人格雷琴·卡尔森。罗素·克劳将饰演艾尔斯。剧集改编自加布里埃尔·谢尔曼撰写的艾尔斯传记《房间里最响亮的声音》，讲述艾尔斯2017年5月去世前最后十年的生活，包括卡尔森和福克斯新闻的其他女性对他提出的性骚扰指控，这些指控最终导致艾尔斯于2016年从福克斯新闻网辞职。汤姆·麦卡锡([聚焦])将与谢尔曼共同操刀首集剧本。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Ga13r9E4pP2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Ewre77zXRR2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/SKZwDXWxQ12/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/gFMipaNLEv2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/R2BXU79Jq62/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/EuzwMADTzB2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/HMT7bmdQvf2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 29891,
-    "title": "摩登家庭第四季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20220312-1/b8e5b070b78d466d536e770a4a75c28a.jpg",
-    "year": "2012",
-    "area": "美国",
-    "actor": "艾德·奥尼尔,索菲娅·维加拉,朱丽·鲍温,泰·布利尔,杰西·泰勒·弗格森,艾瑞克·斯通斯崔特,里克·罗德里格兹",
-    "director": "斯蒂文·莱维坦",
-    "content": "<p>新的一季里，刚过完65岁生日的杰（艾德·奥尼尔 Ed O&#39;Neill 饰）和娇妻格劳丽亚（索菲娅·维加拉 Sofía Vergara 饰）迎来了新生命的孕育。杰烦恼着孩子的性别，他的继子曼尼则暗自为自己可能受到冷落不安。克莱尔（朱丽·鲍温 Julie Bowen 饰）和丈夫菲尔（泰·布利尔 Ty Burrell 饰）依依不舍的将大女儿海莉送入了大学，眼看二女儿艾丽克斯和小儿子卢克也即将长大成人，夫妻俩开始规划数年后的二人世界生活。米切尔（杰西·泰勒·弗格森 Jesse Tyler Ferguson 饰）和同性爱人卡梅隆（艾瑞克·斯通斯崔特 Eric Stonestreet 饰）也将养女莉莉送到了幼儿园，他们买了一只猫陪伴莉莉，一直赋闲在家的卡梅隆也终于得以回到自己钟爱的工作岗位。\r\n　　温馨大家庭的影像记录故事已经来到了第四季。伴随着三个家庭点滴的成长与变...</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/eLBtTGA0ht2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/QfY5cACpn02/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Z9ykUq3ASf2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/mifTuJwprR2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/7ZsfUmtRnj2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/uEhsayX7aE2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/3S0GDszyrQ2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/WnEqBpcKwB2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/q47Uzcvsqi2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/9H5Cu8Davg2/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/XmU7XzpWLL2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/FguhkDin8b2/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/h09gRD8haz2/video/index.m3u8"
-      },
-      {
-        "name": "第14集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/SKsNBRApLr2/video/index.m3u8"
-      },
-      {
-        "name": "第15集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Y3euPNgKpR2/video/index.m3u8"
-      },
-      {
-        "name": "第16集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/UWeahDkinH2/video/index.m3u8"
-      },
-      {
-        "name": "第17集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/EZ1bQJuSrb2/video/index.m3u8"
-      },
-      {
-        "name": "第18集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/8142RP24z32/video/index.m3u8"
-      },
-      {
-        "name": "第19集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/tjKw76wCV42/video/index.m3u8"
-      },
-      {
-        "name": "第20集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/xGgJiQwBrg2/video/index.m3u8"
-      },
-      {
-        "name": "第21集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/RZmLEL9wyX2/video/index.m3u8"
-      },
-      {
-        "name": "第22集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/M5pD2fqs2N2/video/index.m3u8"
-      },
-      {
-        "name": "第23集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/4r2qdJuWHx2/video/index.m3u8"
-      },
-      {
-        "name": "第24集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/DTmqLH55nn2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 28021,
-    "title": "天堂岛疑云第五季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20220124-1/d693488915efbbae2609474cac1f7cfe.jpg",
-    "year": "2016",
-    "area": "英国",
-    "actor": "克里斯·马歇尔,约瑟芬·约伯特,丹尼·约翰-儒勒,伊丽莎白·布尔吉娜",
-    "director": "爱德华·本内特",
-    "content": "<p>DI Humphrey Goodman and the team are left stumped in the first episode of the new series when millionaire environmentalist and scientist Dan Hagen is shot on his boat while out at sea.</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/u2ADqLs0Et2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/ZYtjKxzfN42/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/ajFpgfy14U2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/bG5BuRLznx2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/EWi8m686Bc2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Hf67xygirP2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/rLGBcnvpuj2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/MVhu1UnSGZ2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 26525,
-    "title": "唐顿庄园第三季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20211207-1/03a76d63fce76b2bfddc6214274eec52.jpg",
-    "year": "2012",
-    "area": "英国,美国",
-    "actor": "休·博纳维尔,玛吉·史密斯,丹·史蒂文斯,米歇尔·道克瑞,布兰登·柯伊尔,琼安·弗洛加特,杰西卡·布朗·芬德利,劳拉·卡尔迈克尔,吉姆·卡特,希欧布罕·芬内朗,罗伯·詹姆斯-克里尔,伊丽莎白·麦戈文,索菲 麦希拉,莱斯利·尼科尔,菲利斯·洛根,查尔斯·爱德华兹,艾伦·里奇",
-    "director": "布莱恩·派西维尔",
-    "content": "<p>时代在向前行进，唐顿庄园则依然维持它表面的平静和不变。大表哥Matthew（丹?史蒂文斯 Dan Stevens 饰）继圣诞夜求婚成功后，开始和Mary（米歇尔?道克瑞 Michelle Dockery 饰）筹划着婚礼。Edith（劳拉?卡尔迈克尔 Laura Carmichael 饰）依然在为自己的幸福拼搏着。Sybil（杰西卡?布朗-芬德利 Jessica Brown-Findlay 饰）怀着身孕和小司机布兰登（艾伦?里奇 Allen Leech 饰）回到唐顿准备参加Mary的婚礼。\r\n　　看似顺利的唐顿庄园，也潜伏着令人不安的因素。老爷（休?博内威利 Hugh Bonneville 饰）被告知投资失败，唐顿庄园可能将没有资金维持；另一方面，Matthew成了前未婚妻拉维尼娅父亲的遗产继承候选人，顺位在他前面的二人因为各种原因都丧失了继承的条件，Mat...</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/zDVeuHAdqt2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/Ufvw8sN2xR2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/GZFL9zYTPD2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/XfWD3cUX2c2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/RGX31XC26G2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/kgsTmtmmMc2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/72V3FkvByp2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/43sRYGLKDA2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/iy4gpnhDTC2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 25583,
-    "title": "十二猴子第一季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20211106-1/a1dc7fa229b0bd7793440124ae1885d5.jpg",
-    "year": "2015",
-    "area": "美国",
-    "actor": "阿曼达·舒尔,泽利科·伊万内克,亚伦·斯坦福,柯克·埃斯沃多,汤姆·诺南,香侬·卢西奥,埃米丽·汉普希尔,诺亚·比恩,Jodi Lyn Brockton,祖舒华·克洛斯,Lyriq Bent,Demore Barnes,巴巴拉·苏科瓦,Romina D'Ugo,Ricky Wayne",
-    "director": "杰弗里·莱纳",
-    "content": "<p>改编自同名经典科幻片的美剧《12只猴子》，日前确定将于2015年1月16日晚间登陆美国NBC电视台Syfy频道，加长版预告片也随之曝光。\r\n　　同1995年的电影版一样，该剧仍然讲述了男主角被派往过去，阻止12只猴子军研制致命病毒，以挽救日后会因病惨死的大部分人类。在美剧《尼基塔》中饰演电脑高手的亚伦·斯坦福将饰演男主角詹姆斯·科尔，该角色在电影版中由好莱坞著名硬汉布鲁斯·威利斯诠释。科尔从2043年回到2013年，去查明病毒真相，拯救全人类。而在电影中由布拉德·皮特饰演的角色则将“转性”，由女演员艾蜜莉·汉普雪儿接棒。\r\n　　电视剧版的《12只猴子》将完全区别与电影剧情，“我们不想只做翻拍工作，”该剧制片人Terry Matalas在接受采访时介绍，“故事的主题还是一样的，但故事情节完全不同。”在最新曝光的预告片中，故事情节的悬疑色彩和惊现场面都能唤醒不少影迷...</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/fYMMDcA88e2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/rx1Su6ZSE92/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/YdTPPf6nnJ2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/SGKPGKLYVC2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/JxxuuWSe4X2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/DALX7sYUKP2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/vr5riubz8L2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/yAqEBS2ur62/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/RqSyFPkMy22/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/RbVWxuKRgG2/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/fjHj3Ez4vD2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/xXtdLXw4tm2/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/wwcU7VKgRN2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 24966,
-    "title": "了不起的麦瑟尔夫人第一季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20211011-1/843406b1a9e77b296bdee526497e59a9.jpg",
-    "year": "2017",
-    "area": "美国",
-    "actor": "瑞秋·布罗斯纳安,艾利克斯·布诺斯町,玛琳·辛科,托尼·夏尔赫布,迈克尔·泽根,贝利·宝顿,玛蒂尔达·斯齐达吉斯,马提欧·帕斯卡尔,布赖恩·塔伦蒂诺,吉尔伯特·戈特弗雷德,卢克·柯比,辛西娅·达洛,凯文·波拉克,卡罗琳·阿隆,艾琳·达克,罗里·达菲,乔尔·约翰斯通,凯特琳·梅纳",
-    "director": "埃米·谢尔曼-帕拉迪诺,丹尼尔·帕拉迪诺,斯科特·埃利斯",
-    "content": "<p>故事发生在二十世纪五十年代的美国，米琪（蕾切尔·布罗斯纳罕 Rachel Brosnahan 饰）和丈夫乔伊（迈克尔·泽根 Michael Zegen 饰）结婚多年，两人共同抚养着他们的孩子，生活可谓是幸福而又美满。乔伊一直想要成为一名脱口秀演员，每周末，他都会前往俱乐部登台表演。然而，乔伊的脱口秀事业一直都不温不火。\r\n　　某天，在表演又一次失败后，乔伊崩溃了，他向米琪坦白自己有了外遇，并且当即收拾行李离开了家，一夜之间，米琪成了一个被丈夫抛弃的女人。悲伤和绝望之中，米琪登上了舞台，借着酒劲进行了一番精彩绝伦的演说，逗得台下满堂大笑。俱乐部的女招待苏西（艾利克斯·布诺斯汀 Alex Borstein 饰）在米琪身上发现了过人的天赋，决定成为她的经纪人。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/neTGAzEwWh2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/t01wGFF6m42/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/ArhtCLUZ5x2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/3qm48WHWwR2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/Fuh8LMdQz62/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/TSMNy5WKTC2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/xeJsMMu2D02/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/htcGXGxTne2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 24116,
-    "title": "惊声尖叫第二季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20211004-1/90d60d12279c5263ccf01b8171f8370c.jpg",
-    "year": "2016",
-    "area": "美国",
-    "actor": "薇拉·菲茨杰拉德,贝克斯·泰勒-克劳斯,约翰·卡尔纳,阿马迪厄斯·塞拉菲尼,卡尔森·扬,圣地亚哥·瑟甘拉,特雷西·米登道夫,奥斯汀·海史密斯,安东尼·瑞维瓦,蕾蕾·庞斯,切尔西·布兰迪,梅森·古乔内,Kiana Ledé,汤姆·马登,James Bendishaw,Mary Katherine Duhon",
-    "director": "布莱恩·丹内利",
-    "content": "<p>根据《惊声尖叫》系列电影改编，残忍谋杀案后引起的网络讨论唤起人们对过去杀人狂魔的记忆，引起某些人的好奇，也启发了新的杀人犯。两个老朋友和一群年轻人为此重新联系起来，他们互相成为恋人、敌人、冷血杀手嫌疑人、目标和幸存者。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/0ZBau4fT1H2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/sseyt0JLRC2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/aPkMM00yhX2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/5gRFQqjEXK2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/gQDFFSfniS2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/BDP9LyZpqL2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/aDNGMpauQN2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/X4qC33ytRf2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/uNM5dANP4y2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/0qKq9tyG8S2/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/NhLtPFLPNz2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/avaJ2eymAT2/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/fEDtpSrgfG2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 23553,
-    "title": "极品老妈第五季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20210927-1/e08b8bc317c87443a15a4f756468d24f.jpg",
-    "year": "2017",
-    "area": "美国",
-    "actor": "安娜·法瑞丝,艾莉森·珍妮,米密·肯尼迪,杰米·普莱斯利,威廉·菲克纳,米西·派勒,斯蒂文·韦伯",
-    "director": "Pamela Fryman",
-    "content": "<p>本剧描述一位年轻的单亲妈妈克莉丝蒂（安娜·法瑞丝 饰演），在酗酒者互助会（AA）上遇到她久未见面的母亲邦妮（艾莉森·珍妮 饰演）后，在纳帕山谷发生的新生活。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/mWjtx7r9qt2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/pHU99YQWt12/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/GCvHwDkFhD2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/W4SeUm5bPw2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/yDdJhxkXJV2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/uUGrqHYGfF2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/FGqLNzHjMW2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/qQx3aQBSKa2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/U0Cfq6xKcp2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/ATfYDa2Jg92/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/2eL5kkkHnD2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/fFF8r88FRG2/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/3ebLkaxvdi2/video/index.m3u8"
-      },
-      {
-        "name": "第14集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/7NGJ8pxiY62/video/index.m3u8"
-      },
-      {
-        "name": "第15集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/wbWJRNU9rP2/video/index.m3u8"
-      },
-      {
-        "name": "第16集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/sMiWJj2Zhd2/video/index.m3u8"
-      },
-      {
-        "name": "第17集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/PzSiJsCWrc2/video/index.m3u8"
-      },
-      {
-        "name": "第18集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/gjWfLZRN002/video/index.m3u8"
-      },
-      {
-        "name": "第19集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/yzGzAmZ7En2/video/index.m3u8"
-      },
-      {
-        "name": "第20集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/ZrFKnGTSBR2/video/index.m3u8"
-      },
-      {
-        "name": "第21集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/KnhdCehejG2/video/index.m3u8"
-      },
-      {
-        "name": "第22集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/m7ruUtwEdc2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 22597,
-    "title": "亿万第一季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20210916-1/2ab3dda980aa2e4e7886775b977a8c97.jpg",
-    "year": "2016",
-    "area": "美国",
-    "actor": "玛姬·丝弗,戴米恩·路易斯,保罗·吉亚玛提,玛琳·阿克曼,大卫·科斯塔贝尔,内森·达罗,杰克·戈尔,特里·金尼,托比·莱昂纳德·摩尔,凯利·奥科,康多拉·拉沙德,萨姆·吉尔罗伊",
-    "director": "尼尔·博格,詹姆斯·弗雷,尼尔·拉布特,斯考特·霍恩巴契,史蒂芬·吉伦哈尔,苏珊娜·怀特,安娜·波顿,瑞安·弗雷克,迈克尔·科斯塔,约翰·达尔,卡瑞恩·库萨马",
-    "content": "<p>纽约市政治与经济领域，一场关于金钱与法律的的较量，保罗·吉亚玛提与戴米恩·路易斯，分别饰演美国联邦检察官查克·罗兹与亿万富翁鲍比·艾克斯罗德。\r\n　　对冲基金高手亿万富豪艾克斯罗德被怀疑存在欺诈交易行为，在政界的拥有野心与道德心的罗兹，与艾克斯罗德之间形成了激烈的碰撞与摩擦，二 人针尖对麦芒，以复杂的叙事手法讲述了一场捕猎者与挣扎违抗的猎物之间的斗争，艾克斯和查克都反复经历各自阵营成员在不同的事件中轮转扮演多头和空头。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/0dv8e8JqY12/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/daJeSp33wK2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/NumvjFBKuK2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/i1UCYbfvhB2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/4g4pkrD5bj2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/aZW0HhXS742/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/BcGBeSs87w2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/Z1ydBHcAcd2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/ewYt5rDxgx2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/JCJnLVZETE2/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/sBMzmyNrHt2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/jAZQGxEzKk2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 22570,
-    "title": "老友记第二季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20210916-1/de072f0d385838eed90dee286b29dd6f.jpg",
-    "year": "1995",
-    "area": "美国",
-    "actor": "詹妮弗·安妮斯顿,柯特妮·考克斯,丽莎·库卓,马特·勒布朗,马修·派瑞,大卫·休默",
-    "director": "迈克尔·莱拜克",
-    "content": "<p>罗斯（大卫·休默 David Schwimmer 饰）不知瑞秋（詹妮弗·安妮斯顿 Jennifer Aniston 饰）对他的感觉，并和老同学茱莉开始恋爱。瑞秋对此很不开心，并尝试破坏这一对恋人。已经开始新恋情的瑞秋在一次就酒醉时通过电话留言机跟罗斯表白。让罗斯在瑞秋和茱莉见无所适从，在钱德勒（马修·派瑞 Matthew Perry 饰）的建议下罗列两人的优缺点比较决定。但罗斯知道自己真正爱的还是瑞秋，于是很快与茱莉分手。经历重重波折终于和瑞秋重新开始。乔伊（马特·理勃兰 Matt LeBlanc 饰）由于在肥皂剧扮演雷莫瑞医生大获成功，赚够钱可以住进自己的公寓。菲比（莉莎·库卓 Lisa Kudrow 饰）找到了同父异母的弟弟小弗兰克。莫妮卡（柯特妮·考克斯 Courteney Cox 饰）也开始与父亲的老朋友理查德交往。但孩子的问题让，一心想要孩...</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/2bgY8Vcc2g2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/xCDaAzVWCK2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/byhBBANhbE2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/BjkBBDsbYn2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/DR36aEbwsi2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/WVkmxWMQPb2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/DCMV2iS3HV2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/czdC6Kwg1E2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/LBxf1wp6Aq2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/hpqkkqy5b12/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/D4ac2PcFf12/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/HdvR5sZDdV2/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/bAbwdBcUyL2/video/index.m3u8"
-      },
-      {
-        "name": "第14集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/uvMLXzjLvc2/video/index.m3u8"
-      },
-      {
-        "name": "第15集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/zUd3gWNm392/video/index.m3u8"
-      },
-      {
-        "name": "第16集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/tYE8tApCfW2/video/index.m3u8"
-      },
-      {
-        "name": "第17集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/GymB2JRQFs2/video/index.m3u8"
-      },
-      {
-        "name": "第18集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/h9RHP8CT3k2/video/index.m3u8"
-      },
-      {
-        "name": "第19集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Vc3NAdzN6G2/video/index.m3u8"
-      },
-      {
-        "name": "第20集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/a758iSWpmz2/video/index.m3u8"
-      },
-      {
-        "name": "第21集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/SCRWXHmSWq2/video/index.m3u8"
-      },
-      {
-        "name": "第22集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/LejfWKvzMz2/video/index.m3u8"
-      },
-      {
-        "name": "第23集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/mX9aySSPPH2/video/index.m3u8"
-      },
-      {
-        "name": "第24集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/ZASYwGP6VF2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 22259,
-    "title": "燃情克利夫兰第六季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20210913-1/7cae8d25b2475e26e498657e640f3a42.jpg",
-    "year": "2014",
-    "area": "美国",
-    "actor": "瓦莱丽·伯提内莉,简·丽芙丝,温蒂·马力克,贝蒂·怀特",
-    "director": "",
-    "content": "<p>TV Land is keeping Hot in Cleveland around. The cable network has renewed the half-hour sitcom for a sixth season consisting of 24 episodes. The announcement was made during rehearsals for the 100th episode taping Friday. Hot in Cleveland stars Betty White, Valerie Bertinelli, Jane Leeves and Wendie Malick and is currently in the middle of its fifth season. The comedy has avera...</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/k1gnGGaqFT2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/aTKVjv0ZSs2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/C8CCLTe5ff2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/rRSMBZwN182/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/GZ7SLx4Xj52/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/uvCCcP7bEy2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Db2ryiiuk92/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/2dhnT6m9xv2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/MS5vbBu2PC2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/HZYXfm3gPL2/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/HKRr7qC1UQ2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/gtkWwtAUjT2/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Hwz1thMG0k2/video/index.m3u8"
-      },
-      {
-        "name": "第14集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/pxBwfhBTuZ2/video/index.m3u8"
-      },
-      {
-        "name": "第15集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/NyYUtdrJGD2/video/index.m3u8"
-      },
-      {
-        "name": "第16集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/yvC4MdQNqt2/video/index.m3u8"
-      },
-      {
-        "name": "第17集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/JsSuV83xay2/video/index.m3u8"
-      },
-      {
-        "name": "第18集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/v4NNjp3knY2/video/index.m3u8"
-      },
-      {
-        "name": "第19集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/H4XYLpzTAN2/video/index.m3u8"
-      },
-      {
-        "name": "第20集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/AcsuhyFgLh2/video/index.m3u8"
-      },
-      {
-        "name": "第21集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/gJ7PBHEJ4e2/video/index.m3u8"
-      },
-      {
-        "name": "第22集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/ETucTUtP8H2/video/index.m3u8"
-      },
-      {
-        "name": "第23集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/gSq57Pemu32/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 21436,
-    "title": "广告狂人第一季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20210909-1/89f10aadf1caa7109320cbadaecc3edb.jpg",
-    "year": "2007",
-    "area": "美国",
-    "actor": "乔恩·哈姆,伊丽莎白·莫斯,文森特·卡塞瑟,詹纽瑞·琼斯,克里斯蒂娜·亨德里克斯,爱丽森·布里",
-    "director": "裘德·泰勒",
-    "content": "<p>《Mad Men》是由American Movie Classics公司出品的美剧。\r\n　　该剧曾获得第65届、第66届、第67届美国电影电视金球奖最佳电视剧，并连续四年夺得艾美奖剧情类最佳电视剧奖。\r\n　　1960年代，美国的广告业步入全盛时代，位于曼哈顿的麦迪逊大道有数百家广告公司，斯特林·库帕公司堪称行业中的佼佼者。创意总监唐·德雷柏（乔·哈姆 Jon Hamm 饰）面容英俊，体格健硕，足智多谋，仿佛广告业中的007。除此，公司中还有酷爱炫耀其上流社会出生的老板罗杰·斯特林（约翰·斯拉特里 John Slattery 饰）、识时务的秘书佩吉·奥尔森（伊丽莎白·莫斯 Elisabeth Moss 饰）、野心勃勃却缺乏真才实学的拜特·坎贝尔（文森特·卡塞瑟 Vincent Kartheiser 饰）等各色人等，他们一边为了满足客户的要求殚精竭虑，一边又要在生活...</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/cdv3gnVuHW2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/E8ndUe5SZL2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Gx6byiBLbc2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/KWEMPLcJYE2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/0iEuhasxHy2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/S8QPu23kgz2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/YKv3enXAb92/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/PbsbytVGZ62/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/LD0K2Mtu3W2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/jfKzCjj5SZ2/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/uh8bUT3u9N2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/nYDY2GFaMf2/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Wgm7KE8v4T2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 20508,
-    "title": "糟糕历史第六季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20210904-1/57bf61de9bc5491c48a9b36d408366e0.jpg",
-    "year": "2015",
-    "area": "英国",
-    "actor": "詹森·刘易斯,汤姆·罗森塔尔,Natalie Walter,Jim Howick,Simon Farnaby,Ben Miller,Jessica Ransom,Adam Riches,Naz Osmanoglu,Dan Li,Lawry Lewin,Jon Culshaw,John Eccleston,Jalaal Hartley,Tom Stourton,Bhavna Limbachia,Sophie Wu,Louise Ford,Dominique Moore,Kevin Eldon,Sanjeev",
-    "director": "Simon Gibney",
-    "content": "<p>Horrible Histories returns for a special about King John and Magna Carta, starring Ben Miller. John annoys the Barons and agrees Magna Carta at Runnymede, after a banging rap battle. Meanwhile across the world we meet the formidable Genghis Khan in Mongolia, and catch up with the crafty Saladin during the Crusades. With of course, our host Rattus to guide the way!</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/jgyMzxkWjH2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/7mEXEGvTpC2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/TRHjw1b6772/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/YavwxZyxCR2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/sCnHhKn5BX2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/HTdgKt7zFT2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/kG86b99BCm2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Aj0PRCp7bc2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/CyGszRNYms2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/QMgRhv6AXG2/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/uYRCv3KTBj2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/hHswTc8Qcn2/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/1SRCmKqaeN2/video/index.m3u8"
-      },
-      {
-        "name": "第14集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/uGEmFt9Zuw2/video/index.m3u8"
-      },
-      {
-        "name": "第15集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/9gK91zuFVz2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 18864,
-    "title": "超胆侠第一季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20210822-1/8726d057a5ab420553dd93d5f8689c0e.jpg",
-    "year": "2015",
-    "area": "美国",
-    "actor": "查理·考克斯,杰弗里·坎特尔,罗莎里奥·道森,斯科特·格伦,埃尔登·汉森,文森特·多诺费奥,沃迪·科蒂斯·霍尔,吉迪恩·埃默里,鲍勃·冈顿,皮特·麦克罗比,加里·帕斯托雷,黛博拉·安沃尔,阿耶莱特·祖里尔,克里斯·塔拉迪奥,托比·莱昂纳德·摩尔,托尼·诺莫夫斯基,迈克尔·阿伯特",
-    "director": "菲尔·亚伯拉罕,亚当·肯恩",
-    "content": "<p>《夜魔侠》是漫威首个在Netflix推出的电视剧，第一季共十三集。夜魔侠原名马修·默多克，虽然双目失明，但拥有超强的听觉和触觉，以及后天学习的格斗技术。他平时是一个律师，夜晚戴上面具后在纽约街头打击犯罪。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/zem8x715PU2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/3LWrqe9eg82/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/FArQYzUEBU2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/3HCukzNvCp2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/XdUG6XRWRt2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/eyFjkQ73fn2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/2ajH3Ym9fJ2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/m9ynAjGYMd2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/jjzLZScqVF2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Mka0KruLnr2/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/yg38RpXU8L2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/pVkDXdPG5A2/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Swv6yztH1m2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 17956,
-    "title": "绊脚石",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20210816-1/4c97d797081ccf8d3147ea9691794ef5.jpg",
-    "year": "2019",
-    "area": "美国",
-    "actor": "杰瑞米·艾文,韩孝周,特蕾西伊芙艾策尔,加布丽埃尔·沙尔尼茨基,艾米利亚·舒勒,迈克尔·加斯顿,米歇尔·佛贝丝,马丁·恩巴赫,唐纳德·萨基·马凯,大卫·迈克尔斯,奥玛尔·梅特瓦利,派屈克·福吉特,凯丽·戈德利曼,泰丝·哈乌布里奇,芬巴尔·林奇,埃米特·斯坎伦,科斯马·肖,布莱恩·J·史密斯,朱利安·科斯托夫,爱德华·布海克,蒂姆·埃亨,艾玛·博科维奇,杰米·安德鲁·卡特勒,马丁·格雷斯,施卢蒂·哈森,玛雅·西蒙森,戴兰·史密斯,马泰,杰米·帕克,李钟赫,丹尼尔·韦曼,姜艺娜",
-    "director": "韦恩·叶,拉敏·巴哈尼,艾利克斯·格雷夫斯",
-    "content": "<p>《谍影重重》要出电视剧了，一部该系列电影的前传+外传性质的剧集《绊脚石》已被USA台预订试播集。《英雄》主创Tim Kring任编剧、执行制作人，聚焦与杰森·伯恩息息相关的CIA“绊脚石”计划，讲述全世界新的潜伏特工们神秘“觉醒”，去完成致命任务。Ramin Bahrani(《99个家》《华氏451度》)执导该集 。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/yNfT9NtsAv2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/a6UvjLHbxq2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/xsvBVxBJYV2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/9FFStjctEY2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/beGMKKEjwT2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/PVvjhqvbaC2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/aSCFQzzRDu2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/WLK9aUyThn2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/sn7fxv4V092/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/hsNh3GZnrN2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 42526,
-    "title": "心机夏令营第一季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20220802-1/b4b2de394159fcbc2938577f30357e25.jpg",
-    "year": "2018",
-    "area": "英国",
-    "actor": "丽莎·安巴拉佛讷,雅各布·杜德曼,迈克尔·沃德,奇安·巴里,杰克·凯恩,本杰明·纽金特,马克斯·罗韩,Ellie Duckles,Rosie Dwyer,Nneka Okoye,Georgina Sadler,Eleanor Bennett,Savannah Baker,Indianna Ryan,雪特娜·潘迪亚",
-    "director": "Dan Berlinka,Nina Metivier",
-    "content": "<p>浪漫、竞争以及一个极端的秘密。在一次前往遥远岛屿的露营中，黑暗的秘密将一生难求的冒险变为了扭曲的噩梦。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/VBbF6whBuG2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/vchHVfiDRC2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/hc2WCJkZJ62/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/t6xzsXmmyc2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Cfbkm0EtkD2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/CgwwgHR2dC2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Mf4Biktxjr2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Yii00x9Sza2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/y8Zz3DjWhe2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/CCcGLZFQWR2/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/cWzusrwTnn2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/3U0SMX6vUg2/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/UWfMesVVTt2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 106142,
-    "title": "珍的不一样",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/0983b1191f501e07ded5a7edc00c6ec9.jpg",
-    "year": "2023",
-    "area": "英国",
-    "actor": "马伊雷德·泰尔斯,希沃恩·麦克斯维尼,罗比·基,约翰·麦克米兰,索菲亚·奥克斯纳姆,Reis,Daniel,Edward,Wolstenholme,Luke,Rollason,Safia,Oakley-Green,亚伯拉罕·波波拉,皮埃尔·伯格曼,Bilal,Hasna,Nathaly,Herrera,Kamahl,Sami-Miller,埃拉·布鲁科莱里,帕特里夏·艾莉森",
-    "director": "Nadira,Amrani,Toby,Macdonald,詹妮弗·谢里丹",
-    "content": "《非凡》讲述的是一个每个人都在18岁生日时拥有超能力的世界，除了珍。她都25岁了，还在等着自己的生日。她甚至对这可能是什么都不挑剔超级速度激光眼睛吗每次都能正确插入USB的能力她会接受的。就像被蝴蝶包围的毛毛虫，珍觉得……",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/ge6wCmEzRK2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/7UfP1GeAqV2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/VwiVdv1a0m2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/VMQQ48L8tj2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/iAgG6EuRR72/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/wsMj2Ky8bk2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/EDQb3ae9fD2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/1ujd35iGiW2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 106141,
-    "title": "美国恐怖故事第十季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/8b1fd0ab53fee1d1b6bbe58d0a34e06e.jpg",
-    "year": "2021",
-    "area": "美国",
-    "actor": "莎拉·保罗森,埃文·彼得斯,麦考利·卡尔金,凯雅·基伯,芬·维特洛克,莉莉·拉贝,弗兰西丝·康罗伊,比莉·洛德,莱斯利·格罗斯曼,阿迪纳·波特,安吉莉卡·罗斯,赖恩·基拉·阿姆斯特朗,Spencer,Novich,薇·妮可西,丹尼斯·欧哈拉",
-    "director": "约翰·J·格雷",
-    "content": "《美国恐怖故事》新季《Double Feature》，直译为1950、1960年代美国影院常有的“两片连映”活动，这季顾名思义会包含两个故事，一个发生在海中，一个在沙里。演员方面有麦考利·卡尔金、凯雅·基伯等新加入，凯西·贝茨、莱丝莉·格罗斯曼、比莉·洛德、莎拉·保罗森、伊万·彼得斯、阿迪纳·波特、莉莉·拉贝、安吉莉卡·罗斯、芬·维特洛克回归。",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/qFYS9kH7BJ2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/AKa6jviJ582/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Bamu4dYzvr2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/kNACyCcKuU2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/nHW3WUTHid2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/RLQR5wcri82/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/1f6ES959Vt2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/qdArVPzBKi2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/7y5vcfkxw22/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Z2uxmex8xk2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 106140,
-    "title": "欧罗巴部落",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/49a15ac52085966abc6425cd1c8ac144.jpg",
-    "year": "2021",
-    "area": "其它",
-    "actor": "亨丽埃特·肯夫里乌斯,奥利弗·马苏奇,David,Ali,Rashed,埃米利奥·萨卡里亚,梅丽卡·弗鲁坦,詹姆斯·福克纳,Igor,Pecenjev,Lenka,Regulyová,Marie,Mouroum,Alain,Blazevic,戴维·鲍尔斯,Pavel,Bédi,本杰明·萨德勒,克劳斯·坦格,马德奥·范·德·格里恩,保司福尔吐纳,詹妮特·海因,吉姆·海伊,罗伯特‧马瑟,肯德里克·昂,Leona,Paraminski,克里斯托弗·瑞,安娜·乌拉鲁,亚当·瓦库拉",
-    "director": "菲利普·科赫,弗洛里安·巴克斯梅尔",
-    "content": "故事讲述2074年，一场神秘的全球性灾难后，欧洲大陆解体为林立小国。各个“部落”为争夺大陆的统治权而相互争斗。三个兄弟姐妹凯诺、丽芙、伊利亚为了改变这片新的“欧罗巴”大陆的命运，他们被迫踏上征途。",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/M794AP1KLP2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/cBVTztkU062/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/B0ErvbSRYQ2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/M1SLJsYxgH2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/FRpiRbm6uA2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/R2TbVuGU8f2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 106139,
-    "title": "美国恐怖故事第四季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/9da06f3d92aa7061f127891c41d97579.jpg",
-    "year": "2014",
-    "area": "美国",
-    "actor": "杰西卡·兰格,凯西·贝茨,莉莉·拉贝,莎拉·保罗森,埃文·彼得斯,泰莎·法米加,弗兰西丝·康罗伊,安吉拉·贝塞特,艾玛·罗伯茨,加布蕾·丝迪贝,丹尼斯·欧哈拉,莱利·沃克,杰米·布鲁尔",
-    "director": "阿方索·戈麦斯-雷洪,迈克尔·瑞迈尔,迈克尔·乌彭达",
-    "content": "剧情介绍：女巫审判后约300年，曾成功逃离的那批女巫面临灭顶之灾。女巫的女儿们被送至新奥尔良的一所特殊学校来学习保护自己，但她们受到一系列不断升级的神秘攻击。被卷入其中的是一个新生Zoe（Taissa Farmiga），她心怀一个可怕的秘密。而此时，长期不现身的至高者Fiona（Jessica Lange）深受近期侵犯所震惊，席卷而回，来到镇上。她决心保护女巫集会（Coven），并且不惜一切要屠杀任何拦她路的人！",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/kUkzr3B2Kc2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/qQLqrzv2422/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/JDCSbCe7LH2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/s8Mg0L455f2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/JC71PUcV9K2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/GgSwDRmYSX2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/gXTzbPWyxS2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/CbyUVDCQhh2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/4C5p2ZBSFg2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/GHJTLeVYqm2/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/XKcHqZvxFD2/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/hiqz5FAdU52/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/tN40st0JTW2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 48461,
-    "title": "我女儿的妈妈第三季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20211224-1/74f1a8a320c8249c451d4cb9788e97ab.jpg",
-    "year": "2022",
-    "area": "墨西哥",
-    "actor": "路易斯·帕莱塔,宝琳娜·后托,Martín Altomaro,利兹·加拉多,Javier Ponce,Oka Giner",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/y9p8fQ7C9c2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/xsu4eG8bit2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/YVWh5aPhLV2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/PWJYfcGtvZ2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/5ywaeBi1A02/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/TiCCe2xU552/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/cSj7x6B5DC2/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/NMgn3bEx7a2/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/xYvPFQ9wsG2/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/1tkCDxaqdp2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 47634,
-    "title": "1899",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20221117-1/e2b6e47229aa140c29b63a2d963c0e0c.jpg",
-    "year": "2022",
-    "area": "德国,美国",
-    "actor": "安德烈亚斯·皮特斯柯曼,艾米丽·比查姆,安东·莱瑟,马蒂尔德·奥利维耶,阿奈林·巴纳德,卢卡斯·林高·藤内森,克拉拉·罗萨杰,亚历山大·维尧姆,米格尔·贝尔纳尔德阿尤,乔纳斯·布洛凯,罗莎莉·克雷格,理查德·霍普,玛丽亚·厄沃尔特,马切伊·穆西尔,本·阿什登,Yann Gael,Heidi Toini,缇诺·麦威斯,Isabella Wei",
-    "director": "巴伦·博·欧达尔",
-    "content": "<p>该剧故事将围绕一艘从伦敦开往纽约，满载着移民的船只展开，当船上的人发现了另一艘移民船时，他们的旅程发生了意想不到的改变，那艘船上的东西令一切都变为了噩梦。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/PcGbzfQ4wP2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/mxMnjCzg9r2/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/NZfQ5A4qPb2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/E5hiW21Zqp2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/24/Chi3pJWNLd2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/eEYwNK34TV2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/icZTAdpxS42/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/21/rK4vTWXeiq2/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 46954,
-    "title": "本尼迪特天才秘社第二季",
-    "category": "美国剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20221026-1/3df3483143ed0e89cd38b52f64c34028.jpg",
-    "year": "2022",
-    "area": "美国",
-    "actor": "托尼·海尔,克里斯汀·沙尔,塞斯·凯尔,艾米·德奥利韦拉,徐亦涵,玛尔塔·蒂莫菲娃,莱克斯·金,里斯·诺伊,吉亚·桑德赫,Eliza Shin,Michael Vargas,Charlene Westbrook,Brittney Baxter",
-    "director": "卡比尔·阿克塔,道恩·威尔金森,Aprill Winney",
-    "content": "<p>该剧根据同名畅销系列小说改编，讲述四个天才孤儿被古怪的本尼迪克特先生招募，他们要潜入神秘的L.I.V.E.研究所，搞清楚被称为“紧急状态”的全球危机的真相，拯救世人。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/7c3sJUCuYp2/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/29WFpFdcU52/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/Tq9LQwSEfV2/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/KKht562BJU2/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/SHy2iJSjth2/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/ycu636VBNQ2/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/uxWkTYRLn82/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202308/22/0g5w3nw74M2/video/index.m3u8"
       }
     ]
   }

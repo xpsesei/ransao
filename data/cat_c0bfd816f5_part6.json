@@ -1,5 +1,760 @@
 [
   {
+    "id": 84778,
+    "title": "极恶老大第一季",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/88a76f1ee20bf40437470ea4fa417ada.jpg",
+    "year": "2019",
+    "area": "美国",
+    "actor": "布兰登·罗杰斯,Brandon,Rogers,理查德·史蒂文·霍维茨,Richard,Steven,Horvitz,薇薇安·尼克松,Vivian,Nixon,埃里卡·林德贝克,Erica,Lindbeck,布莱斯·平卡姆,Bryce,Pinkham",
+    "director": "薇薇恩·梅德拉诺",
+    "content": "在地狱的社会里，小恶魔们是阶层中最低级的生物，但当一个小恶魔开始从事杀手行业的时候会发生什么事呢？现在你就能知道了！",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/wnz0qnWWsc1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/F0pDAAaKp01/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/1mcUpyBkVJ1/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/Gfig9DeVjL1/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/yEx59D2m1j1/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/aydK5wvpJ01/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/a0gazKPnT31/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 84779,
+    "title": "恐龙战队第二季",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/7bbb4bb0ec28729664e93278f38e034e.jpg",
+    "year": "1994",
+    "area": "美国",
+    "actor": "Walter,Jones,Thuy,Trang,Jason,David,Frank",
+    "director": "Shuki,Levy",
+    "content": "Lord Zedd is introduced as the new arch-rival of the Power Rangers. Angered by the failure of Rita, he imprisons her in the Dumpster again and sets about defeating the Power Rangers by immobilizing the zords.",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/YQzUDptFtd1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/GScEia15vG1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/uzNMhADp5S1/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/4QWVGw5QXe1/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/zVJ9JmbVKi1/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/UdZU0kVKrw1/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/jKJmkk7gFg1/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/14EX8fxqiY1/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/jf0i7r4pHy1/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/R45NwkRnMb1/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/W1Q6AhJK5Z1/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/Ks5NfCbciw1/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/aHKUkNajbn1/video/index.m3u8"
+      },
+      {
+        "name": "第14集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/A8aBhCpzVk1/video/index.m3u8"
+      },
+      {
+        "name": "第15集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/7ujxqTP4wG1/video/index.m3u8"
+      },
+      {
+        "name": "第16集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/JLudeE7Ssu1/video/index.m3u8"
+      },
+      {
+        "name": "第17集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/zNMMGzZ6Hu1/video/index.m3u8"
+      },
+      {
+        "name": "第18集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/H06hUav0iu1/video/index.m3u8"
+      },
+      {
+        "name": "第19集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/GByTkjbCv51/video/index.m3u8"
+      },
+      {
+        "name": "第20集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/c4wu72G2001/video/index.m3u8"
+      },
+      {
+        "name": "第21集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/nnTiEbGVB71/video/index.m3u8"
+      },
+      {
+        "name": "第22集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/rJwYs9ya1J1/video/index.m3u8"
+      },
+      {
+        "name": "第23集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/XuJKD9ieNt1/video/index.m3u8"
+      },
+      {
+        "name": "第24集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/gX8eBFTEvs1/video/index.m3u8"
+      },
+      {
+        "name": "第25集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/jRnKMuUu771/video/index.m3u8"
+      },
+      {
+        "name": "第26集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/gdukmAVKY31/video/index.m3u8"
+      },
+      {
+        "name": "第27集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ZezcXmPTd91/video/index.m3u8"
+      },
+      {
+        "name": "第28集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/Ew3gdqAdXG1/video/index.m3u8"
+      },
+      {
+        "name": "第29集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/SQD1h9Xw641/video/index.m3u8"
+      },
+      {
+        "name": "第30集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/dHwpHGSVhP1/video/index.m3u8"
+      },
+      {
+        "name": "第31集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/0eMtBg45rh1/video/index.m3u8"
+      },
+      {
+        "name": "第32集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ySHFqY6V0k1/video/index.m3u8"
+      },
+      {
+        "name": "第33集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/q6QR9tm4EP1/video/index.m3u8"
+      },
+      {
+        "name": "第34集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/4krG2vtjpY1/video/index.m3u8"
+      },
+      {
+        "name": "第35集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/PhLJR7xC8K1/video/index.m3u8"
+      },
+      {
+        "name": "第36集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/nCV2JRSx0R1/video/index.m3u8"
+      },
+      {
+        "name": "第37集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/0zbST90pVa1/video/index.m3u8"
+      },
+      {
+        "name": "第38集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/S3ifw1fSwz1/video/index.m3u8"
+      },
+      {
+        "name": "第39集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/BnJTN60MiH1/video/index.m3u8"
+      },
+      {
+        "name": "第40集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/dg3Nqvm23Q1/video/index.m3u8"
+      },
+      {
+        "name": "第41集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/n0cGACjz6m1/video/index.m3u8"
+      },
+      {
+        "name": "第42集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/XkubQQfrmA1/video/index.m3u8"
+      },
+      {
+        "name": "第43集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ZwHsVF4zPL1/video/index.m3u8"
+      },
+      {
+        "name": "第44集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/rktcVy30ti1/video/index.m3u8"
+      },
+      {
+        "name": "第45集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/saixVjRx6F1/video/index.m3u8"
+      },
+      {
+        "name": "第46集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/1Eje0Ttjwf1/video/index.m3u8"
+      },
+      {
+        "name": "第47集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/e8fJ6kSw0V1/video/index.m3u8"
+      },
+      {
+        "name": "第48集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/bix10286Wm1/video/index.m3u8"
+      },
+      {
+        "name": "第49集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/7VffeqT4yk1/video/index.m3u8"
+      },
+      {
+        "name": "第50集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/6LP9imSi231/video/index.m3u8"
+      },
+      {
+        "name": "第51集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/XVBHF7y55U1/video/index.m3u8"
+      },
+      {
+        "name": "第52集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/TnbPBPgtpV1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 84780,
+    "title": "龙王子第二季",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/ee742be7c7930839709ecf2111186f91.jpg",
+    "year": "2019",
+    "area": "美国",
+    "actor": "杰克·德·塞纳,保拉·伯罗斯,莎莎·罗根,拉克尔·贝尔蒙特,杰森·辛普森,赫塞·诺科拉",
+    "director": "维拉德·斯潘斯伯格,吉安卡洛·沃尔普",
+    "content": "第二季共九集，继续讲述瑞拉、卡勒姆和艾斯兰在沙迪亚的冒险经历。但是这段旅程并不顺利：每走一步，他们都将遭受来自新旧敌友的挑战。他们在信任与背叛之间挣扎，直面邪恶的龙，抵御黑魔法的诱惑，还要保护刚孵化的龙王子阿兹。",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/cLRxReVc3E1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/qfU0f76Fdr1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/3jeZLVUUGB1/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/HjmvsuF9271/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/BBjbi9L5hr1/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/UEDaVG0vYY1/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/739694zcj11/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/ziNCWDafG61/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/30gPfSTWRC1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 84781,
+    "title": "龙王子第三季",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/c9f34fc69ed9d184dc67206f767e2db4.jpg",
+    "year": "2019",
+    "area": "美国",
+    "actor": "杰克·德·塞纳,保拉·伯罗斯,莎莎·罗根,拉克尔·贝尔蒙特,杰森·辛普森,赫塞·诺科拉",
+    "director": "维拉德·斯潘斯伯格,吉安卡洛·沃尔普",
+    "content": "传奇故事还在继续！卡勒姆和瑞拉总算来到了魔法之地沙迪亚，开始归还龙王子阿兹回归他母亲——龙之女王的最危险的一段旅途。艾斯兰回到科塔利斯王国并登上王位，却不得不立刻面对与沙迪亚开战的压力。同时，被囚禁的艾伦在绝望中开始逐渐意识到他的新盟友：神秘的摘星精灵阿拉沃斯的真正力量。",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/6QNH5Gwqps1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/Mp4dWZxAFm1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/LBPYtKTr081/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/aGnRih4nHU1/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/nbLKFzF8471/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/gZA7EF12CW1/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/fchDbLSRxV1/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/hLu1ZfAhBH1/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/cR7kGaYgsa1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 84782,
+    "title": "猫和老鼠在纽约",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/05d4e0ae9b873eef05c5cc33e72eb5a7.jpg",
+    "year": "2021",
+    "area": "美国",
+    "actor": "Stephen,Stanton,Rick,Zieff,Grey,Griffin",
+    "director": "Darrell,Van,Citters",
+    "content": "猫和老鼠将推出新剧集《猫和老鼠在纽约》，主要讲述猫和老鼠这对水火不容的冤家来到了大都市纽约，继续展开互相追逐的爆笑喜剧。",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/R8Sgf0nHVn1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/pcfQnN7GHn1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/gzyT7rjaxd1/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/9XfDXGitnY1/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/RihuVqiyMH1/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/5u0vkifjc71/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/EVzmq3CeQe1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 2226,
+    "title": "灵探特莱丝",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20210705-1/8fff0d2776f2c78056ab8365abc2217b.jpg",
+    "year": "2021",
+    "area": "菲律宾",
+    "actor": "乔恩·琼·布里恩斯,史蒂夫·布卢姆,卡洛斯·阿拉斯拉奇,曼尼·贾希尼托,艾瑞克·鲍扎,达伦·克里斯,丹特·巴斯克,Simon Dela Cruz,Apollo Abraham,Christopher Carlo Caling,Eugene Adalia,Cheska Aguiluz,Christian Velarde,Bryan Encarnacion,Nica Rojo,薛·米契尔,卢·戴蒙德·菲利普斯,尼可·斯彻金格,马修·杨·金",
+    "director": "梅尔基奥尔·祖耶",
+    "content": "<p>又发生超自然悬案？马上找亚历珊德拉·特莱丝来帮忙就对啦！《#灵探特莱丝#》改编自菲律宾 得奖漫画，以马尼拉为背景，带您见识闻所未闻的恐怖民间传说。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/EMiY8AJ6XD1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/Zw7gy3ANHJ1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/EemWSj0hi61/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/GNCjFbDQyy1/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/CBxwKbEHui1/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/2ZZCRs6Xin1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 24281,
+    "title": "开心汉堡店第四季",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20211006-1/5eb97ed66377cf7e0f28cd5eacc7577e.jpg",
+    "year": "2013",
+    "area": "美国",
+    "actor": "H·乔恩·本杰明,Dan Mintz,Eugene Mirman,克里斯汀·沙尔,John Roberts",
+    "director": "Loren Bouchard",
+    "content": "<p>开了一家汉堡店，他的竞争对手就是对面那家披萨店，为了争取生意，在这条街上每天都会出现各种两家店竞争的画面。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/fDCk1R99wW1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ByEU1a4Xpv1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/jpem3Zvj2z1/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/9SgzEtSUnC1/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/VBSZdWNx0H1/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/42gMpWVZ2G1/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/wdm1skJaY31/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/0ipc9h8b6J1/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/x10pimFGXB1/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/vrHfPcBaww1/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/nNLs06PzwK1/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/eRSLU0Vgk51/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/6hsmKp13471/video/index.m3u8"
+      },
+      {
+        "name": "第14集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/WVMxDCjeFE1/video/index.m3u8"
+      },
+      {
+        "name": "第15集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ShGGUxZ1ZU1/video/index.m3u8"
+      },
+      {
+        "name": "第16集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/aeXRMu6xBv1/video/index.m3u8"
+      },
+      {
+        "name": "第17集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/1bN1t4UJYe1/video/index.m3u8"
+      },
+      {
+        "name": "第18集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/wMCWnG9cxU1/video/index.m3u8"
+      },
+      {
+        "name": "第19集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/RA9ih0MtDH1/video/index.m3u8"
+      },
+      {
+        "name": "第20集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/iLNvyHfCrg1/video/index.m3u8"
+      },
+      {
+        "name": "第21集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/Zg8JW9U9B01/video/index.m3u8"
+      },
+      {
+        "name": "第22集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/xKkRSU80Ng1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 26368,
+    "title": "杀手猴",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20211202-1/c2ed2dbee6c5fd398efd664090512993.jpg",
+    "year": "2021",
+    "area": "美国",
+    "actor": "杰森·苏戴奇斯",
+    "director": "",
+    "content": "<p>本片讲述了一只日本雪猕猴遇到了一个陷入困境的职业杀手布莱斯(杰森·苏戴奇斯 配音) 的故事。而当布莱斯去世后，这只猴子(在布莱斯的灵魂的指引下)追随他的刺客脚步寻求复仇。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/GRzGm4eKW11/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/NnWCJcKP9A1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/sTfkE4kpGB1/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/F35xHATfyB1/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/c2c9gy30Gq1/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/FWtLrkrn8Y1/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/qUhjcJ3naT1/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ziF2nwAnLC1/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/ciDqNdJh841/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/zYcXGWv2bx1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 84760,
+    "title": "哈莉·奎茵第三季",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/f427ac302e54b06a5400460761628c7c.jpg",
+    "year": "2022",
+    "area": "美国",
+    "actor": "凯莉·库柯,蕾克·贝尔,哈维·吉兰,罗恩·芬奇斯,艾伦·图代克,J·B·斯穆夫",
+    "director": "",
+    "content": "The mayhem and madness continue in season three of this biting and uproarious adult animated comedy series. Wrapping up their “Eat. Bang! Kill. Tour,” Harley Quinn (Kaley Cuoco) and Poison Ivy (Lake Bell) return to Gotham as the new power couple of DC villainy. Along with their ragtag crew – King Shark (Ron Funches), Clayface (Alan Tudyk), Frank the Plant (JB Smoove) - Harlivy strives to become the best version of themselves while also working towards Ivy’s long desired plan of transforming Gotham into an Eden paradise.",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/7jMNFrh4kf1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/8AktKuE0gp1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/xrNy72MZ4R1/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/ZzQ4fqJUL01/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/5PMf916kYY1/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/D7QEV62wmy1/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/RhNrxmdkS61/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/mxcmmmC3qe1/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/5RxV9KUuvM1/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/jWNyb84a5P1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 84761,
+    "title": "间谍亚契第九季",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/655e54081bf9b761f2e9c36b4e232d80.jpg",
+    "year": "2018",
+    "area": "美国",
+    "actor": "H·乔恩·本杰明,尤金·科德罗,朱迪·格雷尔,Amber,Nash,克里斯·帕内尔,爱莎·泰勒,杰西卡·沃尔特",
+    "director": "",
+    "content": "《间谍亚契》（Archer）是FX播出的一部动画喜剧，以上世纪六十年代风靡一时的间谍题材为基础，参杂了大量的现代元素和「幽默感」，并且是一部十足的「成人动画」（铛铛，不要一看到「成人」这两个字就联想到不健康的东西……）。",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/kfXWfEGBaT1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/YpFqgVe52z1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/w6nBG3Xjfw1/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/jFxLrU1gxk1/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/6DePyqzhkS1/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/XEbZpMCKTm1/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/m2GNbaSq0m1/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/MicLqJDmRK1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 84762,
+    "title": "猫和老鼠传奇第一季",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/aba79685567fde4dcd649ca1573fbaac.jpg",
+    "year": "2006",
+    "area": "美国",
+    "actor": "Phil,Vischer",
+    "director": "",
+    "content": "Tom and Jerry Tales Volume Five was released on August 12, 2008.[7] The episodes include Invasion of the Body Slammers  Monster Con  Over the River and Boo the Woods  Xtreme Trouble  A Life Less Guarded  Sasquashed  Summer Squashing  League of Cats  Little Big Mouse  Bend it Like Thomas  Endless Bummer  Game Set Match.",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/LQ7kZM7tVb1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/VKKChbvC5E1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ACQSnYVnsM1/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/NSNnvmFVJ21/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/3eDXUdsgkS1/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/7tk9PwcXtm1/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/dew7W7dEVT1/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/erj1A1rs311/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/bv3HkPstWf1/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/m0u0CheY8V1/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/JtpR2bnxGC1/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/R0bUFJ5DyU1/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/pT39Q9NCN91/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 84763,
     "title": "摩登原始人第三季",
     "category": "欧美动漫",
@@ -5106,6 +5861,88 @@
       {
         "name": "第26集",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202403/18/4xwe3Adh5i2/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 60567,
+    "title": "木偶新知",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240127-1/15ae0d994a600483ed1e316eebefff2f.jpg",
+    "year": "2024",
+    "area": "美国",
+    "actor": "Charlie Bushnell,吉恩·史密斯-卡梅隆,迈克·乔吉,扎克·伍兹,Caitlin Reilly,卡尔·塔特",
+    "director": "",
+    "content": "<p>Zach Woods和自己的老同事——《硅谷》主创Mike Judge合体的Peacock成人向动画剧集《木偶新知》（In the Know）在去年九月获得剧集预订后，于日前公开配音阵容：包括《继承之战》“Gerri” J. Smith-Cameron、《未来总统日记》“Bobby” &nbsp;Charlie Bushnell、《人生酒友》“Sherm” Carl Tart以及《绝望写手》“Jessica” Caitlin Reilly将在剧中献声。\r\n　　这是这家流媒体首度涉足这一领域的项目，将会喜剧化模仿调侃全国公共广播电台（NPR），将故事架设于主角、NPR人气第三（为人善良但偶尔有点虚伪、平凡）的主持人（定格动画木偶）“Lauren Caspian”（Zach献声）和他的节目。标题「In the Know」便是他的节目名字，每一集都将以一期节目的形式呈现，...</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202401/27/pYrhBp967K2/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202402/19/v5tbEtbQi22/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202403/04/u86v1CULVF2/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202403/05/HLGdyy8eXi2/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202403/18/wfG3CeuB323/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202403/28/rCSE3AKqF23/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 57627,
+    "title": "无敌少侠第二季",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20231103-1/877776306f9acf57bdd76831b5618cce.jpg",
+    "year": "2023",
+    "area": "美国",
+    "actor": "史蒂文·元,吴珊卓,J·K·西蒙斯,莎姬·贝兹,塞斯·罗根,马克·哈米尔,沃尔顿·戈金斯,格蕾·德丽斯勒,马克斯·博克霍德,吉莉安·雅各布斯,杰森·曼楚克斯,罗斯·马昆德,玛莱斯·裘,卡里·佩顿,扎克瑞·昆图,安德鲁·兰内斯,凯文·迈克尔·理查德森",
+    "director": "罗伯特·柯克曼",
+    "content": "<p>Amazon口碑大爆超级英雄动画剧集《无敌少侠》官宣续订第二季和第三季！</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202311/03/DU6m83seAy2/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202311/10/Nx0ffQYthm2/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202311/17/Kikthekysu2/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202311/24/F9Kvf31CgA2/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202403/14/N65Xw0ta1i3/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202403/21/k2Lp42iKFA3/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202403/28/uvsq07cNgr3/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202404/04/qMxevPwhMS3/video/index.m3u8"
       }
     ]
   }

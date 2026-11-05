@@ -1,5 +1,480 @@
 [
   {
+    "id": 85439,
+    "title": "黑客帝国动画版",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/2cba50929a44d655413cdbc5846cd3b6.jpg",
+    "year": "2003",
+    "area": "美国",
+    "actor": "大塚明夫,克莱顿·华生,帕梅拉·阿德龙,海蒂·布雷斯,特伦斯·卡森,美琳达·克拉克,奥利薇亚·阿波,戴恩·A·戴维斯,威廉·R·迪恩",
+    "director": "钟彼得,安德鲁·R·琼斯,川尻善昭,小池健,前田真宏,森本晃司,渡边信一郎",
+    "content": "《黑客帝国动画版》由9段以《黑客帝国》系列电影世界观为基础生发出的短片组成，各篇的角度与风格各异，制作班底汇聚了日本、美国、韩国三地的动画精英。《机器复兴》讲述了MATRIX的历史。机器人不堪人类恶劣对待，终于反抗并将人类化为能源。《少年故事》讲述一名少年突然收到来自网络的召唤，而大批黑衣人开始对他展开围捕。《虚拟程序》展示了一对男女在虚拟训练程序中的片断。《世界纪录》描写一位短跑运动员在接近突破人类极限时终被系统牢牢控制。《超越极限》叙述因为系统错误，平静的街区中出现了一片超常区域。《侦探故事》描写一位侦探被步步引领着试图摆脱系统的桎梏。《矩阵化》讲述一只机器人被人类捕获并驯化的故事。《终极战役》记录了一艘飞船毁灭的经过。",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/x3zidvueXK1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 85440,
+    "title": "绿灯侠：动画版第一季",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/b578a792d311888e61b169f95a2910b0.jpg",
+    "year": "2011",
+    "area": "美国",
+    "actor": "乔什·基顿,凯文·迈克尔·理查德森,杰森·斯皮萨克,格蕾·德丽斯勒,布莱恩·乔治",
+    "director": "刘山姆,Rick,Morales",
+    "content": "Cartoon Network2011年最新作品，根据同名漫画改编，同名电影也即将上映",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/LhBLZb2Ba91/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/5jxFNcWxUC1/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/WvEW5UbXL81/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/5ETJVaVraK1/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/mMzdAb8n301/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/tjQzviuuYr1/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/D91tWdkNh11/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/zGAqkEjwDT1/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/9P9j2jA5ZX1/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/ZJ6YPmzur31/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/3VcW2QcE8n1/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/P3K8yMGnLY1/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/6783gXyQj31/video/index.m3u8"
+      },
+      {
+        "name": "第14集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/azQKviXDCA1/video/index.m3u8"
+      },
+      {
+        "name": "第15集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/4ppF5B47pf1/video/index.m3u8"
+      },
+      {
+        "name": "第16集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/GCRtXGVGre1/video/index.m3u8"
+      },
+      {
+        "name": "第17集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/myXeGVEVa91/video/index.m3u8"
+      },
+      {
+        "name": "第18集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/ecfr1gshat1/video/index.m3u8"
+      },
+      {
+        "name": "第19集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/1yGu1SgHh11/video/index.m3u8"
+      },
+      {
+        "name": "第20集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/6yAj6SnACY1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 85441,
+    "title": "穿着鞋子的贝壳马塞尔",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/ea167048ff9fffac68d919458ed1d92e.jpg",
+    "year": "2021",
+    "area": "美国",
+    "actor": "珍妮·斯蕾特,迪恩·弗雷斯彻-坎普,伊莎贝拉·罗西里尼,罗莎·萨拉查,托马斯·曼,莱思莉·斯塔尔,乔·加布勒,莎丽·芬克尔斯坦,塞缪尔·潘特,布莱克·霍特尔,斯科特·奥斯特曼,杰里米·埃文斯,莎拉·瑟尔,安迪·里克特,内森·菲尔德,杰茜·克莱因,彼得·博内兹,柯南·奥布莱恩,布莱恩·威廉姆斯,耶西·奇利奥",
+    "director": "迪恩·弗雷斯彻-坎普",
+    "content": "改编自Dean Fleischer-Camp和珍妮·斯蕾特的网络短片系列，Dean亲自执导并出演一个也叫Dean的人类纪录片导演，他搬进一所Airbnb的租房，发现里面已经有了住客——一个贝壳动物Marcel，它的外婆Connie，还有它的宠物：一坨叫Alan的绒毛。Marcel由珍妮·斯蕾特配音，Connie由伊莎贝拉·罗西里尼配音。　　Marcel和Connie本来是一个贝壳大家族的成员，但因为一次神秘的悲剧事件，它们婆孙俩现在独居。Dean开始拍摄它们的日常，并因此迅速在网络走红，两壳一人的生活因此永久被改变。这件事能帮助Marcel找回它离失的家族吗？",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/xCbJz18c1v1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 85442,
+    "title": "乐高星球大战：恐怖故事",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/2e3074b0b94c246dae1f7e18213b375f.jpg",
+    "year": "2021",
+    "area": "美国",
+    "actor": "杰克·格林,拉斐尔·亚历杭德罗,特雷弗·德瓦,托尼·海尔,玛丽·伊丽莎白·麦格林,克里斯蒂安·史莱特,马特·斯隆,达纳·斯耐德",
+    "director": "Ken,Cunningham",
+    "content": "After the events of Star Wars Episode IX - The Rise of Skywalker (2019), Poe Dameron and BB-8 must make an emergency landing on the volcanic planet Mustafar where they meet the greedy and conniving Graballa the Hutt. The crime boss has purchased Darth Vader's castle and is renovating it into the galaxy's first all-inclusive Sith-inspired luxury hotel. While waiting for his X-Wing to be repaired, Poe, BB-8, Graballa, and Dean (a plucky and courageous young boy who works as Graballa's mechanic) venture deep into the mysterious castle with Vader's loyal servant, Vaneé.",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/SADDity04s1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 85443,
+    "title": "秀逗魔导士完全无欠版",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/26d8e7d7a263d15fd3132af06d3f7eaf.jpg",
+    "year": "1995",
+    "area": "日本",
+    "actor": "林原惠美,川村万梨阿,阪脩,高山南,白鸟由里,若本规夫,佐藤正治,铃木清信,辻村真人,一城美由希,岸野一彦,乡里大辅,藤原启治,茶风林,山崎巧,玄田哲章",
+    "director": "渡边浩",
+    "content": "概要　　莉娜和娜卡从坏人手中得到一张票，便前往了温泉迷们的朝圣地「米布洛斯岛」。想说应该是一趟快乐的温泉之旅，没想到在这小岛等待她们的，却是一群无恶不作的坏人集团。为了能让胸部更雄伟……不，说错了，是为了恢复城镇的和平，莉娜展开穿越时空的过去旅程。面对巨大的魔族！爆裂华丽的龙破斩！开始改写这史上最大之决战历史！　　本作虽然是原创故事，不过身为系列作的第一部，而且又是以小说版「特别篇」的步调制作而成的第一个影像作品，开头部分有说明莉娜之所以被称为「龙跨」的理由，以及和娜卡之间的孽缘等等与设定有关的说明场景。",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/aEGWYUFePf1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 85444,
+    "title": "史酷比与蝙蝠侠：英勇无畏",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/ea575420dbb9bbb8c23fa8a4b7de4e9b.jpg",
+    "year": "2018",
+    "area": "美国",
+    "actor": "凯特·米库奇,塔拉·斯特朗,马修·里沃德,格蕾·德丽斯勒,戴德里克·巴德,约翰·迈克尔·辛吉斯,杰弗瑞·考姆斯,汤姆·肯尼,弗兰克·维尔克,约翰·迪·马吉欧",
+    "director": "Jake,Castorena",
+    "content": "Batman teams up with the Scooby Doo gang when villains from both of their worlds unite to wreak havoc on the city.",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/KrZzDHMnD01/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 85445,
+    "title": "汪汪队立大功之超能救援",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/161a83f1fa9d50f8e8f64a07c2a8068d.jpg",
+    "year": "2020",
+    "area": "美国",
+    "actor": "麦克斯·卡林内斯库,德文·科恩,德鲁·戴维斯,欧文·梅森,斯图尔特·雷斯顿,亚历克斯·索恩,卡兰·霍利",
+    "director": "查尔斯·E·巴斯蒂安",
+    "content": "神秘陨石坠落冒险湾，赋予了汪汪队强大的超能力！然而陨石的坠落竟是汉丁那市长的粗心实验引来的。汉丁那市长对自己的失败并不满意，于是和他的侄子设计困住了汪汪队的队长莱德，并偷走了陨石，企图控制整个城市。他们的野心却出现了差错，小狗们必须齐心协力，灵活运用新技能——毛毛的威力热力，小砾的超级力量，天天的乘风翼——超能全开，拯救世界！",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/Hp1xCx3bQL1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 85446,
+    "title": "我的爸爸是森林之王",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/cbb8e097a3835b2cfcfee631035c009b.jpg",
+    "year": "2017",
+    "area": "法国",
+    "actor": "帕皮·福克纳,克里斯托弗·L·帕森,玛莉芙·赫林顿,泰伦斯·斯通,乔·托马斯,乔·奥克曼,莱拉·贝尔津什,桑迪·福克斯,迈克尔·索里奇,约翰尼·卫斯理,布洛迪·赫辛,乔治·巴比特,汤姆·布兰克,小巴里·D·巴克纳,乔伊·卡门,信达·亚当斯,玛丽·德文,杰夫·道切特,大卫·埃普斯特恩,凯尔·赫伯特,史蒂夫·克拉默,柯克·桑顿,尤里·洛文塔尔,莱克斯·朗,塔拉·普拉特,罗杰·克莱格·史密斯,尼古拉斯·玛吉",
+    "director": "本·斯塔森,杰里米·德格鲁森",
+    "content": "亚当,一个十三岁的、不合群的男孩,为了发现父亲失踪背后的秘密,踏上了一段惊心动魄、令人难忘的征程。他很快发现他的父亲正是传说中的大脚怪,他多年来一直躲藏在森林里,以保护他自己和家人不被大型公司 HairCo. 纠缠。该公司渴望用他的特殊 DNA 进行科学实验。就当这对父子开始弥补失去的时光时,亚当很快发现自己也赋有超乎想象的超能力。但他们不知道的是,HairCo. 正沿着亚当留下的踪迹紧追过来......",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/EaVuGqxGUJ1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/VMW5dN2fC81/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 85447,
+    "title": "新百变马丁",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/9c802bac839c0c2a3c279e474c22f4f6.jpg",
+    "year": "0",
+    "area": "中国大陆",
+    "actor": "姚培华,王肖兵,游军",
+    "director": "",
+    "content": "在《新百变马丁》的动画片中，因为整部片子的色彩会更鲜亮，线条更简洁，场景也运用了更炫酷的3D视觉，给人一种焕然一新的感觉。对于《新百变马丁》来说，主角马丁依然还是保持了每天早晨都会“变身”的超能力，不过新一季中，会出现很多意想不到的角色，变成很多有意思的人物，围  绕着不同的人物还会引出很多精彩的故事。",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/vC8xiVmbjK1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/a1kF7xbfq01/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/Dhyv65mFZy1/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/VtgRQGn5a01/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/iin6dUNWa71/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/niz4cBEpMj1/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/NAyvnJq8tq1/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/XZv7nrdFfY1/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/AYEBh3w72u1/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/c89YgBfxh41/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/PeYenVLt5g1/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/G9Gqhqa5sa1/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/1GP43e5JQU1/video/index.m3u8"
+      },
+      {
+        "name": "第14集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/8pDraeCSC31/video/index.m3u8"
+      },
+      {
+        "name": "第15集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/11mkAtrL691/video/index.m3u8"
+      },
+      {
+        "name": "第16集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/y2DMDUvYZ21/video/index.m3u8"
+      },
+      {
+        "name": "第17集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/6iuN5Wrv211/video/index.m3u8"
+      },
+      {
+        "name": "第18集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/mXfGkrcCXA1/video/index.m3u8"
+      },
+      {
+        "name": "第19集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/TdVVm9yByA1/video/index.m3u8"
+      },
+      {
+        "name": "第20集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/2mv4wyXVa21/video/index.m3u8"
+      },
+      {
+        "name": "第21集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/mXFAyQyhpw1/video/index.m3u8"
+      },
+      {
+        "name": "第22集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/MwenUaexuT1/video/index.m3u8"
+      },
+      {
+        "name": "第23集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/4ZdGgtMeKG1/video/index.m3u8"
+      },
+      {
+        "name": "第24集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/SApL3BqH8A1/video/index.m3u8"
+      },
+      {
+        "name": "第25集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/9bTP5dPjYb1/video/index.m3u8"
+      },
+      {
+        "name": "第26集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/aTNmRVbjuX1/video/index.m3u8"
+      },
+      {
+        "name": "第27集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/dF1ybdrsf01/video/index.m3u8"
+      },
+      {
+        "name": "第28集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/EMMJL0pEpR1/video/index.m3u8"
+      },
+      {
+        "name": "第29集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/d38ypnmY6h1/video/index.m3u8"
+      },
+      {
+        "name": "第30集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/r5KTazeNWy1/video/index.m3u8"
+      },
+      {
+        "name": "第31集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/eNRetf36hg1/video/index.m3u8"
+      },
+      {
+        "name": "第32集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/r7tUf8wcLG1/video/index.m3u8"
+      },
+      {
+        "name": "第33集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ZztbAdK0Jr1/video/index.m3u8"
+      },
+      {
+        "name": "第34集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/zR0ErKr8t41/video/index.m3u8"
+      },
+      {
+        "name": "第35集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/EyFTT1PrsC1/video/index.m3u8"
+      },
+      {
+        "name": "第36集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/rrLw39he1u1/video/index.m3u8"
+      },
+      {
+        "name": "第37集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/tT0Y1CpbUk1/video/index.m3u8"
+      },
+      {
+        "name": "第38集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/VDu7iHMLbB1/video/index.m3u8"
+      },
+      {
+        "name": "第39集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/GyLwGMiMcR1/video/index.m3u8"
+      },
+      {
+        "name": "第40集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/QrEN0J58hs1/video/index.m3u8"
+      },
+      {
+        "name": "第41集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/u4ekzeqf251/video/index.m3u8"
+      },
+      {
+        "name": "第42集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/J64t8qp1YN1/video/index.m3u8"
+      },
+      {
+        "name": "第43集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/adbYnmpTcw1/video/index.m3u8"
+      },
+      {
+        "name": "第44集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/XiPfskruXf1/video/index.m3u8"
+      },
+      {
+        "name": "第45集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/9bQ8axFADt1/video/index.m3u8"
+      },
+      {
+        "name": "第46集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/UqcRhLjY3T1/video/index.m3u8"
+      },
+      {
+        "name": "第47集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/e7c6shLYVr1/video/index.m3u8"
+      },
+      {
+        "name": "第48集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/PpyLni3RGv1/video/index.m3u8"
+      },
+      {
+        "name": "第49集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/CnwTbMwzNw1/video/index.m3u8"
+      },
+      {
+        "name": "第50集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/VswwuguLGK1/video/index.m3u8"
+      },
+      {
+        "name": "第51集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/uXTPnz70ia1/video/index.m3u8"
+      },
+      {
+        "name": "第52集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/Q8jRLZqQkB1/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 85448,
+    "title": "逃离地球",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/992eb236fdfbb2b322381ce32877b3c8.jpg",
+    "year": "2013",
+    "area": "美国",
+    "actor": "杰西卡·阿尔芭,莎拉·杰茜卡·帕克,布兰登·费舍,瑞奇·热维斯,罗伯·考德瑞",
+    "director": "卡尔·布伦克尔",
+    "content": "在距离地球15光年的外太空，科技昌明的Baab星上生活着一群爱好和平的蓝色小人。其中斯科奇（布兰登·费舍 Brendan Fraser 配音）是该星球一个勇猛果敢、正义感十足的超级英雄，他经常驾驶超新星-9号飞船穿梭宇宙，在BASA总部他的兄弟盖里（罗伯·考德瑞 Rob Corddry 配音）的指挥下，一次次圆满完成营救受困外星人的任务。这一日，刚回家不久的斯科奇被BASA负责人莉娜（杰西卡·阿尔芭 Jessica Alba 配音）命令即刻前往黑暗星球——地球执行救援任务。担心兄弟的安危，盖里与执意前行的斯科奇发生争吵。在全Baab星人民的注视下，斯科奇成功抵达著名的51区，结果却被夏克尔将军（威廉·夏特纳 William Shatner 配音）为首的军方抓获。　　为了救回最亲密的兄弟，一向谨小慎微的盖里不得不踏上凶险的征途，而这一切背后的阴谋也悄悄浮出水面……",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/xai0JDX9d51/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 85449,
+    "title": "篱笆墙外",
+    "category": "欧美动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/053fb2cc39a385192f656ecd32a05e4a.jpg",
+    "year": "2006",
+    "area": "美国",
+    "actor": "布鲁斯·威利斯,盖瑞·山德林,史蒂夫·卡瑞尔,旺达·塞克丝,威廉·夏特纳,尼克·诺特,托马斯·哈登·丘奇,艾莉森·珍妮,尤金·列维,凯瑟琳·欧哈拉,艾薇儿·拉维尼,欧米德·吉亚李利,萨米·柯克帕特里克,谢恩·鲍梅尔,麦蒂森·达文波特,佐伊·兰多尔,杰西卡·迪西可,黛布拉·威尔逊,肖恩·毕晓普,珍妮·伊莱亚斯,保罗·布切,肖恩·亚兹贝克,杰弗里·波默罗伊,乔尔·麦克拉里,李·比恩斯托克,布赖恩·斯特帕尼克",
+    "director": "提姆·约翰森,凯瑞·柯克帕特里克",
+    "content": "一个初春的早上，小狸猫RJ跑到了大熊的家里将它为过冬而储存的食物一扫而光，后果可想而知，大熊要他一个星期内将食物给找回来，不然他将成为食物。另一方面，冬眠过后的动物们吃惊地发现他们的家园被人类霸占了一大半，乌龟文尼还现身说法，越过人类的篱墙十分危险。　　但是，有人类就意味着有着大量的食物，为了填饱肚子和避免成为大熊的食物。于是，RJ开始策划鼓动大家一起越过篱墙去抢食物,他翻过篱墙偷来一包薯片将大家彻底征服。动物们疯狂的行动开始了！",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/m3m527hWCj1/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/BiJek211nM1/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 85450,
     "title": "冲浪企鹅",
     "category": "欧美动漫",
@@ -7905,529 +8380,6 @@
       {
         "name": "第19集",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/UgNnDvRqpu1/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85245,
-    "title": "摩登原始人第六季",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/33ca0f5976fe8c595723850443578285.jpg",
-    "year": "1965",
-    "area": "美国",
-    "actor": "艾伦·里德,约翰·范德·派尔,梅尔·布兰科,贝亚·本德雷,约翰·斯蒂芬森",
-    "director": "约瑟夫·巴伯拉,威廉·汉纳",
-    "content": "This popular animated television cartoon featured two Stone Age families, the Flintstones and their neighbors, the Rubbles. Much of the humor was based on its comic portrayals of modern conveniences, reinterpreted using Stone Age 'technology.' Most notably were their cars, complete with absence of floorboards to allow them to be 'foot-powered.'",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/bchLmzY4r41/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/6JJWqGzVXB1/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/a1uAvDnhiD1/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/zBQUF5b3WK1/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/WkbNzErxJV1/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ctnWYXQzzN1/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ZLiNYcJhjH1/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/KXxYjvq7Yy1/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/Q0b8pZDEMH1/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/jfafnFHk241/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/WhBzDvY4iu1/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/YxWwF7inWq1/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/DUJxbRZDyT1/video/index.m3u8"
-      },
-      {
-        "name": "第14集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/1tAt3gRhcP1/video/index.m3u8"
-      },
-      {
-        "name": "第15集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/tszEVxmHj11/video/index.m3u8"
-      },
-      {
-        "name": "第16集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/9uqFf1FwS71/video/index.m3u8"
-      },
-      {
-        "name": "第17集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/jpNbhfqV2B1/video/index.m3u8"
-      },
-      {
-        "name": "第18集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/GKJxg6NY3P1/video/index.m3u8"
-      },
-      {
-        "name": "第19集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/8xHeAsRYdd1/video/index.m3u8"
-      },
-      {
-        "name": "第20集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/wNpJshgFAM1/video/index.m3u8"
-      },
-      {
-        "name": "第21集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/CSvPjW3ZB81/video/index.m3u8"
-      },
-      {
-        "name": "第22集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/MmFEDQXJdQ1/video/index.m3u8"
-      },
-      {
-        "name": "第23集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/4e66T0M0eD1/video/index.m3u8"
-      },
-      {
-        "name": "第24集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/tXM9K5R4sD1/video/index.m3u8"
-      },
-      {
-        "name": "第25集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/apbri2GAyN1/video/index.m3u8"
-      },
-      {
-        "name": "第26集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/GmRSeGSjPA1/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85246,
-    "title": "索尼克音爆",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/4af1f96ea6e6d5bbe8e686dcac81ed30.jpg",
-    "year": "2014",
-    "area": "法国",
-    "actor": "莫谦,陈浩,吟良犬,绿绮,唱寰宇",
-    "director": "",
-    "content": "索尼克是著名的游戏和漫画造型，也是一款极受欢迎的电子游戏系列，作为世界上最具知名度的刺猬，索尼克从一诞生就凭借其可爱的造型和无可比拟的速度风靡全球。全新52集CG动画《索尼克音爆》正在美国Cartoon Network频道热映，大陆版《索尼克音爆》目前已经由四川鼎岳文化引进，由声娱团队负责后期配音。已经于6日开始在成都录制样片，2015年1月6日起正式进棚录制！",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/KqC1YeB0zd1/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/uHcnGefZfz1/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/6NuU1QM9HB1/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/x8dxP8VPJR1/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/jtH2gviKe21/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/CBrCGG3iF31/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/GfQTVybwtU1/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/gUstEDy3871/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/qiC27J3gQm1/video/index.m3u8"
-      },
-      {
-        "name": "第10集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/sgNqE8Wx3T1/video/index.m3u8"
-      },
-      {
-        "name": "第11集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/AzT9s1kch51/video/index.m3u8"
-      },
-      {
-        "name": "第12集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/z9RxUGnEu21/video/index.m3u8"
-      },
-      {
-        "name": "第13集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/YZC3FN82eG1/video/index.m3u8"
-      },
-      {
-        "name": "第14集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/GDjx9xwmjY1/video/index.m3u8"
-      },
-      {
-        "name": "第15集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/RaSdysrFZv1/video/index.m3u8"
-      },
-      {
-        "name": "第16集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/wn4th05N8z1/video/index.m3u8"
-      },
-      {
-        "name": "第17集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/Z3bkDNfQ5s1/video/index.m3u8"
-      },
-      {
-        "name": "第18集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/Y6f92J0ZKS1/video/index.m3u8"
-      },
-      {
-        "name": "第19集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/2nBs5WeLLp1/video/index.m3u8"
-      },
-      {
-        "name": "第20集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/DM0Y54f7bY1/video/index.m3u8"
-      },
-      {
-        "name": "第21集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/Lpx636Ya2k1/video/index.m3u8"
-      },
-      {
-        "name": "第22集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/bFVK9H1hWS1/video/index.m3u8"
-      },
-      {
-        "name": "第23集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/Hk62DiTX6T1/video/index.m3u8"
-      },
-      {
-        "name": "第24集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/M1hxrrniJX1/video/index.m3u8"
-      },
-      {
-        "name": "第25集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/4M045j92nX1/video/index.m3u8"
-      },
-      {
-        "name": "第26集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/F3gAjtcALq1/video/index.m3u8"
-      },
-      {
-        "name": "第27集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/79ycw6n9ms1/video/index.m3u8"
-      },
-      {
-        "name": "第28集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/Hkjmbwh7MS1/video/index.m3u8"
-      },
-      {
-        "name": "第29集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/wgP2e95NBu1/video/index.m3u8"
-      },
-      {
-        "name": "第30集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/tSkQrHfgqn1/video/index.m3u8"
-      },
-      {
-        "name": "第31集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/MDHhiLRjBw1/video/index.m3u8"
-      },
-      {
-        "name": "第32集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/BY2hNH0LQf1/video/index.m3u8"
-      },
-      {
-        "name": "第33集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/A1YrKGvNG01/video/index.m3u8"
-      },
-      {
-        "name": "第34集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/3LtYbJqbk71/video/index.m3u8"
-      },
-      {
-        "name": "第35集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/KLC21nARxz1/video/index.m3u8"
-      },
-      {
-        "name": "第36集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/6ppNX9frLR1/video/index.m3u8"
-      },
-      {
-        "name": "第37集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/aVE2NhkXXv1/video/index.m3u8"
-      },
-      {
-        "name": "第38集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/0FeVjLhM8F1/video/index.m3u8"
-      },
-      {
-        "name": "第39集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/vu11CyVpUN1/video/index.m3u8"
-      },
-      {
-        "name": "第40集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/eGzVANEite1/video/index.m3u8"
-      },
-      {
-        "name": "第41集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/VLMrEt4xtF1/video/index.m3u8"
-      },
-      {
-        "name": "第42集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/ajWC00MBDm1/video/index.m3u8"
-      },
-      {
-        "name": "第43集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/eMqN45g4zN1/video/index.m3u8"
-      },
-      {
-        "name": "第44集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/maSKPBT3tj1/video/index.m3u8"
-      },
-      {
-        "name": "第45集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/N75ZvucHQ91/video/index.m3u8"
-      },
-      {
-        "name": "第46集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/5L7XEAZ3wt1/video/index.m3u8"
-      },
-      {
-        "name": "第47集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/071bcsvPTu1/video/index.m3u8"
-      },
-      {
-        "name": "第48集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/sCxAe5CEkE1/video/index.m3u8"
-      },
-      {
-        "name": "第49集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/vHyyxDc3k41/video/index.m3u8"
-      },
-      {
-        "name": "第50集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/nRtDnbNewH1/video/index.m3u8"
-      },
-      {
-        "name": "第51集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/PvykWaT8yb1/video/index.m3u8"
-      },
-      {
-        "name": "第52集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/7g9UMVGRV71/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85247,
-    "title": "星球大战：幻境第一季",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/89daf7c80f4b8f59f429647ccea3a70d.jpg",
-    "year": "2021",
-    "area": "美国",
-    "actor": "约瑟夫·高登-莱维特,刘玉玲,刘思慕,尼尔·帕特里克·哈里斯,亨利·戈尔丁,大卫·哈伯,郑智麟,特穆拉·莫里森,凯伦·福原,乔丹·费舍,爱丽森·布里,吴汉章,鲍比·莫尼汉,武井乔治,丘增,谢尔碧·杨,贵美子·格伦,布莱恩·泰,马克·汤普森,克里斯托弗·肖恩,田川洋行,安德鲁·基希诺,斯蒂芬妮·社,尼尔·卡普兰,米夏埃尔·桑泰尔尼克拉斯,凯尔·钱德勒,安娜·卡思卡特,保罗·纳高奇,凯尔·麦卡利,基内·扬,洛莱妮·图桑特,格雷格·秦,乔纳森·利波,寺杣昌纪,渡边明乃,Jaden,Waldman,Nichole",
-    "director": "神山健治,今石洋之,崔恩映,水野贵信,五十岚祐贵,Yuuki,Igarashi,大冢雅彦,垪和等,阿韦尔·贡戈拉",
-    "content": "卢卡斯影业将打造全新星战短片合集《星球大战：幻象》(Star Wars Visions，暂译)。9部短片将由日本几家不同的动漫工作室创作，将为星战引入不同文化视角。",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/gCVYqtjByu1/video/index.m3u8"
-      },
-      {
-        "name": "第02集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/WYC3FTLhKA1/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/sTU1n8s1xM1/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/erPN11jdZC1/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/bCbvpwzXrf1/video/index.m3u8"
-      },
-      {
-        "name": "第06集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/tDajYkzZb41/video/index.m3u8"
-      },
-      {
-        "name": "第07集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ZjrTXx3w201/video/index.m3u8"
-      },
-      {
-        "name": "第08集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/ShSb8RX7UZ1/video/index.m3u8"
-      },
-      {
-        "name": "第09集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/GYMKhkBfvj1/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85248,
-    "title": "哈布洛先生",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/3175248c75f69663856e4443189b9d48.jpg",
-    "year": "2013",
-    "area": "法国",
-    "actor": "",
-    "director": "洛朗·维茨,亚历山大·埃斯皮加雷斯",
-    "content": "这是一栋弥漫着漫长历史气息的老房子，墙上挂满了照片，屋顶上的灯接触不良，几经开关才能点亮。房主人哈布洛先生头戴精密仪器，他推开阳台的门，眼前竟然呈现一个被硕大笨重却精密、带着极强蒸汽朋克气息的机械世界。甚至连窗台上的花和路边的狗也都是工业化的产物。哈洛夫先生固守自己的房屋，工作和生活全都在斗室内完成。可是他平静枯燥的生活被那条机器狗打乱了，小狗蜷缩在街角，怯懦而无助。接连两天，哈洛夫都被小狗的声音所牵制。眼看狗狗即将被垃圾车毁灭，这位害怕踏出房门的先生决定鼓起勇气冲出去……　　本片荣获2013年3D艺术节S3DSeine-Saint-Denis最高奖和最佳动画短片奖。",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/XgE74zUCWP1/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85249,
-    "title": "功夫熊猫之盖世五侠的秘密",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/a873f5aa358eed071b8d9548b5f2f177.jpg",
-    "year": "2008",
-    "area": "美国",
-    "actor": "杰克·布莱克,达斯汀·霍夫曼,维尔·桑德里,埃蒙·皮鲁切罗,格雷斯·罗莱克,麦克思·科契,汤姆·欧文斯,卡罗尔·凯恩,约翰·迪·马吉欧,斯蒂芬·凯林,詹姆士·谢,梅勒迪斯·斯科特·林恩,杰西卡·迪西可,斯蒂芬妮·勒梅林,大卫·克罗斯,吉姆·卡明斯,塔拉·斯特朗,房祖名,兰德尔·杜克·金,伊丽莎白·安·本尼特",
-    "director": "许诚毅",
-    "content": "在阿波与太郎的战斗后，他在此教导新一批的功夫学生，他们是一群可爱的兔子，　　学生们执意要学习战斗，阿波教导他们功夫中重要的是-信心，耐心，勇气，等等..。",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/xNFFERMcFp1/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85250,
-    "title": "阿尔伯特",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/40c27f43817b366340678071635e1449.jpg",
-    "year": "2015",
-    "area": "丹麦",
-    "actor": "奥斯卡·迪治,Peter,托玛斯·博·拉森,布雷安娜·伊德",
-    "director": "卡斯滕·基里奇",
-    "content": "Albert who lives in the small Danish provincial town Kalleby. Albert is always up to no good, but he's also really clumsy. One day he comes to overturn the city's landmarks - a statue of a balloon captain. The townspeople are mildly not happy with his recent accident, so with his best friend, Egon, Albert takes off on an adventure to find a real balloon. On their trip postponed friends of both robbers, gypsies and the world's largest diamond.",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/hwQZ2U5k2Q1/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85251,
-    "title": "雌狐：大电影",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/bff4b56c988fe6260dc936444828f0d5.jpg",
-    "year": "2017",
-    "area": "美国",
-    "actor": "梅歌林·艾奇坤沃克,斯蒂芬·阿梅尔,格兰特·古斯汀,艾米莉·理查兹,卡洛斯·瓦尔德斯",
-    "director": "柯特·格达,詹姆斯·塔克",
-    "content": "雌狐是DC漫画的原创角色，本名玛丽· 麦凯布一位便装超级英雄，她可获得任何一种或几种动物的能力。本剧和CW电视剧闪电侠、绿箭侠、明日传奇同一宇宙。",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/VVS0QLuM0n1/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85252,
-    "title": "无论如何我爱你",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/857f20943d5bd764902db662aa85ffdf.jpg",
-    "year": "2020",
-    "area": "美国",
-    "actor": "",
-    "director": "Michael,Govier,威尔·麦克马克",
-    "content": "这部精美的动画短片由编剧导演威尔·麦柯马克和迈克尔·戈维尔联手打造。在悲剧发生后，一对父母失去了孩子，伤心欲绝的他们要面对随之而来的失落感。",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/uJHicLU2f31/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85253,
-    "title": "大坏狐狸的故事",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/213862dcf6335881c68dc0415bf8604b.jpg",
-    "year": "2017",
-    "area": "法国",
-    "actor": "纪尧姆·达尔诺,席琳·荣特,达米安·维特卡,安托万·苏姆斯基,卡梅尔·阿卜德萨多克,克里斯多夫·勒莫因,纪尧姆·布谢德,鲍里斯·雷林格,玛佳丽·罗森茨威格,让·卢·霍维茨,伊夫·阎",
-    "director": "本杰明·雷内,帕特里克·英伯特",
-    "content": "电影分为三个可爱的小故事。　　一天，在风景怡人的农场里，小猪、兔子和鸭子见到了一个人类的小宝宝。负责护送小宝宝的鹈鹕拜托三只小动物将宝宝平安的送到他的人类母亲的手中，就这样，三只有些脱线的动物踏上了旅途。　　大坏狐狸一心想要将肥美的母鸡当做自己的盘中餐，无奈母鸡太过强大，狐狸根本不是她的对手。既然打不过母鸡，狐狸将“魔爪”伸向了母鸡正在孵的三枚鸡蛋，狐狸决定将这三只小鸡孵出来养大之后再把他们一一吃掉。然而，三只小鸡似乎将狐狸当成了他们的妈妈，亦以为他们自己也是狐狸。　　圣诞节就快要来了，农场里的动物们都欢天喜地的准备迎接圣诞老人的到来。然而，鸭子和兔子却在一场意外之中“杀死”的圣诞老人。",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/GGsjjCiMFM1/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85254,
-    "title": "神奇女侠：血脉",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/eed76c7263b3cd4ec5c226cf84462f69.jpg",
-    "year": "2019",
-    "area": "美国",
-    "actor": "罗莎里奥·道森,玛莉·艾格洛蒲露丝,艾德丽安·C·摩尔,杰弗里·多诺万,克里·萨莫,迈克尔·多恩,康斯坦斯·齐默,莫赞·玛诺,妮娅·瓦达拉斯,柯特奈·泰勒,雷·蔡斯,金伯莉·布鲁克斯",
-    "director": "贾斯汀·科普兰,刘山姆",
-    "content": "该部电影是2009年以来的第二部“神奇女侠”动画电影，电影主要讲述神奇女侠神奇女侠要从致命犯罪的组织帮助一名深陷麻烦的女孩，而这个组织的目标是入侵神奇女侠的家乡天堂岛。　　罗莎里奥·道森将继续为神奇女侠配音，本片将有银天鹅、豹女、毒药博士和巨化女等神奇女侠经典反派登场。",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/06/Ssrt8TdYzY1/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 85255,
-    "title": "美国：一部电影",
-    "category": "欧美动漫",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20240409-1/a8ca1290c4e55d70cd1a8ec55688490a.jpg",
-    "year": "2021",
-    "area": "美国",
-    "actor": "查宁·塔图姆,西蒙·佩吉,朱迪·格雷尔,鲍比·莫尼汉,安珀·纳什,劳尔·特鲁希洛,戴夫·卡拉汉姆,安迪·萨姆伯格,杰森·曼楚克斯,威尔·福特,Matt,Yates,Killer,Mike,Kevin,Gillese,Z.,Gillispie,Megan,Leahy,Mike,Schatz,Christian,Danley,Cris,Gray",
-    "director": "Matt,Thompson",
-    "content": "在这部嬉笑怒骂的历史修正主义动画里，挥舞着链锯的乔治·华盛顿集结了一批惹事生非者，包括热爱啤酒的塞缪尔·亚当斯、知名科学家托马斯·爱迪生、优秀马术师保罗·列维尔和暴躁老哥杰罗尼莫等，想要在美国独立革命中击败本尼迪克特·阿诺德和詹姆斯国王。谁会笑到最后？没人知道。只有一件事能确定：他们可不是你印象中的国父。",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202309/07/Q1JuceRwvj1/video/index.m3u8"
       }
     ]
   }

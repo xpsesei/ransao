@@ -1,5 +1,22 @@
 [
   {
+    "id": 163444,
+    "title": "我家娘子，不对劲第四季",
+    "category": "古装仙侠",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20260808-1/1aebc9d2f137ae3b015a1ae672396e2c.jpg",
+    "year": "2026",
+    "area": "中国大陆",
+    "actor": "陈外＆鲁芳岐",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "全集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202608/07/9exdAWhXYs89/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 163405,
     "title": "娘子，别这样",
     "category": "古装仙侠",
@@ -3735,23 +3752,6 @@
       {
         "name": "全集",
         "url": "https://v9.wujinwsym3u8.com/wjv9/202606/14/uxWnYJXe6P89/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 160739,
-    "title": "宗门弃子，转身坐拥绝世红颜",
-    "category": "古装仙侠",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20260614-1/d832fa2ec376ca9eac0d8d166531a4d5.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "杜江山＆林津伊",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202606/13/fKm3HVmC0e90/video/index.m3u8"
       }
     ]
   }
