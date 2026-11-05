@@ -15,9 +15,9 @@
             <div class="flex items-center space-x-3">
                 <span class="text-2xl font-black bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</span>
             </div>
-            <!-- 搜索框 -->
-            <div class="w-64 md:w-96">
-                <input type="text" x-model="searchKeyword" @input="onSearch()" placeholder="在当前分类中搜索..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500">
+            <!-- 全局搜索框 -->
+            <div class="w-64 md:w-96 relative">
+                <input type="text" x-model="searchKeyword" @input="onGlobalSearch()" placeholder="全网全局搜索（片名、演员）..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500">
             </div>
         </div>
     </header>
@@ -36,14 +36,20 @@
         <div class="flex items-center space-x-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
             <template x-for="cat in categories" :key="cat.name">
                 <button @click="switchCategory(cat)" 
-                        :class="currentCategory === cat.name ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
+                        :class="!isSearching && currentCategory === cat.name ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
                         class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition"
                         x-text="cat.name + ' (' + cat.count + ')'">
                 </button>
             </template>
         </div>
 
-        <!-- 视频网格列表（只渲染分页后的数据，极速秒开） -->
+        <!-- 搜索状态提示 -->
+        <div x-show="isSearching" class="mb-4 text-sm text-blue-400 flex items-center justify-between">
+            <span>🔍 全局搜索结果：“<span x-text="searchKeyword"></span>”，共找到 <span x-text="filteredVideos.length"></span> 部相关影视</span>
+            <button @click="clearSearch()" class="text-xs bg-slate-800 px-3 py-1 rounded-lg text-slate-300 hover:bg-slate-700">退出搜索</button>
+        </div>
+
+        <!-- 视频网格列表 -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             <template x-for="vod in paginatedVideos" :key="vod.id">
                 <div @click="goToPlay(vod)" class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition cursor-pointer group flex flex-col">
@@ -61,7 +67,7 @@
 
         <!-- 无数据提示 -->
         <div x-show="filteredVideos.length === 0" class="text-center py-20 text-slate-500">
-            正在加载海量影视资源，请稍候...
+            正在加载全网影视资源，请稍候...
         </div>
 
         <!-- 📄 分页控制条 -->
@@ -90,15 +96,17 @@
             return {
                 categories: [],
                 allVideos: [],
+                searchIndex: [], // 全局搜索索引
                 filteredVideos: [],
                 currentCategory: '',
                 searchKeyword: '',
+                isSearching: false,
                 
-                // 分页核心变量
                 currentPage: 1,
                 pageSize: 30, // 每页 30 个视频
 
                 init() {
+                    // 1. 加载分类索引
                     fetch('./data/categories.json')
                         .then(res => res.json())
                         .then(data => { 
@@ -107,13 +115,22 @@
                                 this.switchCategory(data[0]);
                             }
                         })
-                        .catch(err => console.log('Waiting for data sync...'));
+                        .catch(err => console.log('Waiting for categories sync...'));
+
+                    // 2. 异步在后台加载全局搜索索引
+                    fetch('./data/search_index.json')
+                        .then(res => res.json())
+                        .then(data => {
+                            this.searchIndex = data;
+                        })
+                        .catch(err => console.log('Waiting for search index sync...'));
                 },
 
                 switchCategory(cat) {
-                    this.currentCategory = cat.name;
+                    this.isSearching = false;
                     this.searchKeyword = '';
-                    this.currentPage = 1; // 切换分类时重置到第1页
+                    this.currentCategory = cat.name;
+                    this.currentPage = 1;
                     this.allVideos = [];
                     this.filteredVideos = [];
                     
@@ -135,31 +152,49 @@
                     }
                 },
 
-                filterVideos() {
-                    if (!this.searchKeyword) {
-                        this.filteredVideos = this.allVideos;
+                // 全局搜索核心逻辑
+                onGlobalSearch() {
+                    if (!this.searchKeyword.trim()) {
+                        this.clearSearch();
+                        return;
+                    }
+
+                    this.isSearching = true;
+                    this.currentPage = 1;
+                    const kw = this.searchKeyword.toLowerCase();
+
+                    if (this.searchIndex.length > 0) {
+                        // 如果全局索引已加载，直接在全网索引中搜索
+                        this.filteredVideos = this.searchIndex.filter(v => 
+                            (v.title && v.title.toLowerCase().includes(kw)) || 
+                            (v.actor && v.actor.toLowerCase().includes(kw))
+                        );
                     } else {
-                        const kw = this.searchKeyword.toLowerCase();
+                        // 降级：如果索引没加载完，在当前分类中搜
                         this.filteredVideos = this.allVideos.filter(v => 
-                            v.title.toLowerCase().includes(kw) || 
+                            (v.title && v.title.toLowerCase().includes(kw)) || 
                             (v.actor && v.actor.toLowerCase().includes(kw))
                         );
                     }
-                    this.currentPage = 1; // 搜索时重置到第1页
                 },
 
-                onSearch() {
+                clearSearch() {
+                    this.searchKeyword = '';
+                    this.isSearching = false;
                     this.filterVideos();
                 },
 
-                // 计算当前页展示的视频切片
+                filterVideos() {
+                    this.filteredVideos = this.allVideos;
+                    this.currentPage = 1;
+                },
+
                 get paginatedVideos() {
                     const start = (this.currentPage - 1) * this.pageSize;
                     const end = start + this.pageSize;
                     return this.filteredVideos.slice(start, end);
                 },
 
-                // 计算总页数
                 get totalPages() {
                     return Math.ceil(this.filteredVideos.length / this.pageSize) || 1;
                 },
@@ -167,14 +202,32 @@
                 changePage(page) {
                     if (page >= 1 && page <= this.totalPages) {
                         this.currentPage = page;
-                        window.scrollTo({ top: 0, behavior: 'smooth' }); // 翻页时平滑滚动到顶部
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 },
 
-                goToPlay(vod) {
-                    // 通过 localStorage 传递当前点击的视频数据到独立播放页
-                    localStorage.setItem('currentVod', JSON.stringify(vod));
-                    window.location.href = 'play.html';
+                goToPlay(vodSummary) {
+                    // 找到该视频所属的分类
+                    const cat = this.categories.find(c => c.name === vodSummary.category);
+                    if (!cat) {
+                        localStorage.setItem('currentVod', JSON.stringify(vodSummary));
+                        window.location.href = 'play.html';
+                        return;
+                    }
+
+                    // 按需加载对应分类的完整数据文件，以获取播放选集（episodes）
+                    const loadPromise = cat.file ? 
+                        fetch('./data/' + cat.file).then(res => res.json()) :
+                        Promise.all(cat.files.map(f => fetch('./data/' + f).then(res => res.json()))).then(results => results.flat());
+
+                    loadPromise.then(fullList => {
+                        const fullVod = fullList.find(v => v.id == vodSummary.id) || vodSummary;
+                        localStorage.setItem('currentVod', JSON.stringify(fullVod));
+                        window.location.href = 'play.html';
+                    }).catch(err => {
+                        localStorage.setItem('currentVod', JSON.stringify(vodSummary));
+                        window.location.href = 'play.html';
+                    });
                 }
             }
         }
