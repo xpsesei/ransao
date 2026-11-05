@@ -13,7 +13,7 @@
     <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <span class="text-2xl font-black bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</span>
+                <a href="index.html" class="text-2xl font-black bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</a>
             </div>
             <!-- 全局搜索框 -->
             <div class="w-64 md:w-96 relative">
@@ -22,23 +22,24 @@
         </div>
     </header>
 
-    <!-- 📢 顶部横幅广告 -->
-    <div class="max-w-7xl mx-auto px-4 mt-4 w-full">
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-center text-xs text-slate-400">
-            <a href="#" target="_blank" class="hover:text-blue-400">🔥 赞助商广告：点击这里支持本站发展，解锁更多优质资源！</a>
-        </div>
-    </div>
-
     <!-- 主体内容区 -->
     <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
         
-        <!-- 分类导航栏 -->
+        <!-- 分类与首页导航栏 -->
         <div class="flex items-center space-x-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
+            <!-- 固定的首页/最新按钮 -->
+            <button @click="goHome()" 
+                    :class="!isSearching && (currentCategory === '🔥 最新更新' || currentCategory === '') ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
+                    class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition flex items-center space-x-1">
+                <span>🏠 首页</span>
+            </button>
+
+            <!-- 动态分类按钮 -->
             <template x-for="cat in categories" :key="cat.name">
                 <button @click="switchCategory(cat)" 
                         :class="!isSearching && currentCategory === cat.name ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
                         class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition"
-                        x-text="cat.name + ' (' + cat.count + ')'">
+                        x-text="cat.name + (cat.count ? ' (' + cat.count + ')' : '')">
                 </button>
             </template>
         </div>
@@ -65,9 +66,9 @@
             </template>
         </div>
 
-        <!-- 无数据提示 -->
+        <!-- 无数据或加载提示 -->
         <div x-show="filteredVideos.length === 0" class="text-center py-20 text-slate-500">
-            正在加载海量影视资源，请稍候...
+            正在从云端加载影视资源，如果长时间未显示请检查数据同步是否完成...
         </div>
 
         <!-- 📄 分页控制条 -->
@@ -103,7 +104,7 @@
                 isSearching: false,
                 
                 currentPage: 1,
-                pageSize: 30, // 每页 30 个视频
+                pageSize: 30,
 
                 init() {
                     const targetCat = localStorage.getItem('targetCategory');
@@ -119,12 +120,14 @@
                                 const found = data.find(c => c.name === targetCat);
                                 if (found) {
                                     this.switchCategory(found);
-                                } else if (data.length > 0) {
-                                    this.switchCategory(data[0]);
+                                    return;
                                 }
-                            } else if (data && data.length > 0) {
-                                // 默认自动加载第一个分类（即“🔥 最新更新”）
-                                this.switchCategory(data[0]);
+                            }
+                            
+                            // 默认加载第一个分类（即最新的内容）
+                            if (data && data.length > 0) {
+                                const latestCat = data.find(c => c.name.includes('最新')) || data[0];
+                                this.switchCategory(latestCat);
                             }
 
                             if (targetSearch) {
@@ -133,9 +136,11 @@
                                 setTimeout(() => { this.onGlobalSearch(); }, 300);
                             }
                         })
-                        .catch(err => console.log('Waiting for categories sync...'));
+                        .catch(err => {
+                            console.log('Waiting for categories sync...');
+                        });
 
-                    // 2. 异步在后台加载全局搜索索引
+                    // 2. 异步加载全局搜索索引
                     fetch('./data/search_index.json')
                         .then(res => res.json())
                         .then(data => {
@@ -145,6 +150,13 @@
                             }
                         })
                         .catch(err => console.log('Waiting for search index sync...'));
+                },
+
+                goHome() {
+                    const latestCat = this.categories.find(c => c.name.includes('最新')) || this.categories[0];
+                    if (latestCat) {
+                        this.switchCategory(latestCat);
+                    }
                 },
 
                 switchCategory(cat) {
