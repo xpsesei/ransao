@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正在播放 - 云端影院</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between" x-data="playApp()">
+
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="text-slate-400 hover:text-white text-sm font-semibold flex items-center space-x-1">
+                    <span>← 返回首页</span>
+                </a>
+                <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体播放区域 -->
+    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full space-y-6">
+        
+        <!-- 视频标题 -->
+        <div>
+            <h1 class="text-2xl font-bold text-slate-100" x-text="vod?.title || '加载中...'"></h1>
+            <p class="text-xs text-slate-400 mt-1" x-text="'类型：' + (vod?.category || '') + ' | 年份：' + (vod?.year || '') + ' | 地区：' + (vod?.area || '')"></p>
+        </div>
+
+        <!-- 播放器 -->
+        <div class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
+            <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen></iframe>
+        </div>
+
+        <!-- 📢 播放器下方广告 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex justify-between items-center text-xs text-slate-400">
+            <span>💡 播放提示：如果当前线路无法播放，请尝试切换下方其他集数。</span>
+            <a href="#" target="_blank" class="text-blue-400 hover:underline">【广告】特惠影视会员或商务合作</a>
+        </div>
+
+        <!-- 选集列表 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+            <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">播放选集</h4>
+            <div class="flex flex-wrap gap-2 max-h-60 overflow-y-auto">
+                <template x-for="(ep, index) in vod?.episodes" :key="index">
+                    <button @click="playEpisode(ep.url)"
+                            :class="selectedEpUrl === ep.url ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
+                            class="px-4 py-2 rounded-xl text-xs font-medium transition"
+                            x-text="ep.name">
+                    </button>
+                </template>
+            </div>
+        </div>
+
+        <!-- 剧情简介 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-sm text-slate-400 space-y-2">
+            <h4 class="font-bold text-slate-200">剧情介绍</h4>
+            <p class="leading-relaxed" x-text="vod?.content || '暂无简介'"></p>
+        </div>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>Copyright &copy; 云端影院 All Rights Reserved. 资源来自第三方采集接口，仅供学习交流使用。</p>
+    </footer>
+
+    <script>
+        function playApp() {
+            return {
+                vod: null,
+                currentPlayUrl: '',
+                selectedEpUrl: '',
+
+                init() {
+                    const data = localStorage.getItem('currentVod');
+                    if (data) {
+                        try {
+                            this.vod = JSON.parse(data);
+                            if (this.vod.episodes && this.vod.episodes.length > 0) {
+                                this.playEpisode(this.vod.episodes[0].url);
+                            }
+                        } catch (e) {
+                            console.error('Failed to parse vod data');
+                        }
+                    }
+                },
+
+                playEpisode(url) {
+                    this.selectedEpUrl = url;
+                    this.currentPlayUrl = `https://jx.xllmcms.com/dplayer/?url=${encodeURIComponent(url)}`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
