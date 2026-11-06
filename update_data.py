@@ -9,7 +9,7 @@ import urllib.request
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
 MAX_WORKERS = 5
-CHUNK_SIZE = 200  # 🎯 将分片大小缩小为 200，保证每个 JSON 文件只有几百 KB，实现秒级下载
+CHUNK_SIZE = 100  # 🎯 将分片大小缩小为 200，保证每个 JSON 文件只有几百 KB，实现秒级下载
 
 
 def fetch_page(page, retries=3):
