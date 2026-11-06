@@ -51,8 +51,8 @@
         </div>
         <center>
             <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
- <ins class="eas6a97888e20" data-zoneid="6080530"></ins> 
- <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+            <ins class="eas6a97888e20" data-zoneid="6080530"></ins> 
+            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
         </center>
 
         <!-- 视频网格列表 -->
@@ -145,6 +145,9 @@
                             if (paramQ && this.searchIndex.length > 0) {
                                 this.onGlobalSearch(false);
                             }
+
+                            // 🚀 核心秒开优化：在后台静默预加载所有分类数据到 sessionStorage
+                            this.prefetchAllCategories();
                         })
                         .catch(err => console.log('Waiting for categories sync...'));
 
@@ -158,6 +161,30 @@
                             }
                         })
                         .catch(err => console.log('Waiting for search index sync...'));
+                },
+
+                // 🚀 后台静默预加载所有分类文件，实现后续点击零延迟秒切
+                prefetchAllCategories() {
+                    if (!this.categories || this.categories.length === 0) return;
+                    
+                    this.categories.forEach(cat => {
+                        let filesToFetch = cat.file ? [cat.file] : (cat.files || []);
+                        if (filesToFetch.length > 0) {
+                            const cacheKey = `vod_cache_${cat.name}`;
+                            // 如果本地没有缓存，才在后台默默拉取
+                            if (!sessionStorage.getItem(cacheKey)) {
+                                Promise.all(filesToFetch.map(f => 
+                                    fetch('./data/' + f).then(res => res.json()).catch(err => [])
+                                ))
+                                .then(results => {
+                                    const merged = results.flat();
+                                    try {
+                                        sessionStorage.setItem(cacheKey, JSON.stringify(merged));
+                                    } catch (e) {}
+                                }).catch(err => {});
+                            }
+                        }
+                    });
                 },
 
                 updateUrl() {
@@ -195,14 +222,14 @@
                     
                     this.updateUrl();
 
-                    // 🚀 核心优化：先检查浏览器本地内存（SessionStorage）是否有缓存
+                    // 🚀 核心优化：优先从浏览器本地内存（SessionStorage）中读取缓存数据
                     const cacheKey = `vod_cache_${cat.name}`;
                     const cachedData = sessionStorage.getItem(cacheKey);
                     if (cachedData) {
                         try {
                             this.allVideos = JSON.parse(cachedData);
                             this.filterVideos();
-                            return; // 命中缓存，秒开！
+                            return; // 命中内存缓存，实现0毫秒极速切换！
                         } catch (e) {}
                     }
 
@@ -215,7 +242,7 @@
 
                     if (filesToFetch.length === 0) return;
 
-                    // 异步并行请求所有分片
+                    // 若未命中缓存，则并发请求分片文件
                     Promise.all(filesToFetch.map(f => 
                         fetch('./data/' + f)
                             .then(res => res.json())
@@ -226,7 +253,7 @@
                         this.allVideos = merged;
                         this.filterVideos();
 
-                        // 写入内存缓存，下次点击直接秒开
+                        // 写入内存缓存，以便下次点击秒开
                         try {
                             sessionStorage.setItem(cacheKey, JSON.stringify(merged));
                         } catch (e) {}
@@ -304,6 +331,6 @@
         }
     </script>
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-<script>LA.init({id:"3Rk7hoBBRRomuRiH",ck:"3Rk7hoBBRRomuRiH"})</script>
+    <script>LA.init({id:"3Rk7hoBBRRomuRiH",ck:"3Rk7hoBBRRomuRiH"})</script>
 </body>
 </html>
