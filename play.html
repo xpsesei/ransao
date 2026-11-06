@@ -33,9 +33,9 @@
         </div>
     </header>
    <center>
-            <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
- <ins class="eas6a97888e20" data-zoneid="6080530"></ins> 
- <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+        <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+        <ins class="eas6a97888e20" data-zoneid="6080530"></ins> 
+        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
    </center>
     <!-- 主体播放区域 -->
     <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full space-y-4">
@@ -52,7 +52,7 @@
             <!-- iframe 播放器 -->
             <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" allow="fullscreen"></iframe>
 
-            <!-- 🎯 超小、半透明毛玻璃浮动控制条（宽度减半、高度减小、字体缩小） -->
+            <!-- 🎯 超小、半透明毛玻璃浮动控制条（新增全屏按钮，确保全屏时按钮和抽屉可见） -->
             <div class="absolute bottom-2 inset-x-0 flex justify-center items-center z-10 opacity-40 group-hover:opacity-100 transition-opacity pointer-events-none">
                 <div class="flex items-center space-x-1 bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/10 shadow-lg pointer-events-auto text-[9px]">
                     <button @click="playPrev()" :disabled="currentIndex === 0" 
@@ -68,6 +68,12 @@
                     <button @click="playNext()" :disabled="!vod?.episodes || currentIndex >= vod.episodes.length - 1" 
                             class="px-1.5 py-0 bg-blue-600/60 hover:bg-blue-600 disabled:opacity-30 disabled:cursor-not-allowed rounded text-white transition">
                         ▶
+                    </button>
+
+                    <!-- 新增：容器全屏切换按钮 -->
+                    <button @click="toggleFullscreen()" 
+                            class="px-1.5 py-0 bg-white/10 hover:bg-white/20 rounded text-amber-300 transition" title="网页全屏">
+                        ⛶
                     </button>
                 </div>
             </div>
@@ -190,6 +196,28 @@
                     if (this.vod && this.vod.episodes && this.currentIndex < this.vod.episodes.length - 1) {
                         const targetIndex = this.currentIndex + 1;
                         this.playEpisode(this.vod.episodes[targetIndex].url, targetIndex);
+                    }
+                },
+
+                // 切换播放器容器全屏状态
+                toggleFullscreen() {
+                    const container = document.getElementById('player-container');
+                    if (!document.fullscreenElement) {
+                        if (container.requestFullscreen) {
+                            container.requestFullscreen();
+                        } else if (container.webkitRequestFullscreen) {
+                            container.webkitRequestFullscreen();
+                        } else if (container.msRequestFullscreen) {
+                            container.msRequestFullscreen();
+                        }
+                    } else {
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                        } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                        } else if (document.msExitFullscreen) {
+                            document.msExitFullscreen();
+                        }
                     }
                 },
 
