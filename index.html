@@ -15,9 +15,14 @@
             <div class="flex items-center space-x-3">
                 <a href="index.html" class="text-2xl font-black bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</a>
             </div>
-            <!-- 全局搜索框 -->
+            <!-- 全局搜索框（绑定 @focus 触发按需加载搜索索引，绝不抢占首屏带宽） -->
             <div class="w-64 md:w-96 relative">
-                <input type="text" x-model="searchKeyword" @input="onGlobalSearch()" placeholder="全网全局搜索（片名、演员）..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500 text-slate-100">
+                <input type="text" 
+                       x-model="searchKeyword" 
+                       @focus="initSearchIndex()" 
+                       @input="onGlobalSearch()" 
+                       placeholder="全网全局搜索（片名、演员）..." 
+                       class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500 text-slate-100">
             </div>
         </div>
     </header>
@@ -107,6 +112,7 @@
                 currentCategory: '🔥 最新更新',
                 searchKeyword: '',
                 isSearching: false,
+                isSearchIndexLoaded: false,
                 
                 currentPage: 1,
                 pageSize: 28, // 🎯 严格设置为每页 28 个视频
@@ -123,7 +129,7 @@
                         this.isSearching = true;
                     }
 
-                    // 1. 加载分类索引
+                    // 1. 仅加载轻量分类索引（首屏极速响应）
                     fetch('./data/categories.json')
                         .then(res => res.json())
                         .then(data => { 
@@ -142,36 +148,49 @@
                                 this.switchCategory(targetCat, false);
                             }
 
-                            if (paramQ && this.searchIndex.length > 0) {
-                                this.onGlobalSearch(false);
+                            // 如果带有搜索参数，则立刻加载搜索索引并执行搜索
+                            if (paramQ) {
+                                this.initSearchIndex(() => {
+                                    this.onGlobalSearch(false);
+                                });
                             }
 
-                            // 🚀 核心秒开优化：在后台静默预加载所有分类数据到 sessionStorage
-                            this.prefetchAllCategories();
+                            // 🚀 核心改动：采用延迟且温和的后台异步预加载，绝对不抢占首屏带宽
+                            setTimeout(() => {
+                                this.lazyPrefetchCategories();
+                            }, 1500);
                         })
                         .catch(err => console.log('Waiting for categories sync...'));
+                },
 
-                    // 2. 异步加载全局搜索索引
+                // 🚀 按需懒加载搜索索引（只有点击搜索框时才触发，首屏零负担）
+                initSearchIndex(callback) {
+                    if (this.isSearchIndexLoaded) {
+                        if (callback) callback();
+                        return;
+                    }
                     fetch('./data/search_index.json')
                         .then(res => res.json())
                         .then(data => {
                             this.searchIndex = data || [];
-                            if (this.isSearching && this.searchKeyword) {
-                                this.onGlobalSearch(false);
-                            }
+                            this.isSearchIndexLoaded = true;
+                            if (callback) callback();
                         })
-                        .catch(err => console.log('Waiting for search index sync...'));
+                        .catch(err => console.log('Search index load failed'));
                 },
 
-                // 🚀 后台静默预加载所有分类文件，实现后续点击零延迟秒切
-                prefetchAllCategories() {
+                // 🚀 延迟且低频的后台预加载（避免瞬间并发打满带宽）
+                lazyPrefetchCategories() {
                     if (!this.categories || this.categories.length === 0) return;
                     
-                    this.categories.forEach(cat => {
+                    // 挑选前 5 个最常用的分类在后台默默缓存
+                    let index = 0;
+                    const prefetchNext = () => {
+                        if (index >= Math.min(this.categories.length, 5)) return;
+                        const cat = this.categories[index++];
                         let filesToFetch = cat.file ? [cat.file] : (cat.files || []);
                         if (filesToFetch.length > 0) {
                             const cacheKey = `vod_cache_${cat.name}`;
-                            // 如果本地没有缓存，才在后台默默拉取
                             if (!sessionStorage.getItem(cacheKey)) {
                                 Promise.all(filesToFetch.map(f => 
                                     fetch('./data/' + f).then(res => res.json()).catch(err => [])
@@ -181,10 +200,19 @@
                                     try {
                                         sessionStorage.setItem(cacheKey, JSON.stringify(merged));
                                     } catch (e) {}
-                                }).catch(err => {});
+                                    // 错开时间请求下一个，保护网络
+                                    setTimeout(prefetchNext, 800);
+                                }).catch(err => {
+                                    setTimeout(prefetchNext, 800);
+                                });
+                            } else {
+                                prefetchNext();
                             }
+                        } else {
+                            prefetchNext();
                         }
-                    });
+                    };
+                    prefetchNext();
                 },
 
                 updateUrl() {
@@ -229,7 +257,7 @@
                         try {
                             this.allVideos = JSON.parse(cachedData);
                             this.filterVideos();
-                            return; // 命中内存缓存，实现0毫秒极速切换！
+                            return; // 命中内存缓存，实现 0 毫秒极速切换！
                         } catch (e) {}
                     }
 
@@ -242,7 +270,7 @@
 
                     if (filesToFetch.length === 0) return;
 
-                    // 若未命中缓存，则并发请求分片文件
+                    // 若未命中缓存，则请求分片文件
                     Promise.all(filesToFetch.map(f => 
                         fetch('./data/' + f)
                             .then(res => res.json())
@@ -276,6 +304,17 @@
                     }
                     const kw = this.searchKeyword.toLowerCase();
 
+                    // 如果还没加载索引，先触发加载
+                    if (!this.isSearchIndexLoaded) {
+                        this.initSearchIndex(() => {
+                            this.performSearch(kw, updateHistory);
+                        });
+                    } else {
+                        this.performSearch(kw, updateHistory);
+                    }
+                },
+
+                performSearch(kw, updateHistory) {
                     if (this.searchIndex.length > 0) {
                         this.filteredVideos = this.searchIndex.filter(v => 
                             (v.title && v.title.toLowerCase().includes(kw)) || 
