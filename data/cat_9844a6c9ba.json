@@ -1,5 +1,59 @@
 [
   {
+    "id": 167454,
+    "title": "奥卡菲娜：意想不到的厨师",
+    "category": "欧美综艺",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261107-1/7bf57e0e53b8719e093f906126888650.jpg",
+    "year": "2026",
+    "area": "美国",
+    "actor": "奥卡菲娜,欧阳万成,罗伊·崔,甄文达",
+    "director": "",
+    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好莱坞演员兼喜剧演员奥卡菲娜出身餐饮世家，但她却不会做饭。跟随这位明星踏上这段充满启发性的美食之旅，看她如何学习烹饪技艺，并尝试重振家族备受喜爱的中餐馆。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/06/usek7qCVya90/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/06/TuFDAErSyK96/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 165551,
+    "title": "特种部队：终极考验第五季",
+    "category": "欧美综艺",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261107-1/a4db41d9a22daca7f285567125924c9a.jpg",
+    "year": "2026",
+    "area": "美国",
+    "actor": "Matt,Barnes,坎达丝·卡梅隆·玻儿,布兰迪·格兰维尔,奥利弗·赫斯顿,Maxim,Naumov,George,Santos,Bre,Tiesi,毛里西奥·乌曼斯基,亚历克西娅·乌曼斯基,汉娜·斯托金,鲁比·罗丝,LeSean,McCoy,Collin,Gosselin,David,Charvet,Alycia,Baumgardner",
+    "director": "",
+    "content": "<p>暂无简介，敬请期待</p>",
+    "episodes": [
+      {
+        "name": "第02集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/03/hAGG46XqYd89/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/09/ze3rvYYjT289/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/16/ZqV83nBup294/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/24/eYEvGZzd7G91/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/06/Qx8ZiyZ97190/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 165895,
     "title": "卡戴珊家族第八季",
     "category": "欧美综艺",
@@ -78,35 +132,6 @@
       {
         "name": "第09集",
         "url": "https://v8.wujinwsym3u8.com/wjv8/202611/03/jDRUQx3dAf90/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 165551,
-    "title": "特种部队：终极考验第五季",
-    "category": "欧美综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261024-1/efaf547ce7efa7805b55c9e12ad4bd4b.jpg",
-    "year": "2026",
-    "area": "美国",
-    "actor": "Matt,Barnes,坎达丝·卡梅隆·玻儿,布兰迪·格兰维尔,奥利弗·赫斯顿,Maxim,Naumov,George,Santos,Bre,Tiesi,毛里西奥·乌曼斯基,亚历克西娅·乌曼斯基,汉娜·斯托金,鲁比·罗丝,LeSean,McCoy,Collin,Gosselin,David,Charvet,Alycia,Baumgardner",
-    "director": "",
-    "content": "<p>暂无简介，敬请期待</p>",
-    "episodes": [
-      {
-        "name": "第02集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/03/hAGG46XqYd89/video/index.m3u8"
-      },
-      {
-        "name": "第03集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202610/09/ze3rvYYjT289/video/index.m3u8"
-      },
-      {
-        "name": "第04集",
-        "url": "https://v4.wujinwsym3u8.com/wjv4/202610/16/ZqV83nBup294/video/index.m3u8"
-      },
-      {
-        "name": "第05集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202610/24/eYEvGZzd7G91/video/index.m3u8"
       }
     ]
   },
