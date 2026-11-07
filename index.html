@@ -13,85 +13,176 @@
     <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <a href="index.html" class="text-2xl font-black bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</a>
+                <a href="index.html" class="text-2xl font-black bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+                    🎬 云端影院
+                </a>
             </div>
-            <!-- 全局搜索框（绑定 @focus 触发按需加载搜索索引，绝不抢占首屏带宽） -->
+
             <div class="w-64 md:w-96 relative">
-                <input type="text" 
-                       x-model="searchKeyword" 
-                       @focus="initSearchIndex()" 
-                       @input="onGlobalSearch()" 
-                       placeholder="全网全局搜索（片名、演员）..." 
-                       class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500 text-slate-100">
+                <input
+                    type="text"
+                    x-model="searchKeyword"
+                    @focus="initSearchIndex()"
+                    @input="onGlobalSearch()"
+                    @keydown.escape="clearSearch()"
+                    placeholder="全网全局搜索（片名、演员）..."
+                    class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500 text-slate-100">
             </div>
         </div>
     </header>
 
     <!-- 主体内容区 -->
     <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
-        
-        <!-- 分类与首页导航栏 -->
+
+        <!-- 分类导航 -->
         <div class="flex items-center space-x-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
-            <button @click="switchCategoryByName('🔥 最新更新')" 
-                    :class="!isSearching && currentCategory === '🔥 最新更新' ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
-                    class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition flex items-center space-x-1">
+            <button
+                @click="switchCategoryByName('🔥 最新更新')"
+                :class="!isSearching && currentCategory === '🔥 最新更新'
+                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30'
+                    : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
+                class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition flex items-center space-x-1">
                 <span>🔥 最新更新</span>
             </button>
 
             <template x-for="cat in categories" :key="cat.name">
                 <template x-if="cat.name !== '🔥 最新更新'">
-                    <button @click="switchCategory(cat)" 
-                            :class="!isSearching && currentCategory === cat.name ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
-                            class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition"
-                            x-text="cat.name + (cat.count ? ' (' + cat.count + ')' : '')">
+                    <button
+                        @click="switchCategory(cat)"
+                        :class="!isSearching && currentCategory === cat.name
+                            ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30'
+                            : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
+                        class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition"
+                        x-text="cat.name + (cat.count ? ' (' + cat.count + ')' : '')">
                     </button>
                 </template>
             </template>
         </div>
 
-        <!-- 搜索状态提示 -->
+        <!-- 搜索状态 -->
         <div x-show="isSearching" class="mb-4 text-sm text-blue-400 flex items-center justify-between">
-            <span>🔍 全局搜索结果：“<span x-text="searchKeyword"></span>”，共找到 <span x-text="filteredVideos.length"></span> 部相关影视</span>
-            <button @click="clearSearch()" class="text-xs bg-slate-800 px-3 py-1 rounded-lg text-slate-300 hover:bg-slate-700">退出搜索</button>
+            <span>
+                🔍 全局搜索结果：“<span x-text="searchKeyword"></span>”，
+                共找到 <span x-text="filteredVideos.length"></span> 部相关影视
+            </span>
+            <button
+                @click="clearSearch()"
+                class="text-xs bg-slate-800 px-3 py-1 rounded-lg text-slate-300 hover:bg-slate-700">
+                退出搜索
+            </button>
         </div>
+
+        <!-- 广告 -->
         <center>
-            <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
-            <ins class="eas6a97888e20" data-zoneid="6080530"></ins> 
+            <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+            <ins class="eas6a97888e20" data-zoneid="6080530"></ins>
             <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
         </center>
 
-        <!-- 视频网格列表 -->
+        <!-- 影片网格 -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             <template x-for="vod in paginatedVideos" :key="vod.id">
-                <div @click="goToPlay(vod)" class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition cursor-pointer group flex flex-col">
+                <div
+                    @click="goToPlay(vod)"
+                    class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition cursor-pointer group flex flex-col">
                     <div class="relative aspect-[3/4] bg-slate-800 overflow-hidden">
-                        <img :src="vod.pic" @error="$el.src='https://via.placeholder.com/300x400?text=No+Image'" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
-                        <div class="absolute bottom-2 right-2 bg-black/70 backdrop-blur px-2 py-0.5 rounded text-xs text-yellow-400 font-semibold" x-text="vod.year || '最新'"></div>
+                        <img
+                            :src="vod.pic"
+                            @error="$el.src='https://via.placeholder.com/300x400?text=No+Image'"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                            loading="lazy"
+                            decoding="async">
+                        <div
+                            class="absolute bottom-2 right-2 bg-black/70 backdrop-blur px-2 py-0.5 rounded text-xs text-yellow-400 font-semibold"
+                            x-text="vod.year || '最新'">
+                        </div>
                     </div>
                     <div class="p-3 flex flex-col justify-between flex-grow">
-                        <h3 class="font-bold text-sm truncate text-slate-200 group-hover:text-blue-400 transition" x-text="vod.title"></h3>
-                        <p class="text-xs text-slate-500 truncate mt-1" x-text="vod.actor || vod.category"></p>
+                        <h3
+                            class="font-bold text-sm truncate text-slate-200 group-hover:text-blue-400 transition"
+                            x-text="vod.title">
+                        </h3>
+                        <p
+                            class="text-xs text-slate-500 truncate mt-1"
+                            x-text="vod.actor || vod.category">
+                        </p>
                     </div>
                 </div>
             </template>
         </div>
 
-        <!-- 无数据或加载中提示 -->
-        <div x-show="filteredVideos.length === 0" class="text-center py-20 text-slate-500">
-            正在从云端飞速加载中...
+        <!-- 加载状态 -->
+        <div
+            x-show="isLoading"
+            class="text-center py-12 text-slate-400"
+            role="status"
+            aria-live="polite">
+            正在加载影片…
         </div>
 
-        <!-- 📄 分页控制条（严格每页 28 个视频） -->
-        <div x-show="totalPages > 1" class="flex justify-center items-center space-x-3 mt-8">
-            <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1"
-                    class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
+        <!-- 加载失败提示 -->
+        <div
+            x-show="!isLoading && loadError"
+            class="text-center py-12 text-red-400">
+            <p x-text="loadError"></p>
+            <button
+                @click="retryCurrentPage()"
+                class="mt-3 px-4 py-2 bg-slate-800 rounded-lg text-slate-200 hover:bg-slate-700">
+                重试
+            </button>
+        </div>
+
+        <!-- 空数据提示 -->
+        <div
+            x-show="!isLoading && !loadError && filteredVideos.length === 0"
+            class="text-center py-12 text-slate-500">
+            没有找到相关影片
+        </div>
+
+        <!-- 分页 -->
+        <div
+            x-show="!isSearching && totalPages > 1"
+            class="flex justify-center items-center space-x-3 mt-8">
+            <button
+                @click="changePage(currentPage - 1)"
+                :disabled="currentPage === 1 || isLoading"
+                class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
                 上一页
             </button>
+
             <span class="text-sm text-slate-400">
-                第 <span class="text-blue-400 font-bold" x-text="currentPage"></span> / <span x-text="totalPages"></span> 页
+                第 <span class="text-blue-400 font-bold" x-text="currentPage"></span>
+                / <span x-text="totalPages"></span> 页
             </span>
-            <button @click="changePage(currentPage + 1)" :disabled="currentPage >= totalPages"
-                    class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
+
+            <button
+                @click="changePage(currentPage + 1)"
+                :disabled="currentPage >= totalPages || isLoading"
+                class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
+                下一页
+            </button>
+        </div>
+
+        <!-- 搜索结果分页 -->
+        <div
+            x-show="isSearching && totalPages > 1"
+            class="flex justify-center items-center space-x-3 mt-8">
+            <button
+                @click="changePage(currentPage - 1)"
+                :disabled="currentPage === 1"
+                class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
+                上一页
+            </button>
+
+            <span class="text-sm text-slate-400">
+                第 <span class="text-blue-400 font-bold" x-text="currentPage"></span>
+                / <span x-text="totalPages"></span> 页
+            </span>
+
+            <button
+                @click="changePage(currentPage + 1)"
+                :disabled="currentPage >= totalPages"
+                class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
                 下一页
             </button>
         </div>
@@ -107,225 +198,164 @@
             return {
                 categories: [],
                 allVideos: [],
-                searchIndex: [],
                 filteredVideos: [],
+                searchIndex: [],
+
+                // 按分类、分片保存在当前页面内存中，避免重复请求和整体缓存大分类
+                categoryCache: {},
+                inflightCategoryFiles: {},
+
                 currentCategory: '🔥 最新更新',
+                currentCategoryCount: 0,
+
                 searchKeyword: '',
                 isSearching: false,
                 isSearchIndexLoaded: false,
-                
-                currentPage: 1,
-                pageSize: 28, // 🎯 严格设置为每页 28 个视频
+                searchIndexPromise: null,
+                searchDebounceTimer: null,
 
-                init() {
+                isLoading: false,
+                loadError: '',
+                categoryRequestId: 0,
+
+                currentPage: 1,
+                pageSize: 28,
+
+                // update_data.py 目前按每份 100 条生成分类分片
+                chunkSize: 100,
+
+                async init() {
                     const urlParams = new URLSearchParams(window.location.search);
                     const paramCat = urlParams.get('cat');
-                    const paramPage = parseInt(urlParams.get('p')) || 1;
-                    const paramQ = urlParams.get('q');
+                    const paramPage = Math.max(1, parseInt(urlParams.get('p'), 10) || 1);
+                    const paramQ = urlParams.get('q') || '';
 
-                    if (paramPage > 1) this.currentPage = paramPage;
-                    if (paramQ) {
-                        this.searchKeyword = paramQ;
-                        this.isSearching = true;
-                    }
+                    this.searchKeyword = paramQ;
+                    this.isSearching = Boolean(paramQ);
 
-                    // 1. 仅加载轻量分类索引（首屏极速响应）
-                    fetch('./data/categories.json')
-                        .then(res => res.json())
-                        .then(data => { 
-                            this.categories = data || [];
-                            
-                            let targetCat = this.categories[0];
-                            if (paramCat) {
-                                const found = this.categories.find(c => c.name === paramCat);
-                                if (found) targetCat = found;
-                            } else {
-                                const latest = this.categories.find(c => c.name.includes('最新'));
-                                if (latest) targetCat = latest;
-                            }
-
-                            if (targetCat) {
-                                this.switchCategory(targetCat, false);
-                            }
-
-                            // 如果带有搜索参数，则立刻加载搜索索引并执行搜索
-                            if (paramQ) {
-                                this.initSearchIndex(() => {
-                                    this.onGlobalSearch(false);
-                                });
-                            }
-
-                            // 🚀 核心改动：采用延迟且温和的后台异步预加载，绝对不抢占首屏带宽
-                            setTimeout(() => {
-                                this.lazyPrefetchCategories();
-                            }, 1500);
-                        })
-                        .catch(err => console.log('Waiting for categories sync...'));
-                },
-
-                // 🚀 按需懒加载搜索索引（只有点击搜索框时才触发，首屏零负担）
-                initSearchIndex(callback) {
-                    if (this.isSearchIndexLoaded) {
-                        if (callback) callback();
-                        return;
-                    }
-                    fetch('./data/search_index.json')
-                        .then(res => res.json())
-                        .then(data => {
-                            this.searchIndex = data || [];
-                            this.isSearchIndexLoaded = true;
-                            if (callback) callback();
-                        })
-                        .catch(err => console.log('Search index load failed'));
-                },
-
-                // 🚀 延迟且低频的后台预加载（避免瞬间并发打满带宽）
-                lazyPrefetchCategories() {
-                    if (!this.categories || this.categories.length === 0) return;
-                    
-                    // 挑选前 5 个最常用的分类在后台默默缓存
-                    let index = 0;
-                    const prefetchNext = () => {
-                        if (index >= Math.min(this.categories.length, 5)) return;
-                        const cat = this.categories[index++];
-                        let filesToFetch = cat.file ? [cat.file] : (cat.files || []);
-                        if (filesToFetch.length > 0) {
-                            const cacheKey = `vod_cache_${cat.name}`;
-                            if (!sessionStorage.getItem(cacheKey)) {
-                                Promise.all(filesToFetch.map(f => 
-                                    fetch('./data/' + f).then(res => res.json()).catch(err => [])
-                                ))
-                                .then(results => {
-                                    const merged = results.flat();
-                                    try {
-                                        sessionStorage.setItem(cacheKey, JSON.stringify(merged));
-                                    } catch (e) {}
-                                    // 错开时间请求下一个，保护网络
-                                    setTimeout(prefetchNext, 800);
-                                }).catch(err => {
-                                    setTimeout(prefetchNext, 800);
-                                });
-                            } else {
-                                prefetchNext();
-                            }
-                        } else {
-                            prefetchNext();
+                    try {
+                        const response = await fetch('./data/categories.json');
+                        if (!response.ok) {
+                            throw new Error(`分类索引加载失败（HTTP ${response.status}）`);
                         }
-                    };
-                    prefetchNext();
+
+                        const data = await response.json();
+                        this.categories = Array.isArray(data) ? data : [];
+
+                        let targetCat = null;
+
+                        if (paramCat) {
+                            targetCat = this.categories.find(cat => cat.name === paramCat);
+                        }
+
+                        if (!targetCat) {
+                            targetCat = this.categories.find(cat => cat.name.includes('最新'))
+                                || this.categories[0];
+                        }
+
+                        if (!targetCat) {
+                            this.loadError = '暂时没有可用的分类数据';
+                            return;
+                        }
+
+                        const count = Number(targetCat.count) || 0;
+                        const maxPage = Math.max(1, Math.ceil(count / this.pageSize));
+                        this.currentPage = Math.min(paramPage, maxPage);
+
+                        // 搜索链接不必先下载分类数据，直接加载搜索索引
+                        if (paramQ) {
+                            this.currentCategory = targetCat.name;
+                            this.currentCategoryCount = count;
+                            this.updateUrl();
+                            await this.initSearchIndex();
+                            this.performSearch(paramQ, false);
+                            return;
+                        }
+
+                        await this.switchCategory(targetCat, false);
+                    } catch (error) {
+                        console.error('初始化失败:', error);
+                        this.loadError = error.message || '页面初始化失败，请刷新重试';
+                    }
                 },
 
-                updateUrl() {
-                    const params = new URLSearchParams();
-                    if (this.currentCategory && this.currentCategory !== '🔥 最新更新') {
-                        params.set('cat', this.currentCategory);
+                initSearchIndex() {
+                    if (this.isSearchIndexLoaded) {
+                        return Promise.resolve(this.searchIndex);
                     }
-                    if (this.currentPage > 1) {
-                        params.set('p', this.currentPage);
+
+                    // 防止快速输入或重复聚焦时同时发起多个索引请求
+                    if (this.searchIndexPromise) {
+                        return this.searchIndexPromise;
                     }
-                    if (this.isSearching && this.searchKeyword.trim()) {
-                        params.set('q', this.searchKeyword.trim());
-                    }
-                    const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
-                    history.replaceState(null, '', newUrl);
+
+                    this.searchIndexPromise = fetch('./data/search_index.json')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`搜索索引加载失败（HTTP ${response.status}）`);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            this.searchIndex = Array.isArray(data) ? data : [];
+                            this.isSearchIndexLoaded = true;
+                            return this.searchIndex;
+                        })
+                        .catch(error => {
+                            console.error('搜索索引加载失败:', error);
+                            this.searchIndexPromise = null;
+                            throw error;
+                        });
+
+                    return this.searchIndexPromise;
                 },
 
-                switchCategoryByName(name) {
-                    const cat = this.categories.find(c => c.name === name);
-                    if (cat) {
-                        this.switchCategory(cat);
-                    }
-                },
+                onGlobalSearch() {
+                    const keyword = this.searchKeyword.trim();
 
-                switchCategory(cat, resetPage = true) {
-                    if (!cat) return;
-                    this.isSearching = false;
-                    this.searchKeyword = '';
-                    this.currentCategory = cat.name;
-                    if (resetPage) {
-                        this.currentPage = 1;
-                    }
-                    this.allVideos = [];
-                    this.filteredVideos = [];
-                    
-                    this.updateUrl();
-
-                    // 🚀 核心优化：优先从浏览器本地内存（SessionStorage）中读取缓存数据
-                    const cacheKey = `vod_cache_${cat.name}`;
-                    const cachedData = sessionStorage.getItem(cacheKey);
-                    if (cachedData) {
-                        try {
-                            this.allVideos = JSON.parse(cachedData);
-                            this.filterVideos();
-                            return; // 命中内存缓存，实现 0 毫秒极速切换！
-                        } catch (e) {}
-                    }
-
-                    let filesToFetch = [];
-                    if (cat.file) {
-                        filesToFetch = [cat.file];
-                    } else if (cat.files && Array.isArray(cat.files)) {
-                        filesToFetch = cat.files;
-                    }
-
-                    if (filesToFetch.length === 0) return;
-
-                    // 若未命中缓存，则请求分片文件
-                    Promise.all(filesToFetch.map(f => 
-                        fetch('./data/' + f)
-                            .then(res => res.json())
-                            .catch(err => [])
-                    ))
-                    .then(results => {
-                        const merged = results.flat();
-                        this.allVideos = merged;
-                        this.filterVideos();
-
-                        // 写入内存缓存，以便下次点击秒开
-                        try {
-                            sessionStorage.setItem(cacheKey, JSON.stringify(merged));
-                        } catch (e) {}
-                    })
-                    .catch(err => { 
-                        this.allVideos = []; 
-                        this.filteredVideos = []; 
-                    });
-                },
-
-                onGlobalSearch(updateHistory = true) {
-                    if (!this.searchKeyword.trim()) {
-                        this.clearSearch();
+                    if (!keyword) {
+                        clearTimeout(this.searchDebounceTimer);
+                        if (this.isSearching) {
+                            this.clearSearch();
+                        }
                         return;
                     }
 
                     this.isSearching = true;
-                    if (updateHistory) {
-                        this.currentPage = 1;
-                    }
-                    const kw = this.searchKeyword.toLowerCase();
+                    this.currentPage = 1;
+                    this.loadError = '';
 
-                    // 如果还没加载索引，先触发加载
-                    if (!this.isSearchIndexLoaded) {
-                        this.initSearchIndex(() => {
-                            this.performSearch(kw, updateHistory);
-                        });
-                    } else {
-                        this.performSearch(kw, updateHistory);
-                    }
+                    clearTimeout(this.searchDebounceTimer);
+                    this.searchDebounceTimer = setTimeout(async () => {
+                        try {
+                            await this.initSearchIndex();
+
+                            // 等待索引加载期间，用户可能已经继续修改输入内容
+                            const latestKeyword = this.searchKeyword.trim();
+                            if (!latestKeyword) return;
+
+                            this.performSearch(latestKeyword, true);
+                        } catch (error) {
+                            this.loadError = '搜索索引加载失败，请稍后重试';
+                        }
+                    }, 180);
                 },
 
-                performSearch(kw, updateHistory) {
-                    if (this.searchIndex.length > 0) {
-                        this.filteredVideos = this.searchIndex.filter(v => 
-                            (v.title && v.title.toLowerCase().includes(kw)) || 
-                            (v.actor && v.actor.toLowerCase().includes(kw))
-                        );
-                    } else {
-                        this.filteredVideos = this.allVideos.filter(v => 
-                            (v.title && v.title.toLowerCase().includes(kw)) || 
-                            (v.actor && v.actor.toLowerCase().includes(kw))
-                        );
+                performSearch(keyword, updateHistory = true) {
+                    const normalizedKeyword = String(keyword || '').trim().toLowerCase();
+
+                    if (!normalizedKeyword) {
+                        this.filteredVideos = [];
+                        return;
                     }
+
+                    this.isSearching = true;
+                    this.currentPage = 1;
+
+                    this.filteredVideos = this.searchIndex.filter(video =>
+                        (video.title && video.title.toLowerCase().includes(normalizedKeyword)) ||
+                        (video.actor && video.actor.toLowerCase().includes(normalizedKeyword))
+                    );
 
                     if (updateHistory) {
                         this.updateUrl();
@@ -333,42 +363,279 @@
                 },
 
                 clearSearch() {
+                    clearTimeout(this.searchDebounceTimer);
                     this.searchKeyword = '';
                     this.isSearching = false;
-                    const latestCat = this.categories.find(c => c.name.includes('最新')) || this.categories[0];
-                    if (latestCat) {
-                        this.switchCategory(latestCat);
+                    this.loadError = '';
+
+                    const latestCategory =
+                        this.categories.find(cat => cat.name.includes('最新')) ||
+                        this.categories[0];
+
+                    if (latestCategory) {
+                        this.switchCategory(latestCategory);
                     }
                 },
 
-                filterVideos() {
-                    this.filteredVideos = this.allVideos;
+                updateUrl() {
+                    const params = new URLSearchParams();
+
+                    if (this.currentCategory && this.currentCategory !== '🔥 最新更新') {
+                        params.set('cat', this.currentCategory);
+                    }
+
+                    if (this.currentPage > 1) {
+                        params.set('p', String(this.currentPage));
+                    }
+
+                    if (this.isSearching && this.searchKeyword.trim()) {
+                        params.set('q', this.searchKeyword.trim());
+                    }
+
+                    const query = params.toString();
+                    const newUrl = window.location.pathname + (query ? `?${query}` : '');
+                    history.replaceState(null, '', newUrl);
+                },
+
+                switchCategoryByName(name) {
+                    const category = this.categories.find(cat => cat.name === name);
+                    if (category) {
+                        this.switchCategory(category);
+                    }
+                },
+
+                async switchCategory(category, resetPage = true) {
+                    if (!category) return;
+
+                    clearTimeout(this.searchDebounceTimer);
+
+                    this.categoryRequestId += 1;
+                    this.isSearching = false;
+                    this.searchKeyword = '';
+                    this.currentCategory = category.name;
+                    this.currentCategoryCount = Number(category.count) || 0;
+                    this.loadError = '';
+
+                    if (resetPage) {
+                        this.currentPage = 1;
+                    } else {
+                        const maxPage = Math.max(
+                            1,
+                            Math.ceil(this.currentCategoryCount / this.pageSize)
+                        );
+                        this.currentPage = Math.min(this.currentPage, maxPage);
+                    }
+
+                    const cache = this.getCategoryCache(category.name);
+                    this.allVideos = this.getOrderedCategoryVideos(category, cache);
+                    this.filteredVideos = [...this.allVideos];
+
+                    this.updateUrl();
+
+                    // 仅请求当前页所需分片；首次进入通常只会请求第一份
+                    await this.ensureCategoryData(this.currentPage);
+                },
+
+                getCategoryCache(categoryName) {
+                    if (!this.categoryCache[categoryName]) {
+                        this.categoryCache[categoryName] = {
+                            chunks: {}
+                        };
+                    }
+                    return this.categoryCache[categoryName];
+                },
+
+                getOrderedCategoryVideos(category, cache) {
+                    const files = category.file
+                        ? [category.file]
+                        : (Array.isArray(category.files) ? category.files : []);
+
+                    const videos = [];
+
+                    // 按索引中的分片顺序拼接，确保记录顺序稳定
+                    for (const file of files) {
+                        const chunk = cache.chunks[file];
+                        if (Array.isArray(chunk)) {
+                            videos.push(...chunk);
+                        } else {
+                            break;
+                        }
+                    }
+
+                    return videos;
+                },
+
+                async fetchCategoryFile(categoryName, fileName) {
+                    const cache = this.getCategoryCache(categoryName);
+
+                    if (Array.isArray(cache.chunks[fileName])) {
+                        return cache.chunks[fileName];
+                    }
+
+                    const requestKey = `${categoryName}::${fileName}`;
+
+                    if (this.inflightCategoryFiles[requestKey]) {
+                        return this.inflightCategoryFiles[requestKey];
+                    }
+
+                    const request = fetch(`./data/${encodeURIComponent(fileName)}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`数据文件加载失败：${fileName}（HTTP ${response.status}）`);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (!Array.isArray(data)) {
+                                throw new Error(`数据文件格式不正确：${fileName}`);
+                            }
+
+                            // 成功后按分片存入页面内存缓存
+                            cache.chunks[fileName] = data;
+                            return data;
+                        })
+                        .finally(() => {
+                            delete this.inflightCategoryFiles[requestKey];
+                        });
+
+                    this.inflightCategoryFiles[requestKey] = request;
+                    return request;
+                },
+
+                async ensureCategoryData(pageNumber) {
+                    const category = this.categories.find(
+                        cat => cat.name === this.currentCategory
+                    );
+
+                    if (!category) return;
+
+                    const files = category.file
+                        ? [category.file]
+                        : (Array.isArray(category.files) ? category.files : []);
+
+                    if (files.length === 0) {
+                        this.allVideos = [];
+                        this.filteredVideos = [];
+                        this.loadError = '这个分类暂时没有数据';
+                        return;
+                    }
+
+                    const requestId = this.categoryRequestId;
+                    const targetCount = Math.min(
+                        pageNumber * this.pageSize,
+                        this.currentCategoryCount || Number.MAX_SAFE_INTEGER
+                    );
+
+                    // 当前文件格式每份约 100 条；按目标页计算需加载的分片数
+                    const requiredChunkCount = Math.min(
+                        files.length,
+                        Math.max(1, Math.ceil(targetCount / this.chunkSize))
+                    );
+                    const requiredFiles = files.slice(0, requiredChunkCount);
+                    const cache = this.getCategoryCache(category.name);
+                    const missingFiles = requiredFiles.filter(
+                        file => !Array.isArray(cache.chunks[file])
+                    );
+
+                    this.loadError = '';
+
+                    if (missingFiles.length === 0) {
+                        if (this.currentCategory === category.name &&
+                            this.categoryRequestId === requestId) {
+                            this.allVideos = this.getOrderedCategoryVideos(category, cache);
+                            this.filteredVideos = [...this.allVideos];
+                            this.isLoading = false;
+                        }
+                        return;
+                    }
+
+                    this.isLoading = true;
+
+                    try {
+                        // 只并行请求当前页所需的分片，不请求整个分类
+                        await Promise.all(
+                            missingFiles.map(file => this.fetchCategoryFile(category.name, file))
+                        );
+
+                        if (this.currentCategory !== category.name ||
+                            this.categoryRequestId !== requestId) {
+                            return;
+                        }
+
+                        this.allVideos = this.getOrderedCategoryVideos(category, cache);
+                        this.filteredVideos = [...this.allVideos];
+                    } catch (error) {
+                        console.error('分类数据加载失败:', error);
+
+                        if (this.currentCategory === category.name &&
+                            this.categoryRequestId === requestId) {
+                            this.loadError = '影片数据加载失败，请检查网络后重试';
+                        }
+                    } finally {
+                        if (this.currentCategory === category.name &&
+                            this.categoryRequestId === requestId) {
+                            this.isLoading = false;
+                        }
+                    }
                 },
 
                 get paginatedVideos() {
                     const start = (this.currentPage - 1) * this.pageSize;
-                    const end = start + this.pageSize;
-                    return this.filteredVideos.slice(start, end);
+                    return this.filteredVideos.slice(start, start + this.pageSize);
                 },
 
                 get totalPages() {
-                    return Math.ceil(this.filteredVideos.length / this.pageSize) || 1;
+                    if (this.isSearching) {
+                        return Math.max(
+                            1,
+                            Math.ceil(this.filteredVideos.length / this.pageSize)
+                        );
+                    }
+
+                    return Math.max(
+                        1,
+                        Math.ceil(this.currentCategoryCount / this.pageSize)
+                    );
                 },
 
-                changePage(page) {
-                    if (page >= 1 && page <= this.totalPages) {
-                        this.currentPage = page;
+                async changePage(page) {
+                    if (page < 1 || page > this.totalPages || this.isLoading) {
+                        return;
+                    }
+
+                    this.currentPage = page;
+                    this.loadError = '';
+
+                    if (this.isSearching) {
                         this.updateUrl();
                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return;
                     }
+
+                    this.updateUrl();
+                    await this.ensureCategoryData(page);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                },
+
+                retryCurrentPage() {
+                    if (this.isSearching) {
+                        this.loadError = '';
+                        this.onGlobalSearch();
+                        return;
+                    }
+
+                    this.ensureCategoryData(this.currentPage);
                 },
 
                 goToPlay(vodSummary) {
-                    window.location.href = `play.html?id=${vodSummary.id}&cat=${encodeURIComponent(vodSummary.category)}`;
+                    const id = encodeURIComponent(vodSummary.id);
+                    const category = encodeURIComponent(vodSummary.category || this.currentCategory);
+                    window.location.href = `play.html?id=${id}&cat=${category}`;
                 }
-            }
+            };
         }
     </script>
+
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
     <script>LA.init({id:"3Rk7hoBBRRomuRiH",ck:"3Rk7hoBBRRomuRiH"})</script>
 </body>
