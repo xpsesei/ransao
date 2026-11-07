@@ -3,280 +3,383 @@ import hashlib
 import json
 import os
 import time
-import urllib.error
 import urllib.parse
 import urllib.request
 
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
 MAX_WORKERS = 3
-CHUNK_SIZE = 100  # 🎯 优化分片大小为 100，让前端加载速度更快
+CHUNK_SIZE = 100
+
+
+def write_json(path, data, indent=None):
+    """以 UTF-8 写入 JSON 文件。"""
+    with open(path, "w", encoding="utf-8") as file:
+        json.dump(data, file, ensure_ascii=False, indent=indent)
 
 
 def fetch_page(page, retries=5):
-  url = f"{BASE_URL}&pg={page}"
-  headers = {
-      "User-Agent": (
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,"
-          " like Gecko) Chrome/120.0.0.0 Safari/537.36"
-      )
-  }
-  for attempt in range(retries):
+    url = f"{BASE_URL}&pg={page}"
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/120.0.0.0 Safari/537.36"
+        )
+    }
+
+    for attempt in range(retries):
+        try:
+            request = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(request, timeout=60) as response:
+                data = json.loads(response.read().decode("utf-8"))
+                print(f"-> 成功下载第 {page} 页")
+                return data.get("list", [])
+        except Exception as error:
+            print(
+                f"⚠️ 第 {page} 页请求异常，"
+                f"第 {attempt + 1} 次重试：{error}"
+            )
+            if attempt < retries - 1:
+                time.sleep((attempt + 1) * 3)
+
+    print(f"❌ 第 {page} 页连续重试失败，已跳过")
+    return []
+
+
+def read_existing_videos():
+    """读取已生成的分类文件，为增量更新保留旧影片。"""
+    category_path = os.path.join("data", "categories.json")
+    if not os.path.exists(category_path):
+        return {}
+
     try:
-      req = urllib.request.Request(url, headers=headers)
-      with urllib.request.urlopen(req, timeout=60) as response:
-        data = json.loads(response.read().decode("utf-8"))
-        print(f"-> 成功下载第 {page} 页")
-        return data.get("list", [])
-    except Exception as e:
-      print(
-          f"⚠️ 第 {page} 页请求异常，正在进行第 {attempt + 1} 次重试..."
-      )
-      time.sleep((attempt + 1) * 3)
-  print(f"❌ 第 {page} 页连续重试失败，已跳过")
-  return []
+        with open(category_path, "r", encoding="utf-8") as file:
+            category_index = json.load(file)
+
+        videos = {}
+
+        for category in category_index:
+            files = []
+
+            if category.get("file"):
+                files.append(category["file"])
+
+            files.extend(category.get("files", []))
+
+            for file_name in files:
+                file_path = os.path.join("data", file_name)
+                if not os.path.isfile(file_path):
+                    continue
+
+                try:
+                    with open(file_path, "r", encoding="utf-8") as file:
+                        chunk = json.load(file)
+                except (OSError, json.JSONDecodeError) as error:
+                    print(f"⚠️ 读取旧文件失败 {file_path}：{error}")
+                    continue
+
+                if not isinstance(chunk, list):
+                    continue
+
+                for video in chunk:
+                    video_id = video.get("id")
+                    if video_id is not None:
+                        videos[str(video_id)] = video
+
+        print(f"成功加载本地现有影视数据：{len(videos)} 条")
+        return videos
+
+    except (OSError, json.JSONDecodeError, TypeError) as error:
+        print(f"读取本地数据失败，将执行全量采集：{error}")
+        return {}
 
 
-def main():
-  os.makedirs("data", exist_ok=True)
-
-  print("1. 获取官方分类列表...")
-  try:
-    req = urllib.request.Request(
-        LIST_URL, headers={"User-Agent": "Mozilla/5.0"}
+def normalize_video(raw_video, category_map):
+    """将采集站记录转换为网站内部使用的数据结构。"""
+    type_id = str(raw_video.get("type_id", ""))
+    category = (
+        raw_video.get("type_name")
+        or category_map.get(type_id)
+        or "未分类"
     )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-      list_data = json.loads(resp.read().decode("utf-8"))
-      official_classes = list_data.get("class", [])
-  except Exception:
-    official_classes = []
-
-  category_map = {str(c["type_id"]): c["type_name"] for c in official_classes}
-  category_names = [c["type_name"] for c in official_classes]
-
-  # 检查本地是否已有数据，决定是“全量采集”还是“增量更新”
-  has_local_data = os.path.exists("data/categories.json")
-
-  print("2. 检查采集站状态...")
-  try:
-    req = urllib.request.Request(
-        f"{BASE_URL}&pg=1", headers={"User-Agent": "Mozilla/5.0"}
-    )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-      first_res = json.loads(resp.read().decode("utf-8"))
-  except Exception as e:
-    print(f"Failed to fetch page 1: {e}")
-    return
-
-  total_pages = int(first_res.get("pagecount", 1))
-
-  # 读取本地已有的所有视频数据（用于增量更新时进行合并/更新）
-  existing_videos_map = {}
-  if has_local_data:
-    print(
-        "⚡ 检测到本地已有数据库，执行【增量更新模式】（只抓取最近更新的前几页）..."
-    )
-    try:
-      with open("data/categories.json", "r", encoding="utf-8") as f:
-        cat_index = json.load(f)
-      for cat in cat_index:
-        files = []
-        if "file" in cat:
-          files.append(cat["file"])
-        if "files" in cat:
-          files.extend(cat["files"])
-        for fname in files:
-          fpath = os.path.join("data", fname)
-          if os.path.exists(fpath):
-            with open(fpath, "r", encoding="utf-8") as f:
-              chunk_data = json.load(f)
-              for vod in chunk_data:
-                existing_videos_map[str(vod["id"])] = vod
-      print(f"成功加载本地现有影视数据: {len(existing_videos_map)} 条")
-    except Exception as e:
-      print(f"读取本地缓存出错，将转为全量采集: {e}")
-      existing_videos_map = {}
-
-  if not existing_videos_map:
-    print(f"🔥 本地无数据，执行【首次全量采集】共 {total_pages} 页...")
-    pages_to_fetch = list(range(1, total_pages + 1))
-  else:
-    # 🎯 增量更新：抓取前 5 页（约 100~200 条最新影片），完美覆盖最近 3 天更新
-    fetch_pages_count = min(5, total_pages)
-    print(f"⚡ 开始增量拉取最新更新的前 {fetch_pages_count} 页...")
-    pages_to_fetch = list(range(1, fetch_pages_count + 1))
-
-  fetched_videos = []
-  with concurrent.futures.ThreadPoolExecutor(
-      max_workers=MAX_WORKERS
-  ) as executor:
-    results = executor.map(fetch_page, pages_to_fetch)
-    for page_list in results:
-      if page_list:
-        fetched_videos.extend(page_list)
-
-  print(f"本次抓取到数据: {len(fetched_videos)} 条")
-
-  # 处理抓取到的数据并与本地数据合并（更新已存在剧集，插入新剧集）
-  for vod in fetched_videos:
-    vod_id = str(vod.get("vod_id"))
-    title = vod.get("vod_name", "")
-
-    type_id = str(vod.get("type_id", ""))
-    category = vod.get("type_name", "")
-    if not category and type_id in category_map:
-      category = category_map[type_id]
-    if not category:
-      category = "未分类"
-
-    pic = vod.get("vod_pic", "")
-    year = vod.get("vod_year", "")
-    area = vod.get("vod_area", "")
-    actor = vod.get("vod_actor", "")
-    director = vod.get("vod_director", "")
-    content = vod.get("vod_content", "").strip()
-    play_url_raw = vod.get("vod_play_url", "")
 
     episodes = []
-    if play_url_raw:
-      parts = play_url_raw.split("#")
-      for p in parts:
-        if "$" in p:
-          sub_parts = p.split("$")
-          if len(sub_parts) >= 2:
-            ep_name = sub_parts[-2]
-            ep_link = sub_parts[-1]
-            if ".m3u8" in ep_link or ".mp4" in ep_link or "http" in ep_link:
-              episodes.append({"name": ep_name, "url": ep_link})
+    raw_play_url = raw_video.get("vod_play_url") or ""
 
-    item = {
-        "id": vod.get("vod_id"),
-        "title": title,
+    for part in raw_play_url.split("#"):
+        if "$" not in part:
+            continue
+
+        pieces = part.split("$")
+        if len(pieces) < 2:
+            continue
+
+        episode_name = pieces[-2]
+        episode_url = pieces[-1]
+
+        if (
+            ".m3u8" in episode_url
+            or ".mp4" in episode_url
+            or "http" in episode_url
+        ):
+            episodes.append({
+                "name": episode_name,
+                "url": episode_url,
+            })
+
+    return {
+        "id": raw_video.get("vod_id"),
+        "title": raw_video.get("vod_name", ""),
         "category": category,
-        "pic": pic,
-        "year": year,
-        "area": area,
-        "actor": actor,
-        "director": director,
-        "content": content,
+        "pic": raw_video.get("vod_pic", ""),
+        "year": raw_video.get("vod_year", ""),
+        "area": raw_video.get("vod_area", ""),
+        "actor": raw_video.get("vod_actor", ""),
+        "director": raw_video.get("vod_director", ""),
+        "content": (raw_video.get("vod_content") or "").strip(),
         "episodes": episodes,
     }
 
-    # 如果本地已有该剧集则覆盖更新（自动获取最新剧集列表），没有则直接新增
-    existing_videos_map[vod_id] = item
 
-  all_videos = list(existing_videos_map.values())
-  print(f"合并后总影视库数据: {len(all_videos)} 条")
+def main():
+    os.makedirs("data", exist_ok=True)
 
-  processed_videos = all_videos
-  categories = {c_name: [] for c_name in category_names}
-  categories["未分类"] = []
-
-  for vod in processed_videos:
-    cat = vod.get("category", "未分类")
-    if cat not in categories:
-      categories[cat] = []
-    categories[cat].append(vod)
-
-  cat_index = []
-
-  # 生成“🔥 最新更新”分类（取前100条）
-  latest_items = processed_videos[:100]
-  with open(os.path.join("data", "cat_latest.json"), "w", encoding="utf-8") as f:
-    json.dump(latest_items, f, ensure_ascii=False, indent=2)
-  cat_index.append(
-      {"name": "🔥 最新更新", "count": len(latest_items), "file": "cat_latest.json"}
-  )
-
-  all_cats = list(category_names)
-  for c_name in categories.keys():
-    if c_name not in all_cats:
-      all_cats.append(c_name)
-
-  for c_name in all_cats:
-    v_list = categories.get(c_name, [])
-    if v_list:
-      safe_hash = hashlib.md5(c_name.encode("utf-8")).hexdigest()[:10]
-
-      if len(v_list) > CHUNK_SIZE:
-        sub_files = []
-        for i in range(0, len(v_list), CHUNK_SIZE):
-          chunk = v_list[i : i + CHUNK_SIZE]
-          chunk_file = f"cat_{safe_hash}_part{i // CHUNK_SIZE + 1}.json"
-          with open(os.path.join("data", chunk_file), "w", encoding="utf-8") as f:
-            json.dump(chunk, f, ensure_ascii=False, indent=2)
-          sub_files.append(chunk_file)
-        cat_index.append(
-            {"name": c_name, "count": len(v_list), "files": sub_files}
+    print("1. 获取官方分类列表...")
+    try:
+        request = urllib.request.Request(
+            LIST_URL,
+            headers={"User-Agent": "Mozilla/5.0"},
         )
-      else:
-        file_name = f"cat_{safe_hash}.json"
-        with open(os.path.join("data", file_name), "w", encoding="utf-8") as f:
-          json.dump(v_list, f, ensure_ascii=False, indent=2)
-        cat_index.append(
-            {"name": c_name, "count": len(v_list), "file": file_name}
+        with urllib.request.urlopen(request, timeout=30) as response:
+            list_data = json.loads(response.read().decode("utf-8"))
+            official_classes = list_data.get("class", [])
+    except Exception as error:
+        print(f"⚠️ 获取分类列表失败：{error}")
+        official_classes = []
+
+    category_map = {
+        str(item["type_id"]): item["type_name"]
+        for item in official_classes
+        if item.get("type_id") is not None and item.get("type_name")
+    }
+    category_names = [
+        item["type_name"]
+        for item in official_classes
+        if item.get("type_name")
+    ]
+
+    print("2. 检查采集站状态...")
+    try:
+        request = urllib.request.Request(
+            f"{BASE_URL}&pg=1",
+            headers={"User-Agent": "Mozilla/5.0"},
         )
+        with urllib.request.urlopen(request, timeout=30) as response:
+            first_response = json.loads(response.read().decode("utf-8"))
+    except Exception as error:
+        print(f"无法访问采集接口：{error}")
+        return
 
-  with open("data/categories.json", "w", encoding="utf-8") as f:
-    json.dump(cat_index, f, ensure_ascii=False, indent=2)
+    try:
+        total_pages = max(1, int(first_response.get("pagecount", 1)))
+    except (TypeError, ValueError):
+        total_pages = 1
 
-  # 生成全局搜索索引
-  search_index = []
-  for vod in processed_videos:
-    search_index.append({
-        "id": vod.get("id"),
-        "title": vod.get("title"),
-        "category": vod.get("category"),
-        "actor": vod.get("actor"),
-        "year": vod.get("year"),
-        "pic": vod.get("pic"),
+    existing_videos = read_existing_videos()
+
+    if existing_videos:
+        fetch_count = min(5, total_pages)
+        pages_to_fetch = range(1, fetch_count + 1)
+        print(f"⚡ 增量更新：抓取最近 {fetch_count} 页...")
+    else:
+        pages_to_fetch = range(1, total_pages + 1)
+        print(f"🔥 首次全量采集：共 {total_pages} 页...")
+
+    fetched_videos = []
+    with concurrent.futures.ThreadPoolExecutor(
+        max_workers=MAX_WORKERS
+    ) as executor:
+        for page_videos in executor.map(fetch_page, pages_to_fetch):
+            if page_videos:
+                fetched_videos.extend(page_videos)
+
+    print(f"本次抓取数据：{len(fetched_videos)} 条")
+
+    # 新记录覆盖旧记录；新影片追加到数据集。
+    for raw_video in fetched_videos:
+        video = normalize_video(raw_video, category_map)
+        video_id = video.get("id")
+        if video_id is not None:
+            existing_videos[str(video_id)] = video
+
+    all_videos = list(existing_videos.values())
+    print(f"合并后总影视库数据：{len(all_videos)} 条")
+
+    # 按分类整理影片。
+    videos_by_category = {name: [] for name in category_names}
+    videos_by_category["未分类"] = []
+
+    for video in all_videos:
+        category = video.get("category") or "未分类"
+        videos_by_category.setdefault(category, []).append(video)
+
+    category_index = []
+
+    # video_index 格式：影片 ID -> 影片所在的分类 JSON 文件。
+    video_index = {}
+
+    # 生成最新更新列表。影片索引会在下面指向完整分类数据文件。
+    latest_items = all_videos[:100]
+    latest_file = "cat_latest.json"
+    write_json(
+        os.path.join("data", latest_file),
+        latest_items,
+        indent=2,
+    )
+    category_index.append({
+        "name": "🔥 最新更新",
+        "count": len(latest_items),
+        "file": latest_file,
     })
-  with open(
-      os.path.join("data", "search_index.json"), "w", encoding="utf-8"
-  ) as f:
-    json.dump(search_index, f, ensure_ascii=False)
 
-  # 🚀 自动生成用于 SEO 的网站地图 (sitemap.xml)
-  print("3. Generating sitemap.xml for SEO...")
-  DOMAIN = "https://xpsesei.github.io/ransao"
+    all_categories = list(category_names)
+    for category_name in videos_by_category:
+        if category_name not in all_categories:
+            all_categories.append(category_name)
 
-  sitemap_lines = [
-      '<?xml version="1.0" encoding="UTF-8"?>',
-      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-      f"  <url>",
-      f"    <loc>{DOMAIN}/index.html</loc>",
-      f"    <changefreq>always</changefreq>",
-      f"    <priority>1.0</priority>",
-      f"  </url>",
-  ]
+    for category_name in all_categories:
+        video_list = videos_by_category.get(category_name, [])
+        if not video_list:
+            continue
 
-  for c_name in category_names:
-    encoded_cat = urllib.parse.quote(c_name)
-    sitemap_lines.extend([
+        safe_hash = hashlib.md5(
+            category_name.encode("utf-8")
+        ).hexdigest()[:10]
+
+        if len(video_list) > CHUNK_SIZE:
+            chunk_files = []
+
+            for start in range(0, len(video_list), CHUNK_SIZE):
+                chunk = video_list[start:start + CHUNK_SIZE]
+                chunk_number = start // CHUNK_SIZE + 1
+                chunk_file = (
+                    f"cat_{safe_hash}_part{chunk_number}.json"
+                )
+
+                write_json(
+                    os.path.join("data", chunk_file),
+                    chunk,
+                    indent=2,
+                )
+                chunk_files.append(chunk_file)
+
+                # 将本分片中的影片 ID 映射到分片文件。
+                for video in chunk:
+                    video_id = video.get("id")
+                    if video_id is not None:
+                        video_index[str(video_id)] = chunk_file
+
+            category_index.append({
+                "name": category_name,
+                "count": len(video_list),
+                "files": chunk_files,
+            })
+
+        else:
+            file_name = f"cat_{safe_hash}.json"
+            write_json(
+                os.path.join("data", file_name),
+                video_list,
+                indent=2,
+            )
+
+            for video in video_list:
+                video_id = video.get("id")
+                if video_id is not None:
+                    video_index[str(video_id)] = file_name
+
+            category_index.append({
+                "name": category_name,
+                "count": len(video_list),
+                "file": file_name,
+            })
+
+    write_json(
+        os.path.join("data", "categories.json"),
+        category_index,
+        indent=2,
+    )
+    write_json(
+        os.path.join("data", "video_index.json"),
+        video_index,
+    )
+    print(f"✅ 已生成 video_index.json：{len(video_index)} 条映射")
+
+    # 全局搜索索引只保留列表展示和搜索需要的字段。
+    search_index = [
+        {
+            "id": video.get("id"),
+            "title": video.get("title"),
+            "category": video.get("category"),
+            "actor": video.get("actor"),
+            "year": video.get("year"),
+            "pic": video.get("pic"),
+        }
+        for video in all_videos
+    ]
+    write_json(
+        os.path.join("data", "search_index.json"),
+        search_index,
+    )
+
+    # 生成 sitemap.xml。
+    print("3. 生成 sitemap.xml...")
+    domain = "https://xpsesei.github.io/ransao"
+
+    sitemap_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
         "  <url>",
-        f"    <loc>{DOMAIN}/index.html?cat={encoded_cat}</loc>",
-        f"    <changefreq>hourly</changefreq>",
-        f"    <priority>0.8</priority>",
+        f"    <loc>{domain}/index.html</loc>",
+        "    <changefreq>always</changefreq>",
+        "    <priority>1.0</priority>",
         "  </url>",
-    ])
+    ]
 
-  for vod in processed_videos:
-    vod_id = vod.get("id")
-    vod_cat = urllib.parse.quote(vod.get("category", "未分类"))
-    sitemap_lines.extend([
-        "  <url>",
-        f"    <loc>{DOMAIN}/play.html?id={vod_id}&amp;cat={vod_cat}</loc>",
-        f"    <changefreq>daily</changefreq>",
-        f"    <priority>0.6</priority>",
-        "  </url>",
-    ])
+    for category_name in category_names:
+        encoded_category = urllib.parse.quote(category_name)
+        sitemap_lines.extend([
+            "  <url>",
+            f"    <loc>{domain}/index.html?cat={encoded_category}</loc>",
+            "    <changefreq>hourly</changefreq>",
+            "    <priority>0.8</priority>",
+            "  </url>",
+        ])
 
-  sitemap_lines.append("</urlset>")
+    for video in all_videos:
+        video_id = video.get("id")
+        if video_id is None:
+            continue
 
-  with open("sitemap.xml", "w", encoding="utf-8") as f:
-    f.write("\n".join(sitemap_lines))
-  print(f"✅ 增量同步完成，当前总库收录影视: {len(processed_videos)} 个！")
+        encoded_category = urllib.parse.quote(
+            video.get("category", "未分类")
+        )
+        sitemap_lines.extend([
+            "  <url>",
+            f"    <loc>{domain}/play.html?id={video_id}&amp;cat={encoded_category}</loc>",
+            "    <changefreq>daily</changefreq>",
+            "    <priority>0.6</priority>",
+            "  </url>",
+        ])
+
+    sitemap_lines.append("</urlset>")
+
+    with open("sitemap.xml", "w", encoding="utf-8") as file:
+        file.write("\n".join(sitemap_lines))
+
+    print(f"✅ 更新完成，当前影视总数：{len(all_videos)}")
 
 
 if __name__ == "__main__":
-  main()
+    main()
