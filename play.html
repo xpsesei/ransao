@@ -7,6 +7,11 @@
     <meta id="page-desc" name="description" content="云端影院提供免费高清影视在线观看与全集选集。">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between" x-data="playApp()">
 
@@ -14,101 +19,160 @@
     <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
             <div class="flex items-center space-x-3 shrink-0">
-                <a href="index.html" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</a>
+                <a href="index.html" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+                    🎬 云端影院
+                </a>
             </div>
-            <!-- 全局搜索框 -->
+
             <div class="w-full max-w-md relative">
-                <input type="text" x-model="searchKeyword" @keyup.enter="doSearch()" placeholder="全网全局搜索（片名、演员）..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500 text-slate-100">
+                <input
+                    type="text"
+                    x-model="searchKeyword"
+                    @keyup.enter="doSearch()"
+                    placeholder="全网全局搜索（片名、演员）..."
+                    class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500 text-slate-100">
             </div>
         </div>
-        <!-- 分类导航条 -->
+
+        <!-- 分类导航 -->
         <div class="max-w-7xl mx-auto px-4 py-2 flex items-center space-x-2 overflow-x-auto border-t border-slate-800/60 scrollbar-none">
-            <a href="index.html" class="px-3 py-1 bg-slate-800 text-slate-300 hover:bg-slate-700 rounded-xl text-xs whitespace-nowrap transition">首页</a>
+            <a href="index.html" class="px-3 py-1 bg-slate-800 text-slate-300 hover:bg-slate-700 rounded-xl text-xs whitespace-nowrap transition">
+                首页
+            </a>
             <template x-for="cat in categories" :key="cat.name">
-                <button @click="selectCategory(cat)" 
-                        class="px-3 py-1 bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-white rounded-xl text-xs whitespace-nowrap transition"
-                        x-text="cat.name">
+                <button
+                    @click="selectCategory(cat)"
+                    class="px-3 py-1 bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-white rounded-xl text-xs whitespace-nowrap transition"
+                    x-text="cat.name">
                 </button>
             </template>
         </div>
     </header>
-   <center>
-        <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
-        <ins class="eas6a97888e20" data-zoneid="6080530"></ins> 
+
+    <!-- 广告 -->
+    <center>
+        <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+        <ins class="eas6a97888e20" data-zoneid="6080530"></ins>
         <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-   </center>
+    </center>
+
     <!-- 主体播放区域 -->
     <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full space-y-4">
-        
-        <!-- 视频标题 -->
+
+        <!-- 视频信息 -->
         <div>
-            <h1 class="text-xl md:text-2xl font-bold text-slate-100" x-text="vod?.title || '正在加载影视数据...'"></h1>
-            <p class="text-xs text-slate-400 mt-1" x-text="'类型：' + (vod?.category || '') + ' | 年份：' + (vod?.year || '') + ' | 地区：' + (vod?.area || '') + ' | 主演：' + (vod?.actor || '')"></p>
+            <h1
+                class="text-xl md:text-2xl font-bold text-slate-100"
+                x-text="vod?.title || (isLoading ? '正在加载影视数据...' : '影片信息')">
+            </h1>
+
+            <p
+                x-show="vod"
+                class="text-xs text-slate-400 mt-1"
+                x-text="'类型：' + (vod?.category || '') + ' | 年份：' + (vod?.year || '') + ' | 地区：' + (vod?.area || '') + ' | 主演：' + (vod?.actor || '')">
+            </p>
+
+            <p
+                x-show="loadError"
+                x-text="loadError"
+                class="text-sm text-red-400 mt-3"
+                role="alert">
+            </p>
         </div>
 
-        <!-- 📺 核心播放器容器（内嵌超微型半透明悬浮控制条） -->
+        <!-- 播放器 -->
         <div id="player-container" class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative group">
-            
-            <!-- iframe 播放器 -->
-            <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" allow="fullscreen"></iframe>
+            <iframe
+                :src="currentPlayUrl"
+                class="w-full h-full border-0"
+                allowfullscreen="true"
+                webkitallowfullscreen="true"
+                mozallowfullscreen="true"
+                allow="fullscreen">
+            </iframe>
 
-            <!-- 🎯 超小、半透明毛玻璃浮动控制条（新增全屏按钮，确保全屏时按钮和抽屉可见） -->
+            <!-- 播放控制条 -->
             <div class="absolute bottom-2 inset-x-0 flex justify-center items-center z-10 opacity-40 group-hover:opacity-100 transition-opacity pointer-events-none">
                 <div class="flex items-center space-x-1 bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/10 shadow-lg pointer-events-auto text-[9px]">
-                    <button @click="playPrev()" :disabled="currentIndex === 0" 
-                            class="px-1.5 py-0 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded text-white transition">
+                    <button
+                        @click="playPrev()"
+                        :disabled="currentIndex === 0"
+                        class="px-1.5 py-0 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded text-white transition">
                         ◀
                     </button>
-                    
-                    <button @click="isDrawerOpen = !isDrawerOpen" 
-                            class="px-2 py-0 bg-white/10 hover:bg-white/20 rounded text-blue-300 transition">
+
+                    <button
+                        @click="isDrawerOpen = !isDrawerOpen"
+                        :disabled="!vod?.episodes?.length"
+                        class="px-2 py-0 bg-white/10 hover:bg-white/20 disabled:opacity-30 rounded text-blue-300 transition">
                         选集 <span x-text="(currentIndex + 1) + '/' + (vod?.episodes?.length || 0)"></span>
                     </button>
 
-                    <button @click="playNext()" :disabled="!vod?.episodes || currentIndex >= vod.episodes.length - 1" 
-                            class="px-1.5 py-0 bg-blue-600/60 hover:bg-blue-600 disabled:opacity-30 disabled:cursor-not-allowed rounded text-white transition">
+                    <button
+                        @click="playNext()"
+                        :disabled="!vod?.episodes || currentIndex >= vod.episodes.length - 1"
+                        class="px-1.5 py-0 bg-blue-600/60 hover:bg-blue-600 disabled:opacity-30 disabled:cursor-not-allowed rounded text-white transition">
                         ▶
                     </button>
 
-                    <!-- 新增：容器全屏切换按钮 -->
-                    <button @click="toggleFullscreen()" 
-                            class="px-1.5 py-0 bg-white/10 hover:bg-white/20 rounded text-amber-300 transition" title="网页全屏">
+                    <button
+                        @click="toggleFullscreen()"
+                        class="px-1.5 py-0 bg-white/10 hover:bg-white/20 rounded text-amber-300 transition"
+                        title="网页全屏">
                         ⛶
                     </button>
                 </div>
             </div>
 
-            <!-- 📂 悬浮选集抽屉面板（点击选集后从右侧滑出） -->
-            <div x-show="isDrawerOpen" @click.outside="isDrawerOpen = false" x-cloak 
-                 class="absolute inset-y-0 right-0 w-72 bg-slate-950/95 backdrop-blur-md border-l border-slate-800 p-4 flex flex-col shadow-2xl transition transform z-20">
+            <!-- 选集抽屉 -->
+            <div
+                x-show="isDrawerOpen"
+                @click.outside="isDrawerOpen = false"
+                x-cloak
+                class="absolute inset-y-0 right-0 w-72 bg-slate-950/95 backdrop-blur-md border-l border-slate-800 p-4 flex flex-col shadow-2xl transition transform z-20">
                 <div class="flex justify-between items-center pb-3 border-b border-slate-800">
                     <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider">全集选单</h4>
-                    <button @click="isDrawerOpen = false" class="text-slate-400 hover:text-white font-bold text-base">&times;</button>
+                    <button
+                        @click="isDrawerOpen = false"
+                        class="text-slate-400 hover:text-white font-bold text-base">
+                        &times;
+                    </button>
                 </div>
+
                 <div class="flex-grow overflow-y-auto py-3 space-y-1.5 pr-1">
                     <template x-for="(ep, index) in vod?.episodes" :key="index">
-                        <button @click="playEpisode(ep.url, index); isDrawerOpen = false;"
-                                :class="currentIndex === index ? 'bg-blue-600 text-white font-bold shadow' : 'bg-slate-800/60 text-slate-300 hover:bg-slate-800'"
-                                class="w-full text-left px-3 py-2 rounded-xl text-xs transition truncate"
-                                x-text="ep.name">
+                        <button
+                            @click="playEpisode(ep.url, index); isDrawerOpen = false;"
+                            :class="currentIndex === index
+                                ? 'bg-blue-600 text-white font-bold shadow'
+                                : 'bg-slate-800/60 text-slate-300 hover:bg-slate-800'"
+                            class="w-full text-left px-3 py-2 rounded-xl text-xs transition truncate"
+                            x-text="ep.name">
                         </button>
                     </template>
                 </div>
             </div>
         </div>
 
-        <!-- 📺 页面下方的完整选集网格 -->
+        <!-- 全部选集 -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
             <div class="flex justify-between items-center">
                 <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">全部选集</h4>
-                <span class="text-xs text-slate-500" x-text="'当前播放：第 ' + (currentIndex + 1) + ' 集'"></span>
+                <span
+                    class="text-xs text-slate-500"
+                    x-text="'当前播放：第 ' + (currentIndex + 1) + ' 集'">
+                </span>
             </div>
+
             <div class="flex flex-wrap gap-2 max-h-56 overflow-y-auto pr-1">
                 <template x-for="(ep, index) in vod?.episodes" :key="index">
-                    <button @click="playEpisode(ep.url, index)"
-                            :class="currentIndex === index ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
-                            class="px-3.5 py-2 rounded-xl text-xs transition"
-                            x-text="ep.name">
+                    <button
+                        @click="playEpisode(ep.url, index)"
+                        :class="currentIndex === index
+                            ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold'
+                            : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
+                        class="px-3.5 py-2 rounded-xl text-xs transition"
+                        x-text="ep.name">
                     </button>
                 </template>
             </div>
@@ -119,7 +183,6 @@
             <h4 class="font-bold text-slate-200">剧情介绍</h4>
             <p class="leading-relaxed" x-text="vod?.content || '暂无简介'"></p>
         </div>
-
     </main>
 
     <!-- 页脚 -->
@@ -137,71 +200,149 @@
                 selectedEpUrl: '',
                 currentIndex: 0,
                 isDrawerOpen: false,
+                isLoading: true,
+                loadError: '',
 
-                init() {
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const vodId = urlParams.get('id');
-                    const targetCategoryName = urlParams.get('cat');
+                async init() {
+                    const params = new URLSearchParams(window.location.search);
+                    const videoId = params.get('id');
 
-                    fetch('./data/categories.json')
-                        .then(res => res.json())
-                        .then(data => { 
-                            this.categories = data || [];
-                            
-                            let targetCat = null;
-                            if (targetCategoryName) {
-                                targetCat = this.categories.find(c => c.name === targetCategoryName);
+                    if (!videoId) {
+                        this.isLoading = false;
+                        this.loadError = '链接中缺少影片 ID。';
+                        return;
+                    }
+
+                    try {
+                        // 分类导航与视频索引并行请求。
+                        const [categoriesResult, indexResult] = await Promise.allSettled([
+                            fetch('./data/categories.json'),
+                            fetch('./data/video_index.json')
+                        ]);
+
+                        if (categoriesResult.status === 'fulfilled') {
+                            const response = categoriesResult.value;
+                            if (response.ok) {
+                                const data = await response.json();
+                                this.categories = Array.isArray(data) ? data : [];
                             }
-                            if (!targetCat && this.categories.length > 0) {
-                                targetCat = this.categories[0];
-                            }
+                        }
 
-                            if (targetCat) {
-                                const loadFiles = targetCat.file ? [targetCat.file] : targetCat.files;
-                                Promise.all(loadFiles.map(f => fetch('./data/' + f).then(res => res.json()).catch(e => [])))
-                                    .then(results => {
-                                        const fullList = results.flat();
-                                        const foundVod = fullList.find(v => v.id == vodId) || fullList[0];
-                                        if (foundVod) {
-                                            this.vod = foundVod;
-                                            document.getElementById('page-title').innerText = `${foundVod.title} 免费在线观看 - 云端影院`;
-                                            if (foundVod.content) {
-                                                document.getElementById('page-desc').setAttribute('content', foundVod.content.substring(0, 120));
-                                            }
+                        if (
+                            indexResult.status !== 'fulfilled' ||
+                            !indexResult.value.ok
+                        ) {
+                            throw new Error(
+                                '视频索引不存在或暂时无法访问。请先运行一次 Auto Update Video Data 工作流。'
+                            );
+                        }
 
-                                            if (this.vod.episodes && this.vod.episodes.length > 0) {
-                                                this.playEpisode(this.vod.episodes[0].url, 0);
-                                            }
-                                        }
-                                    });
-                            }
-                        })
-                        .catch(err => console.log('Failed to load categories'));
+                        const indexData = await indexResult.value.json();
+                        const fileName =
+                            indexData && !Array.isArray(indexData)
+                                ? indexData[String(videoId)]
+                                : null;
+
+                        if (typeof fileName !== 'string' || !fileName) {
+                            throw new Error(
+                                '索引中没有找到这部影片，请确认数据更新工作流已成功完成。'
+                            );
+                        }
+
+                        // 索引只允许指向 data 目录中的 JSON 文件名。
+                        if (
+                            fileName.includes('/') ||
+                            fileName.includes('\\') ||
+                            fileName.includes('..') ||
+                            !fileName.endsWith('.json')
+                        ) {
+                            throw new Error('视频索引中的文件名无效。');
+                        }
+
+                        // 只加载包含当前影片的一个分片。
+                        const videoResponse = await fetch(
+                            './data/' + encodeURIComponent(fileName)
+                        );
+
+                        if (!videoResponse.ok) {
+                            throw new Error(`影片数据文件加载失败：${fileName}`);
+                        }
+
+                        const data = await videoResponse.json();
+                        const videos = Array.isArray(data) ? data : [];
+                        const video = videos.find(
+                            item => String(item.id) === String(videoId)
+                        );
+
+                        if (!video) {
+                            throw new Error(
+                                '对应分片中未找到这部影片，请重新运行数据更新工作流。'
+                            );
+                        }
+
+                        this.setVideo(video);
+                    } catch (error) {
+                        console.error('影片加载失败：', error);
+                        this.loadError = error.message || '影片加载失败，请稍后重试。';
+                    } finally {
+                        this.isLoading = false;
+                    }
+                },
+
+                setVideo(video) {
+                    this.vod = video;
+
+                    document.getElementById('page-title').innerText =
+                        `${video.title || '影片'} 免费在线观看 - 云端影院`;
+
+                    if (video.content) {
+                        document
+                            .getElementById('page-desc')
+                            .setAttribute('content', video.content.substring(0, 120));
+                    }
+
+                    if (
+                        Array.isArray(video.episodes) &&
+                        video.episodes.length > 0
+                    ) {
+                        this.playEpisode(video.episodes[0].url, 0);
+                    }
                 },
 
                 playEpisode(url, index) {
+                    if (!url) return;
+
                     this.selectedEpUrl = url;
                     this.currentIndex = index;
-                    this.currentPlayUrl = `https://jx.xllmcms.com/dplayer/?url=${encodeURIComponent(url)}`;
+                    this.currentPlayUrl =
+                        `https://jx.xllmcms.com/dplayer/?url=${encodeURIComponent(url)}`;
                 },
 
                 playPrev() {
-                    if (this.vod && this.vod.episodes && this.currentIndex > 0) {
-                        const targetIndex = this.currentIndex - 1;
-                        this.playEpisode(this.vod.episodes[targetIndex].url, targetIndex);
+                    if (
+                        this.vod &&
+                        Array.isArray(this.vod.episodes) &&
+                        this.currentIndex > 0
+                    ) {
+                        const index = this.currentIndex - 1;
+                        this.playEpisode(this.vod.episodes[index].url, index);
                     }
                 },
 
                 playNext() {
-                    if (this.vod && this.vod.episodes && this.currentIndex < this.vod.episodes.length - 1) {
-                        const targetIndex = this.currentIndex + 1;
-                        this.playEpisode(this.vod.episodes[targetIndex].url, targetIndex);
+                    if (
+                        this.vod &&
+                        Array.isArray(this.vod.episodes) &&
+                        this.currentIndex < this.vod.episodes.length - 1
+                    ) {
+                        const index = this.currentIndex + 1;
+                        this.playEpisode(this.vod.episodes[index].url, index);
                     }
                 },
 
-                // 切换播放器容器全屏状态
                 toggleFullscreen() {
                     const container = document.getElementById('player-container');
+
                     if (!document.fullscreenElement) {
                         if (container.requestFullscreen) {
                             container.requestFullscreen();
@@ -210,30 +351,32 @@
                         } else if (container.msRequestFullscreen) {
                             container.msRequestFullscreen();
                         }
-                    } else {
-                        if (document.exitFullscreen) {
-                            document.exitFullscreen();
-                        } else if (document.webkitExitFullscreen) {
-                            document.webkitExitFullscreen();
-                        } else if (document.msExitFullscreen) {
-                            document.msExitFullscreen();
-                        }
+                    } else if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
                     }
                 },
 
-                selectCategory(cat) {
-                    window.location.href = `index.html?cat=${encodeURIComponent(cat.name)}`;
+                selectCategory(category) {
+                    window.location.href =
+                        `index.html?cat=${encodeURIComponent(category.name)}`;
                 },
 
                 doSearch() {
-                    if (this.searchKeyword.trim()) {
-                        window.location.href = `index.html?q=${encodeURIComponent(this.searchKeyword.trim())}`;
+                    const keyword = this.searchKeyword.trim();
+                    if (keyword) {
+                        window.location.href =
+                            `index.html?q=${encodeURIComponent(keyword)}`;
                     }
                 }
-            }
+            };
         }
     </script>
+
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-<script>LA.init({id:"3Rk7hoBBRRomuRiH",ck:"3Rk7hoBBRRomuRiH"})</script>
+    <script>LA.init({id:"3Rk7hoBBRRomuRiH",ck:"3Rk7hoBBRRomuRiH"})</script>
 </body>
 </html>
