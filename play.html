@@ -11,77 +11,8 @@
         [x-cloak] {
             display: none !important;
         }
-
-        /* 全屏时播放器、控制栏、选集列表共同占据全屏容器 */
-        #player-shell:fullscreen {
-            width: 100vw;
-            height: 100vh;
-            max-width: none;
-            margin: 0;
-            padding: 12px;
-            box-sizing: border-box;
-            border: 0;
-            border-radius: 0;
-            background: #020617;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            overflow: hidden;
-        }
-
-        #player-shell:-webkit-full-screen {
-            width: 100vw;
-            height: 100vh;
-            max-width: none;
-            margin: 0;
-            padding: 12px;
-            box-sizing: border-box;
-            border: 0;
-            border-radius: 0;
-            background: #020617;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            overflow: hidden;
-        }
-
-        #player-shell:fullscreen #player-container,
-        #player-shell:-webkit-full-screen #player-container {
-            flex: 1 1 auto;
-            width: 100%;
-            height: auto;
-            min-height: 0;
-            aspect-ratio: auto;
-        }
-
-        #player-shell:fullscreen #player-controls,
-        #player-shell:-webkit-full-screen #player-controls {
-            flex: 0 0 auto;
-        }
-
-        #player-shell:fullscreen #episode-panel,
-        #player-shell:-webkit-full-screen #episode-panel {
-            flex: 0 1 30vh;
-            min-height: 0;
-            overflow: hidden;
-        }
-
-        #player-shell:fullscreen #episode-list,
-        #player-shell:-webkit-full-screen #episode-list {
-            max-height: 22vh;
-            overflow-y: auto;
-        }
-
-        @media (max-width: 640px) {
-            #player-shell:fullscreen,
-            #player-shell:-webkit-full-screen {
-                padding: 8px;
-                gap: 8px;
-            }
-        }
     </style>
 </head>
-
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between" x-data="playApp()">
 
     <!-- 顶部导航栏与搜索 -->
@@ -149,125 +80,103 @@
             </p>
         </div>
 
-        <!-- 全屏容器：播放器与外部控制栏一起进入全屏 -->
-        <section
-            id="player-shell"
-            class="w-full space-y-3"
-            aria-label="视频播放器和播放控制">
+        <!-- 播放器 -->
+        <div id="player-container" class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative group">
+            <iframe
+                :src="currentPlayUrl"
+                class="w-full h-full border-0"
+                allowfullscreen="true"
+                webkitallowfullscreen="true"
+                mozallowfullscreen="true"
+                allow="fullscreen">
+            </iframe>
 
-            <!-- 播放器：控制按钮不覆盖此区域 -->
-            <div
-                id="player-container"
-                class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
-                <iframe
-                    :src="currentPlayUrl"
-                    class="w-full h-full border-0"
-                    allowfullscreen="true"
-                    webkitallowfullscreen="true"
-                    mozallowfullscreen="true"
-                    allow="fullscreen">
-                </iframe>
-            </div>
-
-            <!-- 控制栏：在 iframe 外部，不遮挡播放器功能和进度条 -->
-            <div
-                id="player-controls"
-                class="bg-slate-900/95 border border-slate-800 rounded-2xl p-3 sm:p-4">
-                <div class="flex items-center justify-between gap-2 sm:gap-4">
-
+            <!-- 播放控制条 -->
+            <div class="absolute bottom-2 inset-x-0 flex justify-center items-center z-10 opacity-40 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <div class="flex items-center space-x-1 bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/10 shadow-lg pointer-events-auto text-[9px]">
                     <button
                         @click="playPrev()"
-                        :disabled="!vod?.episodes?.length || currentIndex <= 0"
-                        class="min-h-11 px-3 sm:px-5 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center gap-2"
-                        aria-label="播放上一集"
-                        title="上一集">
-                        <span class="text-lg" aria-hidden="true">⏮</span>
-                        <span class="text-sm whitespace-nowrap">上一集</span>
+                        :disabled="currentIndex === 0"
+                        class="px-1.5 py-0 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded text-white transition">
+                        ◀
                     </button>
-
-                    <div class="min-w-0 flex-1 text-center">
-                        <p class="text-xs text-slate-500">正在播放</p>
-                        <p
-                            class="text-sm text-slate-200 font-medium truncate"
-                            x-text="vod?.episodes?.[currentIndex]?.name || '暂无播放集数'">
-                        </p>
-                        <p
-                            class="text-xs text-slate-500 mt-0.5"
-                            x-text="vod?.episodes?.length ? `${currentIndex + 1} / ${vod.episodes.length} 集` : '暂无选集'">
-                        </p>
-                    </div>
 
                     <button
                         @click="isDrawerOpen = !isDrawerOpen"
                         :disabled="!vod?.episodes?.length"
-                        :aria-expanded="isDrawerOpen.toString()"
-                        class="min-h-11 px-3 sm:px-5 rounded-xl bg-blue-600 text-white hover:bg-blue-500 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center gap-2"
-                        aria-label="打开或收起选集列表"
-                        title="选集">
-                        <span class="text-lg" aria-hidden="true">☷</span>
-                        <span class="text-sm whitespace-nowrap" x-text="isDrawerOpen ? '收起选集' : '选集'"></span>
+                        class="px-2 py-0 bg-white/10 hover:bg-white/20 disabled:opacity-30 rounded text-blue-300 transition">
+                        选集 <span x-text="(currentIndex + 1) + '/' + (vod?.episodes?.length || 0)"></span>
                     </button>
 
                     <button
                         @click="playNext()"
-                        :disabled="!vod?.episodes?.length || currentIndex >= vod.episodes.length - 1"
-                        class="min-h-11 px-3 sm:px-5 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center gap-2"
-                        aria-label="播放下一集"
-                        title="下一集">
-                        <span class="text-sm whitespace-nowrap">下一集</span>
-                        <span class="text-lg" aria-hidden="true">⏭</span>
+                        :disabled="!vod?.episodes || currentIndex >= vod.episodes.length - 1"
+                        class="px-1.5 py-0 bg-blue-600/60 hover:bg-blue-600 disabled:opacity-30 disabled:cursor-not-allowed rounded text-white transition">
+                        ▶
                     </button>
 
                     <button
                         @click="toggleFullscreen()"
-                        class="min-h-11 w-11 sm:w-auto sm:px-4 rounded-xl bg-slate-800 text-amber-300 hover:bg-slate-700 transition flex items-center justify-center gap-2"
-                        :aria-label="isFullscreen ? '退出全屏' : '进入全屏'"
-                        :title="isFullscreen ? '退出全屏' : '进入全屏'">
-                        <span class="text-lg" aria-hidden="true" x-text="isFullscreen ? '⛶' : '⛶'"></span>
-                        <span
-                            class="hidden sm:inline text-sm whitespace-nowrap"
-                            x-text="isFullscreen ? '退出全屏' : '全屏'">
-                        </span>
+                        class="px-1.5 py-0 bg-white/10 hover:bg-white/20 rounded text-amber-300 transition"
+                        title="网页全屏">
+                        ⛶
                     </button>
                 </div>
             </div>
 
-            <!-- 选集面板：在播放器外部正常排版，不覆盖画面 -->
+            <!-- 选集抽屉 -->
             <div
-                id="episode-panel"
                 x-show="isDrawerOpen"
+                @click.outside="isDrawerOpen = false"
                 x-cloak
-                class="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5">
-                <div class="flex justify-between items-center gap-3 mb-3">
-                    <div>
-                        <h4 class="text-sm font-bold text-slate-200">选择剧集</h4>
-                        <p class="text-xs text-slate-500 mt-1">点击集数即可切换播放</p>
-                    </div>
+                class="absolute inset-y-0 right-0 w-72 bg-slate-950/95 backdrop-blur-md border-l border-slate-800 p-4 flex flex-col shadow-2xl transition transform z-20">
+                <div class="flex justify-between items-center pb-3 border-b border-slate-800">
+                    <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider">全集选单</h4>
                     <button
                         @click="isDrawerOpen = false"
-                        class="min-h-10 px-3 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition"
-                        aria-label="收起选集列表">
-                        收起
+                        class="text-slate-400 hover:text-white font-bold text-base">
+                        &times;
                     </button>
                 </div>
 
-                <div
-                    id="episode-list"
-                    class="flex flex-wrap gap-2 max-h-56 overflow-y-auto pr-1">
+                <div class="flex-grow overflow-y-auto py-3 space-y-1.5 pr-1">
                     <template x-for="(ep, index) in vod?.episodes" :key="index">
                         <button
                             @click="playEpisode(ep.url, index); isDrawerOpen = false;"
-                            :aria-current="currentIndex === index ? 'true' : 'false'"
                             :class="currentIndex === index
-                                ? 'bg-blue-600 text-white font-bold ring-2 ring-blue-400/40'
-                                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
-                            class="min-h-10 px-4 rounded-lg text-sm transition"
-                            x-text="ep.name || `第 ${index + 1} 集`">
+                                ? 'bg-blue-600 text-white font-bold shadow'
+                                : 'bg-slate-800/60 text-slate-300 hover:bg-slate-800'"
+                            class="w-full text-left px-3 py-2 rounded-xl text-xs transition truncate"
+                            x-text="ep.name">
                         </button>
                     </template>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- 全部选集 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
+            <div class="flex justify-between items-center">
+                <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">全部选集</h4>
+                <span
+                    class="text-xs text-slate-500"
+                    x-text="'当前播放：第 ' + (currentIndex + 1) + ' 集'">
+                </span>
+            </div>
+
+            <div class="flex flex-wrap gap-2 max-h-56 overflow-y-auto pr-1">
+                <template x-for="(ep, index) in vod?.episodes" :key="index">
+                    <button
+                        @click="playEpisode(ep.url, index)"
+                        :class="currentIndex === index
+                            ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold'
+                            : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
+                        class="px-3.5 py-2 rounded-xl text-xs transition"
+                        x-text="ep.name">
+                    </button>
+                </template>
+            </div>
+        </div>
 
         <!-- 剧情简介 -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 text-sm text-slate-400 space-y-2">
@@ -292,7 +201,6 @@
                 isDrawerOpen: false,
                 isLoading: true,
                 loadError: '',
-                isFullscreen: false,
 
                 async fetchJson(url, label) {
                     const response = await fetch(url, { cache: 'no-cache' });
@@ -310,18 +218,6 @@
                     const params = new URLSearchParams(window.location.search);
                     const videoId = params.get('id');
 
-                    document.addEventListener('fullscreenchange', () => {
-                        this.isFullscreen =
-                            document.fullscreenElement ===
-                            document.getElementById('player-shell');
-                    });
-
-                    document.addEventListener('webkitfullscreenchange', () => {
-                        this.isFullscreen =
-                            document.webkitFullscreenElement ===
-                            document.getElementById('player-shell');
-                    });
-
                     if (!videoId) {
                         this.isLoading = false;
                         this.loadError = '链接中缺少影片 ID。';
@@ -329,7 +225,7 @@
                     }
 
                     try {
-                        // 分类导航加载失败时，仍继续加载影片。
+                        // 分类导航不是播放必需数据；即使分类文件加载失败，也继续尝试播放。
                         const categoriesPromise = this.fetchJson(
                             './data/categories.json',
                             '分类列表'
@@ -339,7 +235,7 @@
                             console.warn('分类列表加载失败：', error);
                         });
 
-                        // 兼容当前数据结构：影片 ID -> cat_*.json 分片文件名。
+                        // 兼容当前仓库结构：影片 ID -> cat_*.json 分片文件名。
                         const indexData = await this.fetchJson(
                             './data/video_index.json',
                             '视频索引'
@@ -358,11 +254,12 @@
                             );
                         }
 
+                        // 只接受 data 目录下的 JSON 文件名，不接受路径。
                         if (!/^[A-Za-z0-9_-]+\.json$/.test(fileName)) {
                             throw new Error('视频索引中的分片文件名无效。');
                         }
 
-                        // 只加载当前影片所在的分片。
+                        // 只下载包含当前影片的一个分片。
                         const videos = await this.fetchJson(
                             './data/' + encodeURIComponent(fileName),
                             '影片数据'
@@ -378,7 +275,7 @@
 
                         if (!video) {
                             throw new Error(
-                                `分片 ${fileName} 中没有找到 ID 为 ${videoId} 的影片。`
+                                `分片 ${fileName} 中没有找到 ID 为 ${videoId} 的影片。请重新检查数据更新结果。`
                             );
                         }
 
@@ -386,8 +283,7 @@
                         this.setVideo(video);
                     } catch (error) {
                         console.error('影片加载失败：', error);
-                        this.loadError =
-                            error.message || '影片加载失败，请稍后重试。';
+                        this.loadError = error.message || '影片加载失败，请稍后重试。';
                     } finally {
                         this.isLoading = false;
                     }
@@ -396,16 +292,20 @@
                 cleanDescription(value) {
                     if (!value) return '';
 
+                    // 先把常见段落标签转换为空格，再移除其余 HTML 标签。
                     const plainText = String(value)
                         .replace(/<br\s*\/?>/gi, ' ')
                         .replace(/<\/p\s*>/gi, ' ')
                         .replace(/<p\b[^>]*>/gi, ' ')
                         .replace(/<[^>]*>/g, ' ');
 
+                    // 通过 DOM 文本节点解码 HTML 实体，不把内容作为 HTML 插入页面。
                     const decoder = document.createElement('textarea');
                     decoder.innerHTML = plainText;
 
-                    return decoder.value.replace(/\s+/g, ' ').trim();
+                    return decoder.value
+                        .replace(/\s+/g, ' ')
+                        .trim();
                 },
 
                 setVideo(video) {
@@ -438,11 +338,9 @@
                     try {
                         const parsedUrl = new URL(url.trim());
 
-                        if (
-                            parsedUrl.protocol !== 'http:' &&
-                            parsedUrl.protocol !== 'https:'
-                        ) {
-                            console.warn('不支持的播放地址协议：', parsedUrl.protocol);
+                        // 仅允许常见的视频地址协议。
+                        if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
+                            console.warn('跳过不支持的播放地址协议：', parsedUrl.protocol);
                             return;
                         }
 
@@ -471,34 +369,23 @@
                     }
                 },
 
-                async toggleFullscreen() {
-                    const shell = document.getElementById('player-shell');
+                toggleFullscreen() {
+                    const container = document.getElementById('player-container');
 
-                    try {
-                        const fullscreenElement =
-                            document.fullscreenElement ||
-                            document.webkitFullscreenElement;
-
-                        if (fullscreenElement === shell) {
-                            if (document.exitFullscreen) {
-                                await document.exitFullscreen();
-                            } else if (document.webkitExitFullscreen) {
-                                document.webkitExitFullscreen();
-                            }
-                            return;
+                    if (!document.fullscreenElement) {
+                        if (container.requestFullscreen) {
+                            container.requestFullscreen();
+                        } else if (container.webkitRequestFullscreen) {
+                            container.webkitRequestFullscreen();
+                        } else if (container.msRequestFullscreen) {
+                            container.msRequestFullscreen();
                         }
-
-                        // 让播放器和控制栏作为同一个整体进入全屏。
-                        if (shell.requestFullscreen) {
-                            await shell.requestFullscreen();
-                        } else if (shell.webkitRequestFullscreen) {
-                            shell.webkitRequestFullscreen();
-                        } else {
-                            this.loadError = '当前浏览器不支持网页全屏。';
-                        }
-                    } catch (error) {
-                        console.error('切换全屏失败：', error);
-                        this.loadError = '无法进入全屏，请使用浏览器支持的全屏功能。';
+                    } else if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
                     }
                 },
 
