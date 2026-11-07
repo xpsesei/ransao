@@ -2,8 +2,12 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">正在加载 - 云端影院</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title id="page-title">
+        正在加载 - 云端影院
+    </title>
 
     <meta
         id="page-desc"
@@ -11,14 +15,93 @@
         content="云端影院提供免费高清影视在线观看与全集选集。">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script defer
+        src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js">
+    </script>
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body
     class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between"
     x-data="playApp()">
 
-    <!-- 页面内容 -->
+    <header
+        class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
 
-</body>
-</html>
+        <div
+            class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+
+            <a
+                href="index.html"
+                class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+
+                🎬 云端影院
+            </a>
+
+            <input
+                type="text"
+                x-model="searchKeyword"
+                @keyup.enter="doSearch()"
+                placeholder="搜索影片..."
+                class="w-full max-w-md bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm">
+        </div>
+    </header>
+
+    <main
+        class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full space-y-4">
+
+        <!-- 播放器 -->
+
+        <div
+            id="player-container"
+            class="w-full bg-black aspect-video rounded-2xl overflow-hidden">
+
+            <iframe
+                :src="currentPlayUrl"
+                class="w-full h-full border-0"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- 剧情介绍 -->
+
+        <div
+            class="bg-slate-900 border border-slate-800 rounded-2xl p-5 text-sm text-slate-400">
+
+            <h4 class="font-bold text-slate-200 mb-2">
+                剧情介绍
+            </h4>
+
+            <p
+                class="leading-relaxed whitespace-pre-line"
+                x-text="vod?.content || '暂无简介'">
+            </p>
+        </div>
+
+    </main>
+
+    <script>
+        function playApp() {
+            return {
+                vod: null,
+                currentPlayUrl: '',
+
+                async init() {
+                    const params =
+                        new URLSearchParams(location.search);
+
+                    const videoId =
+                        params.get('id');
+
+                    try {
+                        const indexData =
+                            await fetch('./data/video_index.json')
+                                .then(r => r.json());
+
+                        const file
