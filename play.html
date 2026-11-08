@@ -7,88 +7,101 @@
     <meta id="page-desc" name="description" content="云端影院提供免费高清影视在线观看与全集选集。">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between" x-data="playApp()">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white" x-data="playApp()">
 
-    <!-- 顶部导航栏与搜索 -->
-    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
-            <div class="flex items-center space-x-3 shrink-0">
-                <a href="index.html" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">🎬 云端影院</a>
+    <!-- 顶部导航栏与搜索（全平台自适应） -->
+    <header class="sticky top-0 z-50 bg-slate-900/85 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-3">
+            <div class="flex items-center space-x-2 shrink-0">
+                <a href="index.html" class="text-xl sm:text-2xl font-black bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent">
+                    🎬 云端影院
+                </a>
             </div>
             <!-- 全局搜索框 -->
-            <div class="w-full max-w-md relative">
-                <input type="text" x-model="searchKeyword" @keyup.enter="doSearch()" placeholder="全网全局搜索（片名、演员）..." class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500 text-slate-100">
+            <div class="flex-grow max-w-xs sm:max-w-sm md:max-w-md relative">
+                <input type="text" 
+                       x-model="searchKeyword" 
+                       @keyup.enter="doSearch()" 
+                       placeholder="搜索片名、演员..." 
+                       class="w-full bg-slate-800/90 border border-slate-700/80 rounded-full px-4 py-1.5 text-xs sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-slate-100 placeholder-slate-400 transition">
             </div>
         </div>
-        <!-- 分类导航条（异步后台加载，绝不阻塞播放器） -->
-        <div class="max-w-7xl mx-auto px-4 py-2 flex items-center space-x-2 overflow-x-auto border-t border-slate-800/60 scrollbar-none">
-            <a href="index.html" class="px-3 py-1 bg-slate-800 text-slate-300 hover:bg-slate-700 rounded-xl text-xs whitespace-nowrap transition">首页</a>
+        <!-- 分类导航条（触控横向滚动） -->
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center space-x-2 overflow-x-auto border-t border-slate-800/60 no-scrollbar">
+            <a href="index.html" class="px-3 py-1 bg-slate-800 text-slate-300 hover:bg-slate-700 rounded-xl text-xs whitespace-nowrap transition shrink-0">首页</a>
             <template x-for="cat in categories" :key="cat.name">
                 <button @click="selectCategory(cat)" 
-                        class="px-3 py-1 bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-white rounded-xl text-xs whitespace-nowrap transition"
+                        class="px-3 py-1 bg-slate-900/90 text-slate-400 hover:bg-slate-800 hover:text-white rounded-xl text-xs whitespace-nowrap transition shrink-0"
                         x-text="cat.name">
                 </button>
             </template>
         </div>
     </header>
-    <center>
+
+    <!-- 广告容器 -->
+    <div class="flex justify-center my-3 overflow-hidden">
         <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
         <ins class="eas6a97888e20" data-zoneid="6080530"></ins> 
         <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-    </center>
+    </div>
+
     <!-- 主体播放区域 -->
-    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full space-y-4">
+    <main class="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-grow w-full space-y-4 sm:space-y-6">
         
-        <!-- 视频标题 -->
-        <div>
-            <h1 class="text-xl md:text-2xl font-bold text-slate-100" x-text="vod?.title || '正在从云端高速加载影视数据...'"></h1>
-            <p class="text-xs text-slate-400 mt-1" x-text="vod ? ('类型：' + (vod.category || '') + ' | 年份：' + (vod.year || '') + ' | 地区：' + (vod.area || '') + ' | 主演：' + (vod.actor || '')) : ''"></p>
+        <!-- 视频标题与详情 -->
+        <div class="space-y-1.5">
+            <h1 class="text-lg sm:text-2xl font-bold text-slate-100 tracking-tight" x-text="vod?.title || '正在从云端高速加载影视数据...'"></h1>
+            <p class="text-[11px] sm:text-xs text-slate-400 leading-relaxed" x-text="vod ? ('类型：' + (vod.category || '') + ' | 年份：' + (vod.year || '') + ' | 地区：' + (vod.area || '') + ' | 主演：' + (vod.actor || '')) : ''"></p>
         </div>
 
         <!-- 📺 核心播放器容器 -->
-        <div id="player-container" class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative group">
+        <div id="player-container" class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl relative group">
             
             <!-- iframe 播放器 -->
             <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" allow="fullscreen"></iframe>
 
-            <!-- 浮动控制条 -->
-            <div class="absolute bottom-2 inset-x-0 flex justify-center items-center z-10 opacity-40 group-hover:opacity-100 transition-opacity pointer-events-none">
-                <div class="flex items-center space-x-1 bg-black/50 backdrop-blur-xs px-2 py-0.5 rounded-full border border-white/10 shadow-lg pointer-events-auto text-[9px]">
+            <!-- 浮动控制条（针对手机端优化触控区域） -->
+            <div class="absolute bottom-2.5 inset-x-0 flex justify-center items-center z-10 opacity-50 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <div class="flex items-center space-x-1.5 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 shadow-lg pointer-events-auto text-[10px] sm:text-xs">
                     <button @click="playPrev()" :disabled="currentIndex === 0" 
-                            class="px-1.5 py-0 bg-white/10 hover:bg-white/20 disabled:opacity-35 disabled:cursor-not-allowed rounded text-white transition">
-                        ◀
+                            class="px-2 py-0.5 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-md text-white transition">
+                        ◀ 上集
                     </button>
                     
                     <button @click="isDrawerOpen = !isDrawerOpen" 
-                            class="px-2 py-0 bg-white/10 hover:bg-white/20 rounded text-blue-300 transition">
-                        选集 <span x-text="(currentIndex + 1) + '/' + (vod?.episodes?.length || 0)"></span>
+                            class="px-2.5 py-0.5 bg-blue-600/80 hover:bg-blue-600 rounded-md text-white font-medium transition shadow">
+                        选集 <span x-text="'(' + (currentIndex + 1) + '/' + (vod?.episodes?.length || 0) + ')'"></span>
                     </button>
 
                     <button @click="playNext()" :disabled="!vod?.episodes || currentIndex >= vod.episodes.length - 1" 
-                            class="px-1.5 py-0 bg-blue-600/60 hover:bg-blue-600 disabled:opacity-35 disabled:cursor-not-allowed rounded text-white transition">
-                        ▶
+                            class="px-2 py-0.5 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-md text-white transition">
+                        下集 ▶
                     </button>
 
                     <button @click="toggleFullscreen()" 
-                            class="px-1.5 py-0 bg-white/10 hover:bg-white/20 rounded text-amber-300 transition" title="网页全屏">
+                            class="px-2 py-0.5 bg-white/10 hover:bg-white/20 rounded-md text-amber-300 transition" title="全屏">
                         ⛶
                     </button>
                 </div>
             </div>
 
-            <!-- 选集抽屉面板 -->
+            <!-- 选集抽屉面板（自适应移动端宽度） -->
             <div x-show="isDrawerOpen" @click.outside="isDrawerOpen = false" x-cloak 
-                 class="absolute inset-y-0 right-0 w-72 bg-slate-950/95 backdrop-blur-md border-l border-slate-800 p-4 flex flex-col shadow-2xl transition transform z-20">
+                 class="absolute inset-y-0 right-0 w-72 sm:w-80 bg-slate-950/95 backdrop-blur-xl border-l border-slate-800 p-4 flex flex-col shadow-2xl transition transform z-20">
                 <div class="flex justify-between items-center pb-3 border-b border-slate-800">
-                    <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider">全集选单</h4>
-                    <button @click="isDrawerOpen = false" class="text-slate-400 hover:text-white font-bold text-base">&times;</button>
+                    <h4 class="text-xs sm:text-sm font-bold text-slate-200 tracking-wider">全集选单</h4>
+                    <button @click="isDrawerOpen = false" class="text-slate-400 hover:text-white font-bold text-lg px-2">&times;</button>
                 </div>
-                <div class="flex-grow overflow-y-auto py-3 space-y-1.5 pr-1">
+                <div class="flex-grow overflow-y-auto py-3 space-y-1.5 pr-1 no-scrollbar">
                     <template x-for="(ep, index) in vod?.episodes" :key="index">
                         <button @click="playEpisode(ep.url, index); isDrawerOpen = false;"
-                                :class="currentIndex === index ? 'bg-blue-600 text-white font-bold shadow' : 'bg-slate-800/60 text-slate-300 hover:bg-slate-800'"
-                                class="w-full text-left px-3 py-2 rounded-xl text-xs transition truncate"
+                                :class="currentIndex === index ? 'bg-blue-600 text-white font-bold shadow-md shadow-blue-600/30' : 'bg-slate-900 text-slate-300 hover:bg-slate-800'"
+                                class="w-full text-left px-3 py-2.5 rounded-xl text-xs transition truncate"
                                 x-text="ep.name">
                         </button>
                     </template>
@@ -96,17 +109,17 @@
             </div>
         </div>
 
-        <!-- 页面下方完整选集网格 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3" x-show="vod?.episodes?.length > 0">
+        <!-- 页面下方完整选集网格（自适应换行，支持海量剧集平滑滚动） -->
+        <div class="bg-slate-900/90 border border-slate-800/80 rounded-2xl p-4 sm:p-5 space-y-3 shadow-lg" x-show="vod?.episodes?.length > 0">
             <div class="flex justify-between items-center">
-                <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider">全部选集</h4>
+                <h4 class="text-xs sm:text-sm font-bold text-slate-300 uppercase tracking-wider">全部选集</h4>
                 <span class="text-xs text-slate-500" x-text="'当前播放：第 ' + (currentIndex + 1) + ' 集'"></span>
             </div>
-            <div class="flex flex-wrap gap-2 max-h-56 overflow-y-auto pr-1">
+            <div class="flex flex-wrap gap-2 max-h-48 sm:max-h-56 overflow-y-auto pr-1 no-scrollbar">
                 <template x-for="(ep, index) in vod?.episodes" :key="index">
                     <button @click="playEpisode(ep.url, index)"
                             :class="currentIndex === index ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30 font-bold' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
-                            class="px-3.5 py-2 rounded-xl text-xs transition"
+                            class="px-3 py-2 rounded-xl text-xs transition min-w-[3rem] text-center"
                             x-text="ep.name">
                     </button>
                 </template>
@@ -114,7 +127,7 @@
         </div>
 
         <!-- 剧情简介 -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 text-sm text-slate-400 space-y-2">
+        <div class="bg-slate-900/90 border border-slate-800/80 rounded-2xl p-4 sm:p-5 text-xs sm:text-sm text-slate-400 space-y-2 shadow-lg">
             <h4 class="font-bold text-slate-200">剧情介绍</h4>
             <p class="leading-relaxed" x-text="vod?.content || '暂无简介'"></p>
         </div>
@@ -122,7 +135,7 @@
     </main>
 
     <!-- 页脚 -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+    <footer class="bg-slate-900/60 border-t border-slate-800/80 py-6 text-center text-[11px] sm:text-xs text-slate-500 mt-12">
         <p>Copyright &copy; 云端影院 All Rights Reserved. 资源来自第三方采集接口，仅供学习交流使用。</p>
     </footer>
 
