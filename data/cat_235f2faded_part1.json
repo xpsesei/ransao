@@ -3,7 +3,7 @@
     "id": 115042,
     "title": "京城美食地图",
     "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261107-1/580e9f016275a5acb45e6556debb2a54.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/bb768f84388f2fe3c8c5c2e02357faff.jpg",
     "year": "2020",
     "area": "中国大陆",
     "actor": "张沐莀,韩非,火旺",
@@ -16560,7 +16560,7 @@
     "id": 115089,
     "title": "金牌调解",
     "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261104-1/0d518e5ef1d3cde24323a895961c3980.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/d9a4d03189ef7f448fe903977eb2aa1a.jpg",
     "year": "2011",
     "area": "中国大陆",
     "actor": "章亭",
@@ -18346,6 +18346,22 @@
       {
         "name": "20261103",
         "url": "https://v4.wujinwsym3u8.com/wjv4/202611/04/EawwwPM5H792/video/index.m3u8"
+      },
+      {
+        "name": "20261104",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/ACvrM2UmxT86/video/index.m3u8"
+      },
+      {
+        "name": "20261105",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/5n4mGQvBR288/video/index.m3u8"
+      },
+      {
+        "name": "20261106",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/mtkzs6UVeh87/video/index.m3u8"
+      },
+      {
+        "name": "20261108",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/zR7fm1bCv091/video/index.m3u8"
       }
     ]
   },
