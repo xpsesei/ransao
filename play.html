@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">正在加载 - 云端影院</title>
     <meta id="page-desc" name="description" content="云端影院提供免费高清影视在线观看与全集选集。">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://jx.xllmcms.com" crossorigin>
+    <link rel="dns-prefetch" href="//jx.xllmcms.com">
+    <script defer src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         [x-cloak] {
@@ -49,7 +51,7 @@
         </div>
     </header>
 
-    <!-- 广告：保留原样 -->
+    <!-- 广告 -->
     <center>
         <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
         <ins class="eas6a97888e20" data-zoneid="6080530"></ins>
@@ -83,6 +85,7 @@
         <!-- 播放器 -->
         <div id="player-container" class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative group">
             <iframe
+                title="视频播放器"
                 :src="currentPlayUrl"
                 class="w-full h-full border-0"
                 allowfullscreen="true"
@@ -202,6 +205,16 @@
                 isLoading: true,
                 loadError: '',
 
+                getVideoIndexBucket(videoId) {
+                    const normalizedId = String(videoId || '').trim();
+
+                    if (!/^\d+$/.test(normalizedId)) {
+                        throw new Error('影片 ID 格式无效，无法查询播放数据。');
+                    }
+
+                    return normalizedId.slice(-2).padStart(2, '0');
+                },
+
                 async fetchJson(url, label) {
                     const response = await fetch(url, { cache: 'no-cache' });
 
@@ -225,7 +238,6 @@
                     }
 
                     try {
-                        // 分类导航不是播放必需数据；即使分类文件加载失败，也继续尝试播放。
                         const categoriesPromise = this.fetchJson(
                             './data/categories.json',
                             '分类列表'
@@ -235,9 +247,10 @@
                             console.warn('分类列表加载失败：', error);
                         });
 
-                        // 兼容当前仓库结构：影片 ID -> cat_*.json 分片文件名。
+                        const bucket = this.getVideoIndexBucket(videoId);
+
                         const indexData = await this.fetchJson(
-                            './data/video_index.json',
+                            `./data/video_index_${bucket}.json`,
                             '视频索引'
                         );
 
@@ -250,16 +263,14 @@
 
                         if (typeof fileName !== 'string' || !fileName) {
                             throw new Error(
-                                '视频索引中没有找到这部影片。请确认链接里的 ID 正确，且 data/video_index.json 已更新。'
+                                '视频索引中没有找到这部影片。请确认链接里的 ID 正确，且桶索引已更新。'
                             );
                         }
 
-                        // 只接受 data 目录下的 JSON 文件名，不接受路径。
                         if (!/^[A-Za-z0-9_-]+\.json$/.test(fileName)) {
                             throw new Error('视频索引中的分片文件名无效。');
                         }
 
-                        // 只下载包含当前影片的一个分片。
                         const videos = await this.fetchJson(
                             './data/' + encodeURIComponent(fileName),
                             '影片数据'
@@ -275,12 +286,13 @@
 
                         if (!video) {
                             throw new Error(
-                                `分片 ${fileName} 中没有找到 ID 为 ${videoId} 的影片。请重新检查数据更新结果。`
+                                `分片 ${fileName} 中没有找到 ID 为 ${videoId} 的影片。`
                             );
                         }
 
                         await categoriesPromise;
                         this.setVideo(video);
+
                     } catch (error) {
                         console.error('影片加载失败：', error);
                         this.loadError = error.message || '影片加载失败，请稍后重试。';
@@ -292,14 +304,12 @@
                 cleanDescription(value) {
                     if (!value) return '';
 
-                    // 先把常见段落标签转换为空格，再移除其余 HTML 标签。
                     const plainText = String(value)
                         .replace(/<br\s*\/?>/gi, ' ')
                         .replace(/<\/p\s*>/gi, ' ')
                         .replace(/<p\b[^>]*>/gi, ' ')
                         .replace(/<[^>]*>/g, ' ');
 
-                    // 通过 DOM 文本节点解码 HTML 实体，不把内容作为 HTML 插入页面。
                     const decoder = document.createElement('textarea');
                     decoder.innerHTML = plainText;
 
@@ -338,15 +348,15 @@
                     try {
                         const parsedUrl = new URL(url.trim());
 
-                        // 仅允许常见的视频地址协议。
-                        if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
-                            console.warn('跳过不支持的播放地址协议：', parsedUrl.protocol);
+                        if (parsedUrl.protocol !== 'http:' &&
+                            parsedUrl.protocol !== 'https:') {
                             return;
                         }
 
                         this.currentIndex = index;
                         this.currentPlayUrl =
                             `https://jx.xllmcms.com/dplayer/?url=${encodeURIComponent(parsedUrl.href)}`;
+
                     } catch (error) {
                         console.warn('播放地址格式无效：', url, error);
                     }
@@ -370,22 +380,13 @@
                 },
 
                 toggleFullscreen() {
-                    const container = document.getElementById('player-container');
+                    const container =
+                        document.getElementById('player-container');
 
                     if (!document.fullscreenElement) {
-                        if (container.requestFullscreen) {
-                            container.requestFullscreen();
-                        } else if (container.webkitRequestFullscreen) {
-                            container.webkitRequestFullscreen();
-                        } else if (container.msRequestFullscreen) {
-                            container.msRequestFullscreen();
-                        }
-                    } else if (document.exitFullscreen) {
-                        document.exitFullscreen();
-                    } else if (document.webkitExitFullscreen) {
-                        document.webkitExitFullscreen();
-                    } else if (document.msExitFullscreen) {
-                        document.msExitFullscreen();
+                        container.requestFullscreen?.();
+                    } else {
+                        document.exitFullscreen?.();
                     }
                 },
 
@@ -407,6 +408,11 @@
     </script>
 
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-    <script>LA.init({id:"3Rk7hoBBRRomuRiH",ck:"3Rk7hoBBRRomuRiH"})</script>
+    <script>
+        LA.init({
+            id: "3Rk7hoBBRRomuRiH",
+            ck: "3Rk7hoBBRRomuRiH"
+        });
+    </script>
 </body>
 </html>
