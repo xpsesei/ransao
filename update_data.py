@@ -6,12 +6,12 @@ import os
 import time
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+
 
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
 
-# 可以通过 GitHub Actions 环境变量覆盖。
+# 可在 GitHub Actions 中通过 SITE_URL 覆盖。
 SITE_URL = os.environ.get("SITE_URL", "https://198616.xyz").rstrip("/")
 
 MAX_WORKERS = 3
@@ -19,12 +19,12 @@ CHUNK_SIZE = 100
 LATEST_LIMIT = 100
 INCREMENTAL_PAGES = 10
 
-# sitemap 留出余量，避免接近每个文件 50,000 条 URL 的上限。
+# 每个 sitemap 分片最多放 40,000 个 URL，留出上限余量。
 SITEMAP_URL_LIMIT = 40000
 
 
 def write_json(path, data, indent=None):
-    """原子写入 UTF-8 JSON，避免中断时留下半截文件。"""
+    """原子写入 JSON，避免中断时留下不完整文件。"""
     temp_path = f"{path}.tmp"
 
     with open(temp_path, "w", encoding="utf-8") as file:
@@ -34,7 +34,7 @@ def write_json(path, data, indent=None):
 
 
 def fetch_json(url, timeout=60):
-    """下载并解析 JSON。遇到 HTTP 或 JSON 错误时抛出异常。"""
+    """请求并解析 JSON。遇到 HTTP 或 JSON 错误时抛出异常。"""
     request = urllib.request.Request(
         url,
         headers={
@@ -48,13 +48,13 @@ def fetch_json(url, timeout=60):
     )
 
     with urllib.request.urlopen(request, timeout=timeout) as response:
-        raw = response.read()
+        body = response.read()
 
-    return json.loads(raw.decode("utf-8"))
+    return json.loads(body.decode("utf-8"))
 
 
 def extract_video_list(payload, page):
-    """校验采集接口的分页响应格式。"""
+    """检查采集接口分页响应格式。"""
     if not isinstance(payload, dict):
         raise ValueError(f"第 {page} 页响应不是 JSON 对象")
 
@@ -70,7 +70,7 @@ def extract_video_list(payload, page):
 
 
 def fetch_page(page, retries=5):
-    """抓取单页数据；重试耗尽后抛错，防止不完整数据被发布。"""
+    """抓取一页数据；重试失败后抛错，防止把不完整结果当成功发布。"""
     url = f"{BASE_URL}&pg={page}"
 
     for attempt in range(retries):
@@ -87,7 +87,7 @@ def fetch_page(page, retries=5):
             )
 
             if attempt < retries - 1:
-                time 15))
+                time.sleep(min((attempt + 1) * 3, 15))
 
     raise RuntimeError(
         f"第 {page} 页连续 {retries} 次抓取失败；"
@@ -95,7 +95,8 @@ def fetch_page(page, retries=5):
     )
 
 
-def read_existing，供增量更新保留旧数据。"""
+def read_existing_videos():
+    """读取现有分类文件中的影片，供增量更新保留旧数据。"""
     category_path = os.path.join("data", "categories.json")
 
     if not os.path.exists(category_path):
@@ -144,7 +145,9 @@ def read_existing，供增量更新保留旧数据。"""
                     ) from error
 
                 if not isinstance(chunk, list):
-                    raise ValueError(f"旧数据分片格式不是数组：{file_path}")
+                    raise ValueError(
+                        f"旧数据分片格式不是数组：{file_path}"
+                    )
 
                 for video in chunk:
                     if not isinstance(video, dict):
@@ -158,7 +161,6 @@ def read_existing，供增量更新保留旧数据。"""
         return videos
 
     except (OSError, json.JSONDecodeError, TypeError, ValueError) as error:
-        # 有旧索引但读取失败时不能当作首次采集，否则可能覆盖不完整数据。
         raise RuntimeError(
             f"读取本地影视数据失败，已停止更新：{error}"
         ) from error
@@ -195,10 +197,7 @@ def normalize_video(raw_video, category_map):
         episode_url = pieces[-1].strip()
         lower_url = episode_url.lower()
 
-        if (
-            lower_url.startswith("http://")
-            or lower_url.startswith("https://")
-        ):
+        if lower_url.startswith(("http://", "https://")):
             episodes.append({
                 "name": episode_name,
                 "url": episode_url,
@@ -219,7 +218,7 @@ def normalize_video(raw_video, category_map):
 
 
 def video_index_bucket(video_id):
-    """按影片 ID 的末两位分桶，返回 00-99。"""
+    """按影片 ID 末两位分桶，返回 00 到 99。"""
     try:
         value = int(str(video_id).strip())
     except (TypeError, ValueError):
@@ -230,8 +229,11 @@ def video_index_bucket(video_id):
 
 def build_latest_items(videos_by_id, fetched_order):
     """
-    优先按本次采集接口返回顺序生成最新列表；
+    优先按本次采集接口的返回顺序生成最新列表；
     本次采集不足 100 条时，再用已有数据补齐。
+
+    排序依赖采集接口的分页顺序；如果接口不按更新时间排序，
+    结果就只是近似“最新”。
     """
     latest_items = []
     seen_ids = set()
@@ -249,7 +251,6 @@ def build_latest_items(videos_by_id, fetched_order):
         if len(latest_items) >= LATEST_LIMIT:
             return latest_items
 
-    # 本次采集不足 100 条时，按已有数据顺序补足。
     for video_id, video in videos_by_id.items():
         key = str(video_id)
 
@@ -266,7 +267,7 @@ def build_latest_items(videos_by_id, fetched_order):
 
 
 def make_video_url(video_id, category):
-    """生成 sitemap 中的影片详情页 URL，并转义 XML 特殊字符。"""
+    """生成 sitemap 影片页 URL，并转义 XML 特殊字符。"""
     query = urllib.parse.urlencode({
         "id": str(video_id),
         "cat": str(category or "未分类"),
@@ -277,20 +278,22 @@ def make_video_url(video_id, category):
 
 
 def write_sitemaps(category_names, all_videos):
-    """生成 sitemap 分片及 sitemap index。"""
+    """生成 sitemap 分片和 sitemap.xml 索引。"""
     print("3. 生成 sitemap 文件...")
 
     urls = [
-        f"{SITE_URL}/",
-        f"{SITE_URL}/index.html",
+        html.escape(f"{SITE_URL}/", quote=True),
+        html.escape(f"{SITE_URL}/index.html", quote=True),
     ]
 
     for category_name in category_names:
         query = urllib.parse.urlencode({"cat": category_name})
-        urls.append(html.escape(
-            f"{SITE_URL}/index.html?{query}",
-            quote=True,
-        ))
+        urls.append(
+            html.escape(
+                f"{SITE_URL}/index.html?{query}",
+                quote=True,
+            )
+        )
 
     for video in all_videos:
         video_id = video.get("id")
@@ -298,10 +301,12 @@ def write_sitemaps(category_names, all_videos):
             continue
 
         urls.append(
-            make_video_url(video_id, video.get("category", "未分类"))
+            make_video_url(
+                video_id,
+                video.get("category", "未分类"),
+            )
         )
 
-    # 按数量拆分，避免生成超过 sitemap URL 数量上限的单文件。
     chunks = [
         urls[start:start + SITEMAP_URL_LIMIT]
         for start in range(0, len(urls), SITEMAP_URL_LIMIT)
@@ -314,11 +319,12 @@ def write_sitemaps(category_names, all_videos):
 
     for chunk_number, chunk in enumerate(chunks, start=1):
         file_name = f"sitemap-{chunk_number}.xml"
-        file_path = file_name
-
         lines = [
             '<?xml version="1.0" encoding="UTF-8"?>',
-            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+            (
+                '<urlset '
+                'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+            ),
         ]
 
         for url in chunk:
@@ -330,24 +336,32 @@ def write_sitemaps(category_names, all_videos):
 
         lines.append("</urlset>")
 
+        file_path = file_name
         temp_path = f"{file_path}.tmp"
+
         with open(temp_path, "w", encoding="utf-8") as file:
             file.write("\n".join(lines))
-        os.replace(temp_path, file_path)
 
+        os.replace(temp_path, file_path)
         sitemap_files.append(file_name)
         print(f"-> 写入 {file_name}，共 {len(chunk)} 条 URL")
 
-    # 保留 sitemap.xml 作为搜索引擎入口，子文件为 sitemap-1.xml 等。
     index_lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        (
+            '<sitemapindex '
+            'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        ),
     ]
 
     for file_name in sitemap_files:
+        sitemap_url = html.escape(
+            f"{SITE_URL}/{file_name}",
+            quote=True,
+        )
         index_lines.extend([
             "  <sitemap>",
-            f"    <loc>{SITE_URL}/{file_name}</loc>",
+            f"    <loc>{sitemap_url}</loc>",
             "  </sitemap>",
         ])
 
@@ -356,9 +370,9 @@ def write_sitemaps(category_names, all_videos):
     temp_path = "sitemap.xml.tmp"
     with open(temp_path, "w", encoding="utf-8") as file:
         file.write("\n".join(index_lines))
+
     os.replace(temp_path, "sitemap.xml")
 
-    # 清理本次不再使用的旧分片，避免 sitemap index 已不引用的文件继续累积。
     active_files = set(sitemap_files)
 
     for name in os.listdir("."):
@@ -384,15 +398,9 @@ def main():
             raise ValueError("分类接口响应不是 JSON 对象")
 
         official_classes = list_data.get("class", [])
-        if not isinstance(official_classes, list):
-            raise ValueError("分类接口的 class 字段不是数组")
+("分类接口的 class 字段不是数组")
 
-    except Exception as error:
-        # 分类列表失败时允许继续，但会沿用旧数据里的分类名称。
-        print(f"⚠️ 获取分类列表失败：{error}")
-        official_classes = []
-
-    category_map = {
+    except category_map = {
         str(item["type_id"]): item["type_name"]
         for item in official_classes
         if (
@@ -412,37 +420,9 @@ def main():
     try:
         first_response = fetch_json(
             f"{BASE_URL}&pg=1",
-            timeout=30,
-        )
-        first_page_videos = extract_video_list(first_response, 1)
-    except Exception as error:
-        raise RuntimeError(
-            f"无法获取采集接口第一页，已停止更新：{error}"
-        ) from error
-
-    try:
-        total_pages = max(1, int(first_response.get("pagecount", 1)))
-    except (TypeError, ValueError):
-        raise RuntimeError("采集接口返回了无效的 pagecount，已停止更新")
-
-    existing_videos = read_existing_videos()
-
-    if existing_videos:
-        fetch_count = min(INCREMENTAL_PAGES, total_pages)
-        pages_to_fetch = list(range(2, fetch_count + 1))
-        print(f"⚡ 增量更新：抓取第 1 至第 {fetch_count} 页...")
-    else:
-        pages_to_fetch = list(range(2, total_pages + 1))
-        print(f"🔥 首次全量采集：共 {total_pages} 页...")
-
-    # 第一页已在状态检查时成功抓取，直接复用，避免重复请求。
-    fetched_videos = list(first_page_videos)
-
-    if pages_to_fetch:
-        with concurrent.futures.ThreadPoolExecutor(
-            max_workers=MAX_WORKERS
+            timeout=_workers=MAX_WORKERS
         ) as executor:
-            # executor.map 保持输入页顺序；任意页面失败都会中断本次更新。
+            # executor.map 按页码顺序返回；任一页面失败都会中止更新。
             for page_videos in executor.map(fetch_page, pages_to_fetch):
                 fetched_videos.extend(page_videos)
 
@@ -451,7 +431,6 @@ def main():
     fetched_order = []
     seen_fetched_ids = set()
 
-    # 本次采集的新记录覆盖旧记录；保留接口分页顺序作为“最新”排序依据。
     for raw_video in fetched_videos:
         video = normalize_video(raw_video, category_map)
         if video is None:
@@ -470,7 +449,7 @@ def main():
     all_videos = list(existing_videos.values())
     print(f"合并后总影视库数据：{len(all_videos)} 条")
 
-    # 若分类接口临时失败，从已有影片中恢复分类列表。
+    # 分类接口不可用时，从已有影片恢复分类名称。
     if not category_names:
         category_names = list(dict.fromkeys(
             video.get("category") or "未分类"
@@ -481,7 +460,24 @@ def main():
     videos_by_category.setdefault("未分类", [])
 
     for video in all_videos:
-        category = video.get("category") or "未_names)
+        category = video.get("category") or "未分类"
+        videos_by_category.setdefault(category, []).append(video)
+
+    latest_items = build_latest_items(existing_videos, fetched_order)
+
+    write_json(
+        os.path.join("data", "cat_latest.json"),
+        latest_items,
+        indent=2,
+    )
+
+    category_index = [{
+        "name": "🔥 最新更新",
+        "count": len(latest_items),
+        "file": "cat_latest.json",
+    }]
+
+    all_categories = list(category_names)
     for category_name in videos_by_category:
         if category_name not in all_categories:
             all_categories.append(category_name)
@@ -503,7 +499,9 @@ def main():
             for start in range(0, len(video_list), CHUNK_SIZE):
                 chunk = video_list[start:start + CHUNK_SIZE]
                 chunk_number = start // CHUNK_SIZE + 1
-                chunk_file = f"cat_{safe_hash}_part{chunk_number}.json"
+                chunk_file = (
+                    f"cat_{safe_hash}_part{chunk_number}.json"
+                )
 
                 write_json(
                     os.path.join("data", chunk_file),
@@ -553,14 +551,13 @@ def main():
         indent=2,
     )
 
-    # 更新实际使用到的桶文件。
     for bucket, mapping in bucket_index.items():
         write_json(
             os.path.join("data", f"video_index_{bucket}.json"),
             mapping,
         )
 
-    # 与播放页当前读取 video_index_XX.json 的逻辑兼容。
+    # 保留小型总清单；播放页按 ID 直接读取对应 video_index_XX.json。
     small_manifest = {
         "version": 2,
         "bucket_prefix": "video_index_",
@@ -575,9 +572,11 @@ def main():
         small_manifest,
     )
 
+    indexed_video_count = sum(
+        len(mapping) for mapping in bucket_index.values()
+    )
     print(
-        f"✅ 已生成分桶视频索引："
-        f"{sum(len(mapping) for mapping in bucket_index.values())} 条映射，"
+        f"✅ 已生成分桶视频索引：{indexed_video_count} 条映射，"
         f"{len(bucket_index)} 个桶文件"
     )
 
@@ -598,7 +597,10 @@ def main():
         search_index,
     )
 
-    write：影视库 {len(all_videos)} 条，"
+    write_sitemaps(category_names, all_videos)
+
+    print(
+        f"✅ 更新完成：影视库 {len(all_videos)} 条，"
         f"最新列表 {len(latest_items)} 条，"
         f"站点地址 {SITE_URL}"
     )
