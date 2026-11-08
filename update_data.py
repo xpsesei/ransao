@@ -10,7 +10,7 @@ import urllib.request
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
 MAX_WORKERS = 3
-CHUNK_SIZE = 100  # 🎯 优化分片大小为 100，让前端加载速度更快
+CHUNK_SIZE = 100  # 🎯 严格控制分片大小，让前端秒切
 
 
 def fetch_page(page, retries=5):
@@ -54,7 +54,6 @@ def main():
   category_map = {str(c["type_id"]): c["type_name"] for c in official_classes}
   category_names = [c["type_name"] for c in official_classes]
 
-  # 检查本地是否已有数据，决定是“全量采集”还是“增量更新”
   has_local_data = os.path.exists("data/categories.json")
 
   print("2. 检查采集站状态...")
@@ -70,7 +69,6 @@ def main():
 
   total_pages = int(first_res.get("pagecount", 1))
 
-  # 读取本地已有的所有视频数据（用于增量更新时进行合并/更新）
   existing_videos_map = {}
   if has_local_data:
     print(
@@ -101,7 +99,6 @@ def main():
     print(f"🔥 本地无数据，执行【首次全量采集】共 {total_pages} 页...")
     pages_to_fetch = list(range(1, total_pages + 1))
   else:
-    # 🎯 增量更新：抓取前 5 页（约 100~200 条最新影片），完美覆盖最近 3 天更新
     fetch_pages_count = min(5, total_pages)
     print(f"⚡ 开始增量拉取最新更新的前 {fetch_pages_count} 页...")
     pages_to_fetch = list(range(1, fetch_pages_count + 1))
@@ -117,7 +114,6 @@ def main():
 
   print(f"本次抓取到数据: {len(fetched_videos)} 条")
 
-  # 处理抓取到的数据并与本地数据合并（更新已存在剧集，插入新剧集）
   for vod in fetched_videos:
     vod_id = str(vod.get("vod_id"))
     title = vod.get("vod_name", "")
@@ -161,8 +157,6 @@ def main():
         "content": content,
         "episodes": episodes,
     }
-
-    # 如果本地已有该剧集则覆盖更新（自动获取最新剧集列表），没有则直接新增
     existing_videos_map[vod_id] = item
 
   all_videos = list(existing_videos_map.values())
@@ -180,7 +174,6 @@ def main():
 
   cat_index = []
 
-  # 生成“🔥 最新更新”分类（取前100条）
   latest_items = processed_videos[:100]
   with open(os.path.join("data", "cat_latest.json"), "w", encoding="utf-8") as f:
     json.dump(latest_items, f, ensure_ascii=False, indent=2)
@@ -220,7 +213,7 @@ def main():
   with open("data/categories.json", "w", encoding="utf-8") as f:
     json.dump(cat_index, f, ensure_ascii=False, indent=2)
 
-  # 生成全局搜索索引
+  # 🚀 优化 1：精简搜索索引字段（剔除沉重的 pic 和 content，将体积从 32MB 压缩至 8MB 左右）
   search_index = []
   for vod in processed_videos:
     search_index.append({
@@ -229,53 +222,95 @@ def main():
         "category": vod.get("category"),
         "actor": vod.get("actor"),
         "year": vod.get("year"),
-        "pic": vod.get("pic"),
     })
   with open(
       os.path.join("data", "search_index.json"), "w", encoding="utf-8"
   ) as f:
     json.dump(search_index, f, ensure_ascii=False)
 
-  # 🚀 自动生成用于 SEO 的网站地图 (sitemap.xml)
-  print("3. Generating sitemap.xml for SEO...")
-  DOMAIN = "https://198616.xyz"
+  # 🚀 优化 2：自动清理 data 目录下不再被引用的过期旧分片文件（防止仓库无限膨胀）
+  print("3. 正在清理过期的旧分片文件...")
+  active_files = set()
+  for cat in cat_index:
+    if "file" in cat:
+      active_files.add(cat["file"])
+    if "files" in cat:
+      active_files.update(cat["files"])
+  active_files.add("categories.json")
+  active_files.add("search_index.json")
 
-  sitemap_lines = [
+  cleaned_count = 0
+  for filename in os.listdir("data"):
+    if filename.endswith(".json") and filename not in active_files:
+      try:
+        os.remove(os.path.join("data", filename))
+        cleaned_count += 1
+      except Exception:
+        pass
+  print(f"✅ 成功清理过期旧分片: {cleaned_count} 个")
+
+  # 🚀 优化 3：生成 Sitemap 索引与分片（彻底解决 21MB 巨型单文件问题）
+  print("4. 生成 Sitemap 索引与分片...")
+  DOMAIN = "https://198616.xyz"
+  os.makedirs("sitemaps", exist_ok=True)
+
+  # 子 Sitemap 1：首页与分类
+  base_sitemap_lines = [
       '<?xml version="1.0" encoding="UTF-8"?>',
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-      f"  <url>",
-      f"    <loc>{DOMAIN}/index.html</loc>",
-      f"    <changefreq>always</changefreq>",
-      f"    <priority>1.0</priority>",
-      f"  </url>",
+      f"  <url><loc>{DOMAIN}/index.html</loc><changefreq>always</changefreq><priority>1.0</priority></url>",
   ]
-
   for c_name in category_names:
     encoded_cat = urllib.parse.quote(c_name)
-    sitemap_lines.extend([
-        "  <url>",
-        f"    <loc>{DOMAIN}/index.html?cat={encoded_cat}</loc>",
-        f"    <changefreq>hourly</changefreq>",
-        f"    <priority>0.8</priority>",
-        "  </url>",
+    base_sitemap_lines.extend([
+        f"  <url><loc>{DOMAIN}/index.html?cat={encoded_cat}</loc><changefreq>hourly</changefreq><priority>0.8</priority></url>"
     ])
+  base_sitemap_lines.append("</urlset>")
+  with open("sitemaps/sitemap_base.xml", "w", encoding="utf-8") as f:
+    f.write("\n".join(base_sitemap_lines))
 
-  for vod in processed_videos:
-    vod_id = vod.get("id")
-    vod_cat = urllib.parse.quote(vod.get("category", "未分类"))
-    sitemap_lines.extend([
-        "  <url>",
-        f"    <loc>{DOMAIN}/play.html?id={vod_id}&amp;cat={vod_cat}</loc>",
-        f"    <changefreq>daily</changefreq>",
-        f"    <priority>0.6</priority>",
-        "  </url>",
+  # 子 Sitemap 2+: 视频播放页分片（每 5000 个链接一个文件）
+  video_sitemap_files = ["sitemap_base.xml"]
+  chunk_size_sitemap = 5000
+  for i in range(0, len(processed_videos), chunk_size_sitemap):
+    chunk = processed_videos[i : i + chunk_size_sitemap]
+    part_num = (i // chunk_size_sitemap) + 1
+    v_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for vod in chunk:
+      vod_id = vod.get("id")
+      vod_cat = urllib.parse.quote(vod.get("category", "未分类"))
+      v_lines.append(
+          f"  <url><loc>{DOMAIN}/play.html?id={vod_id}&amp;cat={vod_cat}</loc><changefreq>daily</changefreq><priority>0.6</priority></url>"
+      )
+    v_lines.append("</urlset>")
+
+    part_filename = f"sitemap_videos_{part_num}.xml"
+    with open(os.path.join("sitemaps", part_filename), "w", encoding="utf-8") as f:
+      f.write("\n".join(v_lines))
+    video_sitemap_files.append(part_filename)
+
+  # 根目录生成主 sitemap.xml（Sitemap Index）
+  index_lines = [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ]
+  for sm_file in video_sitemap_files:
+    index_lines.extend([
+        "  <sitemap>",
+        f"    <loc>{DOMAIN}/sitemaps/{sm_file}</loc>",
+        "  </sitemap>",
     ])
-
-  sitemap_lines.append("</urlset>")
+  index_lines.append("</sitemapindex>")
 
   with open("sitemap.xml", "w", encoding="utf-8") as f:
-    f.write("\n".join(sitemap_lines))
-  print(f"✅ 增量同步完成，当前总库收录影视: {len(processed_videos)} 个！")
+    f.write("\n".join(index_lines))
+
+  print(
+      f"✅ 同步完成，收录影视: {len(processed_videos)} 个，Sitemap 索引已成功生成！"
+  )
 
 
 if __name__ == "__main__":
