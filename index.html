@@ -3,263 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>云端影院 - 影视目录</title>
-    <meta
-        name="description"
-        content="浏览影视分类和影片信息。"
-    >
-    <meta name="theme-color" content="#020617">
-
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <script defer src="https://cdn.tailwindcss.com"></script>
+    <title>云端影院 - 免费高清影视站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-
-        html {
-            color-scheme: dark;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100vh;
-        }
-
-        .horizontal-scroll {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .horizontal-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
 </head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between" x-data="videoApp()">
 
-<body
-    class="min-h-screen bg-slate-950 text-slate-100 flex flex-col"
-    x-data="videoApp()"
->
-    <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-900/95 backdrop-blur">
-        <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-            <a
-                href="index.html"
-                class="shrink-0 text-xl font-black bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent sm:text-2xl"
-                aria-label="云端影院首页"
-            >
-                🎬 云端影院
-            </a>
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="text-2xl font-black bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+                    🎬 云端影院
+                </a>
+            </div>
 
-            <div class="relative w-full sm:max-w-md">
-                <label for="global-search" class="sr-only">搜索影片名称或演员</label>
+            <div class="w-64 md:w-96 relative">
                 <input
-                    id="global-search"
-                    type="search"
+                    type="text"
                     x-model="searchKeyword"
+                    @focus="initSearchIndex()"
                     @input="onGlobalSearch()"
                     @keydown.escape="clearSearch()"
-                    @keydown.enter.prevent="onGlobalSearch(true)"
-                    placeholder="搜索片名、演员…"
-                    autocomplete="off"
-                    class="w-full rounded-full border border-slate-700 bg-slate-800 px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
-                    aria-describedby="search-help"
-                    :aria-busy="searchLoading"
-                >
-                <span id="search-help" class="sr-only">
-                    输入影片名称或演员进行全局搜索，按 Esc 清除。
-                </span>
+                    placeholder="全网全局搜索（片名、演员）..."
+                    class="w-full bg-slate-800 border border-slate-700 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-blue-500 text-slate-100">
             </div>
         </div>
     </header>
 
-    <main class="mx-auto w-full max-w-7xl flex-grow px-4 py-5 sm:py-6">
-        <nav
-            class="horizontal-scroll mb-5 flex items-center gap-2 overflow-x-auto pb-2"
-            aria-label="影片分类"
-        >
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <div class="flex items-center space-x-2 overflow-x-auto pb-4 mb-6 scrollbar-none">
             <button
-                type="button"
                 @click="switchCategoryByName('🔥 最新更新')"
-                :aria-pressed="!isSearching && currentCategory === '🔥 最新更新'"
                 :class="!isSearching && currentCategory === '🔥 最新更新'
-                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
-                    : 'bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-white'"
-                class="shrink-0 rounded-xl px-4 py-2 text-sm transition"
-            >
-                🔥 最新更新
+                    ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30'
+                    : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
+                class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition flex items-center space-x-1">
+                <span>🔥 最新更新</span>
             </button>
 
             <template x-for="cat in categories" :key="cat.name">
                 <template x-if="cat.name !== '🔥 最新更新'">
                     <button
-                        type="button"
                         @click="switchCategory(cat)"
-                        :aria-pressed="!isSearching && currentCategory === cat.name"
                         :class="!isSearching && currentCategory === cat.name
-                            ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20'
-                            : 'bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-white'"
-                        class="shrink-0 rounded-xl px-4 py-2 text-sm transition"
-                        x-text="cat.name + (cat.count ? ' (' + cat.count + ')' : '')"
-                    ></button>
+                            ? 'bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/30'
+                            : 'bg-slate-900 text-slate-400 hover:bg-slate-800'"
+                        class="px-4 py-2 rounded-xl text-sm whitespace-nowrap transition"
+                        x-text="cat.name + (cat.count ? ' (' + cat.count + ')' : '')">
+                    </button>
                 </template>
             </template>
-        </nav>
+        </div>
 
-        <section
-            x-show="isSearching"
-            x-cloak
-            class="mb-4 flex flex-col gap-2 rounded-xl border border-slate-800 bg-slate-900/70 p-3 text-sm sm:flex-row sm:items-center sm:justify-between"
-            aria-live="polite"
-        >
-            <div class="min-w-0 text-slate-300">
-                <span x-show="searchLoading" class="text-blue-300">
-                    正在搜索…
-                </span>
-                <span x-show="!searchLoading">
-                    搜索“<span class="font-semibold text-blue-300" x-text="searchKeyword"></span>”，
-                    找到 <span class="font-semibold" x-text="filteredVideos.length"></span> 部影片
-                </span>
-            </div>
-
+        <div x-show="isSearching" class="mb-4 text-sm text-blue-400 flex items-center justify-between">
+            <span>
+                🔍 全局搜索结果：“<span x-text="searchKeyword"></span>”，
+                共找到 <span x-text="filteredVideos.length"></span> 部相关影视
+            </span>
             <button
-                type="button"
                 @click="clearSearch()"
-                class="self-start rounded-lg bg-slate-800 px-3 py-1.5 text-xs text-slate-300 hover:bg-slate-700 sm:self-auto"
-            >
+                class="text-xs bg-slate-800 px-3 py-1 rounded-lg text-slate-300 hover:bg-slate-700">
                 退出搜索
             </button>
-        </section>
+        </div>
 
-        <section
-            class="mb-5 text-center"
-            aria-label="广告"
-        >
-            <script async src="https://a.magsrv.com/ad-provider.js"></script>
+        <center>
+            <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
             <ins class="eas6a97888e20" data-zoneid="6080530"></ins>
-            <script>
-                (window.AdProvider = window.Ad aria-label="影片列表"
-            :aria-busy="isLoading || searchLoading"
-        >
+            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+        </center>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             <template x-for="vod in paginatedVideos" :key="vod.id">
-                <a
-                    :href="`play.html?id=${encodeURIComponent(vod.id)}&cat=${encodeURIComponent(vod.category || currentCategory)}`"
-                    @click.prevent="goToPlay(vod)"
-                    class="group flex min-w-0 flex-col overflow-hidden rounded-xl border border-slate-800 bg-slate-900 transition hover:border-blue-500/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                    <div class="relative aspect-[3/4] overflow-hidden bg-slate-800">
+                <div
+                    @click="goToPlay(vod)"
+                    class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition cursor-pointer group flex flex-col">
+                    <div class="relative aspect-[3/4] bg-slate-800 overflow-hidden">
                         <img
-                            :src="vod.pic || ''"
-                            :alt="vod.title ? vod.title + ' 海报' : '影片海报'"
-                            @error="handleImageError($event)"
-                            class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                            :src="vod.pic"
+                            @error="$el.src='https://via.placeholder.com/300x400?text=No+Image'"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                             loading="lazy"
-                            decoding="async"
-                            referrerpolicy="no-referrer"
-                        >
-                        <span
-                            class="absolute bottom-2 right-2 rounded bg-black/75 px-2 py-1 text-xs font-semibold text-amber-300"
-                            x-text="vod.year || '年份未知'"
-                        ></span>
+                            decoding="async">
+                        <div
+                            class="absolute bottom-2 right-2 bg-black/70 backdrop-blur px-2 py-0.5 rounded text-xs text-yellow-400 font-semibold"
+                            x-text="vod.year || '最新'">
+                        </div>
                     </div>
-
-                    <div class="flex flex-grow flex-col gap-1 p-3">
-                        <h2
-                            class="truncate text-sm font-bold text-slate-200 transition group-hover:text-blue-300"
-                            x-text="vod.title || '未命名影片'"
-                        ></h2>
+                    <div class="p-3 flex flex-col justify-between flex-grow">
+                        <h3
+                            class="font-bold text-sm truncate text-slate-200 group-hover:text-blue-400 transition"
+                            x-text="vod.title">
+                        </h3>
                         <p
-                            class="truncate text-xs text-slate-500"
-                            x-text="vod.actor || vod.category || '暂无信息'"
-                        ></p>
+                            class="text-xs text-slate-500 truncate mt-1"
+                            x-text="vod.actor || vod.category">
+                        </p>
                     </div>
-                </a>
+                </div>
             </template>
-        </section>
-
-        <div
-            x-show="isLoading || searchLoading"
-            x-cloak
-            class="py-12 text-center text-sm text-slate-400"
-            role="status"
-            aria-live="polite"
-        >
-            <span x-show="searchLoading">正在搜索影片…</span>
-            <span x-show="!searchLoading && isLoading">正在加载影片…</span>
         </div>
 
         <div
-            x-show="!isLoading && !searchLoading && loadError"
-            x-cloak
-            class="py-10 text-center"
-            role="alert"
-        >
-            <p class="text-sm text-red-300" x-text="loadError"></p>
+            x-show="isLoading"
+            class="text-center py-12 text-slate-400"
+            role="status"
+            aria-live="polite">
+            正在加载影片…
+        </div>
+
+        <div
+            x-show="!isLoading && loadError"
+            class="text-center py-12 text-red-400">
+            <p x-text="loadError"></p>
             <button
-                type="button"
                 @click="retryCurrentPage()"
-                class="mt-4 rounded-lg bg-slate-800 px-4 py-2 text-sm text-slate-200 hover:bg-slate-700"
-            >
+                class="mt-3 px-4 py-2 bg-slate-800 rounded-lg text-slate-200 hover:bg-slate-700">
                 重试
             </button>
         </div>
 
         <div
-            x-show="!isLoading && !searchLoading && !loadError && filteredVideos.length === 0"
-            x-cloak
-            class="py-12 text-center text-sm text-slate-500"
-        >
+            x-show="!isLoading && !loadError && filteredVideos.length === 0"
+            class="text-center py-12 text-slate-500">
             没有找到相关影片
         </div>
 
-        <nav
-            x-show="!isLoading && !searchLoading && !loadError && totalPages > 1"
-            x-cloak
-            class="mt-8 flex items-center justify-center gap-3"
-            aria-label="分页"
-        >
+        <div
+            x-show="!isSearching && totalPages > 1"
+            class="flex justify-center items-center space-x-3 mt-8">
             <button
-                type="button"
                 @click="changePage(currentPage - 1)"
-                :disabled="currentPage === 1 || isLoading || searchLoading"
-                class="rounded-xl border border-slate-800 bg-slate-900 px-4 py-2 text-sm text-slate-300 transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-40"
-            >
+                :disabled="currentPage === 1 || isLoading"
+                class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
                 上一页
             </button>
 
             <span class="text-sm text-slate-400">
-                第 <span class="font-bold text-blue-300" x-text="currentPage"></span>
+                第 <span class="text-blue-400 font-bold" x-text="currentPage"></span>
                 / <span x-text="totalPages"></span> 页
             </span>
 
             <button
-                type="button"
                 @click="changePage(currentPage + 1)"
-                :disabled="currentPage >= totalPages || isLoading || searchLoading"
-                class="rounded-xl border border-slate-800 bg-slate-900 px-4 py-2 text-sm text-slate-300 transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-40"
-            >
+                :disabled="currentPage >= totalPages || isLoading"
+                class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
                 下一页
             </button>
-        </nav>
+        </div>
+
+        <div
+            x-show="isSearching && totalPages > 1"
+            class="flex justify-center items-center space-x-3 mt-8">
+            <button
+                @click="changePage(currentPage - 1)"
+                :disabled="currentPage === 1"
+                class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
+                上一页
+            </button>
+
+            <span class="text-sm text-slate-400">
+                第 <span class="text-blue-400 font-bold" x-text="currentPage"></span>
+                / <span x-text="totalPages"></span> 页
+            </span>
+
+            <button
+                @click="changePage(currentPage + 1)"
+                :disabled="currentPage >= totalPages"
+                class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-800 transition">
+                下一页
+            </button>
+        </div>
     </main>
 
-    <footer class="mt-8 border-t border-slate-800 bg-slate-900 px-4 py-6 text-center text-xs text-slate-500">
-        <p>Copyright &copy; 云端影院</p>
-        <p class="mt-1">请确认展示内容及外部资源符合适用法律和相关授权要求。</p>
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>Copyright &copy; 云端影院 All Rights Reserved. 资源来自第三方采集接口，仅供学习交流使用。</p>
     </footer>
 
     <script>
@@ -269,22 +188,20 @@
                 allVideos: [],
                 filteredVideos: [],
                 searchIndex: [],
-
                 categoryCache: {},
                 inflightCategoryFiles: {},
 
-                currentCategory: "🔥 最新更新",
+                currentCategory: '🔥 最新更新',
                 currentCategoryCount: 0,
 
-                searchKeyword: "",
+                searchKeyword: '',
                 isSearching: false,
                 isSearchIndexLoaded: false,
                 searchIndexPromise: null,
                 searchDebounceTimer: null,
-                searchLoading: false,
 
-                isLoading: true,
-                loadError: "",
+                isLoading: false,
+                loadError: '',
                 categoryRequestId: 0,
 
                 currentPage: 1,
@@ -292,65 +209,45 @@
                 chunkSize: 100,
 
                 async init() {
-                    const params = new URLSearchParams(window.location.search);
-                    const paramCat = params.get("cat");
-                    const paramPage = Math.max(
-                        1,
-                        parseInt(params.get("p"), 10) || 1
-                    );
-                    const paramQ = params.get("q") || "";
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const paramCat = urlParams.get('cat');
+                    const paramPage = Math.max(1, parseInt(urlParams.get('p'), 10) || 1);
+                    const paramQ = urlParams.get('q') || '';
 
                     this.searchKeyword = paramQ;
                     this.isSearching = Boolean(paramQ);
 
                     try {
-                        const response = await fetch("./data/categories.json", {
-                            cache: "no-cache"
-                        });
-
+                        const response = await fetch('./data/categories.json');
                         if (!response.ok) {
-                            throw new Error(
-                                `分类索引加载失败（HTTP ${response.status}）`
-                            );
+                            throw new Error(`分类索引加载失败（HTTP ${response.status}）`);
                         }
 
                         const data = await response.json();
                         this.categories = Array.isArray(data) ? data : [];
 
                         let targetCat = null;
-
                         if (paramCat) {
-                            targetCat = this.categories.find(
-                                cat => cat.name === paramCat
-                            );
+                            targetCat = this.categories.find(cat => cat.name === paramCat);
                         }
 
                         if (!targetCat) {
-                            targetCat =
-                                this.categories.find(cat =>
-                                    cat.name.includes("最新")
-                                ) || this.categories[0];
+                            targetCat = this.categories.find(cat => cat.name.includes('最新')) || this.categories[0];
                         }
 
                         if (!targetCat) {
-                            this.loadError = "暂时没有可用的分类数据";
+                            this.loadError = '暂时没有可用的分类数据';
                             return;
                         }
 
-                        this.currentCategory = targetCat.name;
-                        this.currentCategoryCount =
-                            Number(targetCat.count) || 0;
-
-                        const maxPage = Math.max(
-                            1,
-                            Math.ceil(
-                                this.currentCategoryCount / this.pageSize
-                            )
-                        );
+                        const count = Number(targetCat.count) || 0;
+                        const maxPage = Math.max(1, Math.ceil(count / this.pageSize));
                         this.currentPage = Math.min(paramPage, maxPage);
 
                         if (paramQ) {
-                            this.searchLoading = true;
+                            this.currentCategory = targetCat.name;
+                            this.currentCategoryCount = count;
+                            this.updateUrl();
                             await this.initSearchIndex();
                             this.performSearch(paramQ, false);
                             return;
@@ -358,46 +255,34 @@
 
                         await this.switchCategory(targetCat, false);
                     } catch (error) {
-                        console.error("初始化失败：", error);
-                        this.loadError =
-                            error.message || "页面初始化失败，请刷新重试";
-                    } finally {
-                        this.isLoading = false;
-                        this.searchLoading = false;
+                        console.error('初始化失败:', error);
+                        this.loadError = error.message || '页面初始化失败，请刷新重试';
                     }
                 },
 
-                async initSearchIndex() {
+                initSearchIndex() {
                     if (this.isSearchIndexLoaded) {
-                        return this.searchIndex;
+                        return Promise.resolve(this.searchIndex);
                     }
 
                     if (this.searchIndexPromise) {
                         return this.searchIndexPromise;
                     }
 
-                    this.searchIndexPromise = fetch(
-                        "./data/search_index.json",
-                        { cache: "force-cache" }
-                    )
+                    this.searchIndexPromise = fetch('./data/search_index.json')
                         .then(response => {
                             if (!response.ok) {
-                                throw new Error(
-                                    `搜索索引加载失败（HTTP ${response.status}）`
-                                );
+                                throw new Error(`搜索索引加载失败（HTTP ${response.status}）`);
                             }
                             return response.json();
                         })
                         .then(data => {
-                            if (!Array.isArray(data)) {
-                                throw new Error("搜索索引格式不正确");
-                            }
-
-                            this.searchIndex = data;
+                            this.searchIndex = Array.isArray(data) ? data : [];
                             this.isSearchIndexLoaded = true;
                             return this.searchIndex;
                         })
                         .catch(error => {
+                            console.error('搜索索引加载失败:', error);
                             this.searchIndexPromise = null;
                             throw error;
                         });
@@ -405,15 +290,11 @@
                     return this.searchIndexPromise;
                 },
 
-                onGlobalSearch(runImmediately = false) {
+                onGlobalSearch() {
                     const keyword = this.searchKeyword.trim();
 
-                    clearTimeout(this.searchDebounceTimer);
-                    this.loadError = "";
-
                     if (!keyword) {
-                        this.searchLoading = false;
-
+                        clearTimeout(this.searchDebounceTimer);
                         if (this.isSearching) {
                             this.clearSearch();
                         }
@@ -422,58 +303,24 @@
 
                     this.isSearching = true;
                     this.currentPage = 1;
-                    this.filteredVideos = [];
-                    this.searchLoading = true;
-                    this.updateUrl();
+                    this.loadError = '';
 
-                    const runSearch = async () => {
-                        const requestedKeyword = this.searchKeyword.trim();
-
-                        if (!requestedKeyword) {
-                            this.searchLoading = false;
-                            return;
-                        }
-
+                    clearTimeout(this.searchDebounceTimer);
+                    this.searchDebounceTimer = setTimeout(async () => {
                         try {
                             await this.initSearchIndex();
+                            const latestKeyword = this.searchKeyword.trim();
+                            if (!latestKeyword) return;
 
-                            // 索引加载期间用户可能继续输入，忽略过期结果。
-                            if (
-                                requestedKeyword !==
-                                this.searchKeyword.trim()
-                            ) {
-                                return;
-                            }
-
-                            this.performSearch(requestedKeyword, true);
+                            this.performSearch(latestKeyword, true);
                         } catch (error) {
-                            console.error("搜索索引加载失败：", error);
-                            this.loadError =
-                                "搜索索引加载失败，请检查网络后重试";
-                        } finally {
-                            if (
-                                requestedKeyword ===
-                                this.searchKeyword.trim()
-                            ) {
-                                this.searchLoading = false;
-                            }
+                            this.loadError = '搜索索引加载失败，请稍后重试';
                         }
-                    };
-
-                    if (runImmediately) {
-                        runSearch();
-                    } else {
-                        this.searchDebounceTimer = setTimeout(
-                            runSearch,
-                            250
-                        );
-                    }
+                    }, 180);
                 },
 
                 performSearch(keyword, updateHistory = true) {
-                    const normalizedKeyword = String(keyword || "")
-                        .trim()
-                        .toLocaleLowerCase();
+                    const normalizedKeyword = String(keyword || '').trim().toLowerCase();
 
                     if (!normalizedKeyword) {
                         this.filteredVideos = [];
@@ -483,17 +330,10 @@
                     this.isSearching = true;
                     this.currentPage = 1;
 
-                    this.filteredVideos = this.searchIndex.filter(video => {
-                        const title = String(video.title || "")
-                            .toLocaleLowerCase();
-                        const actor = String(video.actor || "")
-                            .toLocaleLowerCase();
-
-                        return (
-                            title.includes(normalizedKeyword) ||
-                            actor.includes(normalizedKeyword)
-                        );
-                    });
+                    this.filteredVideos = this.searchIndex.filter(video =>
+                        (video.title && video.title.toLowerCase().includes(normalizedKeyword)) ||
+                        (video.actor && video.actor.toLowerCase().includes(normalizedKeyword))
+                    );
 
                     if (updateHistory) {
                         this.updateUrl();
@@ -502,16 +342,13 @@
 
                 clearSearch() {
                     clearTimeout(this.searchDebounceTimer);
-
-                    this.searchKeyword = "";
+                    this.searchKeyword = '';
                     this.isSearching = false;
-                    this.searchLoading = false;
-                    this.loadError = "";
+                    this.loadError = '';
 
                     const latestCategory =
-                        this.categories.find(cat =>
-                            cat.name.includes("最新")
-                        ) || this.categories[0];
+                        this.categories.find(cat => cat.name.includes('最新')) ||
+                        this.categories[0];
 
                     if (latestCategory) {
                         this.switchCategory(latestCategory);
@@ -521,75 +358,54 @@
                 updateUrl() {
                     const params = new URLSearchParams();
 
-                    if (
-                        this.currentCategory &&
-                        this.currentCategory !== "🔥 最新更新"
-                    ) {
-                        params.set("cat", this.currentCategory);
+                    if (this.currentCategory && this.currentCategory !== '🔥 最新更新') {
+                        params.set('cat', this.currentCategory);
                     }
 
                     if (this.currentPage > 1) {
-                        params.set("p", String(this.currentPage));
+                        params.set('p', String(this.currentPage));
                     }
 
                     if (this.isSearching && this.searchKeyword.trim()) {
-                        params.set("q", this.searchKeyword.trim());
+                        params.set('q', this.searchKeyword.trim());
                     }
 
                     const query = params.toString();
-                    const newUrl =
-                        window.location.pathname +
-                        (query ? `?${query}` : "");
-
-                    history.replaceState(null, "", newUrl);
+                    const newUrl = window.location.pathname + (query ? `?${query}` : '');
+                    history.replaceState(null, '', newUrl);
                 },
 
                 switchCategoryByName(name) {
-                    const category = this.categories.find(
-                        cat => cat.name === name
-                    );
-
+                    const category = this.categories.find(cat => cat.name === name);
                     if (category) {
                         this.switchCategory(category);
                     }
                 },
 
                 async switchCategory(category, resetPage = true) {
-                    if (!category) {
-                        return;
-                    }
+                    if (!category) return;
 
                     clearTimeout(this.searchDebounceTimer);
 
                     this.categoryRequestId += 1;
                     this.isSearching = false;
-                    this.searchKeyword = "";
-                    this.searchLoading = false;
+                    this.searchKeyword = '';
                     this.currentCategory = category.name;
-                    this.currentCategoryCount =
-                        Number(category.count) || 0;
-                    this.loadError = "";
+                    this.currentCategoryCount = Number(category.count) || 0;
+                    this.loadError = '';
 
                     if (resetPage) {
                         this.currentPage = 1;
                     } else {
                         const maxPage = Math.max(
                             1,
-                            Math.ceil(
-                                this.currentCategoryCount / this.pageSize
-                            )
+                            Math.ceil(this.currentCategoryCount / this.pageSize)
                         );
-                        this.currentPage = Math.min(
-                            this.currentPage,
-                            maxPage
-                        );
+                        this.currentPage = Math.min(this.currentPage, maxPage);
                     }
 
                     const cache = this.getCategoryCache(category.name);
-                    this.allVideos = this.getOrderedCategoryVideos(
-                        category,
-                        cache
-                    );
+                    this.allVideos = this.getOrderedCategoryVideos(category, cache);
                     this.filteredVideos = [...this.allVideos];
 
                     this.updateUrl();
@@ -598,33 +414,25 @@
 
                 getCategoryCache(categoryName) {
                     if (!this.categoryCache[categoryName]) {
-                        this.categoryCache[categoryName] = {
-                            chunks: {}
-                        };
+                        this.categoryCache[categoryName] = { chunks: {} };
                     }
-
                     return this.categoryCache[categoryName];
                 },
 
                 getOrderedCategoryVideos(category, cache) {
                     const files = category.file
                         ? [category.file]
-                        : Array.isArray(category.files)
-                            ? category.files
-                            : [];
+                        : (Array.isArray(category.files) ? category.files : []);
 
                     const videos = [];
-
                     for (const file of files) {
                         const chunk = cache.chunks[file];
-
                         if (Array.isArray(chunk)) {
                             videos.push(...chunk);
                         } else {
                             break;
                         }
                     }
-
                     return videos;
                 },
 
@@ -641,25 +449,17 @@
                         return this.inflightCategoryFiles[requestKey];
                     }
 
-                    const request = fetch(
-                        `./data/${encodeURIComponent(fileName)}`,
-                        { cache: "force-cache" }
-                    )
+                    const request = fetch(`./data/${encodeURIComponent(fileName)}`)
                         .then(response => {
                             if (!response.ok) {
-                                throw new Error(
-                                    `数据文件加载失败：${fileName}（HTTP ${response.status}）`
-                                );
+                                throw new Error(`数据文件加载失败：${fileName}（HTTP ${response.status}）`);
                             }
                             return response.json();
                         })
                         .then(data => {
                             if (!Array.isArray(data)) {
-                                throw new Error(
-                                    `数据文件格式不正确：${fileName}`
-                                );
+                                throw new Error(`数据文件格式不正确：${fileName}`);
                             }
-
                             cache.chunks[fileName] = data;
                             return data;
                         })
@@ -672,63 +472,42 @@
                 },
 
                 async ensureCategoryData(pageNumber) {
-                    const category = this.categories.find(
-                        cat => cat.name === this.currentCategory
-                    );
-
-                    if (!category) {
-                        return;
-                    }
+                    const category = this.categories.find(cat => cat.name === this.currentCategory);
+                    if (!category) return;
 
                     const files = category.file
                         ? [category.file]
-                        : Array.isArray(category.files)
-                            ? category.files
-                            : [];
+                        : (Array.isArray(category.files) ? category.files : []);
 
                     if (files.length === 0) {
                         this.allVideos = [];
                         this.filteredVideos = [];
-                        this.loadError = "这个分类暂时没有数据";
+                        this.loadError = '这个分类暂时没有数据';
                         return;
                     }
 
                     const requestId = this.categoryRequestId;
                     const targetCount = Math.min(
                         pageNumber * this.pageSize,
-                        this.currentCategoryCount ||
-                            Number.MAX_SAFE_INTEGER
+                        this.currentCategoryCount || Number.MAX_SAFE_INTEGER
                     );
 
                     const requiredChunkCount = Math.min(
                         files.length,
-                        Math.max(
-                            1,
-                            Math.ceil(targetCount / this.chunkSize)
-                        )
+                        Math.max(1, Math.ceil(targetCount / this.chunkSize))
                     );
-
-                    const requiredFiles = files.slice(
-                        0,
-                        requiredChunkCount
-                    );
+                    const requiredFiles = files.slice(0, requiredChunkCount);
                     const cache = this.getCategoryCache(category.name);
                     const missingFiles = requiredFiles.filter(
                         file => !Array.isArray(cache.chunks[file])
                     );
 
-                    this.loadError = "";
+                    this.loadError = '';
 
                     if (missingFiles.length === 0) {
-                        if (
-                            this.currentCategory === category.name &&
-                            this.categoryRequestId === requestId
-                        ) {
-                            this.allVideos =
-                                this.getOrderedCategoryVideos(
-                                    category,
-                                    cache
-                                );
+                        if (this.currentCategory === category.name &&
+                            this.categoryRequestId === requestId) {
+                            this.allVideos = this.getOrderedCategoryVideos(category, cache);
                             this.filteredVideos = [...this.allVideos];
                             this.isLoading = false;
                         }
@@ -739,138 +518,82 @@
 
                     try {
                         await Promise.all(
-                            missingFiles.map(file =>
-                                this.fetchCategoryFile(
-                                    category.name,
-                                    file
-                                )
-                            )
+                            missingFiles.map(file => this.fetchCategoryFile(category.name, file))
                         );
 
-                        if (
-                            this.currentCategory !== category.name ||
-                            this.categoryRequestId !== requestId
-                        ) {
+                        if (this.currentCategory !== category.name ||
+                            this.categoryRequestId !== requestId) {
                             return;
                         }
 
-                        this.allVideos =
-                            this.getOrderedCategoryVideos(category, cache);
+                        this.allVideos = this.getOrderedCategoryVideos(category, cache);
                         this.filteredVideos = [...this.allVideos];
                     } catch (error) {
-                        console.error("分类数据加载失败：", error);
+                        console.error('分类数据加载失败:', error);
 
-                        if (
-                            this.currentCategory === category.name &&
-                            this.categoryRequestId === requestId
-                        ) {
-                            this.loadError =
-                                "影片数据加载失败，请检查网络后重试";
+                        if (this.currentCategory === category.name &&
+                            this.categoryRequestId === requestId) {
+                            this.loadError = '影片数据加载失败，请检查网络后重试';
                         }
                     } finally {
-                        if (
-                            this.currentCategory === category.name &&
-                            this.categoryRequestId === requestId
-                        ) {
+                        if (this.currentCategory === category.name &&
+                            this.categoryRequestId === requestId) {
                             this.isLoading = false;
                         }
                     }
                 },
 
                 get paginatedVideos() {
-                    const start =
-                        (this.currentPage - 1) * this.pageSize;
-
-                    return this.filteredVideos.slice(
-                        start,
-                        start + this.pageSize
-                    );
+                    const start = (this.currentPage - 1) * this.pageSize;
+                    return this.filteredVideos.slice(start, start + this.pageSize);
                 },
 
                 get totalPages() {
-                    const itemCount = this.isSearching
-                        ? this.filteredVideos.length
-                        : this.currentCategoryCount;
-
-                    return Math.max(
-                        1,
-                        Math.ceil(itemCount / this.pageSize)
-                    );
+                    if (this.isSearching) {
+                        return Math.max(1, Math.ceil(this.filteredVideos.length / this.pageSize));
+                    }
+                    return Math.max(1, Math.ceil(this.currentCategoryCount / this.pageSize));
                 },
 
                 async changePage(page) {
-                    if (
-                        page < 1 ||
-                        page > this.totalPages ||
-                        this.isLoading ||
-                        this.searchLoading
-                    ) {
+                    if (page < 1 || page > this.totalPages || this.isLoading) {
                         return;
                     }
 
                     this.currentPage = page;
-                    this.loadError = "";
-                    this.updateUrl();
+                    this.loadError = '';
 
-                    if (!this.isSearching) {
-                        await this.ensureCategoryData(page);
+                    if (this.isSearching) {
+                        this.updateUrl();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return;
                     }
 
-                    window.scrollTo({
-                        top: 0,
-                        behavior: "smooth"
-                    });
+                    this.updateUrl();
+                    await this.ensureCategoryData(page);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 },
 
                 retryCurrentPage() {
-                    this.loadError = "";
-
                     if (this.isSearching) {
-                        this.searchLoading = true;
-                        this.onGlobalSearch(true);
+                        this.loadError = '';
+                        this.onGlobalSearch();
                         return;
                     }
 
                     this.ensureCategoryData(this.currentPage);
                 },
 
-                handleImageError(event) {
-                    const image = event.target;
-
-                    // 避免备用图也加载失败时反复触发 error。
-                    image.onerror = null;
-                    image.src =
-                        "https://placehold.co/300x400/0f172a/94a3b8?text=No+Image";
-                },
-
-                goToPlay(vod) {
-                    const id = encodeURIComponent(vod.id);
-                    const category = encodeURIComponent(
-                        vod.category || this.currentCategory
-                    );
-
-                    window.location.href =
-                        `play.html?id=${id}&cat=${category}`;
+                goToPlay(vodSummary) {
+                    const id = encodeURIComponent(vodSummary.id);
+                    const category = encodeURIComponent(vodSummary.category || this.currentCategory);
+                    window.location.href = `play.html?id=${id}&cat=${category}`;
                 }
             };
         }
     </script>
 
-    <script
-        charset="UTF-8"
-        id="LA_COLLECT"
-        src="//sdk.51.la/js-sdk-pro.min.js"
-        defer
-    ></script>
-    <script>
-        window.addEventListener("load", () => {
-            if (window.LA && typeof window.LA.init === "function") {
-                window.LA.init({
-                    id: "3Rk7hoBBRRomuRiH",
-                    ck: "3Rk7hoBBRRomuRiH"
-                });
-            }
-        });
-    </script>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id:"3Rk7hoBBRRomuRiH",ck:"3Rk7hoBBRRomuRiH"})</script>
 </body>
 </html>
