@@ -19,6 +19,7 @@ def write_json(path, data, indent=None):
 
 
 def fetch_page(page, retries=5):
+    """按页抓取电影数据。"""
     url = f"{BASE_URL}&pg={page}"
     headers = {
         "User-Agent": (
@@ -142,6 +143,16 @@ def normalize_video(raw_video, category_map):
     }
 
 
+def video_index_bucket(video_id):
+    """按影片 ID 的末两位分桶，返回 00-99。"""
+    try:
+        value = int(str(video_id).strip())
+    except (TypeError, ValueError):
+        return "other"
+
+    return f"{value % 100:02d}"
+
+
 def main():
     os.makedirs("data", exist_ok=True)
 
@@ -206,7 +217,7 @@ def main():
 
     print(f"本次抓取数据：{len(fetched_videos)} 条")
 
-    # 新记录覆盖旧记录；新影片追加到数据集。
+    # 新记录覆盖旧记录；新影片追加到数据集
     for raw_video in fetched_videos:
         video = normalize_video(raw_video, category_map)
         video_id = video.get("id")
@@ -216,7 +227,7 @@ def main():
     all_videos = list(existing_videos.values())
     print(f"合并后总影视库数据：{len(all_videos)} 条")
 
-    # 按分类整理影片。
+    # 按分类整理影片
     videos_by_category = {name: [] for name in category_names}
     videos_by_category["未分类"] = []
 
@@ -226,10 +237,10 @@ def main():
 
     category_index = []
 
-    # video_index 格式：影片 ID -> 影片所在的分类 JSON 文件。
-    video_index = {}
+    # 新版：按影片 ID 分桶索引，避免一次下载巨大的 video_index.json
+    bucket_index = {}
 
-    # 生成最新更新列表。影片索引会在下面指向完整分类数据文件。
+    # 生成最新更新列表
     latest_items = all_videos[:100]
     latest_file = "cat_latest.json"
     write_json(
@@ -274,11 +285,11 @@ def main():
                 )
                 chunk_files.append(chunk_file)
 
-                # 将本分片中的影片 ID 映射到分片文件。
                 for video in chunk:
                     video_id = video.get("id")
                     if video_id is not None:
-                        video_index[str(video_id)] = chunk_file
+                        bucket = video_index_bucket(video_id)
+                        bucket_index.setdefault(bucket, {})[str(video_id)] = chunk_file
 
             category_index.append({
                 "name": category_name,
@@ -297,7 +308,8 @@ def main():
             for video in video_list:
                 video_id = video.get("id")
                 if video_id is not None:
-                    video_index[str(video_id)] = file_name
+                    bucket = video_index_bucket(video_id)
+                    bucket_index.setdefault(bucket, {})[str(video_id)] = file_name
 
             category_index.append({
                 "name": category_name,
@@ -305,18 +317,37 @@ def main():
                 "file": file_name,
             })
 
+    # 写出分类列表
     write_json(
         os.path.join("data", "categories.json"),
         category_index,
         indent=2,
     )
+
+    # 写出分桶索引文件
+    for bucket, mapping in bucket_index.items():
+        write_json(
+            os.path.join("data", f"video_index_{bucket}.json"),
+            mapping,
+        )
+
+    # 生成一个极小的总索引清单，避免旧页面直接下载大文件
+    small_manifest = {
+        "version": 2,
+        "bucket_prefix": "video_index_",
+        "buckets": [f"video_index_{bucket}.json" for bucket in sorted(bucket_index.keys())],
+    }
     write_json(
         os.path.join("data", "video_index.json"),
-        video_index,
+        small_manifest,
     )
-    print(f"✅ 已生成 video_index.json：{len(video_index)} 条映射")
 
-    # 全局搜索索引只保留列表展示和搜索需要的字段。
+    print(
+        f"✅ 已生成分桶视频索引：{sum(len(mapping) for mapping in bucket_index.values())} 条映射，"
+        f"{len(bucket_index)} 个桶文件"
+    )
+
+    # 全局搜索索引
     search_index = [
         {
             "id": video.get("id"),
@@ -333,7 +364,7 @@ def main():
         search_index,
     )
 
-    # 生成 sitemap.xml。
+    # 生成 sitemap.xml
     print("3. 生成 sitemap.xml...")
     domain = "https://xpsesei.github.io/ransao"
 
