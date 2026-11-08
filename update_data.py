@@ -238,7 +238,7 @@ def main():
 
   # 🚀 自动生成用于 SEO 的网站地图 (sitemap.xml)
   print("3. Generating sitemap.xml for SEO...")
-  DOMAIN = "https://xpsesei.github.io/ransao"
+  DOMAIN = "https://198616.xyz"
 
   sitemap_lines = [
       '<?xml version="1.0" encoding="UTF-8"?>',
