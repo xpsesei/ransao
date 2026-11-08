@@ -33,7 +33,8 @@ jobs:
           git pull origin main --rebase || true
           
           # 🚀 添加轻量化分片数据目录和 SEO 网站地图
-          git add data/ sitemap.xml
+          git add data/ sitemaps/ sitemap.xml
+
           
           git commit -m "Auto-update incremental video data and sitemap [skip ci]" || echo "No changes to commit"
           git push
