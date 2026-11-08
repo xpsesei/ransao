@@ -55,7 +55,7 @@ def fetch_json(url, timeout=60):
 
 
 def fetch_page_payload(page, retries=5):
-    """带重试地抓取一页原始响应。失败时抛错，不静默跳过。"""
+    """带重试地抓取一页原始响应。失败时抛错。"""
     url = f"{BASE_URL}&pg={page}"
 
     for attempt in range(retries):
@@ -84,8 +84,7 @@ def fetch_page_payload(page, retries=5):
                 time.sleep(min((attempt + 1) * 3, 15))
 
     raise RuntimeError(
-        f"第 {page} 页连续 {retries} 次抓取失败；"
-        "已停止更新，避免发布不完整数据。"
+        f"第 {page} 页连续 {retries} 次抓取失败"
     )
 
 
@@ -104,9 +103,13 @@ def extract_video_list(payload, page):
 
 
 def fetch_page(page):
-    """抓取单页视频列表。"""
-    payload = fetch_page_payload(page)
-    return extract_video_list(payload, page)
+    """抓取单页视频列表。单页失败时捕获异常并返回空列表，避免中断整个流程。"""
+    try:
+        payload = fetch_page_payload(page)
+        return extract_video_list(payload, page)
+    except Exception as error:
+        print(f"⚠️ 警告：第 {page} 页最终获取失败，已跳过该页继续：{error}")
+        return []
 
 
 def read_existing_videos():
@@ -450,7 +453,8 @@ def main():
             max_workers=MAX_WORKERS
         ) as executor:
             for page_videos in executor.map(fetch_page, pages_to_fetch):
-                fetched_videos.extend(page_videos)
+                if page_videos:
+                    fetched_videos.extend(page_videos)
 
     videos_by_id = {}
     fetched_order = []
