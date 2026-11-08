@@ -181,24 +181,33 @@ def read_existing_videos():
 
 
 def normalize_video(raw_video, category_map):
-    """将采集站):
+    """将采集站的数据转换为统一格式。"""
+    if not isinstance(raw_video, dict):
         return None
 
     video_id = raw_video.get("vod_id")
     if video_id is None:
         return None
 
-    type_id =2:
-                continue
+    type_id = str(raw_video.get("type_id", ""))
+    category = category_map.get(type_id) or raw_video.get("type_name") or "未分类"
 
-            episode_name = pieces[-2].strip()
-            episode_url = pieces[-1].strip()
+    play_url = raw_video.get("vod_play_url", "")
+    episodes = []
+    if isinstance(play_url, str) and play_url:
+        groups = play_url.split("#")
+        for group in groups:
+            if "$" in group:
+                pieces = group.split("$")
+                if len(pieces) >= 2:
+                    episode_name = pieces[-2].strip()
+                    episode_url = pieces[-1].strip()
 
-            if episode_url.lower().startswith(("http://", "https://")):
-                episodes.append({
-                    "name": episode_name,
-                    "url": episode_url,
-                })
+                    if episode_url.lower().startswith(("http://", "https://")):
+                        episodes.append({
+                            "name": episode_name,
+                            "url": episode_url,
+                        })
 
     content = raw_video.get("vod_content") or ""
     if not isinstance(content, str):
@@ -232,9 +241,6 @@ def build_latest_items(videos_by_id, fetched_order):
     """
     优先按本次采集接口返回顺序生成最新列表；
     本次采集不足 100 条时，再用已有数据补齐。
-
-    排序依赖采集接口分页顺序；若接口不按更新时间排序，
-    结果只是近似“最新”。
     """
     latest_items = []
     seen_ids = set()
@@ -268,7 +274,7 @@ def build_latest_items(videos_by_id, fetched_order):
 
 
 def xml_escape_url(url):
-。"""
+    """转义 URL 中的特殊字符用于 XML。"""
     return html.escape(url, quote=True)
 
 
@@ -278,7 +284,12 @@ def write_sitemaps(category_names, all_videos):
 
     urls = [
         xml_escape_url(f"{SITE_URL}/"),
-        xml_escape xml_escape_url(f"{SITE_URL}/index.html?{query}")
+    ]
+
+    for category_name in category_names:
+        query = urllib.parse.urlencode({"cat": category_name})
+        urls.append(
+            xml_escape_url(f"{SITE_URL}/index.html?{query}")
         )
 
     for video in all_videos:
@@ -419,7 +430,15 @@ def main():
         total_pages = max(1, int(first_response.get("pagecount", 1)))
     except (TypeError, ValueError) as error:
         raise RuntimeError(
-            "采集接口返回了 else:
+            f"采集接口返回了无效的总页数：{error}"
+        ) from error
+
+    existing_videos = read_existing_videos()
+
+    if existing_videos:
+        pages_to_fetch = list(range(2, min(total_pages + 1, INCREMENTAL_PAGES + 1)))
+        print(f"🔄 增量更新：采集前 {len(pages_to_fetch) + 1} 页...")
+    else:
         pages_to_fetch = list(range(2, total_pages + 1))
         print(f"🔥 首次全量采集：共 {total_pages} 页...")
 
@@ -430,34 +449,51 @@ def main():
         with concurrent.futures.ThreadPoolExecutor(
             max_workers=MAX_WORKERS
         ) as executor:
-            # executor.map 按页码顺序返回；页面失败会中止本次运行。
             for page_videos in executor.map(fetch_page, pages_to_fetch):
- video
+                fetched_videos.extend(page_videos)
 
+    videos_by_id = {}
+    fetched_order = []
+    seen_fetched_ids = set()
+
+    for raw_video in fetched_videos:
+        video = normalize_video(raw_video, category_map)
+        if video is None:
+            continue
+        video_id = str(video["id"])
+        videos_by_id[video_id] = video
         if video_id not in seen_fetched_ids:
             fetched_order.append(video_id)
             seen_fetched_ids.add(video_id)
 
-    if not existing_videos:
+    # 合并现有数据
+    for video_id, video in existing_videos.items():
+        if video_id not in videos_by_id:
+            videos_by_id[video_id] = video
+
+    if not videos_by_id:
         raise RuntimeError(
             "采集结果为空，已停止更新，避免发布空数据"
         )
 
-    all_videos = list(existing_videos.values())
+    all_videos = list(videos_by_id.values())
     print(f"合并后总影视库数据：{len(all_videos)} 条")
 
     # 分类接口不可用时，从旧数据恢复分类名称。
     if not category_names:
         category_names = list(dict.fromkeys(
             video.get("category") or "未分类"
- videos_by_category = {name: [] for name in category_names}
+            for video in all_videos
+        ))
+
+    videos_by_category = {name: [] for name in category_names}
     videos_by_category.setdefault("未分类", [])
 
     for video in all_videos:
         category = video.get("category") or "未分类"
         videos_by_category.setdefault(category, []).append(video)
 
-    latest_items = build_latest_items(existing_videos, fetched_order)
+    latest_items = build_latest_items(videos_by_id, fetched_order)
 
     write_json(
         os.path.join("data", "cat_latest.json"),
