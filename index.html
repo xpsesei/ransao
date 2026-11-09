@@ -37,7 +37,7 @@
 
     <main class="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-grow w-full">
 
-        <!-- 分类导航条 -->
+        <!-- 🚀 分类导航条（触控平滑滚动） -->
         <div class="flex items-center space-x-2 overflow-x-auto pb-3 mb-5 no-scrollbar">
             <button
                 @click="switchCategoryByName('🔥 最新更新')"
@@ -80,6 +80,7 @@
             <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
         </div>
 
+        <!-- 视频网格列表 -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
             <template x-for="vod in paginatedVideos" :key="vod.id">
                 <div
@@ -124,6 +125,7 @@
             没有找到相关影片
         </div>
 
+        <!-- 📄 分页条 -->
         <div x-show="!isSearching && totalPages > 1" class="flex justify-center items-center space-x-3 mt-8 sm:mt-10">
             <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1 || isLoading"
                     class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs sm:text-sm text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-slate-800 hover:text-white transition shadow">
@@ -235,10 +237,18 @@
                     if (this.isSearchIndexLoaded) return Promise.resolve(this.searchIndex);
                     if (this.searchIndexPromise) return this.searchIndexPromise;
 
-                    this.searchIndexPromise = fetch('./data/search_index.json')
-                        .then(res => res.json())
+                    this.searchIndexPromise = fetch('./data/search_index.json', { cache: 'force-cache' })
+                        .then(res => {
+                            if (!res.ok) throw new Error(`搜索索引加载失败`);
+                            return res.json();
+                        })
                         .then(data => {
-                            this.searchIndex = Array.isArray(data) ? data : [];
+                            const rows = Array.isArray(data) ? data : [];
+                            this.searchIndex = rows.map(video => ({
+                                ...video,
+                                _searchText: [video.title, video.actor, video.category, video.year]
+                                    .filter(Boolean).join(' ').toLocaleLowerCase()
+                            }));
                             this.isSearchIndexLoaded = true;
                             return this.searchIndex;
                         })
@@ -269,18 +279,18 @@
                         } catch (error) {
                             this.loadError = '搜索索引加载失败';
                         }
-                    }, 180);
+                    }, 220);
                 },
 
                 performSearch(keyword, updateHistory = true) {
-                    const kw = String(keyword || '').trim().toLowerCase();
+                    const kw = String(keyword || '').trim().toLocaleLowerCase();
                     if (!kw) { this.filteredVideos = []; return; }
                     this.isSearching = true;
                     this.currentPage = 1;
-                    this.filteredVideos = this.searchIndex.filter(video =>
-                        (video.title && video.title.toLowerCase().includes(kw)) ||
-                        (video.actor && video.actor.toLowerCase().includes(kw))
-                    );
+                    this.filteredVideos = this.searchIndex.filter(video => {
+                        const text = (video._searchText || '').toLocaleLowerCase();
+                        return text.includes(kw);
+                    });
                     if (updateHistory) this.updateUrl();
                 },
 
@@ -313,10 +323,12 @@
                     if (cat) this.switchCategory(cat);
                 },
 
+                // 🚀 核心提速：分类切换先切 UI 状态，按需异步拉取当前页分片
                 async switchCategory(category, resetPage = true) {
                     if (!category) return;
                     clearTimeout(this.searchDebounceTimer);
-                    this.categoryRequestId += 1;
+
+                    const requestId = ++this.categoryRequestId;
                     this.isSearching = false;
                     this.searchKeyword = '';
                     this.currentCategory = category.name;
@@ -335,7 +347,19 @@
                     this.filteredVideos = [...this.allVideos];
 
                     this.updateUrl();
-                    await this.ensureCategoryData(this.currentPage);
+                    this.isLoading = true;
+
+                    try {
+                        await this.ensureCategoryData(this.currentPage, requestId);
+                    } catch (error) {
+                        if (this.currentCategory === category.name && this.categoryRequestId === requestId) {
+                            this.loadError = '分类数据加载失败';
+                        }
+                    } finally {
+                        if (this.currentCategory === category.name && this.categoryRequestId === requestId) {
+                            this.isLoading = false;
+                        }
+                    }
                 },
 
                 getCategoryCache(categoryName) {
@@ -363,29 +387,34 @@
                     const requestKey = `${categoryName}::${fileName}`;
                     if (this.inflightCategoryFiles[requestKey]) return this.inflightCategoryFiles[requestKey];
 
-                    const request = fetch(`./data/${encodeURIComponent(fileName)}`)
-                        .then(res => res.json())
+                    const request = fetch(`./data/${encodeURIComponent(fileName)}`, { cache: 'force-cache' })
+                        .then(res => {
+                            if (!res.ok) throw new Error(`加载失败：${fileName}`);
+                            return res.json();
+                        })
                         .then(data => {
                             cache.chunks[fileName] = Array.isArray(data) ? data : [];
                             return cache.chunks[fileName];
                         })
+                        .catch(() => [])
                         .finally(() => { delete this.inflightCategoryFiles[requestKey]; });
 
                     this.inflightCategoryFiles[requestKey] = request;
                     return request;
                 },
 
-                async ensureCategoryData(pageNumber) {
+                async ensureCategoryData(pageNumber, overrideRequestId = null) {
                     const category = this.categories.find(cat => cat.name === this.currentCategory);
                     if (!category) return;
 
                     const files = category.file ? [category.file] : (Array.isArray(category.files) ? category.files : []);
                     if (files.length === 0) return;
 
-                    const requestId = this.categoryRequestId;
+                    const requestId = overrideRequestId ?? this.categoryRequestId;
                     const targetCount = Math.min(pageNumber * this.pageSize, this.currentCategoryCount || Number.MAX_SAFE_INTEGER);
                     const requiredChunkCount = Math.min(files.length, Math.max(1, Math.ceil(targetCount / this.chunkSize)));
                     const requiredFiles = files.slice(0, requiredChunkCount);
+
                     const cache = this.getCategoryCache(category.name);
                     const missingFiles = requiredFiles.filter(file => !Array.isArray(cache.chunks[file]));
 
@@ -393,12 +422,10 @@
                         if (this.currentCategory === category.name && this.categoryRequestId === requestId) {
                             this.allVideos = this.getOrderedCategoryVideos(category, cache);
                             this.filteredVideos = [...this.allVideos];
-                            this.isLoading = false;
                         }
                         return;
                     }
 
-                    this.isLoading = true;
                     try {
                         await Promise.all(missingFiles.map(file => this.fetchCategoryFile(category.name, file)));
                         if (this.currentCategory !== category.name || this.categoryRequestId !== requestId) return;
@@ -408,10 +435,6 @@
                     } catch (error) {
                         if (this.currentCategory === category.name && this.categoryRequestId === requestId) {
                             this.loadError = '影片数据加载失败';
-                        }
-                    } finally {
-                        if (this.currentCategory === category.name && this.categoryRequestId === requestId) {
-                            this.isLoading = false;
                         }
                     }
                 },
@@ -445,7 +468,6 @@
                     params.set('id', String(vodSummary.id));
                     const category = vodSummary.category || this.currentCategory;
                     if (category) params.set('cat', category);
-                    // 🚀 核心优化：透传分片参数，播放页免去查找过程直接加载
                     if (vodSummary.data_file) params.set('file', vodSummary.data_file);
                     window.location.href = `play.html?${params.toString()}`;
                 }
