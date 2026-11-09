@@ -14,7 +14,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white" x-data="playApp()">
 
-    <!-- 顶部导航栏与搜索 -->
+    <!-- 顶部导航栏 -->
     <header class="sticky top-0 z-50 bg-slate-900/85 backdrop-blur-md border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-3">
             <div class="flex items-center space-x-2 shrink-0">
@@ -22,7 +22,6 @@
                     🎬 云端影院
                 </a>
             </div>
-            <!-- 全局搜索框 -->
             <div class="flex-grow max-w-xs sm:max-w-sm md:max-w-md relative">
                 <input type="text" 
                        x-model="searchKeyword" 
@@ -31,7 +30,6 @@
                        class="w-full bg-slate-800/90 border border-slate-700/80 rounded-full px-4 py-1.5 text-xs sm:text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-slate-100 placeholder-slate-400 transition">
             </div>
         </div>
-        <!-- 分类导航条 -->
         <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center space-x-2 overflow-x-auto border-t border-slate-800/60 no-scrollbar">
             <a href="index.html" class="px-3 py-1 bg-slate-800 text-slate-300 hover:bg-slate-700 rounded-xl text-xs whitespace-nowrap transition shrink-0">首页</a>
             <template x-for="cat in categories" :key="cat.name">
@@ -43,16 +41,15 @@
         </div>
     </header>
 
-    <center>
+    <div class="flex justify-center my-3 overflow-hidden">
         <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
- <ins class="eas6a97888e20" data-zoneid="6080530"></ins> 
- <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-    </center>
+        <ins class="eas6a97888e20" data-zoneid="6080530"></ins> 
+        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+    </div>
 
     <!-- 主体播放区域 -->
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-grow w-full space-y-4 sm:space-y-6">
         
-        <!-- 加载或错误提示状态 -->
         <div x-show="isLoading" class="text-center py-16 text-blue-400 text-sm animate-pulse">
             正在从云端极速加载视频数据...
         </div>
@@ -63,36 +60,28 @@
 
         <template x-if="vod">
             <div class="space-y-4 sm:space-y-6">
-                <!-- 视频标题与详情 -->
                 <div class="space-y-1.5">
                     <h1 class="text-lg sm:text-2xl font-bold text-slate-100 tracking-tight" x-text="vod.title"></h1>
                     <p class="text-[11px] sm:text-xs text-slate-400 leading-relaxed" x-text="'类型：' + (vod.category || '') + ' | 年份：' + (vod.year || '') + ' | 地区：' + (vod.area || '') + ' | 主演：' + (vod.actor || '')"></p>
                 </div>
 
-                <!-- 📺 核心播放器容器 -->
                 <div id="player-container" class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl relative group">
-                    
-                    <!-- iframe 播放器 -->
                     <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" allow="fullscreen"></iframe>
 
-                    <!-- 浮动控制条 -->
                     <div class="absolute bottom-2.5 inset-x-0 flex justify-center items-center z-10 opacity-50 group-hover:opacity-100 transition-opacity pointer-events-none">
                         <div class="flex items-center space-x-1.5 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 shadow-lg pointer-events-auto text-[10px] sm:text-xs">
                             <button @click="playPrev()" :disabled="currentIndex === 0" 
                                     class="px-2 py-0.5 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-md text-white transition">
                                 ◀ 上集
                             </button>
-                            
                             <button @click="isDrawerOpen = !isDrawerOpen" 
                                     class="px-2.5 py-0.5 bg-blue-600/80 hover:bg-blue-600 rounded-md text-white font-medium transition shadow">
                                 选集 <span x-text="'(' + (currentIndex + 1) + '/' + (vod?.episodes?.length || 0) + ')'"></span>
                             </button>
-
                             <button @click="playNext()" :disabled="!vod?.episodes || currentIndex >= vod.episodes.length - 1" 
                                     class="px-2 py-0.5 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-md text-white transition">
                                 下集 ▶
                             </button>
-
                             <button @click="toggleFullscreen()" 
                                     class="px-2 py-0.5 bg-white/10 hover:bg-white/20 rounded-md text-amber-300 transition" title="全屏">
                                 ⛶
@@ -100,7 +89,6 @@
                         </div>
                     </div>
 
-                    <!-- 选集抽屉面板 -->
                     <div x-show="isDrawerOpen" @click.outside="isDrawerOpen = false" x-cloak 
                          class="absolute inset-y-0 right-0 w-72 sm:w-80 bg-slate-950/95 backdrop-blur-xl border-l border-slate-800 p-4 flex flex-col shadow-2xl transition transform z-20">
                         <div class="flex justify-between items-center pb-3 border-b border-slate-800">
@@ -119,7 +107,6 @@
                     </div>
                 </div>
 
-                <!-- 页面下方完整选集网格 -->
                 <div class="bg-slate-900/90 border border-slate-800/80 rounded-2xl p-4 sm:p-5 space-y-3 shadow-lg" x-show="vod?.episodes?.length > 0">
                     <div class="flex justify-between items-center">
                         <h4 class="text-xs sm:text-sm font-bold text-slate-300 uppercase tracking-wider">全部选集</h4>
@@ -136,7 +123,6 @@
                     </div>
                 </div>
 
-                <!-- 剧情简介 -->
                 <div class="bg-slate-900/90 border border-slate-800/80 rounded-2xl p-4 sm:p-5 text-xs sm:text-sm text-slate-400 space-y-2 shadow-lg">
                     <h4 class="font-bold text-slate-200">剧情介绍</h4>
                     <p class="leading-relaxed" x-text="vod?.content || '暂无简介'"></p>
@@ -145,13 +131,7 @@
         </template>
 
     </main>
-    <center>
-        <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
- <ins class="eas6a97888e2" data-zoneid="6084038"></ins> 
- <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-    </center>
 
-    <!-- 页脚 -->
     <footer class="bg-slate-900/60 border-t border-slate-800/80 py-6 text-center text-[11px] sm:text-xs text-slate-500 mt-12">
         <p>Copyright &copy; 云端影院 All Rights Reserved. 资源来自第三方采集接口，仅供学习交流使用。</p>
     </footer>
@@ -169,10 +149,19 @@
                 isLoading: true,
                 loadError: '',
 
+                async fetchJson(url) {
+                    const response = await fetch(url, { cache: 'force-cache' });
+                    if (!response.ok) {
+                        throw new Error(`请求失败：${url}（HTTP ${response.status}）`);
+                    }
+                    return response.json();
+                },
+
                 async init() {
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const vodId = urlParams.get('id');
-                    const targetCategoryName = urlParams.get('cat');
+                    const params = new URLSearchParams(window.location.search);
+                    const vodId = params.get('id');
+                    const targetCategoryName = params.get('cat');
+                    const fileParam = params.get('file');
 
                     if (!vodId) {
                         this.isLoading = false;
@@ -180,61 +169,93 @@
                         return;
                     }
 
-                    let foundVod = null;
-
                     try {
-                        // 1. 🚀 极速通道：秒扫浏览器 sessionStorage 内存缓存（如果是从首页点进来的，耗时 < 5ms）
-                        for (let i = 0; i < sessionStorage.length; i++) {
-                            const key = sessionStorage.key(i);
-                            if (key && key.startsWith('vod_cache_')) {
-                                try {
-                                    const cachedList = JSON.parse(sessionStorage.getItem(key));
-                                    foundVod = cachedList.find(v => v.id == vodId);
-                                    if (foundVod) break;
-                                } catch (e) {}
+                        const [categoriesResult, lookupResult] = await Promise.allSettled([
+                            this.fetchJson('./data/categories.json'),
+                            this.fetchJson('./data/vod_lookup.json')
+                        ]);
+
+                        if (categoriesResult.status === 'fulfilled' && Array.isArray(categoriesResult.value)) {
+                            this.categories = categoriesResult.value;
+                        }
+
+                        let dataFile = '';
+
+                        // 1. 如果带有分片参数，直接读取
+                        if (fileParam && /^[\w.-]+\.json$/.test(fileParam)) {
+                            dataFile = fileParam;
+                        }
+
+                        // 2. 通过轻量索引定位影片所在分片
+                        if (!dataFile && lookupResult.status === 'fulfilled') {
+                            const lookup = lookupResult.value;
+                            const entry = lookup && lookup[String(vodId)];
+                            if (typeof entry === 'string') {
+                                dataFile = entry;
+                            } else if (entry && typeof entry.file === 'string') {
+                                dataFile = entry.file;
                             }
                         }
 
-                        // 2. 如果内存没命中，并行获取 categories.json
-                        const resCat = await fetch('./data/categories.json');
-                        this.categories = await resCat.json() || [];
-
-                        // 3. 🎯 精准直达通道：如果 URL 带有分类名称，直接请求该分类的文件，绝不浪费时间
-                        if (!foundVod && targetCategoryName) {
-                            const targetCat = this.categories.find(c => c.name === targetCategoryName);
-                            if (targetCat) {
-                                const loadFiles = targetCat.file ? [targetCat.file] : (targetCat.files || []);
-                                const results = await Promise.all(loadFiles.map(f => fetch('./data/' + f).then(res => res.json()).catch(e => [])));
-                                foundVod = results.flat().find(v => v.id == vodId);
-                            }
+                        // 3. 兼容尚未重新生成 vod_lookup.json 的旧数据
+                        if (!dataFile) {
+                            dataFile = await this.findFileInLegacyData(vodId, targetCategoryName);
                         }
 
-                        // 4. 如果还没找到（例如搜索引擎直接进入且没带分类参数），通过轻量的 search_index.json 反查
+                        if (!dataFile || !/^[\w.-]+\.json$/.test(dataFile)) {
+                            this.loadError = '没有找到该影片的数据，可能已被更新替换';
+                            return;
+                        }
+
+                        const videos = await this.fetchJson(`./data/${encodeURIComponent(dataFile)}`);
+                        if (!Array.isArray(videos)) {
+                            throw new Error(`影片分片格式错误：${dataFile}`);
+                        }
+
+                        const foundVod = videos.find(video => String(video.id) === String(vodId));
                         if (!foundVod) {
-                            const resIndex = await fetch('./data/search_index.json');
-                            const searchIndex = await resIndex.json();
-                            const indexItem = searchIndex.find(v => v.id == vodId);
-                            if (indexItem && indexItem.category) {
-                                const targetCat = this.categories.find(c => c.name === indexItem.category);
-                                if (targetCat) {
-                                    const loadFiles = targetCat.file ? [targetCat.file] : (targetCat.files || []);
-                                    const results = await Promise.all(loadFiles.map(f => fetch('./data/' + f).then(res => res.json()).catch(e => [])));
-                                    foundVod = results.flat().find(v => v.id == vodId);
-                                }
-                            }
+                            this.loadError = '该影片不在索引指定的数据文件中，请重新运行数据更新脚本';
+                            return;
                         }
 
-                        if (foundVod) {
-                            this.applyVod(foundVod);
-                        } else {
-                            this.loadError = '没有找到该影片的详细数据，可能已被更新替换';
-                        }
-                    } catch (err) {
-                        console.error('Play init error:', err);
+                        this.applyVod(foundVod);
+                    } catch (error) {
+                        console.error('Play init error:', error);
                         this.loadError = '网络加载异常，请稍后重试';
                     } finally {
                         this.isLoading = false;
                     }
+                },
+
+                async findFileInLegacyData(vodId, targetCategoryName) {
+                    let categoryName = targetCategoryName || '';
+                    try {
+                        const searchIndex = await this.fetchJson('./data/search_index.json');
+                        const item = Array.isArray(searchIndex) ? searchIndex.find(video => String(video.id) === String(vodId)) : null;
+                        if (item && item.category) categoryName = item.category;
+                    } catch (error) {}
+
+                    const category = this.categories.find(item => item.name === categoryName);
+                    if (!category) return '';
+
+                    const files = category.file ? [category.file] : (Array.isArray(category.files) ? category.files : []);
+                    const results = await Promise.all(
+                        files.map(async file => {
+                            try {
+                                const data = await this.fetchJson(`./data/${encodeURIComponent(file)}`);
+                                return Array.isArray(data) ? { file, data } : null;
+                            } catch (error) {
+                                return null;
+                            }
+                        })
+                    );
+
+                    for (const result of results) {
+                        if (result && result.data.some(video => String(video.id) === String(vodId))) {
+                            return result.file;
+                        }
+                    }
+                    return '';
                 },
 
                 applyVod(foundVod) {
@@ -243,8 +264,8 @@
                     if (foundVod.content) {
                         document.getElementById('page-desc').setAttribute('content', foundVod.content.substring(0, 120));
                     }
-                    if (this.vod.episodes && this.vod.episodes.length > 0) {
-                        this.playEpisode(this.vod.episodes[0].url, 0);
+                    if (Array.isArray(foundVod.episodes) && foundVod.episodes.length > 0) {
+                        this.playEpisode(foundVod.episodes[0].url, 0);
                     } else {
                         this.loadError = '该影片暂无可用播放剧集';
                     }
@@ -257,46 +278,39 @@
                 },
 
                 playPrev() {
-                    if (this.vod && this.vod.episodes && this.currentIndex > 0) {
-                        const targetIndex = this.currentIndex - 1;
-                        this.playEpisode(this.vod.episodes[targetIndex].url, targetIndex);
+                    if (this.vod && Array.isArray(this.vod.episodes) && this.currentIndex > 0) {
+                        const index = this.currentIndex - 1;
+                        this.playEpisode(this.vod.episodes[index].url, index);
                     }
                 },
 
                 playNext() {
-                    if (this.vod && this.vod.episodes && this.currentIndex < this.vod.episodes.length - 1) {
-                        const targetIndex = this.currentIndex + 1;
-                        this.playEpisode(this.vod.episodes[targetIndex].url, targetIndex);
+                    if (this.vod && Array.isArray(this.vod.episodes) && this.currentIndex < this.vod.episodes.length - 1) {
+                        const index = this.currentIndex + 1;
+                        this.playEpisode(this.vod.episodes[index].url, index);
                     }
                 },
 
                 toggleFullscreen() {
                     const container = document.getElementById('player-container');
                     if (!document.fullscreenElement) {
-                        if (container.requestFullscreen) {
-                            container.requestFullscreen();
-                        } else if (container.webkitRequestFullscreen) {
-                            container.webkitRequestFullscreen();
-                        }
+                        if (container.requestFullscreen) container.requestFullscreen();
+                        else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen();
                     } else {
-                        if (document.exitFullscreen) {
-                            document.exitFullscreen();
-                        } else if (document.webkitExitFullscreen) {
-                            document.webkitExitFullscreen();
-                        }
+                        if (document.exitFullscreen) document.exitFullscreen();
+                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
                     }
                 },
 
-                selectCategory(cat) {
-                    window.location.href = `index.html?cat=${encodeURIComponent(cat.name)}`;
+                selectCategory(category) {
+                    window.location.href = `index.html?cat=${encodeURIComponent(category.name)}`;
                 },
 
                 doSearch() {
-                    if (this.searchKeyword.trim()) {
-                        window.location.href = `index.html?q=${encodeURIComponent(this.searchKeyword.trim())}`;
-                    }
+                    const keyword = this.searchKeyword.trim();
+                    if (keyword) window.location.href = `index.html?q=${encodeURIComponent(keyword)}`;
                 }
-            }
+            };
         }
     </script>
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
