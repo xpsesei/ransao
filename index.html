@@ -37,7 +37,7 @@
 
     <main class="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-grow w-full">
 
-        <!-- 🚀 分类导航条（触控平滑滚动） -->
+        <!-- 分类导航条 -->
         <div class="flex items-center space-x-2 overflow-x-auto pb-3 mb-5 no-scrollbar">
             <button
                 @click="switchCategoryByName('🔥 最新更新')"
@@ -112,13 +112,17 @@
             </template>
         </div>
 
+        <!-- 加载状态提示 -->
         <div x-show="isLoading" class="text-center py-16 text-slate-400 text-sm">
             正在加载影片…
         </div>
 
-        <div x-show="!isLoading && loadError" class="text-center py-16 text-red-400 text-sm">
+        <!-- 错误提示与重试按钮 -->
+        <div x-show="!isLoading && loadError" class="text-center py-16 text-red-400 text-sm space-y-3">
             <p x-text="loadError"></p>
-            <button @click="retryCurrentPage()" class="mt-3 px-4 py-2 bg-slate-800 rounded-lg text-slate-200 hover:bg-slate-700 transition">重试</button>
+            <button @click="retryCurrentPage()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl transition shadow">
+                重试
+            </button>
         </div>
 
         <div x-show="!isLoading && !loadError && filteredVideos.length === 0" class="text-center py-16 text-slate-500 text-sm">
@@ -323,7 +327,6 @@
                     if (cat) this.switchCategory(cat);
                 },
 
-                // 🚀 核心提速：分类切换先切 UI 状态，按需异步拉取当前页分片
                 async switchCategory(category, resetPage = true) {
                     if (!category) return;
                     clearTimeout(this.searchDebounceTimer);
@@ -353,7 +356,7 @@
                         await this.ensureCategoryData(this.currentPage, requestId);
                     } catch (error) {
                         if (this.currentCategory === category.name && this.categoryRequestId === requestId) {
-                            this.loadError = '分类数据加载失败';
+                            this.loadError = '分类数据加载失败，请点击重试';
                         }
                     } finally {
                         if (this.currentCategory === category.name && this.categoryRequestId === requestId) {
@@ -382,22 +385,32 @@
 
                 async fetchCategoryFile(categoryName, fileName) {
                     const cache = this.getCategoryCache(categoryName);
-                    if (Array.isArray(cache.chunks[fileName])) return cache.chunks[fileName];
+                    if (Array.isArray(cache.chunks[fileName])) {
+                        return cache.chunks[fileName];
+                    }
 
                     const requestKey = `${categoryName}::${fileName}`;
-                    if (this.inflightCategoryFiles[requestKey]) return this.inflightCategoryFiles[requestKey];
+                    if (this.inflightCategoryFiles[requestKey]) {
+                        return this.inflightCategoryFiles[requestKey];
+                    }
 
                     const request = fetch(`./data/${encodeURIComponent(fileName)}`, { cache: 'force-cache' })
                         .then(res => {
-                            if (!res.ok) throw new Error(`加载失败：${fileName}`);
+                            if (!res.ok) {
+                                throw new Error(`加载失败：${fileName}（HTTP ${res.status}）`);
+                            }
                             return res.json();
                         })
                         .then(data => {
-                            cache.chunks[fileName] = Array.isArray(data) ? data : [];
-                            return cache.chunks[fileName];
+                            if (!Array.isArray(data)) {
+                                throw new Error(`分类数据格式错误：${fileName}`);
+                            }
+                            cache.chunks[fileName] = data;
+                            return data;
                         })
-                        .catch(() => [])
-                        .finally(() => { delete this.inflightCategoryFiles[requestKey]; });
+                        .finally(() => {
+                            delete this.inflightCategoryFiles[requestKey];
+                        });
 
                     this.inflightCategoryFiles[requestKey] = request;
                     return request;
@@ -407,34 +420,68 @@
                     const category = this.categories.find(cat => cat.name === this.currentCategory);
                     if (!category) return;
 
-                    const files = category.file ? [category.file] : (Array.isArray(category.files) ? category.files : []);
+                    const files = category.file
+                        ? [category.file]
+                        : (Array.isArray(category.files) ? category.files : []);
+
                     if (files.length === 0) return;
 
                     const requestId = overrideRequestId ?? this.categoryRequestId;
-                    const targetCount = Math.min(pageNumber * this.pageSize, this.currentCategoryCount || Number.MAX_SAFE_INTEGER);
-                    const requiredChunkCount = Math.min(files.length, Math.max(1, Math.ceil(targetCount / this.chunkSize)));
+                    const targetCount = Math.min(
+                        pageNumber * this.pageSize,
+                        this.currentCategoryCount || Number.MAX_SAFE_INTEGER
+                    );
+                    const requiredChunkCount = Math.min(
+                        files.length,
+                        Math.max(1, Math.ceil(targetCount / this.chunkSize))
+                    );
                     const requiredFiles = files.slice(0, requiredChunkCount);
 
                     const cache = this.getCategoryCache(category.name);
-                    const missingFiles = requiredFiles.filter(file => !Array.isArray(cache.chunks[file]));
+                    const missingFiles = requiredFiles.filter(
+                        file => !Array.isArray(cache.chunks[file])
+                    );
 
                     if (missingFiles.length === 0) {
-                        if (this.currentCategory === category.name && this.categoryRequestId === requestId) {
+                        if (this.currentCategory === category.name &&
+                            this.categoryRequestId === requestId) {
                             this.allVideos = this.getOrderedCategoryVideos(category, cache);
                             this.filteredVideos = [...this.allVideos];
                         }
                         return;
                     }
 
+                    if (this.currentCategory === category.name &&
+                        this.categoryRequestId === requestId) {
+                        this.isLoading = true;
+                        this.loadError = '';
+                    }
+
                     try {
-                        await Promise.all(missingFiles.map(file => this.fetchCategoryFile(category.name, file)));
-                        if (this.currentCategory !== category.name || this.categoryRequestId !== requestId) return;
+                        await Promise.all(
+                            missingFiles.map(file =>
+                                this.fetchCategoryFile(category.name, file)
+                            )
+                        );
+
+                        if (this.currentCategory !== category.name ||
+                            this.categoryRequestId !== requestId) {
+                            return;
+                        }
 
                         this.allVideos = this.getOrderedCategoryVideos(category, cache);
                         this.filteredVideos = [...this.allVideos];
                     } catch (error) {
-                        if (this.currentCategory === category.name && this.categoryRequestId === requestId) {
-                            this.loadError = '影片数据加载失败';
+                        console.error('分类数据加载失败：', error);
+
+                        if (this.currentCategory === category.name &&
+                            this.categoryRequestId === requestId) {
+                            this.loadError = '分类数据加载失败，请点击重试';
+                        }
+                    } finally {
+                        if (this.currentCategory === category.name &&
+                            this.categoryRequestId === requestId) {
+                            this.isLoading = false;
                         }
                     }
                 },
@@ -454,12 +501,19 @@
                     this.currentPage = page;
                     this.loadError = '';
                     this.updateUrl();
-                    if (!this.isSearching) await this.ensureCategoryData(page);
+                    if (!this.isSearching) {
+                        await this.ensureCategoryData(page);
+                    }
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 },
 
                 retryCurrentPage() {
-                    if (this.isSearching) { this.onGlobalSearch(); return; }
+                    if (this.isSearching) {
+                        this.loadError = '';
+                        this.onGlobalSearch();
+                        return;
+                    }
+                    this.loadError = '';
                     this.ensureCategoryData(this.currentPage);
                 },
 
