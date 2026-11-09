@@ -65,6 +65,7 @@
                     <p class="text-[11px] sm:text-xs text-slate-400 leading-relaxed" x-text="'类型：' + (vod.category || '') + ' | 年份：' + (vod.year || '') + ' | 地区：' + (vod.area || '') + ' | 主演：' + (vod.actor || '')"></p>
                 </div>
 
+                <!-- 📺 核心播放器容器 -->
                 <div id="player-container" class="w-full bg-black aspect-video rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl relative group">
                     <iframe :src="currentPlayUrl" class="w-full h-full border-0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" allow="fullscreen"></iframe>
 
@@ -151,9 +152,7 @@
 
                 async fetchJson(url) {
                     const response = await fetch(url, { cache: 'force-cache' });
-                    if (!response.ok) {
-                        throw new Error(`请求失败：${url}（HTTP ${response.status}）`);
-                    }
+                    if (!response.ok) throw new Error(`请求失败：${url}`);
                     return response.json();
                 },
 
@@ -181,23 +180,18 @@
 
                         let dataFile = '';
 
-                        // 1. 如果带有分片参数，直接读取
+                        // 🚀 核心优化：直接通过带过来的 file 参数定位，或通过 vod_lookup.json 毫秒级查找到对应分片
                         if (fileParam && /^[\w.-]+\.json$/.test(fileParam)) {
                             dataFile = fileParam;
                         }
 
-                        // 2. 通过轻量索引定位影片所在分片
                         if (!dataFile && lookupResult.status === 'fulfilled') {
                             const lookup = lookupResult.value;
                             const entry = lookup && lookup[String(vodId)];
-                            if (typeof entry === 'string') {
-                                dataFile = entry;
-                            } else if (entry && typeof entry.file === 'string') {
-                                dataFile = entry.file;
-                            }
+                            if (typeof entry === 'string') dataFile = entry;
+                            else if (entry && typeof entry.file === 'string') dataFile = entry.file;
                         }
 
-                        // 3. 兼容尚未重新生成 vod_lookup.json 的旧数据
                         if (!dataFile) {
                             dataFile = await this.findFileInLegacyData(vodId, targetCategoryName);
                         }
@@ -208,13 +202,11 @@
                         }
 
                         const videos = await this.fetchJson(`./data/${encodeURIComponent(dataFile)}`);
-                        if (!Array.isArray(videos)) {
-                            throw new Error(`影片分片格式错误：${dataFile}`);
-                        }
+                        if (!Array.isArray(videos)) throw new Error('影片分片格式错误');
 
                         const foundVod = videos.find(video => String(video.id) === String(vodId));
                         if (!foundVod) {
-                            this.loadError = '该影片不在索引指定的数据文件中，请重新运行数据更新脚本';
+                            this.loadError = '该影片不在索引指定的数据文件中';
                             return;
                         }
 
@@ -244,9 +236,7 @@
                             try {
                                 const data = await this.fetchJson(`./data/${encodeURIComponent(file)}`);
                                 return Array.isArray(data) ? { file, data } : null;
-                            } catch (error) {
-                                return null;
-                            }
+                            } catch (error) { return null; }
                         })
                     );
 
