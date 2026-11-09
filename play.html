@@ -53,8 +53,8 @@
     <main class="max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-grow w-full space-y-4 sm:space-y-6">
         
         <!-- 加载或错误提示状态 -->
-        <div x-show="isLoading" class="text-center py-12 text-blue-400 text-sm animate-pulse">
-            正在从云端飞速加载视频数据，请稍候...
+        <div x-show="isLoading" class="text-center py-16 text-blue-400 text-sm animate-pulse">
+            正在从云端极速加载视频数据...
         </div>
         <div x-show="loadError" class="bg-red-950/40 border border-red-900/50 text-red-300 p-4 rounded-2xl text-center space-y-2">
             <p x-text="loadError"></p>
@@ -183,7 +183,7 @@
                     let foundVod = null;
 
                     try {
-                        // 1. 🚀 极速通道：秒扫浏览器 sessionStorage 内存缓存
+                        // 1. 🚀 极速通道：秒扫浏览器 sessionStorage 内存缓存（如果是从首页点进来的，耗时 < 5ms）
                         for (let i = 0; i < sessionStorage.length; i++) {
                             const key = sessionStorage.key(i);
                             if (key && key.startsWith('vod_cache_')) {
@@ -195,59 +195,37 @@
                             }
                         }
 
-                        // 2. 如果内存没命中，优先通过 categories.json 查找对应的分类文件来精准加载
+                        // 2. 如果内存没命中，并行获取 categories.json
                         const resCat = await fetch('./data/categories.json');
                         this.categories = await resCat.json() || [];
 
+                        // 3. 🎯 精准直达通道：如果 URL 带有分类名称，直接请求该分类的文件，绝不浪费时间
                         if (!foundVod && targetCategoryName) {
                             const targetCat = this.categories.find(c => c.name === targetCategoryName);
                             if (targetCat) {
                                 const loadFiles = targetCat.file ? [targetCat.file] : (targetCat.files || []);
                                 const results = await Promise.all(loadFiles.map(f => fetch('./data/' + f).then(res => res.json()).catch(e => [])));
-                                const fullList = results.flat();
-                                foundVod = fullList.find(v => v.id == vodId);
+                                foundVod = results.flat().find(v => v.id == vodId);
                             }
                         }
 
-                        // 3. 如果还没找到，尝试加载最新更新文件
+                        // 4. 如果还没找到（例如搜索引擎直接进入且没带分类参数），通过轻量的 search_index.json 反查
                         if (!foundVod) {
-                            try {
-                                const resLatest = await fetch('./data/cat_latest.json');
-                                const latestList = await resLatest.json();
-                                foundVod = latestList.find(v => v.id == vodId);
-                            } catch (e) {}
-                        }
-
-                        // 4. 💡 终极兜底：如果前几步都没找到（例如直接通过搜索引擎进入），去加载 search_index.json 找到所属分类或直接遍历
-                        if (!foundVod) {
-                            try {
-                                const resIndex = await fetch('./data/search_index.json');
-                                const searchIndex = await resIndex.json();
-                                const indexItem = searchIndex.find(v => v.id == vodId);
-                                if (indexItem) {
-                                    // 找到了基本信息，再去其对应的分类文件里抓取完整剧集数据
-                                    const targetCat = this.categories.find(c => c.name === indexItem.category);
-                                    if (targetCat) {
-                                        const loadFiles = targetCat.file ? [targetCat.file] : (targetCat.files || []);
-                                        const results = await Promise.all(loadFiles.map(f => fetch('./data/' + f).then(res => res.json()).catch(e => [])));
-                                        const fullList = results.flat();
-                                        foundVod = fullList.find(v => v.id == vodId);
-                                    }
+                            const resIndex = await fetch('./data/search_index.json');
+                            const searchIndex = await resIndex.json();
+                            const indexItem = searchIndex.find(v => v.id == vodId);
+                            if (indexItem && indexItem.category) {
+                                const targetCat = this.categories.find(c => c.name === indexItem.category);
+                                if (targetCat) {
+                                    const loadFiles = targetCat.file ? [targetCat.file] : (targetCat.files || []);
+                                    const results = await Promise.all(loadFiles.map(f => fetch('./data/' + f).then(res => res.json()).catch(e => [])));
+                                    foundVod = results.flat().find(v => v.id == vodId);
                                 }
-                            } catch (e) {}
+                            }
                         }
 
                         if (foundVod) {
-                            this.vod = foundVod;
-                            document.getElementById('page-title').innerText = `${foundVod.title} 免费在线观看 - 云端影院`;
-                            if (foundVod.content) {
-                                document.getElementById('page-desc').setAttribute('content', foundVod.content.substring(0, 120));
-                            }
-                            if (this.vod.episodes && this.vod.episodes.length > 0) {
-                                this.playEpisode(this.vod.episodes[0].url, 0);
-                            } else {
-                                this.loadError = '该影片暂无可用播放剧集';
-                            }
+                            this.applyVod(foundVod);
                         } else {
                             this.loadError = '没有找到该影片的详细数据，可能已被更新替换';
                         }
@@ -256,6 +234,19 @@
                         this.loadError = '网络加载异常，请稍后重试';
                     } finally {
                         this.isLoading = false;
+                    }
+                },
+
+                applyVod(foundVod) {
+                    this.vod = foundVod;
+                    document.getElementById('page-title').innerText = `${foundVod.title} 免费在线观看 - 云端影院`;
+                    if (foundVod.content) {
+                        document.getElementById('page-desc').setAttribute('content', foundVod.content.substring(0, 120));
+                    }
+                    if (this.vod.episodes && this.vod.episodes.length > 0) {
+                        this.playEpisode(this.vod.episodes[0].url, 0);
+                    } else {
+                        this.loadError = '该影片暂无可用播放剧集';
                     }
                 },
 
