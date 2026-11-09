@@ -10,7 +10,7 @@ import urllib.request
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
 MAX_WORKERS = 3
-CHUNK_SIZE = 100  # 🎯 严格控制分片大小，让前端秒切
+CHUNK_SIZE = 100  # 🎯 严格控制分片大小
 
 
 def fetch_page(page, retries=5):
@@ -186,34 +186,48 @@ def main():
     if c_name not in all_cats:
       all_cats.append(c_name)
 
+  # 保存每个影片实际所在的数据分片，播放页可用 ID 直接定位文件
+  vod_file_map = {}
+
   for c_name in all_cats:
     v_list = categories.get(c_name, [])
-    if v_list:
-      safe_hash = hashlib.md5(c_name.encode("utf-8")).hexdigest()[:10]
+    if not v_list:
+      continue
 
-      if len(v_list) > CHUNK_SIZE:
-        sub_files = []
-        for i in range(0, len(v_list), CHUNK_SIZE):
-          chunk = v_list[i : i + CHUNK_SIZE]
-          chunk_file = f"cat_{safe_hash}_part{i // CHUNK_SIZE + 1}.json"
-          with open(os.path.join("data", chunk_file), "w", encoding="utf-8") as f:
-            json.dump(chunk, f, ensure_ascii=False, indent=2)
-          sub_files.append(chunk_file)
-        cat_index.append(
-            {"name": c_name, "count": len(v_list), "files": sub_files}
-        )
-      else:
-        file_name = f"cat_{safe_hash}.json"
-        with open(os.path.join("data", file_name), "w", encoding="utf-8") as f:
-          json.dump(v_list, f, ensure_ascii=False, indent=2)
-        cat_index.append(
-            {"name": c_name, "count": len(v_list), "file": file_name}
-        )
+    safe_hash = hashlib.md5(c_name.encode("utf-8")).hexdigest()[:10]
+
+    if len(v_list) > CHUNK_SIZE:
+      sub_files = []
+      for i in range(0, len(v_list), CHUNK_SIZE):
+        chunk = v_list[i : i + CHUNK_SIZE]
+        chunk_file = f"cat_{safe_hash}_part{i // CHUNK_SIZE + 1}.json"
+
+        for vod in chunk:
+          vod["data_file"] = chunk_file
+          vod_file_map[str(vod.get("id"))] = chunk_file
+
+        with open(os.path.join("data", chunk_file), "w", encoding="utf-8") as f:
+          json.dump(chunk, f, ensure_ascii=False)
+        sub_files.append(chunk_file)
+      cat_index.append(
+          {"name": c_name, "count": len(v_list), "files": sub_files}
+      )
+    else:
+      file_name = f"cat_{safe_hash}.json"
+      for vod in v_list:
+        vod["data_file"] = file_name
+        vod_file_map[str(vod.get("id"))] = file_name
+
+      with open(os.path.join("data", file_name), "w", encoding="utf-8") as f:
+        json.dump(v_list, f, ensure_ascii=False)
+      cat_index.append(
+          {"name": c_name, "count": len(v_list), "file": file_name}
+      )
 
   with open("data/categories.json", "w", encoding="utf-8") as f:
     json.dump(cat_index, f, ensure_ascii=False, indent=2)
 
-  # 🚀 优化 1：精简搜索索引字段（剔除沉重的 pic 和 content，将体积从 32MB 压缩至 8MB 左右）
+  # 搜索索引瘦身
   search_index = []
   for vod in processed_videos:
     search_index.append({
@@ -228,7 +242,13 @@ def main():
   ) as f:
     json.dump(search_index, f, ensure_ascii=False)
 
-  # 🚀 优化 2：自动清理 data 目录下不再被引用的过期旧分片文件（防止仓库无限膨胀）
+  # 播放页专用轻量索引：保存影片 ID 到分片文件的映射
+  with open(
+      os.path.join("data", "vod_lookup.json"), "w", encoding="utf-8"
+  ) as f:
+    json.dump(vod_file_map, f, ensure_ascii=False, separators=(",", ":"))
+
+  # 自动清理过期旧分片
   print("3. 正在清理过期的旧分片文件...")
   active_files = set()
   for cat in cat_index:
@@ -238,6 +258,7 @@ def main():
       active_files.update(cat["files"])
   active_files.add("categories.json")
   active_files.add("search_index.json")
+  active_files.add("vod_lookup.json")
 
   cleaned_count = 0
   for filename in os.listdir("data"):
@@ -249,12 +270,11 @@ def main():
         pass
   print(f"✅ 成功清理过期旧分片: {cleaned_count} 个")
 
-  # 🚀 优化 3：生成 Sitemap 索引与分片（彻底解决 21MB 巨型单文件问题）
+  # 生成 Sitemap 索引与分片
   print("4. 生成 Sitemap 索引与分片...")
   DOMAIN = "https://198616.xyz"
   os.makedirs("sitemaps", exist_ok=True)
 
-  # 子 Sitemap 1：首页与分类
   base_sitemap_lines = [
       '<?xml version="1.0" encoding="UTF-8"?>',
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -269,7 +289,6 @@ def main():
   with open("sitemaps/sitemap_base.xml", "w", encoding="utf-8") as f:
     f.write("\n".join(base_sitemap_lines))
 
-  # 子 Sitemap 2+: 视频播放页分片（每 5000 个链接一个文件）
   video_sitemap_files = ["sitemap_base.xml"]
   chunk_size_sitemap = 5000
   for i in range(0, len(processed_videos), chunk_size_sitemap):
@@ -292,7 +311,6 @@ def main():
       f.write("\n".join(v_lines))
     video_sitemap_files.append(part_filename)
 
-  # 根目录生成主 sitemap.xml（Sitemap Index）
   index_lines = [
       '<?xml version="1.0" encoding="UTF-8"?>',
       '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
