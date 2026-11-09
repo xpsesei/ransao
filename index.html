@@ -75,14 +75,11 @@
                 退出搜索
             </button>
         </div>
-
-        <!-- 广告容器（居中溢出隐藏） -->
-        <div class="flex justify-center my-3 overflow-hidden">
-            <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
-            <ins class="eas6a97888e20" data-zoneid="6080530"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
-
+<center>
+        <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+ <ins class="eas6a97888e20" data-zoneid="6080530"></ins> 
+ <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+</center>
         <!-- 视频网格列表（全平台自适应：手机2列，平板3-4列，桌面6列） -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
             <template x-for="vod in paginatedVideos" :key="vod.id">
