@@ -14,7 +14,8 @@
         "name": "全集",
         "url": "https://v1.wujinwsym3u8.com/wjv1/202611/08/CNTvd80dzJ87/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_3f373f3146_part1.json"
   },
   {
     "id": 167561,
@@ -31,7 +32,8 @@
         "name": "全集",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/pSykiiH3GT96/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_35cbbe42a2_part1.json"
   },
   {
     "id": 167560,
@@ -48,7 +50,8 @@
         "name": "全集",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/Xw3bceJamE95/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_35cbbe42a2_part1.json"
   },
   {
     "id": 167559,
@@ -65,7 +68,8 @@
         "name": "全集",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/rU65UFYStQ87/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_35cbbe42a2_part1.json"
   },
   {
     "id": 167558,
@@ -82,7 +86,8 @@
         "name": "全集",
         "url": "https://v9.wujinwsym3u8.com/wjv9/202611/08/yRE28TYBEk89/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ebf6fb2fbc_part1.json"
   },
   {
     "id": 167557,
@@ -99,7 +104,8 @@
         "name": "全集",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/n7WxBkd4ik97/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_35cbbe42a2_part1.json"
   },
   {
     "id": 167556,
@@ -116,7 +122,8 @@
         "name": "全集",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/GMPE7JnpyE91/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_dfa080be27_part1.json"
   },
   {
     "id": 167555,
@@ -133,7 +140,8 @@
         "name": "HD",
         "url": "https://v4.wujinwsym3u8.com/wjv4/202611/08/ipyVk64vh991/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_97129dde84_part1.json"
   },
   {
     "id": 123672,
@@ -526,7 +534,8 @@
         "name": "第96集",
         "url": "https://v3.wujinwsym3u8.com/wjv3/202611/08/HkrdFyieEd86/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_430465b915_part1.json"
   },
   {
     "id": 165347,
@@ -567,7 +576,8 @@
         "name": "第08集",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/bHNDAKRCA892/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 166708,
@@ -600,7 +610,8 @@
         "name": "第06集",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/BvT818GzHN86/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_a394da6525_part1.json"
   },
   {
     "id": 165617,
@@ -637,7 +648,8 @@
         "name": "第06集",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/MCu8kTinwV96/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_5477ee8b0b_part1.json"
   },
   {
     "id": 166707,
@@ -674,13 +686,14 @@
         "name": "第06集",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/KyR189r9gd90/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_430465b915_part1.json"
   },
   {
     "id": 115089,
     "title": "金牌调解",
     "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/d9a4d03189ef7f448fe903977eb2aa1a.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261110-1/2f7af9e5557ce4e0b74535580f006757.jpg",
     "year": "2011",
     "area": "中国大陆",
     "actor": "章亭",
@@ -2482,6 +2495,10 @@
       {
         "name": "20261108",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/zR7fm1bCv091/video/index.m3u8"
+      },
+      {
+        "name": "20261109",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/09/4HJvKTFvuv92/video/index.m3u8"
       }
     ]
   },
@@ -2520,7 +2537,8 @@
         "name": "第06集",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/BCZyN3yQV588/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_9e7a40dbaa_part1.json"
   },
   {
     "id": 165666,
@@ -2557,7 +2575,8 @@
         "name": "第06集",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/djE7JMNuqg89/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 165929,
@@ -2610,7 +2629,8 @@
         "name": "第10集",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/dqfMUjYMh496/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_a394da6525_part1.json"
   },
   {
     "id": 165616,
@@ -2647,7 +2667,8 @@
         "name": "第06集",
         "url": "https://v1.wujinwsym3u8.com/wjv1/202611/08/1E0jwuEFzx95/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 166007,
@@ -2680,7 +2701,8 @@
         "name": "第05集",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/HeSgegKbg391/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 165615,
@@ -2717,7 +2739,8 @@
         "name": "第06集",
         "url": "https://v9.wujinwsym3u8.com/wjv9/202611/08/02HkhA00Ba90/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 167554,
@@ -2734,7 +2757,8 @@
         "name": "第01集",
         "url": "https://v4.wujinwsym3u8.com/wjv4/202611/08/EGahqNNupC90/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_5477ee8b0b_part1.json"
   },
   {
     "id": 165618,
@@ -2771,7 +2795,8 @@
         "name": "第06集",
         "url": "https://v3.wujinwsym3u8.com/wjv3/202611/08/Q8r1xrKWf489/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 165614,
@@ -2808,7 +2833,8 @@
         "name": "第06集",
         "url": "https://v5.wujinwsym3u8.com/wjv5/202611/08/usCesVzLZr95/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 115042,
@@ -3485,7 +3511,8 @@
         "name": "200251122",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202511/23/trVpseruac84/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_235f2faded_part1.json"
   },
   {
     "id": 162848,
@@ -3506,7 +3533,8 @@
         "name": "HD",
         "url": "https://v3.wujinwsym3u8.com/wjv3/202611/08/NrZ34wJa1r96/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_52a4821235_part1.json"
   },
   {
     "id": 167189,
@@ -3535,7 +3563,8 @@
         "name": "第04集",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/P5zE7C4RZS94/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_3fc0b225a0_part1.json"
   },
   {
     "id": 117214,
@@ -3588,13 +3617,14 @@
         "name": "第10集",
         "url": "https://v3.wujinwsym3u8.com/wjv3/202611/08/Gztrn4LrVw92/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_b0530fdf5f_part1.json"
   },
   {
     "id": 167444,
     "title": "境遇双生",
     "category": "泰剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/b106d663121affb94b33141e51ac70a2.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261110-1/6cd01da8552d8139ec24d72f0c442fd9.jpg",
     "year": "2026",
     "area": "泰国",
     "actor": "纳塔差·查拉玛斯,Pam·Suchanuch",
@@ -3608,6 +3638,10 @@
       {
         "name": "第02集",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/CKa4mXpu6u90/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/09/HPZaSX78JT94/video/index.m3u8"
       }
     ]
   },
@@ -3654,13 +3688,14 @@
         "name": "第08集",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/WYhTZkxgnv87/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_fd9ccd6c24_part1.json"
   },
   {
     "id": 115096,
     "title": "欢乐集结号",
     "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/9f27e2bc7636a9da37a92dc7b504745d.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261110-1/442afc32cfc8214394631accbc4888e8.jpg",
     "year": "2009",
     "area": "中国大陆",
     "actor": "董凯,文杰,璐璐,王旭,王群",
@@ -5820,6 +5855,10 @@
         "url": "https://v8.wujinwsym3u8.com/wjv8/202611/08/Hmxhcv90Xg97/video/index.m3u8"
       },
       {
+        "name": "20261109",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/09/u8kc9DnbjK86/video/index.m3u8"
+      },
+      {
         "name": "202160804",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202608/04/bqKxWnqPrD86/video/index.m3u8"
       },
@@ -5880,7 +5919,8 @@
         "name": "第10集",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/HDmwpM0dVi86/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_9e7a40dbaa_part1.json"
   },
   {
     "id": 166463,
@@ -5997,7 +6037,8 @@
         "name": "第26集",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/hC2h1frsg791/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_b0530fdf5f_part1.json"
   },
   {
     "id": 149954,
@@ -6178,13 +6219,14 @@
         "name": "第43集",
         "url": "https://v9.wujinwsym3u8.com/wjv9/202611/08/kUs1TweziE88/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_5477ee8b0b_part1.json"
   },
   {
     "id": 162634,
     "title": "灵珠传：神妙奇珠",
     "category": "泰剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/168f86c8af816cc7953f2a8b92d8c8ac.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/43135193abf59e87c8576991356d59a7.jpg",
     "year": "2026",
     "area": "泰国",
     "actor": "Pin·Charinporn·Ngeoncharoen,Pol·Poonpat·Attapanyapol,Keng·Tachaya·Prathumwan,Somo·Chompoonut·Phungphon",
@@ -6282,6 +6324,10 @@
       {
         "name": "第23集",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/ABvnxiGhCX86/video/index.m3u8"
+      },
+      {
+        "name": "第24集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/09/2qKzbaX9b490/video/index.m3u8"
       }
     ]
   },
@@ -6289,7 +6335,7 @@
     "id": 166137,
     "title": "当妈不容易",
     "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/8d4b012b92b61cc17fd3e8ddc25fe3d0.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/6bafabf5a70014c2698662ded9c8c1f4.jpg",
     "year": "2014",
     "area": "中国大陆",
     "actor": "斯琴高娃,刘金山,程愫,傅程鹏",
@@ -6423,6 +6469,10 @@
       {
         "name": "第32集",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/4m54gnE5Cs96/video/index.m3u8"
+      },
+      {
+        "name": "第33集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/09/hEGLLJzTwj91/video/index.m3u8"
       }
     ]
   },
@@ -6441,13 +6491,14 @@
         "name": "HD",
         "url": "https://v5.wujinwsym3u8.com/wjv5/202611/08/7amDWf4xvt88/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_412cee3766_part1.json"
   },
   {
     "id": 165905,
     "title": "伟大的长征",
     "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/e1dbccdfe2e7505a559e7d8885efdbf8.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/f460d8706675975d06f0c7a8981da936.jpg",
     "year": "2026",
     "area": "中国大陆",
     "actor": "杨旭文,王仁君",
@@ -6665,6 +6716,10 @@
       {
         "name": "第54集",
         "url": "https://v10.wujinwsym3u8.com/wjv10/202611/08/Q3vmBdfnCQ90/video/index.m3u8"
+      },
+      {
+        "name": "第55集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/09/WuWuk4VYVg86/video/index.m3u8"
       }
     ]
   },
@@ -6683,7 +6738,8 @@
         "name": "HD",
         "url": "https://v10.wujinwsym3u8.com/wjv10/202611/08/nWw4xb54Kb90/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_dddbfb9bdd_part1.json"
   },
   {
     "id": 167081,
@@ -6716,7 +6772,8 @@
         "name": "第05集",
         "url": "https://v10.wujinwsym3u8.com/wjv10/202611/08/yB57adnDTT89/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_c0bfd816f5_part1.json"
   },
   {
     "id": 167550,
@@ -6733,13 +6790,14 @@
         "name": "HD",
         "url": "https://v5.wujinwsym3u8.com/wjv5/202611/08/6LGqGCEA7186/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_dddbfb9bdd_part1.json"
   },
   {
     "id": 166644,
     "title": "尚公主",
     "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/b666d92c9bd59662e9fe78d6219d1c3c.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/225d3768e2e2f6ff1aa32770aabb87ec.jpg",
     "year": "2026",
     "area": "中国大陆",
     "actor": "余皑磊,杨子骅,纪凌尘,胡杏儿,晏紫东,孟子义,侯长荣,李昀锐,沙宝亮,唐晓天,王子睿,徐海乔,刘钧,崔志刚,张月,裴佳欣,吴彼,彭杨,公磊,张舒沦,丁嘉文,吴汉坤,黄圣池,李孝谦,李嘉鑫,白冰可,全伊伦,丁子恩,何子怡,沈佳钰",
@@ -6877,6 +6935,10 @@
       {
         "name": "第33集",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/8aqVjNnzZx86/video/index.m3u8"
+      },
+      {
+        "name": "第34集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/09/AabUA3dap097/video/index.m3u8"
       }
     ]
   },
@@ -6895,7 +6957,8 @@
         "name": "第01集",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/DLSjVTvqPj95/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_b0530fdf5f_part1.json"
   },
   {
     "id": 165606,
@@ -6928,7 +6991,8 @@
         "name": "第06集",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/uz2yDNTJ7i95/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 165612,
@@ -6965,7 +7029,8 @@
         "name": "第06集",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/kqdT0LZwKa86/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 56752,
@@ -7638,7 +7703,8 @@
         "name": "第166集",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/G6SD0Mcy6790/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_e8574c39f5_part1.json"
   },
   {
     "id": 167548,
@@ -7695,7 +7761,8 @@
         "name": "20261107第10期",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/CnxBdB4JC890/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_235f2faded_part1.json"
   },
   {
     "id": 167547,
@@ -7712,13 +7779,14 @@
         "name": "国语",
         "url": "https://v1.wujinwsym3u8.com/wjv1/202611/08/cMQnhXaCm289/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ea2eed1fb5_part1.json"
   },
   {
     "id": 167382,
     "title": "谷雨",
     "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/b190769fd73391289b1892c8c2832b4b.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/0958e7b93380bc3f564d155ab70cadc0.jpg",
     "year": "2026",
     "area": "中国大陆",
     "actor": "井柏然,洪浚嘉,郭广平,冯雷,余文乐,孙艺洲,张雪迎,张颂文,李洪涛,李小冉,王鸥,隋俊波,王奕婷",
@@ -7764,6 +7832,14 @@
       {
         "name": "第10集",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/iMN6xWJZMA86/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/09/nTnxYCSPFL96/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/09/f0dwYAbwha87/video/index.m3u8"
       }
     ]
   },
@@ -7794,7 +7870,8 @@
         "name": "第07集",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/gcnRrPRc2S93/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_9e7a40dbaa_part1.json"
   },
   {
     "id": 167546,
@@ -7811,7 +7888,8 @@
         "name": "国语",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/xcZ81Y0xfG86/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ea2eed1fb5_part1.json"
   },
   {
     "id": 167545,
@@ -7828,7 +7906,8 @@
         "name": "国语",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/w2pu5yHfjA94/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ea2eed1fb5_part1.json"
   },
   {
     "id": 167544,
@@ -7845,7 +7924,8 @@
         "name": "国语",
         "url": "https://v5.wujinwsym3u8.com/wjv5/202611/08/2WJ0abx7Gc93/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ea2eed1fb5_part1.json"
   },
   {
     "id": 167543,
@@ -7862,7 +7942,8 @@
         "name": "国语",
         "url": "https://v5.wujinwsym3u8.com/wjv5/202611/08/ELVUHsxVy895/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ea2eed1fb5_part1.json"
   },
   {
     "id": 167542,
@@ -7879,13 +7960,14 @@
         "name": "国语",
         "url": "https://v5.wujinwsym3u8.com/wjv5/202611/08/nPcgkhJBk386/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ea2eed1fb5_part1.json"
   },
   {
     "id": 167371,
     "title": "折月亮",
     "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/bfcb579b2ccca7c7ee8fb46254d9471c.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/0f2f350279c0fe5bee9fbbbb3709e2ee.jpg",
     "year": "2026",
     "area": "中国大陆",
     "actor": "黄婷婷,谢彬彬,裴佳欣,林一,卢洋洋,吴芊盈,李歌洋,黄圣池,卢昱晓,赵鹏皓",
@@ -7931,6 +8013,14 @@
       {
         "name": "第10集",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/PpJTLWBpEF90/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/09/MHzLcH3G7J97/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/09/p9ENRuPap595/video/index.m3u8"
       }
     ]
   },
@@ -7938,7 +8028,7 @@
     "id": 115022,
     "title": "第三调解室",
     "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/6dd12e8283685289312211ef765987b6.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/9bbf767365dc825464181b13b0c08e59.jpg",
     "year": "2011",
     "area": "中国大陆",
     "actor": "刘佳,小河,张嘉益",
@@ -11090,6 +11180,10 @@
         "url": "https://v3.wujinwsym3u8.com/wjv3/202611/08/tYJF5CLWtK86/video/index.m3u8"
       },
       {
+        "name": "20261109",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/09/QWT9Tv5Vuw95/video/index.m3u8"
+      },
+      {
         "name": "202511115",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202511/15/aG60w8aggw83/video/index.m3u8"
       },
@@ -11106,8 +11200,8 @@
   {
     "id": 167441,
     "title": "玫瑰战争粤语",
-    "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/206f39e8afcf9f03079b5a51f41a2381.jpg",
+    "category": "香港剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261110-1/0b438cef973c8d688824bb680bcb8a56.jpg",
     "year": "2026",
     "area": "中国香港,中国大陆",
     "actor": "蔡洁,马国明,陈豪,关嘉敏,陈展鹏,林夏薇,傅嘉莉,陈自瑶,洪永城,姚子羚,邝洁楹,陈桢怡,廖慧仪,杨茜尧",
@@ -11141,14 +11235,26 @@
       {
         "name": "第07集",
         "url": "https://v1.wujinwsym3u8.com/wjv1/202611/08/ufvLDVz8DX90/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/09/T8drDTtSFc92/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/09/XWGHtAF1SF90/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/09/uRdbs8mRhv91/video/index.m3u8"
       }
     ]
   },
   {
     "id": 167442,
     "title": "玫瑰战争国语",
-    "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/fda1fa9f550a67e1764c8ff5eeb37353.jpg",
+    "category": "香港剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261110-1/5f81c8b7bee1503eb1131918b32c5d5c.jpg",
     "year": "2026",
     "area": "中国香港,中国大陆",
     "actor": "蔡洁,马国明,陈豪,关嘉敏,陈展鹏,林夏薇,傅嘉莉,陈自瑶,洪永城,姚子羚,邝洁楹,陈桢怡,廖慧仪,杨茜尧",
@@ -11182,6 +11288,18 @@
       {
         "name": "第07集",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/UEjyYuXF9L94/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/09/vKCipvhJFc92/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/09/Zu0MGn7kwa86/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/09/1YfLzUYB8R97/video/index.m3u8"
       }
     ]
   },
@@ -11220,7 +11338,8 @@
         "name": "第06集",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/dRqqB5AUVZ89/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_5477ee8b0b_part1.json"
   },
   {
     "id": 167541,
@@ -11237,7 +11356,8 @@
         "name": "第01集",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/gza3nRRDk193/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_3f40a58533_part1.json"
   },
   {
     "id": 160763,
@@ -11270,7 +11390,8 @@
         "name": "第05集",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/XjTNmr4A8K90/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_9e7a40dbaa_part1.json"
   },
   {
     "id": 24817,
@@ -12075,7 +12196,8 @@
         "name": "20261108",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/UbNiVE1CDR91/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_430465b915_part1.json"
   },
   {
     "id": 166003,
@@ -12108,7 +12230,8 @@
         "name": "第05集",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/aAij8g6dPV93/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 157412,
@@ -12189,7 +12312,8 @@
         "name": "第18集",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/QGk4jFbXSd86/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 167540,
@@ -12206,7 +12330,8 @@
         "name": "国语",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/svB9s9zCVg91/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167539,
@@ -12223,7 +12348,8 @@
         "name": "国语",
         "url": "https://v9.wujinwsym3u8.com/wjv9/202611/08/agBRLKxg4S90/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167538,
@@ -12240,7 +12366,8 @@
         "name": "国语",
         "url": "https://v9.wujinwsym3u8.com/wjv9/202611/08/G8BLAnGst889/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167537,
@@ -12257,7 +12384,8 @@
         "name": "国语",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/Wn3maLnvHK92/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ea2eed1fb5_part1.json"
   },
   {
     "id": 167536,
@@ -12274,7 +12402,8 @@
         "name": "国语",
         "url": "https://v5.wujinwsym3u8.com/wjv5/202611/08/QDnDtNsnsw92/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167535,
@@ -12291,7 +12420,8 @@
         "name": "国语",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/pTuRsTZGBE96/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167534,
@@ -12308,7 +12438,8 @@
         "name": "国语",
         "url": "https://v4.wujinwsym3u8.com/wjv4/202611/08/7r9L63YsEg96/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167533,
@@ -12325,7 +12456,8 @@
         "name": "国语",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/GBQ7bYHak089/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167532,
@@ -12342,7 +12474,8 @@
         "name": "国语",
         "url": "https://v10.wujinwsym3u8.com/wjv10/202611/08/TEyYqY2rGQ92/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167531,
@@ -12359,7 +12492,8 @@
         "name": "国语",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/edHFFhFz1n88/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167530,
@@ -12376,7 +12510,8 @@
         "name": "国语",
         "url": "https://v10.wujinwsym3u8.com/wjv10/202611/08/9nMUSx1t7789/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167529,
@@ -12393,7 +12528,8 @@
         "name": "国语",
         "url": "https://v5.wujinwsym3u8.com/wjv5/202611/08/QnnGnQd0qx86/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167528,
@@ -12410,7 +12546,8 @@
         "name": "国语",
         "url": "https://v3.wujinwsym3u8.com/wjv3/202611/08/LAWHm4uKC588/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167527,
@@ -12427,7 +12564,8 @@
         "name": "国语",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/kw6vHL6Zcb97/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167526,
@@ -12444,7 +12582,8 @@
         "name": "国语",
         "url": "https://v3.wujinwsym3u8.com/wjv3/202611/08/wcr4Pbmhcm89/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167525,
@@ -12461,7 +12600,8 @@
         "name": "国语",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/CpkWMdMw2D96/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167524,
@@ -12478,7 +12618,8 @@
         "name": "国语",
         "url": "https://v8.wujinwsym3u8.com/wjv8/202611/08/h1bfL5PDpQ95/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167523,
@@ -12495,7 +12636,8 @@
         "name": "国语",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/5s9xbHgYXM89/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 167522,
@@ -12512,7 +12654,8 @@
         "name": "国语",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/qBEFwSpX5y86/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_ed05233ac8_part1.json"
   },
   {
     "id": 165601,
@@ -12549,7 +12692,8 @@
         "name": "第06集",
         "url": "https://v3.wujinwsym3u8.com/wjv3/202611/08/auAZq0ytpW90/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 165600,
@@ -12586,7 +12730,8 @@
         "name": "第06集",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/08/gEk3aWftDb96/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 167521,
@@ -12607,7 +12752,8 @@
         "name": "第02集",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/t9jDpastNm96/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_913d15350f_part1.json"
   },
   {
     "id": 165607,
@@ -12648,7 +12794,8 @@
         "name": "第07集",
         "url": "https://v7.wujinwsym3u8.com/wjv7/202611/08/pg68huutrr91/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_c0bfd816f5_part1.json"
   },
   {
     "id": 165988,
@@ -12681,13 +12828,14 @@
         "name": "第05集",
         "url": "https://v1.wujinwsym3u8.com/wjv1/202611/08/gvbsXvDDKX96/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_3f40a58533_part1.json"
   },
   {
     "id": 164815,
     "title": "现在就出发 第四季",
     "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/5b46255e8775c895638d8ba8906d0bc4.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/a767780309bbb9a2815101a4057efa48.jpg",
     "year": "2026",
     "area": "中国大陆",
     "actor": "沈腾,黄景瑜,贾冰,郭麒麟,杨迪,王楚然,白敬亭,范丞丞,王安宇,金靖",
@@ -12855,6 +13003,10 @@
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/mEamQYnM1i86/video/index.m3u8"
       },
       {
+        "name": "20261109第5期加更",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/09/2QZ17JuC6h89/video/index.m3u8"
+      },
+      {
         "name": "202610029第3期花絮特辑",
         "url": "https://v3.wujinwsym3u8.com/wjv3/202610/29/EcXHVEipsD96/video/index.m3u8"
       },
@@ -12883,7 +13035,8 @@
         "name": "20261108",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/VzbgsUhru396/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_235f2faded_part1.json"
   },
   {
     "id": 166323,
@@ -12920,7 +13073,8 @@
         "name": "20261108",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/yATkBSgCxB94/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_235f2faded_part1.json"
   },
   {
     "id": 164696,
@@ -13029,13 +13183,14 @@
         "name": "20261108第8期精编",
         "url": "https://v5.wujinwsym3u8.com/wjv5/202611/08/Mjj97M0RB487/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_235f2faded_part1.json"
   },
   {
     "id": 106963,
     "title": "你好星期六",
     "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/3d18d5e085db92cfae350cf2081dfbcc.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/be3224bb905bbd6bf5ed9b8a2ab15257.jpg",
     "year": "2022",
     "area": "大陆",
     "actor": "何炅,檀健次,李雪琴,秦霄贤,王鹤棣,黄明昊,蔡文静,赵小棠,冯禧",
@@ -15121,6 +15276,10 @@
       {
         "name": "20261108特别企划",
         "url": "https://v3.wujinwsym3u8.com/wjv3/202611/08/t9hz0bS7gH94/video/index.m3u8"
+      },
+      {
+        "name": "20261109加更版",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/09/jkx2BCX8r497/video/index.m3u8"
       }
     ]
   },
@@ -15128,7 +15287,7 @@
     "id": 167229,
     "title": "走马上任",
     "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/decca381d19ac63392ea04ad771ff472.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/b079077c5a0b9b60645491c6e5053832.jpg",
     "year": "2026",
     "area": "中国大陆",
     "actor": "王小利,蒋依杉,田娃,赵本山,王小宝,程野,高子沣,庞奕欣,葛珊珊,赵大牛",
@@ -15202,6 +15361,14 @@
       {
         "name": "第17集",
         "url": "https://v11.wujinwsym3u8.com/wjv11/202611/08/G6JNntaZqT95/video/index.m3u8"
+      },
+      {
+        "name": "第18集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/09/Spr27pBQ7S92/video/index.m3u8"
+      },
+      {
+        "name": "第19集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/09/fcTMBKbewN87/video/index.m3u8"
       }
     ]
   },
@@ -15209,7 +15376,7 @@
     "id": 166705,
     "title": "杜鹃红了",
     "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/4023c61680eb742070360fb79e0f9b85.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/a3925f95c23397c80f52ae1dd6cd5e1f.jpg",
     "year": "2020",
     "area": "中国大陆",
     "actor": "宋允皓,王雅捷",
@@ -15359,6 +15526,14 @@
       {
         "name": "第36集",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/08/1GtzUEcBgm87/video/index.m3u8"
+      },
+      {
+        "name": "第37集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/09/2bRu4j9bK894/video/index.m3u8"
+      },
+      {
+        "name": "第38集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/09/wBSx3QwEhn92/video/index.m3u8"
       }
     ]
   },
@@ -15366,7 +15541,7 @@
     "id": 167435,
     "title": "今天是太阳雨",
     "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/bcf51cb2ce3d41888de2ed027251d067.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/e4a2f8da0351373502458fa2f1993d14.jpg",
     "year": "2026",
     "area": "中国大陆",
     "actor": "孙宁,杨超越,丁嘉丽,杨童舒,田小洁,肖添仁,董思成,陈天明,张思敏,刘佳玺,李雨真,孙毓舒",
@@ -15404,6 +15579,10 @@
       {
         "name": "第08集",
         "url": "https://v9.wujinwsym3u8.com/wjv9/202611/08/gPHtV2EU7a93/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/09/uMNmuW2nqZ89/video/index.m3u8"
       }
     ]
   },
@@ -15446,7 +15625,8 @@
         "name": "20261108",
         "url": "https://v6.wujinwsym3u8.com/wjv6/202611/08/RahceHKZw191/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_235f2faded_part1.json"
   },
   {
     "id": 166748,
@@ -15475,7 +15655,8 @@
         "name": "20261108上",
         "url": "https://v8.wujinwsym3u8.com/wjv8/202611/08/4QRwXPbY4s95/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_235f2faded_part1.json"
   },
   {
     "id": 164400,
@@ -15676,13 +15857,14 @@
         "name": "202620260916第6期",
         "url": "https://v1.wujinwsym3u8.com/202609/16/DHx6YGe0Le95/video/index.m3u8"
       }
-    ]
+    ],
+    "data_file": "cat_235f2faded_part1.json"
   },
   {
     "id": 167468,
     "title": "自首真相",
     "category": "国产剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261108-1/b4c46efb51b96173958668493bc6a2ba.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261109-1/af501873551ca1fde8ee4edbb89700d6.jpg",
     "year": "2026",
     "area": "中国大陆",
     "actor": "许魏洲,肖燕,郭俊辰",
@@ -15740,6 +15922,22 @@
       {
         "name": "第13集",
         "url": "https://v3.wujinwsym3u8.com/wjv3/202611/08/2bMdduT6nP92/video/index.m3u8"
+      },
+      {
+        "name": "第14集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/09/e7SYPDmNUe87/video/index.m3u8"
+      },
+      {
+        "name": "第15集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202611/09/1dCfersSbX93/video/index.m3u8"
+      },
+      {
+        "name": "第16集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/09/um7rxHSxms94/video/index.m3u8"
+      },
+      {
+        "name": "第17集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/09/UVMVztm6pA89/video/index.m3u8"
       }
     ]
   }
