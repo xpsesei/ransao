@@ -99,7 +99,7 @@ def main():
     print(f"🔥 本地无数据，执行【首次全量采集】共 {total_pages} 页...")
     pages_to_fetch = list(range(1, total_pages + 1))
   else:
-    fetch_pages_count = min(5, total_pages)
+    fetch_pages_count = min(20, total_pages)
     print(f"⚡ 开始增量拉取最新更新的前 {fetch_pages_count} 页...")
     pages_to_fetch = list(range(1, fetch_pages_count + 1))
 
