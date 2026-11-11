@@ -99,7 +99,8 @@ def main():
     print(f"🔥 本地无数据，执行【首次全量采集】共 {total_pages} 页...")
     pages_to_fetch = list(range(1, total_pages + 1))
   else:
-    fetch_pages_count = min(20, total_pages)
+    # 🎯 增量更新页数已修改为 10 页
+    fetch_pages_count = min(10, total_pages)
     print(f"⚡ 开始增量拉取最新更新的前 {fetch_pages_count} 页...")
     pages_to_fetch = list(range(1, fetch_pages_count + 1))
 
@@ -160,7 +161,11 @@ def main():
     existing_videos_map[vod_id] = item
 
   all_videos = list(existing_videos_map.values())
-  print(f"合并后总影视库数据: {len(all_videos)} 条")
+  
+  # 🎯 核心修复：合并后强制按 ID 降序排序（ID 越大代表影片越新），彻底解决“最新更新”不同步问题
+  all_videos.sort(key=lambda x: int(x.get("id", 0)), reverse=True)
+  
+  print(f"合并并排序后总影视库数据: {len(all_videos)} 条")
 
   processed_videos = all_videos
   categories = {c_name: [] for c_name in category_names}
@@ -174,6 +179,7 @@ def main():
 
   cat_index = []
 
+  # 由于已经全局按 ID 倒序，取前 100 条必定是最新更新的影片
   latest_items = processed_videos[:100]
   with open(os.path.join("data", "cat_latest.json"), "w", encoding="utf-8") as f:
     json.dump(latest_items, f, ensure_ascii=False, indent=2)
