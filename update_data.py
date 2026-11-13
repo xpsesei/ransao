@@ -233,15 +233,17 @@ def main():
   with open("data/categories.json", "w", encoding="utf-8") as f:
     json.dump(cat_index, f, ensure_ascii=False, indent=2)
 
-  # 搜索索引瘦身
+  # 🎯 修复：搜索索引增加 pic（海报）和 data_file（分片定位），使搜索结果能正常显示图片并实现秒开
   search_index = []
   for vod in processed_videos:
     search_index.append({
         "id": vod.get("id"),
         "title": vod.get("title"),
         "category": vod.get("category"),
+        "pic": vod.get("pic"),
         "actor": vod.get("actor"),
         "year": vod.get("year"),
+        "data_file": vod.get("data_file"),
     })
   with open(
       os.path.join("data", "search_index.json"), "w", encoding="utf-8"
