@@ -100,7 +100,7 @@ def main():
     pages_to_fetch = list(range(1, total_pages + 1))
   else:
     # 🎯 增量更新页数已修改为 10 页
-    fetch_pages_count = min(10, total_pages)
+    fetch_pages_count = min(20, total_pages)
     print(f"⚡ 开始增量拉取最新更新的前 {fetch_pages_count} 页...")
     pages_to_fetch = list(range(1, fetch_pages_count + 1))
 
