@@ -207,7 +207,8 @@
                     this.isSearching = Boolean(paramQ);
 
                     try {
-                        const response = await fetch('./data/categories.json');
+                        // 🚀 加上时间戳防止缓存
+                        const response = await fetch(`./data/categories.json?v=${Date.now()}`, { cache: 'no-store' });
                         if (!response.ok) throw new Error(`分类索引加载失败`);
                         const data = await response.json();
                         this.categories = Array.isArray(data) ? data : [];
@@ -248,7 +249,8 @@
                     if (this.isSearchIndexLoaded) return Promise.resolve(this.searchIndex);
                     if (this.searchIndexPromise) return this.searchIndexPromise;
 
-                    this.searchIndexPromise = fetch('./data/search_index.json', { cache: 'force-cache' })
+                    // 🚀 加上时间戳防止缓存
+                    this.searchIndexPromise = fetch(`./data/search_index.json?v=${Date.now()}`, { cache: 'no-store' })
                         .then(res => {
                             if (!res.ok) throw new Error(`搜索索引加载失败`);
                             return res.json();
@@ -401,7 +403,8 @@
                         return this.inflightCategoryFiles[requestKey];
                     }
 
-                    const request = fetch(`./data/${encodeURIComponent(fileName)}`, { cache: 'force-cache' })
+                    // 🚀 加上时间戳防止缓存
+                    const request = fetch(`./data/${encodeURIComponent(fileName)}?v=${Date.now()}`, { cache: 'no-store' })
                         .then(res => {
                             if (!res.ok) {
                                 throw new Error(`加载失败：${fileName}（HTTP ${res.status}）`);
