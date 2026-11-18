@@ -6,7 +6,7 @@
   },
   {
     "name": "动作片",
-    "count": 4839,
+    "count": 4840,
     "files": [
       "cat_e1ce15245d_part1.json",
       "cat_e1ce15245d_part2.json",
@@ -432,7 +432,7 @@
   },
   {
     "name": "国产剧",
-    "count": 8401,
+    "count": 8406,
     "files": [
       "cat_3fc0b225a0_part1.json",
       "cat_3fc0b225a0_part2.json",
@@ -556,7 +556,7 @@
   },
   {
     "name": "美国剧",
-    "count": 2799,
+    "count": 2800,
     "files": [
       "cat_3f40a58533_part1.json",
       "cat_3f40a58533_part2.json",
@@ -595,7 +595,7 @@
   },
   {
     "name": "纪录片",
-    "count": 1044,
+    "count": 1045,
     "files": [
       "cat_c69a1c5423_part1.json",
       "cat_c69a1c5423_part2.json",
@@ -646,17 +646,18 @@
   },
   {
     "name": "海外剧",
-    "count": 398,
+    "count": 401,
     "files": [
       "cat_b0530fdf5f_part1.json",
       "cat_b0530fdf5f_part2.json",
       "cat_b0530fdf5f_part3.json",
-      "cat_b0530fdf5f_part4.json"
+      "cat_b0530fdf5f_part4.json",
+      "cat_b0530fdf5f_part5.json"
     ]
   },
   {
     "name": "大陆综艺",
-    "count": 2276,
+    "count": 2278,
     "files": [
       "cat_235f2faded_part1.json",
       "cat_235f2faded_part2.json",
@@ -703,12 +704,12 @@
   },
   {
     "name": "欧美综艺",
-    "count": 74,
+    "count": 75,
     "file": "cat_9844a6c9ba.json"
   },
   {
     "name": "国产动漫",
-    "count": 1711,
+    "count": 1712,
     "files": [
       "cat_e8574c39f5_part1.json",
       "cat_e8574c39f5_part2.json",
@@ -832,7 +833,7 @@
   },
   {
     "name": "奇幻片",
-    "count": 34,
+    "count": 35,
     "file": "cat_8517011342.json"
   },
   {
@@ -862,7 +863,7 @@
   },
   {
     "name": "篮球",
-    "count": 2920,
+    "count": 2925,
     "files": [
       "cat_ea2eed1fb5_part1.json",
       "cat_ea2eed1fb5_part2.json",
