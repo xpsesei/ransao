@@ -223,7 +223,7 @@
   },
   {
     "name": "剧情片",
-    "count": 19237,
+    "count": 19238,
     "files": [
       "cat_dddbfb9bdd_part1.json",
       "cat_dddbfb9bdd_part2.json",
@@ -422,7 +422,7 @@
   },
   {
     "name": "战争片",
-    "count": 349,
+    "count": 350,
     "files": [
       "cat_97129dde84_part1.json",
       "cat_97129dde84_part2.json",
@@ -432,7 +432,7 @@
   },
   {
     "name": "国产剧",
-    "count": 8409,
+    "count": 8413,
     "files": [
       "cat_3fc0b225a0_part1.json",
       "cat_3fc0b225a0_part2.json",
@@ -556,7 +556,7 @@
   },
   {
     "name": "美国剧",
-    "count": 2801,
+    "count": 2804,
     "files": [
       "cat_3f40a58533_part1.json",
       "cat_3f40a58533_part2.json",
@@ -613,7 +613,7 @@
   },
   {
     "name": "韩国剧",
-    "count": 898,
+    "count": 900,
     "files": [
       "cat_a394da6525_part1.json",
       "cat_a394da6525_part2.json",
@@ -647,7 +647,7 @@
   },
   {
     "name": "海外剧",
-    "count": 401,
+    "count": 402,
     "files": [
       "cat_b0530fdf5f_part1.json",
       "cat_b0530fdf5f_part2.json",
@@ -687,7 +687,7 @@
   },
   {
     "name": "日韩综艺",
-    "count": 395,
+    "count": 396,
     "files": [
       "cat_430465b915_part1.json",
       "cat_430465b915_part2.json",
@@ -826,7 +826,7 @@
   },
   {
     "name": "犯罪片",
-    "count": 108,
+    "count": 109,
     "files": [
       "cat_472b759a45_part1.json",
       "cat_472b759a45_part2.json"
@@ -864,7 +864,7 @@
   },
   {
     "name": "篮球",
-    "count": 2937,
+    "count": 2941,
     "files": [
       "cat_ea2eed1fb5_part1.json",
       "cat_ea2eed1fb5_part2.json",
