@@ -223,7 +223,7 @@
   },
   {
     "name": "剧情片",
-    "count": 19239,
+    "count": 19240,
     "files": [
       "cat_dddbfb9bdd_part1.json",
       "cat_dddbfb9bdd_part2.json",
@@ -432,7 +432,7 @@
   },
   {
     "name": "国产剧",
-    "count": 8413,
+    "count": 8414,
     "files": [
       "cat_3fc0b225a0_part1.json",
       "cat_3fc0b225a0_part2.json",
@@ -546,7 +546,7 @@
   },
   {
     "name": "台湾剧",
-    "count": 305,
+    "count": 306,
     "files": [
       "cat_9946a4060c_part1.json",
       "cat_9946a4060c_part2.json",
@@ -556,7 +556,7 @@
   },
   {
     "name": "美国剧",
-    "count": 2805,
+    "count": 2806,
     "files": [
       "cat_3f40a58533_part1.json",
       "cat_3f40a58533_part2.json",
@@ -658,7 +658,7 @@
   },
   {
     "name": "大陆综艺",
-    "count": 2283,
+    "count": 2284,
     "files": [
       "cat_235f2faded_part1.json",
       "cat_235f2faded_part2.json",
@@ -710,7 +710,7 @@
   },
   {
     "name": "国产动漫",
-    "count": 1712,
+    "count": 1713,
     "files": [
       "cat_e8574c39f5_part1.json",
       "cat_e8574c39f5_part2.json",
@@ -850,7 +850,7 @@
   },
   {
     "name": "泰剧",
-    "count": 741,
+    "count": 742,
     "files": [
       "cat_9e7a40dbaa_part1.json",
       "cat_9e7a40dbaa_part2.json",
@@ -864,7 +864,7 @@
   },
   {
     "name": "篮球",
-    "count": 2950,
+    "count": 2956,
     "files": [
       "cat_ea2eed1fb5_part1.json",
       "cat_ea2eed1fb5_part2.json",
@@ -959,7 +959,7 @@
   },
   {
     "name": "足球",
-    "count": 3949,
+    "count": 3974,
     "files": [
       "cat_ed05233ac8_part1.json",
       "cat_ed05233ac8_part2.json",
@@ -1083,7 +1083,7 @@
   },
   {
     "name": "女频恋爱",
-    "count": 9199,
+    "count": 9203,
     "files": [
       "cat_ebf6fb2fbc_part1.json",
       "cat_ebf6fb2fbc_part2.json",
@@ -1176,7 +1176,8 @@
       "cat_ebf6fb2fbc_part89.json",
       "cat_ebf6fb2fbc_part90.json",
       "cat_ebf6fb2fbc_part91.json",
-      "cat_ebf6fb2fbc_part92.json"
+      "cat_ebf6fb2fbc_part92.json",
+      "cat_ebf6fb2fbc_part93.json"
     ]
   },
   {
@@ -1242,7 +1243,7 @@
   },
   {
     "name": "年代穿越",
-    "count": 4335,
+    "count": 4340,
     "files": [
       "cat_7b80b7410c_part1.json",
       "cat_7b80b7410c_part2.json",
@@ -1292,7 +1293,7 @@
   },
   {
     "name": "古装仙侠",
-    "count": 4399,
+    "count": 4404,
     "files": [
       "cat_3f373f3146_part1.json",
       "cat_3f373f3146_part2.json",
@@ -1337,12 +1338,13 @@
       "cat_3f373f3146_part41.json",
       "cat_3f373f3146_part42.json",
       "cat_3f373f3146_part43.json",
-      "cat_3f373f3146_part44.json"
+      "cat_3f373f3146_part44.json",
+      "cat_3f373f3146_part45.json"
     ]
   },
   {
     "name": "现代都市",
-    "count": 11826,
+    "count": 11834,
     "files": [
       "cat_35cbbe42a2_part1.json",
       "cat_35cbbe42a2_part2.json",
