@@ -1,5 +1,800 @@
 [
   {
+    "id": 168194,
+    "title": "我爱上了一个杀人犯",
+    "category": "泰剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261124-1/4cb78c96213ce86e26c1dd8569f4528f.jpg",
+    "year": "0",
+    "area": "",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/23/TpFgGphpE786/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168193,
+    "title": "11月23日 26-27赛季NBA常规赛 步行者VS尼克斯",
+    "category": "篮球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/f0347bd9c95523f2eb5bad7ba81ab14c.png",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/GXbLA7BiBk90/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168192,
+    "title": "11月23日 26-27赛季NBA常规赛 掘金VS公牛",
+    "category": "篮球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/f1302823ddfb62dcedfb2216279c1a40.png",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/23/t2CswXjRaB95/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168191,
+    "title": "11月23日 26-27赛季NBA常规赛 凯尔特人VS勇士",
+    "category": "篮球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/986a33bad4911afb193b5c351a1af104.png",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/23/tiq2bxNst986/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168190,
+    "title": "11月23日 26-27赛季西甲第13轮 赫塔菲VS马德里竞技",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/679c0e3810aa670210e36ac414d2f1cb.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/23/Sn96FNTAf197/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168189,
+    "title": "11月23日 26-27赛季NBA常规赛 魔术VS奇才",
+    "category": "篮球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/4b15c473c481f5fb88b3f4c733117db1.png",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/23/NpHW1nuA3T88/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168188,
+    "title": "11月23日 26-27赛季NBA常规赛 独行侠VS爵士",
+    "category": "篮球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/36665590824e3fc7a3961fd44eda36a5.png",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/23/YD5R5XgfJi94/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168187,
+    "title": "11月23日 26-27赛季意甲第12轮 亚特兰大VS国际米兰",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/6e21c0c90c5678797c94f79c7f15d2d1.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/23/DdEapMxX2p86/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168186,
+    "title": "挖",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/3b2aa40410395449160ab82911bebf43.jpg",
+    "year": "2026",
+    "area": "美国",
+    "actor": "马克思·格林菲尔德,诺玛·杜梅温尼,休·劳瑞,凯万·诺瓦克,安东尼娅·托马斯,杰森·曼楚克斯,艾米·波勒,丹·布卡廷斯基,杰拉尔丁·维斯瓦纳坦,迈克尔·舒尔,梅森·瓦尔·科顿,乔纳森·珀恩廷,菲娜·斯特拉扎,Brennan·Lee·Mulligan,Simon·Pearl",
+    "director": "迪恩·霍兰德,摩根·萨基特,丽贝卡·阿舍,Heather·Jack",
+    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一群考古学家和考古系学生，在希腊挖掘出一件珍贵文物，由此开启了一段毕生难忘的冒险之旅。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/y8ibvNJCqQ91/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/23/BsLhhU0Jh597/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/23/19aDfhD0a788/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/23/RtBEmF4VBS92/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/23/qtVv6ZktMr89/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/23/ZnPcuUsJYy91/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/23/vyifrWcYc691/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/23/8U9b5cPmS690/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/23/8FvGCgMJuX96/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/f7JpZLC8Jv87/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168185,
+    "title": "卡伦·里德的审判：雪地警员死亡谜案",
+    "category": "美国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/f047ef9eb4c35d6140a13a57a533abbf.jpg",
+    "year": "2026",
+    "area": "美国",
+    "actor": "John·O'Keefe,Karen·Read",
+    "director": "Danielle·Johnson,罗伯·米勒",
+    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;雪一直下到 2022 年 1 月 29 日清晨。波士顿警员约翰?奥基夫在同僚家门口的雪地里被找到，人已经凉了。他身边的女友卡伦?里德被指控开车撞死了自己的爱人，又把尸体丢进暴风雪。可庭审一打开，每一份证据都在反咬一口：撞的到底是他吗？车外站着的那些人又是谁？一审作废，二审重来，法院外挤满举着标语的普通人 —— 一桩本来只关于一个夜晚的悲剧，慢慢长成关于程序、偏见与公众信任的巨大问号。三集纪录片把这两场审判、两回法庭内外，连同那个新英格兰冬天没化完的雪，一起摊开给观众看。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/23/CJytYwrYsz88/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/23/AUQpdAKaaE95/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/23/yFiQ9VJ7y591/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168184,
+    "title": "代考风暴",
+    "category": "韩国剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/8bf086feef62dcb37c1e80abd4a34794.jpg",
+    "year": "2026",
+    "area": "韩国",
+    "actor": "白智媛,严志媛,朴赫权,裴贤圣,车康允,朴允浩",
+    "director": "朴昭妍",
+    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该剧以韩国大学入学考试为背景，讲述一名江南私立名门高中“正庆高中”的全校第一名兼低收入层特别奖学金获得者，因遭到掌握自己弱点的恐吓犯威胁，从而被迫代替他人参加高考。在人生攸关的关键时刻，各自身处的匮乏与欲望互相碰撞，进而引发充满欺骗、背叛与心理博弈的生存高考大战。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/70KPtuBTNy89/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/23/bGSJtJcC1A96/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168183,
+    "title": "等待秋沙鸭",
+    "category": "剧情片",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/a8dadf94047c9eca2e1b8c7a03029c8f.jpg",
+    "year": "2021",
+    "area": "中国大陆",
+    "actor": "刘旭,毛翊添,游天野,林晨希",
+    "director": "陆建光",
+    "content": "<p>影片通过男孩叶小军与爸爸叶大明在松阴溪边的坚守，终于拍摄到秋沙鸭的故事描述，以寻找“国宝”中华秋沙鸭为故事主题，反映松阳良好的生态环境与人们重视环境保护的观念，及乡村振兴的积极意义。是一部温馨，温暖，诚意的正能量之作。影片以寻找秋沙鸭为故事主题，宣扬保护环境，人与自然和谐相处的生态理念。该影片以松阳田园风光、传统村落为主要场景，讲述几个传统手工艺人在拯救老屋过程中发生的一些故事，以及他们对乡村振兴的思考。影片中出现大量松阴溪的美丽画面，同时穿插古村落等农耕文化元素。表现了松阳非遗文化保护发展的良好现实，展现乡村振兴的美好图景。</p>",
+    "episodes": [
+      {
+        "name": "HD",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/23/dx631uK4ca86/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168182,
+    "title": "血色活字",
+    "category": "剧情片",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/611e1817d23e850ac3a33dbf54197a44.jpg",
+    "year": "2021",
+    "area": "中国大陆",
+    "actor": "牛犇,蒋欣奇",
+    "director": "王硕",
+    "content": "<p>影片以抗战年代木活字传承与保护为背景，讲述了木活字印刷传人潘永义与日军特别行动队侦察员阿美之间一段情感纠葛和传奇故事。</p>",
+    "episodes": [
+      {
+        "name": "HD",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202611/23/Ts0Vt4hNem93/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168181,
+    "title": "陷入歧途",
+    "category": "剧情片",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/6de1104ae23d92ad088cddbbaaa43804.jpg",
+    "year": "2021",
+    "area": "中国大陆",
+    "actor": "杜润霖,姚致远,王龙健",
+    "director": "王鑫",
+    "content": "<p>怀揣演员梦想的思诺去大城市打拼，发现一切根本没有自己想象的那么简单，工作不顺心心灰意冷，被好友叫去“拍戏”。误入非法传销窝点。他协助警方，再入传销组织，最终协助警方一举捣毁了这个传销窝点。</p>",
+    "episodes": [
+      {
+        "name": "HD",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/23/Rty7FiAuNH90/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168180,
+    "title": "11月23日 26-27赛季NBA常规赛 雷霆VS热火",
+    "category": "篮球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/f60fcb2b8eb48512b0234c00fc1211a1.png",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/23/e864e1BXJ392/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168179,
+    "title": "11月23日 26-27赛季英超第11轮 利物浦VS曼联",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/d55880a70addf7d77ef6c3e908fb59b1.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/MKTLHTuykL91/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168178,
+    "title": "11月22日 26-27赛季德甲第10轮 奥格斯堡VS美因茨",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/e2ab6fe3a51c668a6fb54f1ee00ef30a.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/23/GV49ss7nKg95/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168177,
+    "title": "11月22日 26-27赛季西甲第13轮 桑坦德竞技VS皇家社会",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/c41607dbcfee21ec4968f22644bea879.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/pZ50sNdJAb90/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168176,
+    "title": "11月22日 26-27赛季意甲第12轮 博洛尼亚VS乌迪内斯",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/cce609f0999b4fcd2ae22455e00aa325.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/23/LQTwdLzw8H86/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168175,
+    "title": "11月22日 26-27赛季意甲第12轮 萨索洛VS热那亚",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/bcada1d7c648f72d354f8ec40c5fdaea.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/23/ybWtBfbzBx94/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168174,
+    "title": "11月22日 26-27赛季法甲第11轮 巴黎FCVS昂热",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/705e27f3b7c4d85e338daea21a00fab5.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/23/Tenipqj4Jp94/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168173,
+    "title": "11月22日 26-27赛季英超第11轮 赫尔城VS布莱顿",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/dcb58b18a8cb6275921d760e77e97ece.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/23/EkjRBZ6FpH95/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168172,
+    "title": "11月22日 26-27赛季意甲第12轮 尤文图斯VS威尼斯",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/d4353ec5e1bc965d105d7c8a3726247d.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/23/zz6P21KwHv93/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168171,
+    "title": "11月23日 26-27赛季NBA常规赛 活塞VS老鹰",
+    "category": "篮球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/4140d48758411937fa17abd5388b25f8.png",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/23/pWVGWmYaNh94/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168170,
+    "title": "11月23日 26-27赛季德甲第10轮 云达不莱梅VS汉堡",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/e6e61512054151fd22b83f6f46cd2f9a.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/g5x3PgUTaT88/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168169,
+    "title": "11月22日 26-27赛季西甲第13轮 巴塞罗那VS比利亚雷亚尔",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/bfaeae384d5588f16bf3922cfabec897.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/23/j0rgPN7EH495/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168168,
+    "title": "11月23日 26-27赛季意甲第12轮 AC米兰VS弗罗西诺内",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/171290b9597771ea5419f10261af911b.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/23/yBa0w4EYEc88/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168167,
+    "title": "11月23日 26-27赛季法甲第11轮 洛里昂VS雷恩",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/14b44c760e15aea06b63dbb5be9d0a54.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/23/LJjdGszQHJ89/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168166,
+    "title": "11月23日 26-27赛季西甲第13轮 奥萨苏纳VS马拉加",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/1a141f0259212bdbd05a12929876a9d7.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/23/Qeq9Nwn9ch91/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168165,
+    "title": "11月23日 26-27赛季法甲第11轮 马赛VS勒芒",
+    "category": "足球",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/3804afd746ee85bbe278fef85a4bf141.jpeg",
+    "year": "2026",
+    "area": "大陆",
+    "actor": "",
+    "director": "",
+    "content": "",
+    "episodes": [
+      {
+        "name": "国语",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/23/tTYZGaiHqi93/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168164,
+    "title": "天启之门",
+    "category": "国产动漫",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/ef5378a7438026edebe2e2d4840f758b.jpg",
+    "year": "2026",
+    "area": "中国大陆",
+    "actor": "",
+    "director": "",
+    "content": "<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;十八岁网文作者陈小练遭遇空难，侥幸生还并觉醒异能，随之窥见残酷真相：他们所处的现实世界，竟是外来者口中的游戏场，普通人是被随意玩弄的 “NPC”，那些拥有超凡能力的入侵者自称为 “玩家”，肆意践踏秩序、掠夺资源抖音百科。不甘任人宰割的陈小练集结同伴，组建名为 “逗逼联盟” 的抵抗组织，以觉醒 NPC 的身份奋起反抗玩家。众人穿梭各类危险副本，不断变强，在战斗里探寻世界、天启之门以及 GM 背后的终极秘密，在绝望的牢笼之中，为守护自己的世界，向高高在上的外来玩家发起一场惊心动魄的逆袭。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/23/4drS2X8vX792/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/23/LPrG1FFwRD97/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/23/sLeEgyEaxQ94/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/23/3H04AhbKGE97/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/23/i6QUzTgbct95/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/23/RHbXYNRtW188/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/23/i3avNhtxxA97/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/23/JyLb27WN3y86/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202611/23/MqEGi75eJL97/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/23/kcjxTR5V6K88/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168163,
+    "title": "此生要去的100个地方 第二季",
+    "category": "大陆综艺",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/2d1ecd824629f3d7d410461dce4613b8.jpg",
+    "year": "2026",
+    "area": "中国大陆",
+    "actor": "尼格买提·热合曼,王淏,王冰冰,陆虎",
+    "director": "",
+    "content": "<p>《此生要去的100个地方第二季》是中央广播电视总台文艺节目中心推出的旅行综艺，由尼格买提、月亮姐姐、王冰冰、陆虎担任常驻嘉宾。节目以美景、美食、文化、生活为原点出发，以真人秀的形式发掘各地风景、体验当地非遗项目、感受地方风土人情。节目一期一地一主题，用独特的城市符号向观众全面展示各地的文化魅力，强势筑牢“此生要去”的根基。</p>",
+    "episodes": [
+      {
+        "name": "20261101",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/23/Dk24117g8794/video/index.m3u8"
+      },
+      {
+        "name": "20261108",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/23/hbXaGKdjsn93/video/index.m3u8"
+      },
+      {
+        "name": "20261115",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/23/RbUGK9X3Su97/video/index.m3u8"
+      },
+      {
+        "name": "20261122",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/23/4mhv3pXSgk96/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168162,
+    "title": "百草追凶",
+    "category": "国产剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/46573cb219fecded60626505f3e18e65.jpg",
+    "year": "2026",
+    "area": "中国大陆",
+    "actor": "",
+    "director": "范镇平",
+    "content": "<p>大雍年间皇帝痴迷修道升仙，民间诡案频发，皆以奇药为引。出身医药世家的李石铮与泼辣果断的茶馆掌柜温三娘，熟知三教九流的百事通刘元宝，寡言善战的冷面刀客陆昭，以及机灵敏锐的孤儿牛大顺组成...</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/23/iZ9kSrKvck96/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/23/v2ax5JcgG787/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/23/yFLDNrXXLg93/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/AsW7HAq6uZ92/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/23/KzRHrVbdbQ87/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202611/23/i7iBYP6t8B90/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/23/qNXZH3q1jz96/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/23/dVjg727mQ889/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/23/N67ajsTdMx90/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/23/VekwEQi2bT97/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168161,
+    "title": "超能足球",
+    "category": "国产剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/49328592d6bcafc0b6596d8ecfd52afc.jpg",
+    "year": "2026",
+    "area": "中国大陆",
+    "actor": "陆辰,林霄,李林峰,陈立,董连军",
+    "director": "于飞",
+    "content": "<p>暴雨夜，40岁老球迷陆辰看着华国队又一次低级失误，怒砸电视。触电那一刻，他穿进了电视里成了同名同姓，被全网骂成关系户的年轻国脚。脑子里多了慢放视野系统，也背上终极任务。带华国队夺得2034世界杯冠军。于是，从边缘替补开始，他把每一场都踢成生死局。</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/23/PhGpdSbrH691/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/23/zQcyPCdMsZ88/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/23/ZAdV2HQiqe91/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202611/23/TFV03eud1191/video/index.m3u8"
+      },
+      {
+        "name": "第05集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/mafEttw14289/video/index.m3u8"
+      },
+      {
+        "name": "第06集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/23/XzKLzj2wSW91/video/index.m3u8"
+      },
+      {
+        "name": "第07集",
+        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/23/LM8yKzUmLP89/video/index.m3u8"
+      },
+      {
+        "name": "第08集",
+        "url": "https://v9.wujinwsym3u8.com/wjv9/202611/23/EXLXG41Hjq97/video/index.m3u8"
+      },
+      {
+        "name": "第09集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/G0vaKbmwHR88/video/index.m3u8"
+      },
+      {
+        "name": "第10集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/YhWz0NDHuf95/video/index.m3u8"
+      },
+      {
+        "name": "第11集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/23/VGXq2eiZDx96/video/index.m3u8"
+      },
+      {
+        "name": "第12集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/asdP7r6kNm97/video/index.m3u8"
+      },
+      {
+        "name": "第13集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/2pdeeeR4Xk94/video/index.m3u8"
+      },
+      {
+        "name": "第14集",
+        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/23/AaihcjqKq896/video/index.m3u8"
+      },
+      {
+        "name": "第15集",
+        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/23/Zz2pEeKJEH86/video/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": 168160,
+    "title": "花车特工",
+    "category": "泰剧",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/b3f51386b01db44dadf8e2ab5bb956a2.jpg",
+    "year": "2026",
+    "area": "泰国",
+    "actor": "Tong·Archariya·Sritha,Anita·Vipha·Yaganegi",
+    "director": "Surasak·Pongson",
+    "content": "<p>暂无剧情简介</p>",
+    "episodes": [
+      {
+        "name": "第01集",
+        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/23/8hQ6C4C1Lu93/video/index.m3u8"
+      },
+      {
+        "name": "第02集",
+        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/23/ENu9jdnfBW96/video/index.m3u8"
+      },
+      {
+        "name": "第03集",
+        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/23/ar9VrxqCxz92/video/index.m3u8"
+      },
+      {
+        "name": "第04集",
+        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/23/8rTs4yvvtq87/video/index.m3u8"
+      }
+    ]
+  },
+  {
     "id": 168159,
     "title": "今夜宜婚",
     "category": "女频恋爱",
@@ -1077,7 +1872,7 @@
     "id": 168101,
     "title": "快乐老家2",
     "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/aca8f434bc364dcd2d2431cc037c713f.jpg",
+    "pic": "https://img1.wujinwszy.vip/upload/vod/20261123-1/f6056268de636a6c1fc5a4d1d6ee0395.jpg",
     "year": "2026",
     "area": "中国大陆",
     "actor": "",
@@ -1087,6 +1882,10 @@
       {
         "name": "20261122",
         "url": "https://v2.wujinwsym3u8.com/wjv2/202611/22/7UsUxsdmXC88/video/index.m3u8"
+      },
+      {
+        "name": "20261123",
+        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/23/d9X2sc91Xx91/video/index.m3u8"
       }
     ]
   },
@@ -1189,609 +1988,6 @@
       {
         "name": "全集",
         "url": "https://v12.wujinwsym3u8.com/wjv12/202611/21/s1Nn1kyEKJ89/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168094,
-    "title": "屿与眠归",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/07c23d06980bbfef1233ac8cd7e43c5f.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "于宙童&刘国庆",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/21/0WbLFt5UKp86/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168093,
-    "title": "惹不起的沈南汐",
-    "category": "古装仙侠",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/2317ad5be3d3e891851ecbcb0e05e931.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "任子豪＆岳雨婷",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v9.wujinwsym3u8.com/wjv9/202611/21/07GGpKL9ML95/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168092,
-    "title": "戏台归人十年沉冤",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/f20f3f22515037253b6befdaafbb8bc7.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "陈成成&韩旭",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/21/ARQcujMvZH95/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168091,
-    "title": "我只想认祖归宗，假少爷却逼我继承家业",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/9181180c1030632c95abedaf0052ee32.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "范修军&予欢&阿祯",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/21/rhB5Zxsr3e92/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168090,
-    "title": "捡骨师",
-    "category": "脑洞悬疑",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/34e79cee5cc02ce8496e10f35324c06f.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "马跃铭&周梓涵",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/21/pHF4dvAg4989/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168089,
-    "title": "最后一局，他为国翻盘",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/b7b5db764bb3077c6b7b936c876a19fd.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "衡涛&李淳亦",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/21/HmWXMDqPyp91/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168088,
-    "title": "港城江湖之胜者为王",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/9330c280bcbb92d53a00ab04c28f29cf.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "王子行&苏西&时一",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/21/d3WN9Sdd6r89/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168087,
-    "title": "福星临家岁岁安",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/cbe39ab8180f261d0cdbc89b15b4838d.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "冯宝云",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/21/3cRVS7J8yj94/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168086,
-    "title": "穿过荆棘拥抱你第三季",
-    "category": "女频恋爱",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/748fbd5c4d005d40b40f09aff8cfe366.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "李梦然＆澄芓",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v9.wujinwsym3u8.com/wjv9/202611/21/FVgrHrHVia93/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168085,
-    "title": "茶马古道之我在古代当镖师",
-    "category": "年代穿越",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/c568eef20cd95a6fa06bbe63f2e69353.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "其小叔&杨煜澄&孙昱",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/21/8VZSYXBqPn96/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168084,
-    "title": "运河是我家：大厂风云",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/85668cbac72d0bd079edbb4e8893fd73.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "白方文＆马晓伟",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/21/U4ptkqpWPq91/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168083,
-    "title": "重生后我握着准继父的秘密",
-    "category": "年代穿越",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/ec28f1505b488f623a3477bd3d17feca.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "陈馨雨&十八子",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/21/2KH0k3U60q89/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168082,
-    "title": "重返校园学霸校花爱上我",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/770afde7827c9abaaeb6521d2bb11e02.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "陆绎方&李欣怡",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v9.wujinwsym3u8.com/wjv9/202611/21/G1T2idMLew93/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168081,
-    "title": "闪婚后爱，和老板的甜蜜日常",
-    "category": "女频恋爱",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/5b2f7d35e410c93dfc324f80b8e62c8f.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "焦睿&张东梓",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/21/sandQBf79C86/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168080,
-    "title": "高调离婚，沈小姐强势掀桌了",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/7a0dcacec6760bc80d2f182eb96e2352.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "白雪茹&祈乐",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/21/MGjTzyhrRf93/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168079,
-    "title": "鹭岛1981",
-    "category": "年代穿越",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/156a0ce895fd86624235ec1a598856e6.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "杨川北&田野之&朱闪",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v7.wujinwsym3u8.com/wjv7/202611/21/7yRp5sFum497/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168078,
-    "title": "假面影后，替身归来",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/324ce2a54f25319a5046c5aa02e0fe8d.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "李恒&国莉莉",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v1.wujinwsym3u8.com/wjv1/202611/21/1ye43fYDtT92/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168077,
-    "title": "别装了太子，你那机关露馅了",
-    "category": "古装仙侠",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/d525aacde4bc66cc8ce1f18bbe510cdd.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "张羽诚&祁泽",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/21/SQyzkaaa0N96/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168076,
-    "title": "444号房间",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/cf2eff759ae85a528442b88c0e73bd24.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "言欢&莫书铭",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/21/Kc7Z6m5e4n89/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168075,
-    "title": "大嫂：除恶",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/3bbedacfc6a297bfc74dc2841af615e7.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "克拉拉&麦亨利&张沐琪",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/21/hxM7ZRZXGx87/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168074,
-    "title": "夫妻之道",
-    "category": "女频恋爱",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/d92aa9204a17e17b7535c7feb09a0fa3.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "陈景赫＆冯欢欢",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/21/fDYz3mn5ny89/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168073,
-    "title": "女上司请自重，我真的只是转错账",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/bb5787884f3ac64a289859b390509098.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "闵星翰&郇依心",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v5.wujinwsym3u8.com/wjv5/202611/21/sGVNRgrvb297/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168072,
-    "title": "婚然梦醒",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/a136acf4e1a69f5873bd78e1f605814d.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "李靓雨&宋哲伦",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/21/8mJzkfkhqc91/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168071,
-    "title": "旧义如山",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/b7f623dbc49860a64a3b568c5b3d3668.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "王辉&胡柯",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/21/tAkrkLaLxQ93/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168070,
-    "title": "贴身助理竟是我老公",
-    "category": "反转爽剧",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/6d6f9b60d22c072a9872ed3f5ffa2130.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "高玉婷&宋懿芳",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/21/vhWypYvv1a90/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168069,
-    "title": "伙头军封侯",
-    "category": "古装仙侠",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/0f3589a09c3ab22f0a5ce43ded7f35a6.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "严浩&蒋昕妍",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/21/Qb17P6mgz694/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168068,
-    "title": "天降福星结善缘",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/c1493e4b115a3cbce1718aee381cbd7f.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "冯宝云",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/21/nBHrt9vXWS86/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168067,
-    "title": "枕边双影",
-    "category": "女频恋爱",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/01a2506800b75ec54c6179952c95f873.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "朱礼仪&徐小浠",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v2.wujinwsym3u8.com/wjv2/202611/21/zVDi22T8Cx94/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168066,
-    "title": "猛虎出山，谁与争锋",
-    "category": "现代都市",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261122-1/8e4665092a5f32f383b0c2b54fa443f8.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "李尚宇&朱茱",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "全集",
-        "url": "https://v11.wujinwsym3u8.com/wjv11/202611/21/XZF2Myq0HS86/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168065,
-    "title": "奔跑吧·大湾区篇",
-    "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261121-1/5c7a5c055e7eb1f86282d9eb0389816f.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "李晨,郑恺,沙溢,孟子义,王祖蓝,李昀锐,白鹿,张真源,范丞丞",
-    "director": "",
-    "content": "<p>风起大湾区，奔跑正当时！ 缤纷色彩勾勒多元风貌，岭南风韵与城市活力交相辉映。迎着大湾区的风，一起感受这片热土的蓬勃生机。</p>",
-    "episodes": [
-      {
-        "name": "20261121",
-        "url": "https://v4.wujinwsym3u8.com/wjv4/202611/21/tnNi5a5fq990/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168064,
-    "title": "笑有新生2026",
-    "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261121-1/f72f5202c0e900f911fa60711855c567.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "",
-    "director": "",
-    "content": "<p>全面升级，通过选拔挖掘特点鲜明的喜剧新生，建立喜剧人才库，打磨有笑点、有创意、有故事、有情怀的喜剧新作品。来自全国的58位喜剧新生欢乐集结，争夺“春晚共创推荐卡”</p>",
-    "episodes": [
-      {
-        "name": "20261107",
-        "url": "https://v8.wujinwsym3u8.com/wjv8/202611/21/NhDY05gWe597/video/index.m3u8"
-      },
-      {
-        "name": "20261114",
-        "url": "https://v9.wujinwsym3u8.com/wjv9/202611/21/334rgFfYqt90/video/index.m3u8"
-      },
-      {
-        "name": "20261121",
-        "url": "https://v6.wujinwsym3u8.com/wjv6/202611/21/QQ2jTCQrQx91/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168063,
-    "title": "爱乐之都·2026音乐剧荣誉之夜",
-    "category": "大陆综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261121-1/e36b2f17261055f3321359bc0d20f4ca.jpg",
-    "year": "2026",
-    "area": "中国大陆",
-    "actor": "叶麒圣,黄奕,黄龄,王啸坤,于毅,廖昌永,孙悦,谭维维,袁浩杨,刘宇,林海,陈辰,阿云嘎,靳东,品冠,刘令飞,徐丽东,莱明·卡莱姆罗,祝绪丹,司雯嘉,蔡程昱,余笛,强东玥,苏芮琪,郑棋元,陈书昕,蔡淇,张泽,张家驹,洛朗·班,蒋倩如,丁臻滢,魏忠杰,郭耀嵘,苗梦初,吴志军,刘浩冉,朱芾,徐杭,王艻,钟明月,丁友为,刘昱婧,刘义丰,杨雨逍,曹衡,李炜鹏,郭嘉轩,许放星,于世源,廖哲珣",
-    "director": "东方卫视",
-    "content": "<p>2026年上海音乐剧行业荣誉推荐活动<br/>　　《爱乐之都·2026音乐剧荣誉之夜》由上海广播电视台、上海演艺集团、黄浦文旅集团主办，上海东方娱乐传媒集团有限公司、上海演艺大世界服务中心承办，于2026年11月12日在上海音乐厅举行；2026年11月21日20:20在东方卫视黄金档播出。<br/>　　活动围绕“音乐剧+”开展，包含荣誉大赏、嘉年华等形式，涉及作品推荐、行业交流、演员集结和大众传播；荣誉推荐设置三大类目共计23项核心荣誉；2026年11月6日，2026爱乐之都音乐剧嘉年华开启。<br/>　　本次活动选址位于演艺大世界核心区域的上海音乐厅，将借力剧场集群的集聚优势，深化文旅融合发展，持续擦亮演艺大世界城市文化地标名片。<br/>　　在爱乐之都，树立城市音乐剧坐标<br/>　　此次《爱乐之都·2026音乐剧荣誉之夜》，依托演艺大世界产业资源，以“音乐剧+”融合创新为核心，将通过荣誉大赏、嘉年华等丰富形式，集作品推荐、行业交流、演员集结、大众传播于一体，赋能“亚洲演艺之都”建设。<br/>　　活动将突破传统模式，深度融合音乐剧艺术特质，以原创音乐剧唱段贯穿全程。荣誉推荐聚焦2025—2026年度在上海演出的热门音乐剧作品，设置三大类目共计23项核心荣誉，综合市场票房与社交热度等大数据，兼顾市场热度与艺术专业标准，以权威性、专业性树立属于上海这座城市的音乐剧荣誉坐标。<br/>　　活动将打造“星光红毯”“星光SD”各环节。届时，音乐剧演员将在上海音乐厅的“爱乐之门”出场亮相，走过星光熠熠的红毯，并走出“荣誉之门”，与现场媒体和粉丝互动，打造官方认证、仪式化、规范化的“星光SD”，塑造音乐剧良性观演关系。<br/>　　作为预热板块，2026爱乐之都音乐剧嘉年华将于11月6日率先开启，通过南京东路沉浸式音乐剧快闪、粉丝见面会、艺术装置打卡等多元形式，打破剧场边界、走进城市街巷。</p>",
-    "episodes": [
-      {
-        "name": "20261121",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/21/dpSm4uuh6697/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168062,
-    "title": "乡村度假2",
-    "category": "日韩综艺",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261121-1/8d7b070693323a67d636311e6b4c1c09.jpg",
-    "year": "2026",
-    "area": "韩国",
-    "actor": "李栋旭,南昶熙,刘在锡,李相二",
-    "director": "",
-    "content": "<p>第二季将前往忠清南道保宁市进行拍摄，预计今年播出。</p>",
-    "episodes": [
-      {
-        "name": "第01集",
-        "url": "https://v12.wujinwsym3u8.com/wjv12/202611/21/FDSZqisk6m94/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168061,
-    "title": "11月21日 26-27赛季NBA常规赛 火箭VS掘金",
-    "category": "篮球",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261121-1/45f6114de3be3d859999fac12b344712.png",
-    "year": "2026",
-    "area": "大陆",
-    "actor": "",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "国语",
-        "url": "https://v3.wujinwsym3u8.com/wjv3/202611/21/qsd1ESpvd296/video/index.m3u8"
-      }
-    ]
-  },
-  {
-    "id": 168060,
-    "title": "11月21日 26-27赛季NBA常规赛 魔术VS篮网",
-    "category": "篮球",
-    "pic": "https://img1.wujinwszy.vip/upload/vod/20261121-1/ca995bcabfb2c7e88d606590fba0bc29.png",
-    "year": "2026",
-    "area": "大陆",
-    "actor": "",
-    "director": "",
-    "content": "",
-    "episodes": [
-      {
-        "name": "国语",
-        "url": "https://v10.wujinwsym3u8.com/wjv10/202611/21/V3hWrdLxXb89/video/index.m3u8"
       }
     ]
   }
