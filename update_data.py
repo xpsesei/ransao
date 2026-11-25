@@ -10,11 +10,11 @@ from urllib3.util.retry import Retry
 
 BASE_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=detail"
 LIST_URL = "http://api.wujinwszy.net/api.php/provide/vod/?ac=list"
-MAX_WORKERS = 8
+MAX_WORKERS = 10
 CHUNK_SIZE = 100
-LOOKUP_BUCKETS = 100  # 将 vod_lookup 拆分为 100 个小文件，单文件仅几十 KB
+LOOKUP_BUCKETS = 100       # ID 取模分 100 桶，单文件仅几十 KB
+SEARCH_CHUNK_SIZE = 5000   # 搜索索引每 5000 条分片，避免单文件 20MB+ 卡死
 
-# 复用 HTTP 连接池 + 自动重试
 session = requests.Session()
 session.headers.update({
     "User-Agent": (
@@ -22,14 +22,22 @@ session.headers.update({
         "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     )
 })
-retry_strategy = Retry(total=4, backoff_factor=1.5, status_forcelist=[429, 500, 502, 503, 504])
-adapter = HTTPAdapter(pool_connections=MAX_WORKERS, pool_maxsize=MAX_WORKERS * 2, max_retries=retry_strategy)
+retry_strategy = Retry(
+    total=4,
+    backoff_factor=1.5,
+    status_forcelist=[429, 500, 502, 503, 504],
+)
+adapter = HTTPAdapter(
+    pool_connections=MAX_WORKERS,
+    pool_maxsize=MAX_WORKERS * 2,
+    max_retries=retry_strategy,
+)
 session.mount("http://", adapter)
 session.mount("https://", adapter)
 
 
 def atomic_write_json(filepath, data, indent=None):
-    """原子写入 JSON，防止中途失败损坏索引"""
+    """原子写入 JSON，避免运行中断导致索引损坏"""
     tmp_path = f"{filepath}.tmp"
     with open(tmp_path, "w", encoding="utf-8") as f:
         if indent is not None:
@@ -37,6 +45,13 @@ def atomic_write_json(filepath, data, indent=None):
         else:
             json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
     os.replace(tmp_path, filepath)
+
+
+def safe_int_id(vod):
+    try:
+        return int(vod.get("id", 0))
+    except (ValueError, TypeError):
+        return 0
 
 
 def fetch_page(page):
@@ -53,7 +68,7 @@ def fetch_page(page):
 
 
 def parse_episodes(vod):
-    """正确拆分 $$$ 多播放源，优先提取 m3u8 线路"""
+    """按 $$$ 拆分多播放源，优先提取包含 .m3u8 的主线路"""
     play_url_raw = vod.get("vod_play_url", "") or ""
     if not play_url_raw:
         return []
@@ -70,26 +85,34 @@ def parse_episodes(vod):
                 ep_link = sub_parts[-1].strip()
                 if ".m3u8" in ep_link or ".mp4" in ep_link or ep_link.startswith("http"):
                     current_eps.append({"name": ep_name, "url": ep_link})
-        # 优先选择包含 .m3u8 且集数最多的线路
         if current_eps:
             has_m3u8 = any(".m3u8" in ep["url"] for ep in current_eps)
-            if has_m3u8 and (not best_episodes or not any(".m3u8" in ep["url"] for ep in best_episodes)):
+            best_has_m3u8 = any(".m3u8" in ep["url"] for ep in best_episodes)
+            if has_m3u8 and not best_has_m3u8:
                 best_episodes = current_eps
-            elif len(current_eps) > len(best_episodes) and not any(".m3u8" in ep["url"] for ep in best_episodes):
+            elif has_m3u8 == best_has_m3u8 and len(current_eps) > len(best_episodes):
                 best_episodes = current_eps
 
     return best_episodes
 
 
-def safe_int_id(vod):
-    try:
-        return int(vod.get("id", 0))
-    except (ValueError, TypeError):
+def clean_dir_json(directory, keep_files):
+    cleaned = 0
+    if not os.path.exists(directory):
         return 0
+    for filename in os.listdir(directory):
+        if filename.endswith(".json") and filename not in keep_files:
+            try:
+                os.remove(os.path.join(directory, filename))
+                cleaned += 1
+            except Exception:
+                pass
+    return cleaned
 
 
 def main():
     os.makedirs("data/lookup", exist_ok=True)
+    os.makedirs("data/search", exist_ok=True)
     os.makedirs("sitemaps", exist_ok=True)
 
     print("1. 获取官方分类列表...")
@@ -125,7 +148,7 @@ def main():
                 cat_index = json.load(f)
             for cat in cat_index:
                 if cat.get("file") == "cat_latest.json":
-                    continue  # 跳过 latest 避免重复读取
+                    continue
                 files = [cat["file"]] if "file" in cat else cat.get("files", [])
                 for fname in files:
                     fpath = os.path.join("data", fname)
@@ -160,7 +183,7 @@ def main():
             continue
         episodes = parse_episodes(vod)
         if not episodes:
-            continue  # 过滤无可用播放地址的无效数据
+            continue
 
         type_id = str(vod.get("type_id", ""))
         category = vod.get("type_name") or category_map.get(type_id) or "未分类"
@@ -192,9 +215,9 @@ def main():
 
     cat_index = []
     lookup_buckets = {i: {} for i in range(LOOKUP_BUCKETS)}
-    active_files = {"categories.json", "search_index.json", "manifest.json"}
+    active_data_files = {"categories.json", "manifest.json"}
 
-    # 先对所有分类完成分片并写入 data_file，再写 cat_latest.json
+    # 先完成所有分类分片写入，确保每条影片都带有正确的 data_file
     for c_name in all_cats:
         v_list = categories.get(c_name, [])
         if not v_list:
@@ -212,7 +235,7 @@ def main():
                     lookup_buckets[bucket][str(vod["id"])] = chunk_file
                 atomic_write_json(os.path.join("data", chunk_file), chunk)
                 sub_files.append(chunk_file)
-                active_files.add(chunk_file)
+                active_data_files.add(chunk_file)
             cat_index.append({"name": c_name, "count": len(v_list), "files": sub_files})
         else:
             file_name = f"cat_{safe_hash}.json"
@@ -221,50 +244,58 @@ def main():
                 bucket = safe_int_id(vod) % LOOKUP_BUCKETS
                 lookup_buckets[bucket][str(vod["id"])] = file_name
             atomic_write_json(os.path.join("data", file_name), v_list)
-            active_files.add(file_name)
+            active_data_files.add(file_name)
             cat_index.append({"name": c_name, "count": len(v_list), "file": file_name})
 
-    # 此时 all_videos 中的每条记录都已拥有正确的 data_file
+    # 此时写入 cat_latest.json，所有记录均已包含 data_file
     latest_items = all_videos[:100]
     atomic_write_json(os.path.join("data", "cat_latest.json"), latest_items)
-    active_files.add("cat_latest.json")
+    active_data_files.add("cat_latest.json")
     cat_index.insert(0, {"name": "🔥 最新更新", "count": len(latest_items), "file": "cat_latest.json"})
 
     atomic_write_json("data/categories.json", cat_index, indent=2)
 
-    # 写入分桶索引 data/lookup/00.json ~ 99.json
+    # 写入分桶定位索引 data/lookup/00.json ~ 99.json
     for bucket_id, mapping in lookup_buckets.items():
         atomic_write_json(f"data/lookup/{bucket_id:02d}.json", mapping)
 
-    # 生成精简搜索索引（去掉冗余空格进一步瘦身）
-    search_index = [
-        {
-            "id": v.get("id"),
-            "title": v.get("title"),
-            "category": v.get("category"),
-            "pic": v.get("pic"),
-            "actor": v.get("actor"),
-            "year": v.get("year"),
-            "data_file": v.get("data_file"),
-        }
-        for v in all_videos
-    ]
-    atomic_write_json("data/search_index.json", search_index)
+    # 写入分片紧凑数组格式的搜索索引：
+    # 每条记录格式：[id, title, category, pic, actor, year, data_file]
+    active_search_files = set()
+    search_chunk_count = 0
+    for i in range(0, len(all_videos), SEARCH_CHUNK_SIZE):
+        chunk = all_videos[i : i + SEARCH_CHUNK_SIZE]
+        compact_rows = [
+            [
+                v.get("id"),
+                v.get("title") or "",
+                v.get("category") or "",
+                v.get("pic") or "",
+                v.get("actor") or "",
+                v.get("year") or "",
+                v.get("data_file") or "",
+            ]
+            for v in chunk
+        ]
+        s_fname = f"part_{search_chunk_count}.json"
+        atomic_write_json(os.path.join("data", "search", s_fname), compact_rows)
+        active_search_files.add(s_fname)
+        search_chunk_count += 1
 
-    # 生成全局数据版本清单，解决前后端缓存错位
+    # 生成版本清单
     version_str = str(int(time.time()))
-    atomic_write_json("data/manifest.json", {"version": version_str, "total": len(all_videos)})
+    atomic_write_json(
+        "data/manifest.json",
+        {
+            "version": version_str,
+            "total": len(all_videos),
+            "search_chunks": search_chunk_count,
+        },
+    )
 
-    # 清理过期旧分片
-    cleaned_count = 0
-    for filename in os.listdir("data"):
-        if filename.endswith(".json") and filename not in active_files:
-            try:
-                os.remove(os.path.join("data", filename))
-                cleaned_count += 1
-            except Exception:
-                pass
-    print(f"✅ 清理过期旧分片: {cleaned_count} 个，当前数据版本: {version_str}")
+    cleaned_data = clean_dir_json("data", active_data_files)
+    cleaned_search = clean_dir_json("data/search", active_search_files)
+    print(f"✅ 清理旧分片: data={cleaned_data} 个, search={cleaned_search} 个, 当前版本: {version_str}")
 
     # 生成 Sitemap
     DOMAIN = "https://198616.xyz"
