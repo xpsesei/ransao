@@ -61,7 +61,7 @@
   },
   {
     "name": "喜剧片",
-    "count": 7300,
+    "count": 7302,
     "files": [
       "cat_5086e3afc3_part1.json",
       "cat_5086e3afc3_part2.json",
@@ -135,7 +135,8 @@
       "cat_5086e3afc3_part70.json",
       "cat_5086e3afc3_part71.json",
       "cat_5086e3afc3_part72.json",
-      "cat_5086e3afc3_part73.json"
+      "cat_5086e3afc3_part73.json",
+      "cat_5086e3afc3_part74.json"
     ]
   },
   {
@@ -223,7 +224,7 @@
   },
   {
     "name": "剧情片",
-    "count": 19243,
+    "count": 19247,
     "files": [
       "cat_dddbfb9bdd_part1.json",
       "cat_dddbfb9bdd_part2.json",
@@ -865,7 +866,7 @@
   },
   {
     "name": "篮球",
-    "count": 2963,
+    "count": 2973,
     "files": [
       "cat_ea2eed1fb5_part1.json",
       "cat_ea2eed1fb5_part2.json",
@@ -960,7 +961,7 @@
   },
   {
     "name": "足球",
-    "count": 3990,
+    "count": 3993,
     "files": [
       "cat_ed05233ac8_part1.json",
       "cat_ed05233ac8_part2.json",
@@ -1017,7 +1018,7 @@
   },
   {
     "name": "港台三级",
-    "count": 643,
+    "count": 644,
     "files": [
       "cat_8ad97a66eb_part1.json",
       "cat_8ad97a66eb_part2.json",
@@ -1084,7 +1085,7 @@
   },
   {
     "name": "女频恋爱",
-    "count": 9203,
+    "count": 9211,
     "files": [
       "cat_ebf6fb2fbc_part1.json",
       "cat_ebf6fb2fbc_part2.json",
@@ -1226,7 +1227,7 @@
   },
   {
     "name": "脑洞悬疑",
-    "count": 1138,
+    "count": 1139,
     "files": [
       "cat_dfa080be27_part1.json",
       "cat_dfa080be27_part2.json",
@@ -1244,7 +1245,7 @@
   },
   {
     "name": "年代穿越",
-    "count": 4340,
+    "count": 4343,
     "files": [
       "cat_7b80b7410c_part1.json",
       "cat_7b80b7410c_part2.json",
@@ -1294,7 +1295,7 @@
   },
   {
     "name": "古装仙侠",
-    "count": 4403,
+    "count": 4405,
     "files": [
       "cat_3f373f3146_part1.json",
       "cat_3f373f3146_part2.json",
@@ -1345,7 +1346,7 @@
   },
   {
     "name": "现代都市",
-    "count": 11834,
+    "count": 11857,
     "files": [
       "cat_35cbbe42a2_part1.json",
       "cat_35cbbe42a2_part2.json",
