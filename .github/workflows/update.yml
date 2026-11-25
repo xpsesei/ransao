@@ -1,40 +1,49 @@
-name: Auto Update Video Data
+name: Auto Update VOD Data & Build CSS
 
 on:
   schedule:
-    - cron: '10 16 * * *' # 每天 UTC 16:10 触发（即北京时间每天 00:10）
+    - cron: '0 */4 * * *'
   workflow_dispatch:
+  push:
+    paths:
+      - 'index.html'
+      - 'play.html'
+      - 'update_data.py'
+
+permissions:
+  contents: write
 
 jobs:
-  sync-and-commit:
+  update:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
-      - name: Run Incremental Sync Script
+      - name: Install Python dependencies
+        run: pip install requests
+
+      - name: Build static Tailwind CSS
+        run: |
+          mkdir -p assets
+          npx @tailwindcss/cli --content "./index.html,./play.html" -o ./assets/style.css --minify
+
+      - name: Run update_data.py
         run: python update_data.py
 
-      - name: Commit and Push JSON data to Repo
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push changes
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # 🚀 推送前先拉取变基，彻底解决推送冲突
-          git pull origin main --rebase || true
-          
-          # 🚀 添加轻量化分片数据目录和 SEO 网站地图
-          git add data/ sitemaps/ sitemap.xml
-
-          
-          git commit -m "Auto-update incremental video data and sitemap [skip ci]" || echo "No changes to commit"
-          git push
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ sitemaps/ sitemap.xml assets/style.css
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: auto update vod data & build css"
+            git push
+          else
+            echo "No changes to commit."
+          fi
